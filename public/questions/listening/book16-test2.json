@@ -1,0 +1,115 @@
+{
+  "testId": "book16-test2",
+  "title": "Book 16 - Test 2",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "audioUrl": "/questions/audio/book16 audios/Cam16-Test2-Part1.mp3",
+      "questions": [
+        { "id": "Q1", "type": "form-completion", "question": "Photos must not be in a (1) ________ or an album.", "answerLength": "short" },
+        { "id": "Q2", "type": "form-completion", "question": "The cost for 360 photos is (2) £ ________ (including one disk).", "answerLength": "short" },
+        { "id": "Q3", "type": "form-completion", "question": "Before the completed order is sent, (3) ________ is required.", "answerLength": "short" },
+        { "id": "Q4", "type": "form-completion", "question": "Photos can be placed in a folder, e.g. with the name (4) ________.", "answerLength": "short" },
+        { "id": "Q5", "type": "form-completion", "question": "The (5) ________ and contrast can be improved if necessary.", "answerLength": "short" },
+        { "id": "Q6", "type": "form-completion", "question": "Photos which are very fragile will be scanned by (6) ________.", "answerLength": "short" },
+        { "id": "Q7", "type": "form-completion", "question": "It may be possible to remove an object from a photo, or change the (7) ________.", "answerLength": "short" },
+        { "id": "Q8", "type": "form-completion", "question": "A photo which is not correctly in (8) ________ cannot be fixed.", "answerLength": "short" },
+        { "id": "Q9", "type": "form-completion", "question": "Orders are completed within (9) ________.", "answerLength": "short" },
+        { "id": "Q10", "type": "form-completion", "question": "Send the photos in a box (not 10 ________ ).", "answerLength": "short" }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "audioUrl": "/questions/audio/book16 audios/Cam16-Test2-Part2.mp3",
+      "questions": [
+        { "id": "Q11", "type": "multiple-choice", "question": "Dartfield House school used to be", "options": ["a tourist information centre","a private home","a local council building"], "correctOptionIndex": 2 },
+        { "id": "Q12", "type": "multiple-choice", "question": "What is planned with regard to the lower school?", "options": ["All buildings on the main site will be improved","The lower school site will be used for new homes","Additional school buildings will be constructed on the lower school site"], "correctOptionIndex": 1 },
+        { "id": "Q13", "type": "multiple-choice", "question": "The catering has been changed because of", "options": ["long queuing times","changes to the school timetable","dissatisfaction with the menus"], "correctOptionIndex": 0 },
+        { "id": "Q14", "type": "multiple-choice", "question": "Parents are asked to", "options": ["help their children to decide in advance which serving point to use","make sure their children have enough money for food","advise their children on healthy food to eat"], "correctOptionIndex": 0 },
+        { "id": "Q15", "type": "multiple-choice", "question": "What does the speaker say about the existing canteen?", "options": ["Food will still be served there","Only staff will have access to it","Pupils can take their food into it"], "correctOptionIndex": 2 },
+
+        { "id": "Q16", "type": "multiple-choice", "question": "Food available at serving point: World Adventures", "options": ["pupils help to plan menus","only vegetarian food","different food every week","daily change in menu"], "correctOptionIndex": 3 },
+        { "id": "Q17", "type": "multiple-choice", "question": "Food available at serving point: Street Life", "options": ["pupils help to plan menus","only vegetarian food","different food every week","daily change in menu"], "correctOptionIndex": 0 },
+        { "id": "Q18", "type": "multiple-choice", "question": "Food available at serving point: Speedy Italian", "options": ["pupils help to plan menus","only vegetarian food","different food every week","daily change in menu"], "correctOptionIndex": 1 },
+
+        { "id": "Q19", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO optional after-school lessons are new? (select two)", "options": ["swimming","piano","acting","cycling","theatre sound and lighting"] },
+        { "id": "Q20", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO optional after-school lessons are new? (select two)", "options": ["swimming","piano","acting","cycling","theatre sound and lighting"] }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "audioUrl": "/questions/audio/book16 audios/Cam16-Test2-Part3.mp3",
+      "questions": [
+        { "id": "Q21", "type": "multiple-choice", "question": "Luke read that one reason why we often forget dreams is that", "options": ["our memories cannot cope with too much information","we might otherwise be confused about what is real","we do not think they are important"], "correctOptionIndex": 1 },
+        { "id": "Q22", "type": "multiple-choice", "question": "What do Luke and Susie agree about dreams predicting the future?", "options": ["It may just be due to chance","It only happens with certain types of event","It happens more often than some people think"], "correctOptionIndex": 0 },
+        { "id": "Q23", "type": "multiple-choice", "question": "Susie says that a study on pre-school children having a short nap in the day", "options": ["had controversial results","used faulty research methodology","failed to reach any clear conclusions"], "correctOptionIndex": 2 },
+        { "id": "Q24", "type": "multiple-choice", "question": "In their last assignment, both students had problems with", "options": ["statistical analysis","making an action plan","self-assessment"], "correctOptionIndex": 1 },
+
+        { "id": "Q25", "type": "form-completion", "question": "Decide on sample: Twelve students from the (25) _________ department", "answerLength": "short" },
+        { "id": "Q26", "type": "form-completion", "question": "Decide on procedure: Answers on (26) _________", "answerLength": "short" },
+        { "id": "Q27", "type": "form-completion", "question": "Check ethical guidelines for working with (27) _________", "answerLength": "short" },
+        { "id": "Q28", "type": "form-completion", "question": "Ensure that risk is assessed and (28) _________ is kept to a minimum", "answerLength": "short" },
+        { "id": "Q29", "type": "form-completion", "question": "Analyse the results: Calculate the correlation and make a (29) _________", "answerLength": "short" },
+        { "id": "Q30", "type": "form-completion", "question": "(30) _________ the research", "answerLength": "short" }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "audioUrl": "/questions/audio/book16 audios/Cam16-Test2-Part4.mp3",
+      "questions": [
+        { "id": "Q31", "type": "form-completion", "question": "An experiment on university students suggested that dance increases (31) _________", "answerLength": "short" },
+        { "id": "Q32", "type": "form-completion", "question": "For those with mental illness, dance could be used as a form of (32) _________", "answerLength": "short" },
+        { "id": "Q33", "type": "form-completion", "question": "Benefits of dance for older people: accessible for people with low levels of (33) _________", "answerLength": "short" },
+        { "id": "Q34", "type": "form-completion", "question": "better (34) _________ reduces the risk of accidents", "answerLength": "short" },
+        { "id": "Q35", "type": "form-completion", "question": "improves (35) _________ function by making it work faster", "answerLength": "short" },
+        { "id": "Q36", "type": "form-completion", "question": "gives people more (36) _________ to take exercise", "answerLength": "short" },
+        { "id": "Q37", "type": "form-completion", "question": "can lessen the feeling of (37) _________, very common in older people", "answerLength": "short" },
+        { "id": "Q38", "type": "form-completion", "question": "A study showed that doing Zumba for 40 minutes uses up as many (38) _________ as other quite intense forms of exercise.", "answerLength": "short" },
+        { "id": "Q39", "type": "form-completion", "question": "women suffering from (39) _________ benefited from doing Zumba.", "answerLength": "short" },
+        { "id": "Q40", "type": "form-completion", "question": "Zumba became a (40) _________ for the participants.", "answerLength": "short" }
+      ]
+    }
+  ],
+  "answers": {
+    "Q1": "Frame",
+    "Q2": "195",
+    "Q3": "Payment",
+    "Q4": "Grandparents",
+    "Q5": "color",
+    "Q6": "hand",
+    "Q7": "background",
+    "Q8": "focus",
+    "Q9": "ten days, 10 days,",
+    "Q10": "plastic",
+    "Q11": "C",
+    "Q12": "B",
+    "Q13": "A",
+    "Q14": "A",
+    "Q15": "C",
+    "Q16": "D",
+    "Q17": "A",
+    "Q18": "B",
+    "Q19": "B,C",
+    "Q20": "B,C",
+    "Q21": "B",
+    "Q22": "A",
+    "Q23": "C",
+    "Q24": "C",
+    "Q25": "History",
+    "Q26": "Paper",
+    "Q27": "people",
+    "Q28": "stress",
+    "Q29": "graph",
+    "Q30": "evaluate",
+    "Q31": "creativity",
+    "Q32": "therapy",
+    "Q33": "fitness",
+    "Q34": "balance",
+    "Q35": "brain",
+    "Q36": "motivation",
+    "Q37": "isolation",
+    "Q38": "calories",
+    "Q39": "obesity",
+    "Q40": "habit"
+  }
+}

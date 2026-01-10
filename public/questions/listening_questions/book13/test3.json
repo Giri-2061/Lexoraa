@@ -1,0 +1,118 @@
+{
+	"testId": "book13-test3",
+	"sections": [
+		{
+				  "sectionNumber": 1,
+				  "audioUrl": "/questions/audio/book13 audios/IELTS13-Tests1-4CD2Track_01.mp3",
+			"questions": [
+				{ "id": "Q1", "type": "form-completion", "question": "Average rent: (1) £___________ a month", "answerLength": "short" },
+				{ "id": "Q2", "type": "form-completion", "question": "Linda travels to work by (2)________________", "answerLength": "short" },
+				{ "id": "Q3", "type": "form-completion", "question": "Limited (3)______________ in city centre", "answerLength": "short" },
+				{ "id": "Q4", "type": "form-completion", "question": "Trains to London every (4)_________________ minutes", "answerLength": "short" },
+				{ "id": "Q5", "type": "form-completion", "question": "Poor train service at (5)__________________", "answerLength": "short" },
+				{ "id": "Q6", "type": "form-completion", "question": "New (6)_______________ opened recently", "answerLength": "short" },
+				{ "id": "Q7", "type": "form-completion", "question": "(7)___________________ has excellent reputation", "answerLength": "short" },
+				{ "id": "Q8", "type": "form-completion", "question": "Good (8)__________________ on Bridge Street", "answerLength": "short" },
+				{ "id": "Q9", "type": "form-completion", "question": "Meet Linda on (9)__________________ after 5.30 pm", "answerLength": "short" },
+				{ "id": "Q10", "type": "form-completion", "question": "In the (10)_______________ opposite the station", "answerLength": "short" }
+			]
+		},
+		{
+				  "sectionNumber": 2,
+				  "audioUrl": "/questions/audio/book13 audios/IELTS13-Tests1-4CD2Track_02.mp3",
+			"questions": [
+				{ "id": "Q11", "type": "multiple-choice", "question": "using a gym — which advantage?", "options": ["not dependent on season","enjoyable","low risk of injury","fitness level unimportant","sociable","fast results","motivating"], "correctOptionIndex": 5 },
+				{ "id": "Q12", "type": "multiple-choice", "question": "running — which advantage?", "options": ["not dependent on season","enjoyable","low risk of injury","fitness level unimportant","sociable","fast results","motivating"], "correctOptionIndex": 3 },
+				{ "id": "Q13", "type": "multiple-choice", "question": "swimming — which advantage?", "options": ["not dependent on season","enjoyable","low risk of injury","fitness level unimportant","sociable","fast results","motivating"], "correctOptionIndex": 0 },
+				{ "id": "Q14", "type": "multiple-choice", "question": "cycling — which advantage?", "options": ["not dependent on season","enjoyable","low risk of injury","fitness level unimportant","sociable","fast results","motivating"], "correctOptionIndex": 1 },
+				{ "id": "Q15", "type": "multiple-choice", "question": "doing yoga — which advantage?", "options": ["not dependent on season","enjoyable","low risk of injury","fitness level unimportant","sociable","fast results","motivating"], "correctOptionIndex": 2 },
+				{ "id": "Q16", "type": "multiple-choice", "question": "training with a personal trainer — which advantage?", "options": ["not dependent on season","enjoyable","low risk of injury","fitness level unimportant","sociable","fast results","motivating"], "correctOptionIndex": 6 },
+
+				{ "id": "Q17", "type": "multiple-choice", "question": "For which of the following reasons (A-E) does the speaker mention people give up going to the gym? (one answer)", "options": ["lack of time","loss of confidence","too much effort required","high costs","feeling less successful than others"], "correctOptionIndex": 1 },
+				{ "id": "Q18", "type": "multiple-choice", "question": "For which of the following reasons (A-E) does the speaker mention people give up going to the gym? (one answer)", "options": ["lack of time","loss of confidence","too much effort required","high costs","feeling less successful than others"], "correctOptionIndex": 2 },
+
+				{ "id": "Q19", "type": "multiple-choice", "question": "Which piece of advice does the speaker give for setting goals? (one answer)", "options": ["write goals down","have achievable aims","set a time limit","give yourself rewards","challenge yourself"], "correctOptionIndex": 1 },
+				{ "id": "Q20", "type": "multiple-choice", "question": "Which piece of advice does the speaker give for setting goals? (one answer)", "options": ["write goals down","have achievable aims","set a time limit","give yourself rewards","challenge yourself"], "correctOptionIndex": 3 }
+			]
+		},
+		{
+				  "sectionNumber": 3,
+				  "audioUrl": "/questions/audio/book13 audios/IELTS13-Tests1-4CD2Track_03.mp3",
+			"questions": [
+				{ "id": "Q21", "type": "multiple-choice", "question": "What first inspired Jim to choose this project?", "options": ["textiles displayed in an exhibition","a book about a botanic garden","carpets he saw on holiday"], "correctOptionIndex": 2 },
+				{ "id": "Q22", "type": "multiple-choice", "question": "Jim eventually decided to do a practical investigation which involved", "options": ["using a range of dyes with different fibres","applying different dyes to one type of fibre","testing one dye and a range of fibres"], "correctOptionIndex": 0 },
+				{ "id": "Q23", "type": "multiple-choice", "question": "When doing his experiments Jim was surprised by", "options": ["how much natural material was needed to make the dye","the fact that dyes were widely available on the internet","the time that he had to leave the fabric in the dye"], "correctOptionIndex": 0 },
+				{ "id": "Q24", "type": "multiple-choice", "question": "What problem did Jim have with using tartrazine as a fabric dye?", "options": ["it caused a slight allergic reaction","it was not a permanent dye on cotton","it was ineffective when used on nylon"], "correctOptionIndex": 1 },
+
+				{ "id": "Q25", "type": "multiple-choice", "question": "turmeric — problem? (choose from A-H)", "options": ["it is expensive","the color is too strong","the color is not long lasting","it is very poisonous","it can damage the fabric","the color may be unexpected","it is unsuitable for some fabrics","it is not generally available"], "correctOptionIndex": 5 },
+				{ "id": "Q26", "type": "multiple-choice", "question": "Beetroot — problem? (choose from A-H)", "options": ["it is expensive","the color is too strong","the color is not long lasting","it is very poisonous","it can damage the fabric","the color may be unexpected","it is unsuitable for some fabrics","it is not generally available"], "correctOptionIndex": 7 },
+				{ "id": "Q27", "type": "multiple-choice", "question": "Tyrian purple — problem? (choose from A-H)", "options": ["it is expensive","the color is too strong","the color is not long lasting","it is very poisonous","it can damage the fabric","the color may be unexpected","it is unsuitable for some fabrics","it is not generally available"], "correctOptionIndex": 3 },
+				{ "id": "Q28", "type": "multiple-choice", "question": "Lowood — problem? (choose from A-H)", "options": ["it is expensive","the color is too strong","the color is not long lasting","it is very poisonous","it can damage the fabric","the color may be unexpected","it is unsuitable for some fabrics","it is not generally available"], "correctOptionIndex": 0 },
+				{ "id": "Q29", "type": "multiple-choice", "question": "cochineal — problem? (choose from A-H)", "options": ["it is expensive","the color is too strong","the color is not long lasting","it is very poisonous","it can damage the fabric","the color may be unexpected","it is unsuitable for some fabrics","it is not generally available"], "correctOptionIndex": 4 },
+				{ "id": "Q30", "type": "multiple-choice", "question": "metal oxide — problem? (choose from A-H)", "options": ["it is expensive","the color is too strong","the color is not long lasting","it is very poisonous","it can damage the fabric","the color may be unexpected","it is unsuitable for some fabrics","it is not generally available"], "correctOptionIndex": 2 }
+			]
+		},
+		{
+				  "sectionNumber": 4,
+				  "audioUrl": "/questions/audio/book13 audios/IELTS13-Tests1-4CD2Track_04.mp3",
+			"questions": [
+				{ "id": "Q31", "type": "form-completion", "question": "they are recognisable by their blue (31) ________", "answerLength": "short" },
+				{ "id": "Q32", "type": "form-completion", "question": "Their diet consists mainly of (32) ________", "answerLength": "short" },
+				{ "id": "Q33", "type": "form-completion", "question": "Their main predators are large birds and (33) ________", "answerLength": "short" },
+				{ "id": "Q34", "type": "form-completion", "question": "One study found that lizards can use the (34) ________ to help them navigate", "answerLength": "short" },
+				{ "id": "Q35", "type": "form-completion", "question": "Observations show that these lizards keep the same (35) ________ for several years", "answerLength": "short" },
+				{ "id": "Q36", "type": "form-completion", "question": "little (36) ________ has been noted between parents and children", "answerLength": "short" },
+				{ "id": "Q37", "type": "form-completion", "question": "To provide (37) ________ for female lizards", "answerLength": "short" },
+				{ "id": "Q38", "type": "form-completion", "question": "A study was carried out using GPS systems attached to the (38) ________ of the lizards", "answerLength": "short" },
+				{ "id": "Q39", "type": "form-completion", "question": "This provided information on the lizards’ location and even the number of (39) ________ taken", "answerLength": "short" },
+				{ "id": "Q40", "type": "form-completion", "question": "This may be in order to reduce chances of (40) ________", "answerLength": "short" }
+			]
+		}
+	],
+	"answers": {
+		"Q1": "850",
+		"Q2": "bike",
+		"Q3": "parking",
+		"Q4": ["30","thirty"],
+		"Q5": ["weekend","weekends"],
+		"Q6": "cinema",
+		"Q7": "hospital",
+		"Q8": "dentist",
+		"Q9": "thursday",
+		"Q10": "cafe",
+
+		"Q11": "F",
+		"Q12": "D",
+		"Q13": "A",
+		"Q14": "B",
+		"Q15": "C",
+		"Q16": "G",
+
+		"Q17": "B",
+		"Q18": "C",
+		"Q19": "B",
+		"Q20": "D",
+
+		"Q21": "C",
+		"Q22": "A",
+		"Q23": "A",
+		"Q24": "B",
+		"Q25": "C",
+		"Q26": "F",
+		"Q27": "H",
+		"Q28": "D",
+		"Q29": "A",
+		"Q30": "E",
+
+		"Q31": ["tongue","tongues"],
+		"Q32": "plants",
+		"Q33": "snakes",
+		"Q34": "sky",
+		"Q35": ["partner","partners"],
+		"Q36": "contact",
+		"Q37": "protection",
+		"Q38": ["tail","tails"],
+		"Q39": "steps",
+		"Q40": ["injury","injuries","injury/ injuries"]
+	}
+}

@@ -1,0 +1,115 @@
+{
+	"testId": "book19-test3",
+	"title": "Book 19 - Test 3",
+	"sections": [
+		{
+			"sectionNumber": 1,
+			"audioUrl": "/audio/book19-test3-sec1.mp3",
+			"questions": [
+				{ "id": "Q1", "type": "form-completion", "question": "Kite Place – near the (1) __________", "answerLength": "short" },
+				{ "id": "Q2", "type": "form-completion", "question": "Fish market: cross the (2) __________ and turn right", "answerLength": "short" },
+				{ "id": "Q3", "type": "form-completion", "question": "Best to go before (3) __________ pm", "answerLength": "short" },
+				{ "id": "Q4", "type": "form-completion", "question": "Organic shop called (4) __________", "answerLength": "short" },
+				{ "id": "Q5", "type": "form-completion", "question": "Look for the large (5) __________ outside", "answerLength": "short" },
+				{ "id": "Q6", "type": "form-completion", "question": "Supermarket: take a (6) __________ minibus", "answerLength": "short" },
+				{ "id": "Q7", "type": "form-completion", "question": "Fish market other idea: a handful of (7) __________", "answerLength": "short" },
+				{ "id": "Q8", "type": "form-completion", "question": "Organic shop: beans and a (8) __________ for dessert", "answerLength": "short" },
+				{ "id": "Q9", "type": "form-completion", "question": "Organic shop other idea: spices and (9) __________", "answerLength": "short" },
+				{ "id": "Q10", "type": "form-completion", "question": "Bakery other idea: a (10) __________ tart", "answerLength": "short" }
+			]
+		},
+		{
+			"sectionNumber": 2,
+			"audioUrl": "/audio/book19-test3-sec2.mp3",
+			"questions": [
+				{ "id": "Q11", "type": "matching", "question": "Superheroes workshop", "options": ["involves painting and drawing","will be led by a prize-winning author","is aimed at children with a disability","involves a drama activity","focuses on new relationships","is aimed at a specific age group","explores an unhappy feeling","raises awareness of a particular culture"], "correctOptionIndex": 2 },
+				{ "id": "Q12", "type": "matching", "question": "Just do it workshop", "options": ["involves painting and drawing","will be led by a prize-winning author","is aimed at children with a disability","involves a drama activity","focuses on new relationships","is aimed at a specific age group","explores an unhappy feeling","raises awareness of a particular culture"], "correctOptionIndex": 3 },
+				{ "id": "Q13", "type": "matching", "question": "Count on me workshop", "options": ["involves painting and drawing","will be led by a prize-winning author","is aimed at children with a disability","involves a drama activity","focuses on new relationships","is aimed at a specific age group","explores an unhappy feeling","raises awareness of a particular culture"], "correctOptionIndex": 5 },
+				{ "id": "Q14", "type": "matching", "question": "Speak up workshop", "options": ["involves painting and drawing","will be led by a prize-winning author","is aimed at children with a disability","involves a drama activity","focuses on new relationships","is aimed at a specific age group","explores an unhappy feeling","raises awareness of a particular culture"], "correctOptionIndex": 6 },
+				{ "id": "Q15", "type": "matching", "question": "Jump for joy workshop", "options": ["involves painting and drawing","will be led by a prize-winning author","is aimed at children with a disability","involves a drama activity","focuses on new relationships","is aimed at a specific age group","explores an unhappy feeling","raises awareness of a particular culture"], "correctOptionIndex": 1 },
+				{ "id": "Q16", "type": "matching", "question": "Sticks and stones workshop", "options": ["involves painting and drawing","will be led by a prize-winning author","is aimed at children with a disability","involves a drama activity","focuses on new relationships","is aimed at a specific age group","explores an unhappy feeling","raises awareness of a particular culture"], "correctOptionIndex": 7 },
+				{ "id": "Q17", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO reasons are given for recommending Alive and Kicking? (Choose TWO)", "options": ["It will appeal to both boys and girls.","The author is well known.","It has colourful illustrations.","It is funny.","It deals with an important topic."], "correctOptions": [3,4] },
+				{ "id": "Q18", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO reasons are given for recommending Alive and Kicking? (Choose TWO)", "options": ["It will appeal to both boys and girls.","The author is well known.","It has colourful illustrations.","It is funny.","It deals with an important topic."], "correctOptions": [3,4] },
+				{ "id": "Q19", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO pieces of advice are given to parents about reading? (Choose TWO)", "options": ["Encourage children to write down new vocabulary.","Allow children to listen to audio books.","Get recommendations from librarians.","Give children a choice about what they read.","Only read aloud to children until they can read independently."], "correctOptions": [1,3] },
+				{ "id": "Q20", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO pieces of advice are given to parents about reading? (Choose TWO)", "options": ["Encourage children to write down new vocabulary.","Allow children to listen to audio books.","Get recommendations from librarians.","Give children a choice about what they read.","Only read aloud to children until they can read independently."], "correctOptions": [1,3] }
+			]
+		},
+		{
+			"sectionNumber": 3,
+			"audioUrl": "/audio/book19-test3-sec3.mp3",
+			"questions": [
+				{ "id": "Q21", "type": "multiple-choice", "question": "How does Clare feel about the students in her Year 12 science class?", "options": ["worried that they are not making progress","challenged by their poor behaviour in class","frustrated at their lack of interest in the subject"], "correctOptionIndex": 2 },
+				{ "id": "Q22", "type": "multiple-choice", "question": "How does Jake react to Clare's suggestion about an experiment based on children's diet?", "options": ["He is concerned the results might not be meaningful.","He feels some data might be difficult to obtain.","He suspects the conclusions might be upsetting."], "correctOptionIndex": 1 },
+				{ "id": "Q23", "type": "multiple-choice", "question": "What problem may be involved in an experiment involving animals?", "options": ["Any results may not apply to humans.","It may be complicated to get permission.","Students may not be happy about animal experiments."], "correctOptionIndex": 0 },
+				{ "id": "Q24", "type": "multiple-choice", "question": "What question do they decide the experiment should address?", "options": ["Are mice capable of controlling their food intake?","Does an increase in sugar lead to health problems?","How much do supplements of different kinds affect health?"], "correctOptionIndex": 0 },
+				{ "id": "Q25", "type": "multiple-choice", "question": "Clare might also consider another experiment involving", "options": ["other types of food supplement.","different genetic strains of mice.","varying amounts of exercise."], "correctOptionIndex": 2 },
+				{ "id": "Q26", "type": "multiple-choice", "question": "Flowchart: choose mice which are all the same", "options": ["size","escape","age","water","cereal","calculations","changes","colour"], "correctOptionIndex": 0 },
+				{ "id": "Q27", "type": "multiple-choice", "question": "Flowchart: divide the mice into two groups, each with a different", "options": ["size","escape","age","water","cereal","calculations","changes","colour"], "correctOptionIndex": 2 },
+				{ "id": "Q28", "type": "multiple-choice", "question": "Flowchart: feed group B sugar contained in", "options": ["size","escape","age","water","cereal","calculations","changes","colour"], "correctOptionIndex": 4 },
+				{ "id": "Q29", "type": "multiple-choice", "question": "Flowchart: place them in a weighing chamber to prevent", "options": ["size","escape","age","water","cereal","calculations","changes","colour"], "correctOptionIndex": 1 },
+				{ "id": "Q30", "type": "multiple-choice", "question": "Flowchart: do all necessary", "options": ["size","escape","age","water","cereal","calculations","changes","colour"], "correctOptionIndex": 5 }
+			]
+		},
+		{
+			"sectionNumber": 4,
+			"audioUrl": "/audio/book19-test3-sec4.mp3",
+			"questions": [
+				{ "id": "Q31", "type": "form-completion", "question": "Fibres from some (31) __________ during washing", "answerLength": "short" },
+				{ "id": "Q32", "type": "form-completion", "question": "They cause injuries to the (32) __________ of wildlife", "answerLength": "short" },
+				{ "id": "Q33", "type": "form-completion", "question": "They enter the food chain in bottled water, tap water, (33) __________ and seafood", "answerLength": "short" },
+				{ "id": "Q34", "type": "form-completion", "question": "Already banned in skin cleaning products and (34) __________ in some countries", "answerLength": "short" },
+				{ "id": "Q35", "type": "form-completion", "question": "Microplastics enter the soil through the air, rain and (35) __________", "answerLength": "short" },
+				{ "id": "Q36", "type": "form-completion", "question": "Earthworms add (36) __________ to the soil", "answerLength": "short" },
+				{ "id": "Q37", "type": "form-completion", "question": "Study aimed to find if microplastics affect the (37) __________ of plants", "answerLength": "short" },
+				{ "id": "Q38", "type": "form-completion", "question": "Microplastics caused (38) __________ loss in earthworms", "answerLength": "short" },
+				{ "id": "Q39", "type": "form-completion", "question": "Microplastics caused a rise in the level of (39) __________ in the soil", "answerLength": "short" },
+				{ "id": "Q40", "type": "form-completion", "question": "Changes to soil damage both ecosystems and (40) __________", "answerLength": "short" }
+			]
+		}
+	],
+	"answers": {
+		"Q1": ["harbour","harbor"],
+		"Q2": "bridge",
+		"Q3": ["3:30","three thirty","3.30","3 30"],
+		"Q4": "rose",
+		"Q5": "sign",
+		"Q6": "purple",
+		"Q7": "samphire",
+		"Q8": "melon",
+		"Q9": "coconut",
+		"Q10": "strawberry",
+
+		"Q11": "C",
+		"Q12": "D",
+		"Q13": "F",
+		"Q14": "G",
+		"Q15": "B",
+		"Q16": "H",
+		"Q17": "D,E",
+		"Q18": "D,E",
+		"Q19": "B,C",
+		"Q20": "B,C",
+
+		"Q21": "C",
+		"Q22": "B",
+		"Q23": "A",
+		"Q24": "A",
+		"Q25": "C",
+		"Q26": "C",
+		"Q27": "H",
+		"Q28": "E",
+		"Q29": "B",
+		"Q30": "F",
+
+		"Q31": "clothing",
+		"Q32": ["mouths","mouth"],
+		"Q33": "salt",
+		"Q34": "toothpaste",
+		"Q35": ["fertilisers","fertilizers"],
+		"Q36": "nutrients",
+		"Q37": "growth",
+		"Q38": "weight",
+		"Q39": "acid",
+		"Q40": "society"
+	}
+}

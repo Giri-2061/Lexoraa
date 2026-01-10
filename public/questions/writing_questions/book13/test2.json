@@ -1,0 +1,23 @@
+{
+  "testId": "book13-test2",
+  "writing": [
+    {
+      "taskId": 1,
+      "type": "bar-chart",
+      "instruction": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "prompt": "The bar chart below shows the percentage of households with access to the internet in three European countries between 2007 and 2013.",
+      "imageUrl": null,
+      "minWords": 150,
+      "suggestedTime": "20 minutes"
+    },
+    {
+      "taskId": 2,
+      "type": "discussion-essay",
+      "instruction": "Discuss both these views and give your own opinion.",
+      "prompt": "Some people think that governments should invest more money in public services instead of wasting money on arts. To what extent do you agree or disagree?",
+      "imageUrl": null,
+      "minWords": 250,
+      "suggestedTime": "40 minutes"
+    }
+  ]
+}

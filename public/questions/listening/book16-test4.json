@@ -1,0 +1,247 @@
+{
+  "testId": "book16-test4",
+  "title": "Book 16 - Test 4",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "audioUrl": "/questions/audio/book16 audios/Cam16-Test4-Part1.mp3",
+      "sectionTitle": "Holiday Rental",
+      "questionType": "completion",
+      "instruction": "Complete the notes below. Write ONE WORD AND/OR A NUMBER for each answer.",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "form-completion",
+          "question": "Granary Cottage: available for week beginning ______ May",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q2",
+          "type": "form-completion",
+          "question": "Granary Cottage: cost for the week: £ ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q3",
+          "type": "form-completion",
+          "question": "Name of second cottage: ______ Cottage",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q4",
+          "type": "form-completion",
+          "question": "Building was originally a ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q5",
+          "type": "form-completion",
+          "question": "Walk through doors from living room into a ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q6",
+          "type": "form-completion",
+          "question": "Several ______ spaces at the front",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q7",
+          "type": "form-completion",
+          "question": "Central heating and stove that burns ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q8",
+          "type": "form-completion",
+          "question": "Views of old ______ from living room",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q9",
+          "type": "form-completion",
+          "question": "View of hilltop ______ from the bedroom",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q10",
+          "type": "form-completion",
+          "question": "Deadline for final payment: end of ______",
+          "answerLength": "short"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "audioUrl": "/questions/audio/book16 audios/Cam16-Test4-Part2.mp3",
+      "sectionTitle": "Local council report on traffic and highways",
+      "questionType": "multiple-choice-and-map-matching",
+      "questions": [
+        {
+          "id": "Q11",
+          "type": "multiple-choice",
+          "question": "A survey found people’s main concern about traffic in the area was",
+          "options": [
+            "cuts to public transport.",
+            "poor maintenance of roads.",
+            "changes in the type of traffic."
+          ],
+          "correctOptionIndex": 2
+        },
+        {
+          "id": "Q12",
+          "type": "multiple-choice",
+          "question": "Which change will shortly be made to the cycle path next to the river?",
+          "options": [
+            " It will be widened.",
+            " It will be extended.",
+            " It will be resurfaced."
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "id": "Q13",
+          "type": "multiple-choice",
+          "question": "Plans for a pedestrian crossing have been postponed because",
+          "options": [
+            " the Post Office has moved.",
+            " the proposed location is unsafe.",
+            " funding is not available at present."
+          ],
+          "correctOptionIndex": 1
+        },
+        {
+          "id": "Q14",
+          "type": "multiple-choice",
+          "question": "On Station Road, notices have been erected",
+          "options": [
+            " telling cyclists not to leave their bikes outside the station ticket office.",
+            " asking motorists to switch off engines when waiting at the level crossing.",
+            " warning pedestrians to leave enough time when crossing the railway line."
+          ],
+          "correctOptionIndex": 1
+        },
+        {
+          "id": "Q15-20-instruction",
+          "type": "form-completion",
+          "question": "Label the map below.\n\nWrite the correct letter, A-I, next to Questions 15-20.",
+          "answerLength": "none",
+          "imageUrl": "/questions/listening_questions/book16/book16test4.png"
+        },
+        { "id": "Q15", "type": "multiple-choice", "question": "New car park", "options": ["","","","","","","","",""], "correctOptionIndex": 2 },
+        { "id": "Q16", "type": "multiple-choice", "question": "New cricket pitch", "options": ["","","","","","","","",""], "correctOptionIndex": 5 },
+        { "id": "Q17", "type": "multiple-choice", "question": "Children's playground", "options": ["","","","","","","","",""], "correctOptionIndex": 0 },
+        { "id": "Q18", "type": "multiple-choice", "question": "Skateboard ramp", "options": ["","","","","","","","",""], "correctOptionIndex": 8 },
+        { "id": "Q19", "type": "multiple-choice", "question": "Pavilion", "options": ["","","","","","","","",""], "correctOptionIndex": 4 },
+        { "id": "Q20", "type": "multiple-choice", "question": "Notice board", "options": ["","","","","","","","",""], "correctOptionIndex": 7 }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "audioUrl": "/questions/audio/book16 audios/Cam16-Test4-Part3.mp3",
+      "sectionTitle": "City bike-sharing schemes",
+      "questionType": "multiple-select-and-matching",
+      "questions": [
+        {
+          "id": "Q21-22",
+          "type": "multiple-choice",
+          "multipleSelect": true,
+          "question": "Which TWO benefits of city bike-sharing schemes do the students agree are the most important? (Choose TWO)",
+          "options": [
+            " reducing noise pollution",
+            " reducing traffic congestion",
+            " improving air quality",
+            " encouraging health and fitness",
+            " making cycling affordable"
+          ],
+          "correctOptions": [1, 2]
+        },
+        {
+          "id": "Q23-24",
+          "type": "multiple-choice",
+          "multipleSelect": true,
+          "question": "Which TWO things do the students think are necessary for successful bike-sharing schemes? (Choose TWO)",
+          "options": [
+            " Bikes should have a GPS system.",
+            " The app should be easy to use.",
+            " Public awareness should be raised.",
+            " Only one scheme should be available.",
+            " There should be a large network of cycle lanes."
+          ],
+          "correctOptions": [1, 2]
+        },
+        {
+          "id": "Q25-30-instruction",
+          "type": "form-completion",
+          "question": "What is the speakers' opinion of the bike-sharing schemes in each of the following cities?\n\nChoose SIX answers from the box and write the correct letter, A-G, next to Questions 25-30.\n\nOpinion of bike-sharing scheme\n\nA   They agree it has been disappointing.\n\nB   They think it should be cheaper.\n\nC   They are surprised it has been so successful.\n\nD   They agree that more investment is required.\n\nE   They think the system has been well designed.\n\nF   They disagree about the reasons for its success.\n\nG   They think it has expanded too quickly.\n\nCities are given below:",
+          "answerLength": "none"
+        },
+        { "id": "Q25", "type": "form-completion", "question": "25   Amsterdam                …………….", "answerLength": "short" },
+        { "id": "Q26", "type": "form-completion", "question": "26   Dublin                          …………….", "answerLength": "short" },
+        { "id": "Q27", "type": "form-completion", "question": "27   London                        …………….", "answerLength": "short" },
+        { "id": "Q28", "type": "form-completion", "question": "28   Buenos Aires             …………….", "answerLength": "short" },
+        { "id": "Q29", "type": "form-completion", "question": "29   New York                    …………….", "answerLength": "short" },
+        { "id": "Q30", "type": "form-completion", "question": "30   Sydney                         …………….", "answerLength": "short" }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "audioUrl": "/questions/audio/book16 audios/Cam16-Test4-Part4.mp3",
+      "sectionTitle": "The Extinction of the Dodo Bird",
+      "questionType": "completion",
+      "instruction": "Complete the notes below. Write ONE WORD ONLY for each answer.",
+      "questions": [
+        { "id": "Q31", "type": "form-completion", "question": "1507 – Portuguese ships transporting ______ stopped at the island.", "answerLength": "short" },
+        { "id": "Q32", "type": "form-completion", "question": "1638 – The Dutch established a ______ on the island.", "answerLength": "short" },
+        { "id": "Q33", "type": "form-completion", "question": "A Dutch painting suggests the dodo was very ______.", "answerLength": "short" },
+        { "id": "Q34", "type": "form-completion", "question": "The only remaining soft tissue is a dried ______.", "answerLength": "short" },
+        { "id": "Q35", "type": "form-completion", "question": "Recent studies of a dodo skeleton suggest the birds were capable of rapid ______.", "answerLength": "short" },
+        { "id": "Q36", "type": "form-completion", "question": "It’s thought they were able to use their small wings to maintain ______.", "answerLength": "short" },
+        { "id": "Q37", "type": "form-completion", "question": "Their ______ was of average size.", "answerLength": "short" },
+        { "id": "Q38", "type": "form-completion", "question": "Their sense of ______ enabled them to find food.", "answerLength": "short" },
+        { "id": "Q39", "type": "form-completion", "question": "______ also escaped onto the island and ate the birds’ eggs.", "answerLength": "short" },
+        { "id": "Q40", "type": "form-completion", "question": "The arrival of farming meant the ______ was destroyed.", "answerLength": "short" }
+      ]
+    }
+  ],
+  "answers": {
+    "Q1": "28th",
+    "Q2": "550",
+    "Q3": "Chervil",
+    "Q4": "garage",
+    "Q5": "garden",
+    "Q6": "parking",
+    "Q7": "wood",
+    "Q8": "bridge",
+    "Q9": "monument",
+    "Q10": "March",
+    "Q11": "C",
+    "Q12": "A",
+    "Q13": "B",
+    "Q14": "B",
+    "Q15": "C",
+    "Q16": "F",
+    "Q17": "A",
+    "Q18": "I",
+    "Q19": "E",
+    "Q20": "H",
+    "Q21-22": "B, C",
+    "Q23-24": "B, C",
+    "Q25": "C",
+    "Q26": "F",
+    "Q27": "D",
+    "Q28": "E",
+    "Q29": "B",
+    "Q30": "A",
+    "Q31": "spice(s)",
+    "Q32": "colony / settlement",
+    "Q33": "fat",
+    "Q34": "head",
+    "Q35": "movement",
+    "Q36": "balance / balancing",
+    "Q37": "brain",
+    "Q38": "smell",
+    "Q39": "rats",
+    "Q40": "forest"
+  }
+}

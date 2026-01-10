@@ -1,0 +1,112 @@
+{
+  "testId": "book17-test3",
+  "title": "Book 17 - Test 3",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "audioUrl": "/questions/audio/book17 audios/cam17-test3-part1.mp3",
+      "questions": [
+        { "id": "Q1", "type": "form-completion", "question": "Recommends surfing for (1) _______ holidays in summer", "answerLength": "short" },
+        { "id": "Q2", "type": "form-completion", "question": "Need to be quite (2) _______", "answerLength": "short" },
+        { "id": "Q3", "type": "form-completion", "question": "Lahinch has some good quality (3) _______ and surf schools", "answerLength": "short" },
+        { "id": "Q4", "type": "form-completion", "question": "Good surf school at (4) _______ beach", "answerLength": "short" },
+        { "id": "Q5", "type": "form-completion", "question": "Surf camp lasts for one (5) _______", "answerLength": "short" },
+        { "id": "Q6", "type": "form-completion", "question": "Can also explore the local (6) _______ by kayak", "answerLength": "short" },
+        { "id": "Q7", "type": "form-completion", "question": "Best month to go (7) _______", "answerLength": "short" },
+        { "id": "Q8", "type": "form-completion", "question": "Average temperature in summer – approx. (8) _______ degrees", "answerLength": "short" },
+        { "id": "Q9", "type": "form-completion", "question": "Wetsuit and surfboard – (9) _______ euros per day", "answerLength": "short" },
+        { "id": "Q10", "type": "form-completion", "question": "Also available to hire (10) _______ for warmth", "answerLength": "short" }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "audioUrl": "/questions/audio/book17 audios/cam17-test3-part2.mp3",
+      "questions": [
+        { "id": "Q11", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO facts are given about the school’s extended hours childcare service?", "options": ["It started recently.","More children attend after school than before school.","An average of 50 children attend in the mornings.","A child cannot attend both the before and after school sessions.","The maximum number of children who can attend is 70." ] },
+        { "id": "Q12", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO facts are given about the school’s extended hours childcare service? (second item)", "options": ["It started recently.","More children attend after school than before school.","An average of 50 children attend in the mornings.","A child cannot attend both the before and after school sessions.","The maximum number of children who can attend is 70." ] },
+        { "id": "Q13", "type": "multiple-choice", "question": "How much does childcare cost for a complete afternoon session per child?", "options": ["£3.50","£5.70","£7.20"] },
+        { "id": "Q14", "type": "multiple-choice", "question": "What does the manager say about food?", "options": ["Children with allergies should bring their own food.","Children may bring healthy snacks with them.","Children are given a proper meal at 5 p.m."] },
+        { "id": "Q15", "type": "multiple-choice", "question": "What is different about arrangements in the school holidays?", "options": ["Children from other schools can attend.","Older children can attend.","A greater number of children can attend."] }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "audioUrl": "/questions/audio/book17 audios/cam17-test3-part3.mp3",
+      "questions": [
+        { "id": "Q16", "type": "matching", "question": "Spanish _______", "options": ["has limited availability","is no longer available","is for over 8s only","requires help from parents","involves an additional fee","is a new activity","was requested by children"] },
+        { "id": "Q17", "type": "matching", "question": "Music _______", "options": ["has limited availability","is no longer available","is for over 8s only","requires help from parents","involves an additional fee","is a new activity","was requested by children"] },
+        { "id": "Q18", "type": "matching", "question": "Painting _______", "options": ["has limited availability","is no longer available","is for over 8s only","requires help from parents","involves an additional fee","is a new activity","was requested by children"] },
+        { "id": "Q19", "type": "matching", "question": "Yoga _______", "options": ["has limited availability","is no longer available","is for over 8s only","requires help from parents","involves an additional fee","is a new activity","was requested by children"] },
+        { "id": "Q20", "type": "matching", "question": "Cooking _______", "options": ["has limited availability","is no longer available","is for over 8s only","requires help from parents","involves an additional fee","is a new activity","was requested by children"] }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "audioUrl": "/questions/audio/book17 audios/cam17-test3-part4.mp3",
+      "questions": [
+        { "id": "Q21", "type": "multiple-choice", "question": "Holly has chosen the Orion Stadium placement because", "options": ["it involves children","it is outdoors","it sounds like fun"] },
+        { "id": "Q22", "type": "multiple-choice", "question": "Which aspect of safety does Dr Green emphasise most?", "options": ["ensuring children stay in the stadium","checking the equipment children will use","removing obstacles in changing rooms"] },
+        { "id": "Q23", "type": "multiple-choice", "question": "What does Dr Green say about the spectators?", "options": ["They can be hard to manage.","They make useful volunteers.","They shouldn’t take photographs."] },
+        { "id": "Q24", "type": "multiple-choice", "question": "What has affected the schedule in the past?", "options": ["bad weather","an injury","extra time"] },
+        { "id": "Q25", "type": "multiple-choice", "question": "Communication: important aspect", "options": ["being flexible","focusing on details","having a smart appearance","hiding your emotions","relying on experts","trusting your own views","doing one thing at a time","thinking of the future"] },
+        { "id": "Q26", "type": "multiple-choice", "question": "Organisation: important aspect", "options": ["being flexible","focusing on details","having a smart appearance","hiding your emotions","relying on experts","trusting your own views","doing one thing at a time","thinking of the future"] },
+        { "id": "Q27", "type": "multiple-choice", "question": "Time management: important aspect", "options": ["being flexible","focusing on details","having a smart appearance","hiding your emotions","relying on experts","trusting your own views","doing one thing at a time","thinking of the future"] },
+        { "id": "Q28", "type": "multiple-choice", "question": "Creativity: important aspect", "options": ["being flexible","focusing on details","having a smart appearance","hiding your emotions","relying on experts","trusting your own views","doing one thing at a time","thinking of the future"] },
+        { "id": "Q29", "type": "multiple-choice", "question": "Leadership: important aspect", "options": ["being flexible","focusing on details","having a smart appearance","hiding your emotions","relying on experts","trusting your own views","doing one thing at a time","thinking of the future"] },
+        { "id": "Q30", "type": "multiple-choice", "question": "Networking: important aspect", "options": ["being flexible","focusing on details","having a smart appearance","hiding your emotions","relying on experts","trusting your own views","doing one thing at a time","thinking of the future"] },
+        { "id": "Q31", "type": "form-completion", "question": "It was believed that birds hibernated underwater or buried themselves in (31) _______", "answerLength": "short" },
+        { "id": "Q32", "type": "form-completion", "question": "In autumn he observed that redstarts experience the loss of (32) _______", "answerLength": "short" },
+        { "id": "Q33", "type": "form-completion", "question": "Aristotle’s assumptions were logical because the two species of birds had a similar (33) _______", "answerLength": "short" },
+        { "id": "Q34", "type": "form-completion", "question": "Charles Morton popularised the idea that birds fly to the (34) _______ in winter", "answerLength": "short" },
+        { "id": "Q35", "type": "form-completion", "question": "In 1822, a stork was killed in Germany which had an African spear in its (35) _______", "answerLength": "short" },
+        { "id": "Q36", "type": "form-completion", "question": "previously there had been no (36) _______ that storks migrate to Africa", "answerLength": "short" },
+        { "id": "Q37", "type": "form-completion", "question": "Little was known about the (37) _______ and journeys of migrating birds until the practice of ringing was established", "answerLength": "short" },
+        { "id": "Q38", "type": "form-completion", "question": "It was thought large birds carried small birds on some journeys because they were considered incapable of travelling across huge (38) _______", "answerLength": "short" },
+        { "id": "Q39", "type": "form-completion", "question": "Ringing depended on what is called the (39) _______ of dead birds", "answerLength": "short" },
+        { "id": "Q40", "type": "form-completion", "question": "In 1931, the first (40) _______ to show the migration of European birds was printed", "answerLength": "short" }
+      ]
+    }
+  ],
+  "answers": {
+    "Q1": "Family",
+    "Q2": "Fits",
+    "Q3": "Hotels",
+    "Q4": "Carrowniskey",
+    "Q5": "Week",
+    "Q6": "Bay",
+    "Q7": "September",
+    "Q8": "19",
+    "Q9": "30",
+    "Q10": "Boots",
+    "Q11": "B,E",
+    "Q12": "B,E",
+    "Q13": "C",
+    "Q14": "C",
+    "Q15": "A",
+    "Q16": "E",
+    "Q17": "D",
+    "Q18": "G",
+    "Q19": "F",
+    "Q20": "C",
+    "Q21": "B",
+    "Q22": "A",
+    "Q23": "A",
+    "Q24": "B",
+    "Q25": "C",
+    "Q26": "A",
+    "Q27": "D",
+    "Q28": "B",
+    "Q29": "F",
+    "Q30": "H",
+    "Q31": "Mud",
+    "Q32": "Feathers",
+    "Q33": "Shape",
+    "Q34": "Moon",
+    "Q35": "Neck",
+    "Q36": "Evidence",
+    "Q37": "Destinations",
+    "Q38": "Oceans",
+    "Q39": "Recovery",
+    "Q40": "Atlas"
+  }
+}

@@ -1,0 +1,117 @@
+{
+	"testId": "book13-test1",
+	"sections": [
+		{
+			"sectionNumber": 1,
+			"audioUrl": "/questions/audio/book13 audios/IELTS13-Tests1-4CD1Track_01.mp3",
+			"questions": [
+				{ "id": "Q1", "type": "form-completion", "question": "how to (1) __________ and cook with seasonal products", "answerLength": "short" },
+				{ "id": "Q2", "type": "form-completion", "question": "also offers (2) __________ classes", "answerLength": "short" },
+				{ "id": "Q3", "type": "form-completion", "question": "clients who return get a (3) __________ discount", "answerLength": "short" },
+				{ "id": "Q4", "type": "form-completion", "question": "food that is (4) __________", "answerLength": "short" },
+				{ "id": "Q5", "type": "form-completion", "question": "includes recipes to strengthen your (5) __________", "answerLength": "short" },
+				{ "id": "Q6", "type": "form-completion", "question": "they have a free (6) __________ every Thursday", "answerLength": "short" },
+				{ "id": "Q7", "type": "form-completion", "question": "The (7) __________ Centre", "answerLength": "short" },
+				{ "id": "Q8", "type": "form-completion", "question": "mainly (8) __________ food", "answerLength": "short" },
+				{ "id": "Q9", "type": "form-completion", "question": "located near the (9) __________", "answerLength": "short" },
+				{ "id": "Q10", "type": "form-completion", "question": "a special course in skills with a (10) __________ is sometimes available", "answerLength": "short" }
+			]
+		},
+		{
+			"sectionNumber": 2,
+			"audioUrl": "/questions/audio/book13 audios/IELTS13-Tests1-4CD1Track_02.mp3",
+			"questions": [
+				{ "id": "Q11", "type": "multiple-choice", "question": "Why are changes needed to traffic systems in Granford?", "options": ["The number of traffic accidents has risen.", "The amount of traffic on the roads has increased.", "The types of vehicles on the roads have changed."], "correctOptionIndex": 1 },
+				{ "id": "Q12", "type": "multiple-choice", "question": "In a survey, local residents particularly complained about", "options": ["dangerous driving by parents.", "pollution from trucks and lorries.", "inconvenience from parked cars."], "correctOptionIndex": 2 },
+				{ "id": "Q13", "type": "multiple-choice", "question": "According to the speaker, one problem with the new regulations will be", "options": ["raising money to pay for them.", "finding a way to make people follow them.", "getting the support of the police."], "correctOptionIndex": 1 },
+
+				{ "id": "Q14", "type": "multiple-choice", "question": "New traffic lights (label on map)", "options": ["A","B","C","D","E","F","G","H","I"], "correctOptionIndex": 4 },
+				{ "id": "Q15", "type": "multiple-choice", "question": "Pedestrian crossing (label on map)", "options": ["A","B","C","D","E","F","G","H","I"], "correctOptionIndex": 3 },
+				{ "id": "Q16", "type": "multiple-choice", "question": "Parking allowed (label on map)", "options": ["A","B","C","D","E","F","G","H","I"], "correctOptionIndex": 1 },
+				{ "id": "Q17", "type": "multiple-choice", "question": "New 'No Parking' sign (label on map)", "options": ["A","B","C","D","E","F","G","H","I"], "correctOptionIndex": 6 },
+				{ "id": "Q18", "type": "multiple-choice", "question": "New disabled parking spaces (label on map)", "options": ["A","B","C","D","E","F","G","H","I"], "correctOptionIndex": 2 },
+				{ "id": "Q19", "type": "multiple-choice", "question": "Widened pavement (label on map)", "options": ["A","B","C","D","E","F","G","H","I"], "correctOptionIndex": 7 },
+				{ "id": "Q20", "type": "multiple-choice", "question": "Lorry loading/unloading restrictions (label on map)", "options": ["A","B","C","D","E","F","G","H","I"], "correctOptionIndex": 8 }
+			]
+		},
+		{
+			"sectionNumber": 3,
+			"audioUrl": null,
+			"expectedAudioFilename": "IELTS13-Tests1-4CD1Track_03.mp3",
+			"questions": [
+				{ "id": "Q21", "type": "multiple-choice", "question": "Why is Jack interested in investigating seed germination?", "options": ["He may do a module on a related topic later on.", "He wants to have a career in plant science.", "He is thinking of choosing this topic for his dissertation."], "correctOptionIndex": 0 },
+				{ "id": "Q22", "type": "multiple-choice", "question": "Jack and Emma agree the main advantage of their present experiment is that it can be", "options": ["described very easily.", "carried out inside the laboratory.", "completed in the time available."], "correctOptionIndex": 2 },
+				{ "id": "Q23", "type": "multiple-choice", "question": "What do they decide to check with their tutor?", "options": ["whether their aim is appropriate", "whether anyone else has chosen this topic", "whether the assignment contributes to their final grade"], "correctOptionIndex": 1 },
+				{ "id": "Q24", "type": "multiple-choice", "question": "They agree that Graves' book on seed germination is disappointing because", "options": ["it fails to cover recent advances in seed science.", "The content is irrelevant for them.", "its focus is very theoretical."], "correctOptionIndex": 2 },
+				{ "id": "Q25", "type": "multiple-choice", "question": "What does Jack say about the article on seed germination by Lee Hall?", "options": ["The diagrams of plant development are useful.", "The analysis of seed germination statistics is thorough.", "The findings on seed germination after fires are surprising."], "correctOptionIndex": 1 },
+
+				{ "id": "Q26", "type": "multiple-choice", "question": "Select seeds of different ______ and sizes.", "options": ["container","soil","weight","condition","height","colour","types","depths"], "correctOptionIndex": 6 },
+				{ "id": "Q27", "type": "multiple-choice", "question": "Measure and record the ______ and size of each one.", "options": ["container","soil","weight","condition","height","colour","types","depths"], "correctOptionIndex": 2 },
+				{ "id": "Q28", "type": "multiple-choice", "question": "Decide on the ______ to be used.", "options": ["container","soil","weight","condition","height","colour","types","depths"], "correctOptionIndex": 7 },
+				{ "id": "Q29", "type": "multiple-choice", "question": "Use a different ______ for each seed and label it.", "options": ["container","soil","weight","condition","height","colour","types","depths"], "correctOptionIndex": 0 },
+				{ "id": "Q30", "type": "multiple-choice", "question": "After about 3 weeks, record the plant's ______.", "options": ["container","soil","weight","condition","height","colour","types","depths"], "correctOptionIndex": 4 }
+			]
+		},
+		{
+			"sectionNumber": 4,
+			"audioUrl": "/questions/audio/book13 audios/IELTS13-Tests1-4CD1Track_04.mp3",
+			"questions": [
+				{ "id": "Q31", "type": "form-completion", "question": "31: because of its general adaptability (e.g. the ______)", "answerLength": "short" },
+				{ "id": "Q32", "type": "form-completion", "question": "32: walls of city buildings are similar to ______", "answerLength": "short" },
+				{ "id": "Q33", "type": "form-completion", "question": "33: In fact, many urban animals are adapting with unusual ______.", "answerLength": "short" },
+				{ "id": "Q34", "type": "form-completion", "question": "34: She found the size of their ______ had increased.", "answerLength": "short" },
+				{ "id": "Q35", "type": "form-completion", "question": "35: the need to locate new sources of ______.", "answerLength": "short" },
+				{ "id": "Q36", "type": "form-completion", "question": "36: Catarina Miranda focused on the ______ of urban and rural blackbirds.", "answerLength": "short" },
+				{ "id": "Q37", "type": "form-completion", "question": "37: urban birds were often braver, but were afraid of situations that were ______.", "answerLength": "short" },
+				{ "id": "Q38", "type": "form-completion", "question": "38: some animals respond to ______ lower levels of hormones.", "answerLength": "short" },
+				{ "id": "Q39", "type": "form-completion", "question": "39: urban squirrels use their ______ to help them communicate.", "answerLength": "short" },
+				{ "id": "Q40", "type": "form-completion", "question": "40: However, some changes may not be ______.", "answerLength": "short" }
+			]
+		}
+	],
+	"answers": {
+		"Q1": "choose",
+		"Q2": "private",
+		"Q3": ["20","20%","twenty percent"],
+		"Q4": "healthy",
+		"Q5": "bones",
+		"Q6": "lecture",
+		"Q7": "Arretsa",
+		"Q8": "vegetarian",
+		"Q9": "market",
+		"Q10": "knife",
+
+		"Q11": "B",
+		"Q12": "C",
+		"Q13": "B",
+		"Q14": "E",
+		"Q15": "D",
+		"Q16": "B",
+		"Q17": "G",
+		"Q18": "C",
+		"Q19": "H",
+		"Q20": "I",
+
+		"Q21": "A",
+		"Q22": "C",
+		"Q23": "B",
+		"Q24": "C",
+		"Q25": "B",
+		"Q26": "G",
+		"Q27": "C",
+		"Q28": "H",
+		"Q29": "A",
+		"Q30": "E",
+
+		"Q31": "crow",
+		"Q32": "cliffs",
+		"Q33": "speed",
+		"Q34": ["brain","brains"],
+		"Q35": "food",
+		"Q36": ["behaviour","behaviours","behavior","behaviors"],
+		"Q37": "new",
+		"Q38": "stress",
+		"Q39": ["tail","tails"],
+		"Q40": "permanent"
+	}
+}

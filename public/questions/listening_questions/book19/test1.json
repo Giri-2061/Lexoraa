@@ -1,0 +1,115 @@
+{
+	"testId": "book19-test1",
+	"title": "Book 19 - Test 1",
+	"sections": [
+		{
+			"sectionNumber": 1,
+			"audioUrl": "/audio/book19-test1-sec1.mp3",
+			"questions": [
+				{ "id": "Q1", "type": "form-completion", "question": "Area: (1) __________ hectares", "answerLength": "short" },
+				{ "id": "Q2", "type": "form-completion", "question": "Wetland: lakes, ponds and a (2) __________", "answerLength": "short" },
+				{ "id": "Q3", "type": "form-completion", "question": "Science: Children look at (3) __________ about plants, etc.", "answerLength": "short" },
+				{ "id": "Q4", "type": "form-completion", "question": "Geography: includes learning to use a (4) __________ and compass", "answerLength": "short" },
+				{ "id": "Q5", "type": "form-completion", "question": "Leisure and tourism focuses mostly on the park's (5) __________", "answerLength": "short" },
+				{ "id": "Q6", "type": "form-completion", "question": "Music: Children make (6) __________ with natural materials", "answerLength": "short" },
+				{ "id": "Q7", "type": "form-completion", "question": "Outdoor visits give children a feeling of (7) __________", "answerLength": "short" },
+				{ "id": "Q8", "type": "form-completion", "question": "Children learn new (8) __________ and gain self-confidence", "answerLength": "short" },
+				{ "id": "Q9", "type": "form-completion", "question": "Cost per child: (9) £ __________", "answerLength": "short" },
+				{ "id": "Q10", "type": "form-completion", "question": "Adults, such as (10) __________, free", "answerLength": "short" }
+			]
+		},
+		{
+			"sectionNumber": 2,
+			"audioUrl": "/audio/book19-test1-sec2.mp3",
+			"questions": [
+				{ "id": "Q11", "type": "multiple-choice", "question": "During the visit to Malatte, members especially enjoyed", "options": ["going to a theme park.","experiencing a river trip.","visiting a cheese factory."], "correctOptionIndex": 1 },
+				{ "id": "Q12", "type": "multiple-choice", "question": "What will happen in Stanthorpe to mark the 25th anniversary?", "options": ["A tree will be planted.","A garden seat will be bought.","A footbridge will be built."], "correctOptionIndex": 0 },
+				{ "id": "Q13", "type": "multiple-choice", "question": "Which event raised most funds this year?", "options": ["the film show","the pancake evening","the cookery demonstration"], "correctOptionIndex": 1 },
+				{ "id": "Q14", "type": "multiple-choice", "question": "For the first evening with the French visitors host families are advised to", "options": ["take them for a walk round the town.","go to a local restaurant.","have a meal at home."], "correctOptionIndex": 2 },
+				{ "id": "Q15", "type": "multiple-choice", "question": "On Saturday evening there will be the chance to", "options": ["listen to a concert.","watch a match.","take part in a competition."], "correctOptionIndex": 0 },
+				{ "id": "Q16", "type": "multiple-choice", "question": "Farm shop", "options": ["A","B","C","D","E","F","G","H"], "correctOptionIndex": 6 },
+				{ "id": "Q17", "type": "multiple-choice", "question": "Disabled entry", "options": ["A","B","C","D","E","F","G","H"], "correctOptionIndex": 2 },
+				{ "id": "Q18", "type": "multiple-choice", "question": "Adventure playground", "options": ["A","B","C","D","E","F","G","H"], "correctOptionIndex": 1 },
+				{ "id": "Q19", "type": "multiple-choice", "question": "Kitchen gardens", "options": ["A","B","C","D","E","F","G","H"], "correctOptionIndex": 3 },
+				{ "id": "Q20", "type": "multiple-choice", "question": "The Temple of the Four Winds", "options": ["A","B","C","D","E","F","G","H"], "correctOptionIndex": 0 }
+			]
+		},
+		{
+			"sectionNumber": 3,
+			"audioUrl": "/audio/book19-test1-sec3.mp3",
+			"questions": [
+				{ "id": "Q21", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO things did Colin find most satisfying about his bread reuse project? (Choose TWO)", "options": ["receiving support from local restaurants","finding a good way to prevent waste","overcoming problems in a basic process","experimenting with designs and colours","learning how to apply 3-D printing"], "correctOptions": [1,3] },
+				{ "id": "Q22", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO things did Colin find most satisfying about his bread reuse project? (Choose TWO)", "options": ["receiving support from local restaurants","finding a good way to prevent waste","overcoming problems in a basic process","experimenting with designs and colours","learning how to apply 3-D printing"], "correctOptions": [1,3] },
+				{ "id": "Q23", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO ways could touch-sensitive sensors for food labels be developed in future? (Choose TWO)", "options": ["for use on medical products","to show that food is no longer fit to eat","for use with drinks as well as foods","to provide applications for blind people","to indicate the weight of certain foods"], "correctOptions": [0,3] },
+				{ "id": "Q24", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO ways could touch-sensitive sensors for food labels be developed in future? (Choose TWO)", "options": ["for use on medical products","to show that food is no longer fit to eat","for use with drinks as well as foods","to provide applications for blind people","to indicate the weight of certain foods"], "correctOptions": [0,3] },
+				{ "id": "Q25", "type": "multiple-choice", "question": "Use of local products — students' opinion", "options": ["This is only relevant to young people.","This may have disappointing results.","This already seems to be widespread.","Retailers should do more to encourage this.","More financial support is needed for this.","Most people know little about this.","There should be stricter regulations about this.","This could be dangerous."], "correctOptionIndex": 3 },
+				{ "id": "Q26", "type": "multiple-choice", "question": "Reduction in unnecessary packaging — students' opinion", "options": ["This is only relevant to young people.","This may have disappointing results.","This already seems to be widespread.","Retailers should do more to encourage this.","More financial support is needed for this.","Most people know little about this.","There should be stricter regulations about this.","This could be dangerous."], "correctOptionIndex": 6 },
+				{ "id": "Q27", "type": "multiple-choice", "question": "Gluten-free and lactose-free food — students' opinion", "options": ["This is only relevant to young people.","This may have disappointing results.","This already seems to be widespread.","Retailers should do more to encourage this.","More financial support is needed for this.","Most people know little about this.","There should be stricter regulations about this.","This could be dangerous."], "correctOptionIndex": 2 },
+				{ "id": "Q28", "type": "multiple-choice", "question": "Use of branded products related to celebrity chefs — students' opinion", "options": ["This is only relevant to young people.","This may have disappointing results.","This already seems to be widespread.","Retailers should do more to encourage this.","More financial support is needed for this.","Most people know little about this.","There should be stricter regulations about this.","This could be dangerous."], "correctOptionIndex": 1 },
+				{ "id": "Q29", "type": "multiple-choice", "question": "Development of 'ghost kitchens' for takeaway food — students' opinion", "options": ["This is only relevant to young people.","This may have disappointing results.","This already seems to be widespread.","Retailers should do more to encourage this.","More financial support is needed for this.","Most people know little about this.","There should be stricter regulations about this.","This could be dangerous."], "correctOptionIndex": 5 },
+				{ "id": "Q30", "type": "multiple-choice", "question": "Use of mushrooms for common health concerns — students' opinion", "options": ["This is only relevant to young people.","This may have disappointing results.","This already seems to be widespread.","Retailers should do more to encourage this.","More financial support is needed for this.","Most people know little about this.","There should be stricter regulations about this.","This could be dangerous."], "correctOptionIndex": 7 }
+			]
+		},
+		{
+			"sectionNumber": 4,
+			"audioUrl": "/audio/book19-test1-sec4.mp3",
+			"questions": [
+				{ "id": "Q31", "type": "form-completion", "question": "Stones beneath the bog surface were once (31) __________", "answerLength": "short" },
+				{ "id": "Q32", "type": "form-completion", "question": "His (32) __________ became an archaeologist and investigated the site", "answerLength": "short" },
+				{ "id": "Q33", "type": "form-completion", "question": "A traditional method used to dig for (33) __________ located stones", "answerLength": "short" },
+				{ "id": "Q34", "type": "form-completion", "question": "Items are preserved because of a lack of (34) __________", "answerLength": "short" },
+				{ "id": "Q35", "type": "form-completion", "question": "Houses were (35) __________ in shape and had a hole in the roof", "answerLength": "short" },
+				{ "id": "Q36", "type": "form-completion", "question": "Pots were used for storage and to make (36) __________", "answerLength": "short" },
+				{ "id": "Q37", "type": "form-completion", "question": "Each field was large enough to support a big (37) __________", "answerLength": "short" },
+				{ "id": "Q38", "type": "form-completion", "question": "No evidence of structures to house animals during (38) __________", "answerLength": "short" },
+				{ "id": "Q39", "type": "form-completion", "question": "Decline in farming due to a decline in (39) __________ quality", "answerLength": "short" },
+				{ "id": "Q40", "type": "form-completion", "question": "Decline in farming due to an increase in (40) __________", "answerLength": "short" }
+			]
+		}
+	],
+	"answers": {
+		"Q1": ["69","sixty-nine","sixty nine"],
+		"Q2": "stream",
+		"Q3": "data",
+		"Q4": "map",
+		"Q5": "visitors",
+		"Q6": "sounds",
+		"Q7": "freedom",
+		"Q8": "skills",
+		"Q9": ["4.95","4,95"],
+		"Q10": "leaders",
+
+		"Q11": "B",
+		"Q12": "A",
+		"Q13": "B",
+		"Q14": "C",
+		"Q15": "A",
+		"Q16": "G",
+		"Q17": "C",
+		"Q18": "B",
+		"Q19": "D",
+		"Q20": "A",
+
+		"Q21": "B,D",
+		"Q22": "B,D",
+		"Q23": "A,E",
+		"Q24": "A,E",
+		"Q25": "D",
+		"Q26": "G",
+		"Q27": "C",
+		"Q28": "B",
+		"Q29": "F",
+		"Q30": "H",
+
+		"Q31": "walls",
+		"Q32": "son",
+		"Q33": "fuel",
+		"Q34": "oxygen",
+		"Q35": "rectangular",
+		"Q36": "lamps",
+		"Q37": "family",
+		"Q38": "winter",
+		"Q39": "soil",
+		"Q40": "rain"
+	}
+}

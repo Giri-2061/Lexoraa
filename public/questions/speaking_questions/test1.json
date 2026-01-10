@@ -1,0 +1,83 @@
+{
+  "testId": "speaking-test-1",
+  "part1": {
+    "topics": [
+      {
+        "theme": "Work or Studies",
+        "introduction": "Let's talk about your work or studies.",
+        "questions": [
+          "Do you work or are you a student?",
+          "What do you do for work? / What are you studying?",
+          "Why did you choose this job / field of study?",
+          "What do you like most about your work / studies?",
+          "Would you like to change your job / field of study in the future?"
+        ]
+      },
+      {
+        "theme": "Hometown",
+        "introduction": "Now, let's talk about your hometown.",
+        "questions": [
+          "Where is your hometown?",
+          "What do you like about your hometown?",
+          "Has your hometown changed much since you were a child?",
+          "Would you recommend tourists to visit your hometown?",
+          "Do you think you will live in your hometown in the future?"
+        ]
+      },
+      {
+        "theme": "Daily Routine",
+        "introduction": "Let's move on to talk about your daily routine.",
+        "questions": [
+          "What time do you usually wake up?",
+          "Do you prefer mornings or evenings?",
+          "Has your daily routine changed recently?",
+          "What is your favorite part of the day?"
+        ]
+      }
+    ]
+  },
+  "part2": {
+    "cueCard": {
+      "topic": "Describe a memorable trip you have taken",
+      "instruction": "You should say:",
+      "points": [
+        "where you went",
+        "who you went with",
+        "what you did there"
+      ],
+      "conclusion": "and explain why this trip was memorable for you.",
+      "prepTime": 60,
+      "speakTime": 120
+    },
+    "followUpQuestions": [
+      "Did you take any photos during this trip?",
+      "Would you like to go there again?"
+    ]
+  },
+  "part3": {
+    "theme": "Travel and Tourism",
+    "introduction": "Let's discuss some general questions about travel and tourism.",
+    "questions": [
+      {
+        "question": "Why do you think people like to travel?",
+        "followUp": "Has this changed over the years?"
+      },
+      {
+        "question": "What are the benefits of traveling to other countries?",
+        "followUp": "Are there any negative effects?"
+      },
+      {
+        "question": "Do you think tourism is good for local communities?",
+        "followUp": "Can you give some examples?"
+      },
+      {
+        "question": "How has technology changed the way people travel?",
+        "followUp": "Is this always a positive thing?"
+      },
+      {
+        "question": "Do you think people will travel more or less in the future?",
+        "followUp": "Why do you think so?"
+      }
+    ]
+  }
+}

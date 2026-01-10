@@ -1,0 +1,318 @@
+{
+  "testId": "book18-test4",
+  "title": "Book 18 - Test 4",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "audioUrl": "/questions/audio/book18 audios/cam18-test4-part1.mp3",
+      "sectionTitle": "Job details from employment agency",
+      "questionType": "completion",
+      "instruction": "Complete the notes below. Write ONE WORD AND/OR A NUMBER for each answer.",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "form-completion",
+          "question": "Role: ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q2",
+          "type": "form-completion",
+          "question": "Location: Fordham ______ Centre",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q3",
+          "type": "form-completion",
+          "question": "______ Road, Fordham",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q4",
+          "type": "form-completion",
+          "question": "Work involves: dealing with enquiries, making ______ and reorganising them",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q5",
+          "type": "form-completion",
+          "question": "Work involves: maintaining the internal ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q6",
+          "type": "form-completion",
+          "question": "Requirements: ______ (essential)",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q7",
+          "type": "form-completion",
+          "question": "Requirements: a calm and ______ manner",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q8",
+          "type": "form-completion",
+          "question": "Other information: a ______ job – further opportunities may be available",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q9",
+          "type": "form-completion",
+          "question": "Hours: 7.45 a.m. to ______ p.m. Monday to Friday",
+          "answerLength": "number"
+        },
+        {
+          "id": "Q10",
+          "type": "form-completion",
+          "question": "______ is available onsite",
+          "answerLength": "short"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "audioUrl": "/questions/audio/book18 audios/cam18-test4-part2.mp3",
+      "sectionTitle": "Museum Guide",
+      "questionType": "multiple-choice-and-matching",
+      "questions": [
+        {
+          "id": "Q11",
+          "type": "multiple-choice",
+          "question": "The museum building was originally",
+          "options": [
+            " a factory.",
+            " a private home.",
+            " a hall of residence."
+          ],
+          "correctOptionIndex": 1
+        },
+        {
+          "id": "Q12",
+          "type": "multiple-choice",
+          "question": "The university uses part of the museum building as",
+          "options": [
+            " teaching rooms.",
+            " a research library.",
+            " administration offices."
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "id": "Q13",
+          "type": "multiple-choice",
+          "question": "What does the guide say about the entrance fee?",
+          "options": [
+            " Visitors decide whether or not they wish to pay.",
+            " Only children and students receive a discount.",
+            " The museum charges extra for special exhibitions."
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "id": "Q14",
+          "type": "multiple-choice",
+          "question": "What are visitors advised to leave in the cloakroom?",
+          "options": [
+            " cameras",
+            " coats",
+            " bags"
+          ],
+          "correctOptionIndex": 2
+        },
+        {
+          "id": "Q15-20-instruction",
+          "type": "form-completion",
+          "question": "What do visitors find out about the areas of the museum?\n\nChoose SIX answers from the box and write the correct letter, A-H, next to Questions 15-20.\n\nInformation\n\nA   Parents must supervise their children.\n\nB   There are new things to see.\n\nC   It is closed today.\n\nD   This is only for school groups.\n\nE   There is a quiz for visitors.\n\nF   It features something created by students.\n\nG   An expert is here today.\n\nH   There is a one-way system.\n\nAreas of museum are given below:",
+          "answerLength": "none"
+        },
+        { "id": "Q15", "type": "form-completion", "question": "15   Four Seasons                …………….", "answerLength": "short" },
+        { "id": "Q16", "type": "form-completion", "question": "16   Farmhouse Kitchen       …………….", "answerLength": "short" },
+        { "id": "Q17", "type": "form-completion", "question": "17   A Year on the Farm       …………….", "answerLength": "short" },
+        { "id": "Q18", "type": "form-completion", "question": "18   Wagon Walk                 …………….", "answerLength": "short" },
+        { "id": "Q19", "type": "form-completion", "question": "19   Bees are Magic            …………….", "answerLength": "short" },
+        { "id": "Q20", "type": "form-completion", "question": "20   The Pond                      …………….", "answerLength": "short" }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "audioUrl": "/questions/audio/book18 audios/cam18-test4-part3.mp3",
+      "sectionTitle": "Origami in Education",
+      "questionType": "multiple-select-and-matching",
+      "questions": [
+        {
+          "id": "Q21-22",
+          "type": "multiple-choice",
+          "multipleSelect": true,
+          "question": "Which TWO educational skills were shown in the video of children doing origami? (Choose TWO)",
+          "options": [
+            " solving problems",
+            " following instructions",
+            " working cooperatively",
+            " learning through play",
+            " developing hand-eye coordination"
+          ],
+          "correctOptions": [
+            1,
+            3
+          ]
+        },
+        {
+          "id": "Q23-27-instruction",
+          "type": "form-completion",
+          "question": "What comment do the students make about each of the children in the origami class?\n\nChoose FIVE answers from the box and write the correct letter, A-G, next to Questions 23-27.\n\nComments\n\nA   demonstrated independence\n\nB   asked for teacher support\n\nC   developed a competitive attitude\n\nD   seemed to find the activity calming\n\nE   seemed pleased with the results\n\nF   seemed confused\n\nG   seemed to find the activity easy\n\nChildren are given below:",
+          "answerLength": "none"
+        },
+        { "id": "Q23", "type": "form-completion", "question": "23   Sid                …………….", "answerLength": "short" },
+        { "id": "Q24", "type": "form-completion", "question": "24   Jack              …………….", "answerLength": "short" },
+        { "id": "Q25", "type": "form-completion", "question": "25   Naomi           …………….", "answerLength": "short" },
+        { "id": "Q26", "type": "form-completion", "question": "26   Anya             …………….", "answerLength": "short" },
+        { "id": "Q27", "type": "form-completion", "question": "27   Zara             …………….", "answerLength": "short" },
+        {
+          "id": "Q28",
+          "type": "multiple-choice",
+          "question": "Before starting an origami activity in class, the students think it is important for the teacher to",
+          "options": [
+            " make models that demonstrate the different stages.",
+            " check children understand the terminology involved.",
+            " tell children not to worry if they find the activity difficult."
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "id": "Q29",
+          "type": "multiple-choice",
+          "question": "The students agree that some teachers might be unwilling to use origami in class because",
+          "options": [
+            " they may not think that crafts are important.",
+            " they may not have the necessary skills.",
+            " they may worry that it will take up too much time."
+          ],
+          "correctOptionIndex": 1
+        },
+        {
+          "id": "Q30",
+          "type": "multiple-choice",
+          "question": "Why do the students decide to use origami in their maths teaching practice?",
+          "options": [
+            " to correct a particular misunderstanding",
+            " to set a challenge",
+            " to introduce a new concept"
+          ],
+          "correctOptionIndex": 2
+        }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "audioUrl": "/questions/audio/book18 audios/cam18-test4-part4.mp3",
+      "sectionTitle": "Victor Hugo",
+      "questionType": "completion",
+      "instruction": "Complete the notes below. Write ONE WORD ONLY for each answer.",
+      "questions": [
+        {
+          "id": "Q31",
+          "type": "form-completion",
+          "question": "His novel, Les Misérables: We know more about its overall ______ than about its author.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q32",
+          "type": "form-completion",
+          "question": "His early career: He spoke publicly about social issues, such as ______ and education.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q33",
+          "type": "form-completion",
+          "question": "His exile from France: Victor Hugo had to live elsewhere in ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q34",
+          "type": "form-completion",
+          "question": "His exile from France: He used his income from the sale of some ______ he had written to buy a house on Guernsey.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q35",
+          "type": "form-completion",
+          "question": "His house on Guernsey: The ground floor contains portraits, ______ and tapestries that he valued.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q36",
+          "type": "form-completion",
+          "question": "His house on Guernsey: He bought cheap ______ made of wood and turned this into beautiful wall carvings.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q37",
+          "type": "form-completion",
+          "question": "His house on Guernsey: The first floor consists of furnished areas with wallpaper and ______ that have a Chinese design.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q38",
+          "type": "form-completion",
+          "question": "His house on Guernsey: He wrote in a room at the top of the house that had a view of the ______ .",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q39",
+          "type": "form-completion",
+          "question": "His house on Guernsey: He entertained other writers as well as poor ______ in his house.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q40",
+          "type": "form-completion",
+          "question": "Victor Hugo’s ______ gave ownership of the house to the city of Paris in 1927.",
+          "answerLength": "short"
+        }
+      ]
+    }
+  ],
+  "answers": {
+    "Q1": "receptionist",
+    "Q2": "Medical",
+    "Q3": "Chastons",
+    "Q4": "appointments",
+    "Q5": "database",
+    "Q6": "experience",
+    "Q7": "confident",
+    "Q8": "temporary",
+    "Q9": "1.15",
+    "Q10": "parking",
+    "Q11": "B",
+    "Q12": "A",
+    "Q13": "A",
+    "Q14": "C",
+    "Q15": "F",
+    "Q16": "G",
+    "Q17": "E",
+    "Q18": "A",
+    "Q19": "C",
+    "Q20": "B",
+    "Q21-22": "B, D",
+    "Q23": "D",
+    "Q24": "A",
+    "Q25": "C",
+    "Q26": "G",
+    "Q27": "F",
+    "Q28": "A",
+    "Q29": "B",
+    "Q30": "C",
+    "Q31": "plot",
+    "Q32": "poverty",
+    "Q33": "Europe",
+    "Q34": "poetry",
+    "Q35": "drawings",
+    "Q36": "furniture",
+    "Q37": "lamps",
+    "Q38": "harbour",
+    "Q39": "children",
+    "Q40": "relatives"
+  }
+}

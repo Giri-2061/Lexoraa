@@ -1,0 +1,23 @@
+{
+  "testId": "book13-test4",
+  "writing": [
+    {
+      "taskId": 1,
+      "type": "pie-chart",
+      "instruction": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "prompt": "The pie charts below show the percentage of time spent on different activities by working professionals in a particular country in 1958 and 2008.",
+      "imageUrl": null,
+      "minWords": 150,
+      "suggestedTime": "20 minutes"
+    },
+    {
+      "taskId": 2,
+      "type": "problem-solution",
+      "instruction": "Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+      "prompt": "In many countries, the amount of waste produced by households and industries is increasing. What are the causes of this increase and what measures can be taken to reduce it?",
+      "imageUrl": null,
+      "minWords": 250,
+      "suggestedTime": "40 minutes"
+    }
+  ]
+}

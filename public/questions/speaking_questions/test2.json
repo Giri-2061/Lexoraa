@@ -1,0 +1,83 @@
+{
+  "testId": "speaking-test-2",
+  "part1": {
+    "topics": [
+      {
+        "theme": "Accommodation",
+        "introduction": "Let's talk about where you live.",
+        "questions": [
+          "Do you live in a house or an apartment?",
+          "Which room do you spend the most time in?",
+          "What would you change about your home if you could?",
+          "Do you plan to move in the future?",
+          "What is your neighborhood like?"
+        ]
+      },
+      {
+        "theme": "Reading",
+        "introduction": "Now, let's talk about reading.",
+        "questions": [
+          "Do you like reading?",
+          "What kind of books do you enjoy reading?",
+          "Do you prefer reading physical books or e-books?",
+          "Did you read a lot when you were a child?",
+          "Do you think reading is important?"
+        ]
+      },
+      {
+        "theme": "Weather",
+        "introduction": "Let's move on to talk about weather.",
+        "questions": [
+          "What kind of weather do you like?",
+          "Does the weather affect your mood?",
+          "What is the weather like in your hometown?",
+          "Do you check the weather forecast regularly?"
+        ]
+      }
+    ]
+  },
+  "part2": {
+    "cueCard": {
+      "topic": "Describe a teacher who has influenced you",
+      "instruction": "You should say:",
+      "points": [
+        "who this teacher was",
+        "what subject they taught",
+        "how they taught their classes"
+      ],
+      "conclusion": "and explain why this teacher influenced you so much.",
+      "prepTime": 60,
+      "speakTime": 120
+    },
+    "followUpQuestions": [
+      "Are you still in contact with this teacher?",
+      "Would you like to become a teacher yourself?"
+    ]
+  },
+  "part3": {
+    "theme": "Education and Teachers",
+    "introduction": "Let's discuss some general questions about education and teachers.",
+    "questions": [
+      {
+        "question": "What qualities make a good teacher?",
+        "followUp": "Do you think these qualities can be learned?"
+      },
+      {
+        "question": "How has the role of teachers changed over the years?",
+        "followUp": "Is this change positive or negative?"
+      },
+      {
+        "question": "Do you think online learning can replace traditional classroom teaching?",
+        "followUp": "What are the advantages and disadvantages?"
+      },
+      {
+        "question": "Should teachers be paid more?",
+        "followUp": "How does teacher pay affect education quality?"
+      },
+      {
+        "question": "What is more important: the teacher or the teaching materials?",
+        "followUp": "Can good materials compensate for a poor teacher?"
+      }
+    ]
+  }
+}

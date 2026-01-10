@@ -1,0 +1,115 @@
+{
+	"testId": "book17-test2",
+	"title": "Book 17 - Test 2",
+	"sections": [
+		{
+			"sectionNumber": 1,
+			"audioUrl": "/audio/book17-test2-sec1.mp3",
+			"questions": [
+				{ "id": "Q1", "type": "form-completion", "question": "Help with (1) _______ books (times to be arranged)", "answerLength": "short" },
+				{ "id": "Q2", "type": "form-completion", "question": "Help needed to keep (2) _______ of books up to date", "answerLength": "short" },
+				{ "id": "Q3", "type": "form-completion", "question": "Library is in the (3) _______ Room in the village hall", "answerLength": "short" },
+				{ "id": "Q4", "type": "form-completion", "question": "Help by providing (4) _______", "answerLength": "short" },
+				{ "id": "Q5", "type": "form-completion", "question": "Help with hobbies such as (5) _______", "answerLength": "short" },
+				{ "id": "Q6", "type": "form-completion", "question": "Taking Mrs Carroll to (6) _______", "answerLength": "short" },
+				{ "id": "Q7", "type": "form-completion", "question": "Work in the (7) _______ at Mr Selsbury’s house", "answerLength": "short" },
+				{ "id": "Q8", "type": "form-completion", "question": "19 Oct — (8) _______ — village hall — providing refreshments", "answerLength": "short" },
+				{ "id": "Q9", "type": "form-completion", "question": "18 Nov — Dance — village hall — checking (9) _______", "answerLength": "short" },
+				{ "id": "Q10", "type": "form-completion", "question": "31 Dec — New year’s eve party — Mountfort Hotel — designing the (10) _______", "answerLength": "short" }
+			]
+		},
+		{
+			"sectionNumber": 2,
+			"audioUrl": "/audio/book17-test2-sec2.mp3",
+			"questions": [
+				{ "id": "Q11", "type": "multiple-choice", "question": "Many past owners made changes to", "options": ["the gardens","the house","the farm"], "correctOptionIndex": 1 },
+				{ "id": "Q12", "type": "multiple-choice", "question": "Sir Edward Downes built Oniton Hall because he wanted", "options": ["a place for discussing politics","a place to display his wealth","a place for artists and writers"], "correctOptionIndex": 2 },
+				{ "id": "Q13", "type": "multiple-choice", "question": "Visitors can learn about the work of servants in the past from", "options": ["audio guides","photographs","people in costume"], "correctOptionIndex": 2 },
+				{ "id": "Q14", "type": "multiple-choice", "question": "What is new for children at Oniton Hall?", "options": ["clothes for dressing up","mini tractors","the adventure playground"], "correctOptionIndex": 1 },
+
+				{ "id": "Q15", "type": "multiple-choice", "question": "15. dairy — which activity is offered?", "options": ["shopping","watching cows being milked","seeing old farming equipment","eating and drinking","starting a trip","seeing rare breeds of animals","helping to look after animals","using farming tools"], "correctOptionIndex": 3 },
+				{ "id": "Q16", "type": "multiple-choice", "question": "16. large barn — which activity is offered?", "options": ["shopping","watching cows being milked","seeing old farming equipment","eating and drinking","starting a trip","seeing rare breeds of animals","helping to look after animals","using farming tools"], "correctOptionIndex": 2 },
+				{ "id": "Q17", "type": "multiple-choice", "question": "17. small barn — which activity is offered?", "options": ["shopping","watching cows being milked","seeing old farming equipment","eating and drinking","starting a trip","seeing rare breeds of animals","helping to look after animals","using farming tools"], "correctOptionIndex": 6 },
+				{ "id": "Q18", "type": "multiple-choice", "question": "18. stables — which activity is offered?", "options": ["shopping","watching cows being milked","seeing old farming equipment","eating and drinking","starting a trip","seeing rare breeds of animals","helping to look after animals","using farming tools"], "correctOptionIndex": 0 },
+				{ "id": "Q19", "type": "multiple-choice", "question": "19. shed — which activity is offered?", "options": ["shopping","watching cows being milked","seeing old farming equipment","eating and drinking","starting a trip","seeing rare breeds of animals","helping to look after animals","using farming tools"], "correctOptionIndex": 4 },
+				{ "id": "Q20", "type": "multiple-choice", "question": "20. parkland — which activity is offered?", "options": ["shopping","watching cows being milked","seeing old farming equipment","eating and drinking","starting a trip","seeing rare breeds of animals","helping to look after animals","using farming tools"], "correctOptionIndex": 5 }
+			]
+		},
+		{
+			"sectionNumber": 3,
+			"audioUrl": "/audio/book17-test2-sec3.mp3",
+			"questions": [
+				{ "id": "Q21", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO things do the students agree they need to include in their reviews of Romeo and Juliet? (choose TWO)", "options": ["analysis of the text","a summary of the plot","a description of the theatre","a personal reaction","a reference to particular scenes"] },
+				{ "id": "Q22", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO things do the students agree they need to include in their reviews of Romeo and Juliet? (choose TWO)", "options": ["analysis of the text","a summary of the plot","a description of the theatre","a personal reaction","a reference to particular scenes"] },
+
+				{ "id": "Q23", "type": "multiple-choice", "question": "23. the set", "options": ["They both expected this to be more traditional","They both thought this was original","They agree this created the right atmosphere","They agree this was a major strength","They were both disappointed by this","They disagree about why this was an issue","They disagree about how this could be improved"], "correctOptionIndex": 3 },
+				{ "id": "Q24", "type": "multiple-choice", "question": "24. the lighting", "options": ["They both expected this to be more traditional","They both thought this was original","They agree this created the right atmosphere","They agree this was a major strength","They were both disappointed by this","They disagree about why this was an issue","They disagree about how this could be improved"], "correctOptionIndex": 2 },
+				{ "id": "Q25", "type": "multiple-choice", "question": "25. the costume design", "options": ["They both expected this to be more traditional","They both thought this was original","They agree this created the right atmosphere","They agree this was a major strength","They were both disappointed by this","They disagree about why this was an issue","They disagree about how this could be improved"], "correctOptionIndex": 0 },
+				{ "id": "Q26", "type": "multiple-choice", "question": "26. the music", "options": ["They both expected this to be more traditional","They both thought this was original","They agree this created the right atmosphere","They agree this was a major strength","They were both disappointed by this","They disagree about why this was an issue","They disagree about how this could be improved"], "correctOptionIndex": 4 },
+				{ "id": "Q27", "type": "multiple-choice", "question": "27. the actor’s delivery", "options": ["They both expected this to be more traditional","They both thought this was original","They agree this created the right atmosphere","They agree this was a major strength","They were both disappointed by this","They disagree about why this was an issue","They disagree about how this could be improved"], "correctOptionIndex": 5 },
+
+				{ "id": "Q28", "type": "multiple-choice", "question": "The students think the story of Romeo and Juliet is still relevant for young people today because", "options": ["it illustrates how easily conflict can start","it deals with problems that families experience","it teaches them about relationships"], "correctOptionIndex": 1 },
+				{ "id": "Q29", "type": "multiple-choice", "question": "The students found watching Romeo and Juliet in another language", "options": ["frustrating","demanding","moving"], "correctOptionIndex": 2 },
+				{ "id": "Q30", "type": "multiple-choice", "question": "Why do the students think Shakespeare’s plays have such international appeal?", "options": ["The stories are exciting","There are recognisable characters","They can be interpreted in many ways"], "correctOptionIndex": 2 }
+			]
+		},
+		{
+			"sectionNumber": 4,
+			"audioUrl": "/audio/book17-test2-sec4.mp3",
+			"questions": [
+				{ "id": "Q31", "type": "form-completion", "question": "has approximately (31) _______ speakers", "answerLength": "short" },
+				{ "id": "Q32", "type": "form-completion", "question": "has a (32) _______ that is still growing", "answerLength": "short" },
+				{ "id": "Q33", "type": "form-completion", "question": "has its own words for computer-based concepts, such as web browser and (33) _______", "answerLength": "short" },
+				{ "id": "Q34", "type": "form-completion", "question": "are big users of digital technology, such as (34) _______", "answerLength": "short" },
+				{ "id": "Q35", "type": "form-completion", "question": "are becoming (35) _______ very quickly", "answerLength": "short" },
+				{ "id": "Q36", "type": "form-completion", "question": "are having discussions using only English while they are in the (36) _______ at school", "answerLength": "short" },
+				{ "id": "Q37", "type": "form-completion", "question": "are better able to identify the content of a (37) _______ in English than Icelandic", "answerLength": "short" },
+				{ "id": "Q38", "type": "form-completion", "question": "write very little in Icelandic because of the small number of speakers and because of how complicated its (38) _______ is", "answerLength": "short" },
+				{ "id": "Q39", "type": "form-completion", "question": "is worried that young Icelanders may lose their (39) _______ as Icelanders", "answerLength": "short" },
+				{ "id": "Q40", "type": "form-completion", "question": "is worried about the consequences of children not being (40) _______ in either Icelandic or English", "answerLength": "short" }
+			]
+		}
+	],
+	"answers": {
+		"Q1": "Collecting",
+		"Q2": "Records",
+		"Q3": "West",
+		"Q4": "Transport",
+		"Q5": "Art",
+		"Q6": "Hospital",
+		"Q7": "Garden",
+		"Q8": "Quiz",
+		"Q9": "Tickets",
+		"Q10": "Poster",
+		"Q11": "B",
+		"Q12": "C",
+		"Q13": "C",
+		"Q14": "B",
+		"Q15": "D",
+		"Q16": "C",
+		"Q17": "G",
+		"Q18": "A",
+		"Q19": "E",
+		"Q20": "F",
+		"Q21": "D,E",
+		"Q22": "D,E",
+		"Q23": "D",
+		"Q24": "C",
+		"Q25": "A",
+		"Q26": "E",
+		"Q27": "F",
+		"Q28": "B",
+		"Q29": "C",
+		"Q30": "C",
+		"Q31": "321000",
+		"Q32": "Vocabulary",
+		"Q33": "Podcast",
+		"Q34": "Smartphones",
+		"Q35": "Bilingual",
+		"Q36": "Playground",
+		"Q37": "Picture",
+		"Q38": "Grammar",
+		"Q39": "Identity",
+		"Q40": "Fluent"
+	}
+}

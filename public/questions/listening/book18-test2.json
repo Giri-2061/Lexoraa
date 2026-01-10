@@ -1,0 +1,452 @@
+{
+  "testId": "book18-test2",
+  "title": "Book 18 - Test 2",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "audioUrl": "/questions/audio/book18 audios/cam18-test2-part1.mp3",
+      "sectionTitle": "Working at Milo’s Restaurants",
+      "questionType": "completion",
+      "instruction": "Complete the notes below. Write ONE WORD ONLY for each answer (Questions 1-5). Complete the table below. Write ONE WORD AND/ OR A NUMBER for each answer (Questions 6-10).",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "form-completion",
+          "question": "Benefits: ______ provided for all staff",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q2",
+          "type": "form-completion",
+          "question": "Benefits: ______ during weekdays at all Milo’s Restaurants",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q3",
+          "type": "form-completion",
+          "question": "Benefits: ______ provided after midnight",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q4",
+          "type": "form-completion",
+          "question": "Person specification: must care about maintaining a high standard of ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q5",
+          "type": "form-completion",
+          "question": "Person specification: must have a qualification in ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q6",
+          "type": "form-completion",
+          "question": "Location (Job: Breakfast supervisor): ______ Street",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q7",
+          "type": "form-completion",
+          "question": "Responsibilities (Job: Breakfast supervisor): Making sure ______ is clean",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q8",
+          "type": "form-completion",
+          "question": "Pay and conditions (Job: Breakfast supervisor): Salary starting £ ______ per hour",
+          "answerLength": "number"
+        },
+        {
+          "id": "Q9",
+          "type": "form-completion",
+          "question": "Responsibilities (Job: Junior chef): Maintaining stock and organising ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q10",
+          "type": "form-completion",
+          "question": "Pay and conditions (Job: Junior chef): No work on a ______ once a month",
+          "answerLength": "short"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "audioUrl": "/questions/audio/book18 audios/cam18-test2-part2.mp3",
+      "sectionTitle": "Housing Development Plan",
+      "questionType": "multiple-choice-and-map-matching",
+      "questions": [
+        {
+          "id": "Q11-12",
+          "type": "multiple-choice",
+          "multipleSelect": true,
+          "question": "What are the TWO main reasons why this site has been chosen for the housing development? (Choose TWO)",
+          "options": [
+            "A: It has suitable geographical features.",
+            "B: There is easy access to local facilities.",
+            "C: It has good connections with the airport.",
+            "D: The land is scheduled for development.",
+            "E: It is close to a main road and rail link."
+          ],
+          "correctOptions": [
+            3,
+            4
+          ]
+        },
+        {
+          "id": "Q13-14",
+          "type": "multiple-choice",
+          "multipleSelect": true,
+          "question": "Which TWO age groups are expected to be the main residents in the new housing? (Choose TWO)",
+          "options": [
+            "A: under 16",
+            "B: 16-25",
+            "C: 26-35",
+            "D: 36-55",
+            "E: over 55"
+          ],
+          "correctOptions": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": "Q15-20-map",
+          "type": "map-matching",
+          "instruction": "Label the plan below. Write the correct letter, A-G, next to Questions 15-20.",
+          "imageUrl": "uploaded:image_bbfb29.png-7b067ff5-622f-4e0b-9e32-16067fa925d3",
+          "answerKey": "Development Features",
+          "actionKey": "Location",
+          "locationOptions": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "subQuestions": [
+            {
+              "id": "Q15",
+              "question": "restaurant"
+            },
+            {
+              "id": "Q16",
+              "question": "clinic"
+            },
+            {
+              "id": "Q17",
+              "question": "school"
+            },
+            {
+              "id": "Q18",
+              "question": "supermarket"
+            },
+            {
+              "id": "Q19",
+              "question": "community centre"
+            },
+            {
+              "id": "Q20",
+              "question": "gym"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "audioUrl": "/questions/audio/book18 audios/cam18-test2-part3.mp3",
+      "sectionTitle": "Presentation on the subject of the tsunami in the Pacific in 2011",
+      "questionType": "multiple-choice-and-matching",
+      "questions": [
+        {
+          "id": "Q21",
+          "type": "multiple-choice",
+          "question": "What point does the speaker make about the number of deaths in the tsunami?",
+          "options": [
+            "A: The figures were much lower than the speaker had anticipated.",
+            "B: It was the highest figure for any tsunami in history.",
+            "C: The actual figure was much lower than the initial estimate."
+          ],
+          "correctOptionIndex": 2
+        },
+        {
+          "id": "Q22",
+          "type": "multiple-choice",
+          "question": "What is the speaker’s main point about the cause of the tsunami?",
+          "options": [
+            "A: The tectonic plates in the area are sliding past each other.",
+            "B: The tremor was caused by a slight movement of the ocean floor.",
+            "C: The earthquake was one of a series of large tremors."
+          ],
+          "correctOptionIndex": 1
+        },
+        {
+          "id": "Q23",
+          "type": "multiple-choice",
+          "question": "Why did the area have so little warning of the tsunami?",
+          "options": [
+            "A: The fault line had been assumed to be inactive.",
+            "B: The only warning was an undersea light signal.",
+            "C: The land had not moved significantly."
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "id": "Q24",
+          "type": "multiple-choice",
+          "question": "What is the speaker’s main point about the effect of the tsunami on farming?",
+          "options": [
+            "A: Salt-water contamination has made the land unsuitable for all crops.",
+            "B: Some farmers are now managing to grow rice as before.",
+            "C: The area may take decades to recover."
+          ],
+          "correctOptionIndex": 1
+        },
+        {
+          "id": "Q25",
+          "type": "multiple-choice",
+          "question": "What is the speaker’s main point about the effect of the tsunami on fishing?",
+          "options": [
+            "A: There has been a huge rise in food prices in the world.",
+            "B: The fishing industry may never return to pre-tsunami levels.",
+            "C: It has led to an increase in the number of fishing boats."
+          ],
+          "correctOptionIndex": 1
+        },
+        {
+          "id": "Q26",
+          "type": "matching",
+          "question": "Chile",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "correctOptionIndex": 4,
+          "answerKey": "Countries affected by the volcanic eruption",
+          "actionKey": "Comments",
+          "actionOptions": [
+            "A: This country suffered the most severe loss of life.",
+            "B: The impact on agriculture was predictable.",
+            "C: There was a significant increase in deaths of young people.",
+            "D: Animals suffered from a sickness.",
+            "E: This country saw the highest rise in food prices in the world.",
+            "F: It caused a particularly harsh winter."
+          ]
+        },
+        {
+          "id": "Q27",
+          "type": "matching",
+          "question": "Iceland",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "correctOptionIndex": 5,
+          "answerKey": "Countries affected by the volcanic eruption",
+          "actionKey": "Comments",
+          "actionOptions": [
+            "A: This country suffered the most severe loss of life.",
+            "B: The impact on agriculture was predictable.",
+            "C: There was a significant increase in deaths of young people.",
+            "D: Animals suffered from a sickness.",
+            "E: This country saw the highest rise in food prices in the world.",
+            "F: It caused a particularly harsh winter."
+          ]
+        },
+        {
+          "id": "Q28",
+          "type": "matching",
+          "question": "Egypt",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "correctOptionIndex": 2,
+          "answerKey": "Countries affected by the volcanic eruption",
+          "actionKey": "Comments",
+          "actionOptions": [
+            "A: This country suffered the most severe loss of life.",
+            "B: The impact on agriculture was predictable.",
+            "C: There was a significant increase in deaths of young people.",
+            "D: Animals suffered from a sickness.",
+            "E: This country saw the highest rise in food prices in the world.",
+            "F: It caused a particularly harsh winter."
+          ]
+        },
+        {
+          "id": "Q29",
+          "type": "matching",
+          "question": "UK",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "correctOptionIndex": 1,
+          "answerKey": "Countries affected by the volcanic eruption",
+          "actionKey": "Comments",
+          "actionOptions": [
+            "A: This country suffered the most severe loss of life.",
+            "B: The impact on agriculture was predictable.",
+            "C: There was a significant increase in deaths of young people.",
+            "D: Animals suffered from a sickness.",
+            "E: This country saw the highest rise in food prices in the world.",
+            "F: It caused a particularly harsh winter."
+          ]
+        },
+        {
+          "id": "Q30",
+          "type": "matching",
+          "question": "USA",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "correctOptionIndex": 0,
+          "answerKey": "Countries affected by the volcanic eruption",
+          "actionKey": "Comments",
+          "actionOptions": [
+            "A: This country suffered the most severe loss of life.",
+            "B: The impact on agriculture was predictable.",
+            "C: There was a significant increase in deaths of young people.",
+            "D: Animals suffered from a sickness.",
+            "E: This country saw the highest rise in food prices in the world.",
+            "F: It caused a particularly harsh winter."
+          ]
+        }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "audioUrl": "/questions/audio/book18 audios/cam18-test2-part4.mp3",
+      "sectionTitle": "Pockets",
+      "questionType": "completion",
+      "instruction": "Complete the notes below. Write ONE WORD ONLY for each answer.",
+      "questions": [
+        {
+          "id": "Q31",
+          "type": "form-completion",
+          "question": "Reason for choice of subject: They are ______ but can be overlooked by consumers and designers.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q32",
+          "type": "form-completion",
+          "question": "Pockets in men’s clothes: Men started to wear ______ in the 18th century.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q33",
+          "type": "form-completion",
+          "question": "Pockets in men’s clothes: A ______ sewed pockets into the lining of the garments.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q34",
+          "type": "form-completion",
+          "question": "Pockets in men’s clothes: Bigger pockets might be made for men who belonged to a certain type of ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q35",
+          "type": "form-completion",
+          "question": "Pockets in women’s clothes: Women’s pockets were less ______ than men’s.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q36",
+          "type": "form-completion",
+          "question": "Pockets in women’s clothes: Pockets were produced in pairs using ______ to link them together.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q37",
+          "type": "form-completion",
+          "question": "Pockets in women’s clothes: Pockets hung from the women’s ______ under skirts and petticoats.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q38",
+          "type": "form-completion",
+          "question": "Pockets in women’s clothes: Items such as ______ could be reached through a gap in the material.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q39",
+          "type": "form-completion",
+          "question": "Pockets in women’s clothes: When dresses changed shape, hidden pockets had a negative effect on the ______ of women.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q40",
+          "type": "form-completion",
+          "question": "Pockets in women’s clothes: Bags called ‘pouches’ became popular, before women carried a ______",
+          "answerLength": "short"
+        }
+      ]
+    }
+  ],
+  "answers": {
+    "Q1": "Training",
+    "Q2": "Discount",
+    "Q3": "Taxi",
+    "Q4": "Service",
+    "Q5": "English",
+    "Q6": "Wivenhoe",
+    "Q7": "Equipment",
+    "Q8": "9.75",
+    "Q9": "Stockroom",
+    "Q10": "Sunday",
+    "Q11-12": "D,E",
+    "Q13-14": "B,C",
+    "Q15": "A",
+    "Q16": "D",
+    "Q17": "C",
+    "Q18": "B",
+    "Q19": "B",
+    "Q20": "C",
+    "Q21": "C",
+    "Q22": "B",
+    "Q23": "A",
+    "Q24": "B",
+    "Q25": "B",
+    "Q26": "E",
+    "Q27": "F",
+    "Q28": "C",
+    "Q29": "B",
+    "Q30": "A",
+    "Q31": "common",
+    "Q32": "suits",
+    "Q33": "tailor",
+    "Q34": "class",
+    "Q35": "practical",
+    "Q36": "cord",
+    "Q37": "waist",
+    "Q38": "money",
+    "Q39": "figure",
+    "Q40": "handbag"
+  }
+}

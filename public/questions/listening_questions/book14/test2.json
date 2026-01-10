@@ -1,0 +1,553 @@
+{
+  "testId": "book14-test2",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "audioUrl": "/questions/audio/book14 audios/C14T2S1.mp3",
+      "sectionTitle": "TOTAL HEALTH CLINIC: PATIENT DETAILS",
+      "questionType": "completion",
+      "instruction": "Complete the notes below. Write ONE WORD AND/OR A NUMBER for each answer.",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "form-completion",
+          "question": "Contact phone:",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q2",
+          "type": "form-completion",
+          "question": "Date of birth: ______ , 1992",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q3",
+          "type": "form-completion",
+          "question": "Occupation works as a:",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q4",
+          "type": "form-completion",
+          "question": "Insurance company: ______ Life insurance",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q5",
+          "type": "form-completion",
+          "question": "Type of problem: pain in her left ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q6",
+          "type": "form-completion",
+          "question": "When it began: ______ ago",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q7",
+          "type": "form-completion",
+          "question": "Sports played: belongs to a ______ club",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q8",
+          "type": "form-completion",
+          "question": "Sports played: goes ______ regularly",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q9",
+          "type": "form-completion",
+          "question": "Medical history: injured her ______ last year",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q10",
+          "type": "form-completion",
+          "question": "no regular medication apart from ______",
+          "answerLength": "short"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "audioUrl": "/questions/audio/book14 audios/C14T2S2.mp3",
+      "sectionTitle": "Visit to Branley Castle",
+      "questionType": "multiple-choice-and-matching",
+      "questions": [
+        {
+          "id": "Q11",
+          "type": "multiple-choice",
+          "question": "Before Queen Elizabeth I visited the castle in 1576,",
+          "options": [
+            "repairs were carried out to the guest rooms.",
+            "a new building was constructed for her.",
+            "a fire damaged part of the main hall."
+          ],
+          "correctOptionIndex": 1
+        },
+        {
+          "id": "Q12",
+          "type": "multiple-choice",
+          "question": "In 1982, the castle was sold to",
+          "options": [
+            "the government.",
+            "the Fenys family.",
+            "an entertainment company."
+          ],
+          "correctOptionIndex": 2
+        },
+        {
+          "id": "Q13",
+          "type": "multiple-choice",
+          "question": "In some of the rooms, visitors can",
+          "options": [
+            "speak to experts on the history of the castle.",
+            "interact with actors dressed as famous characters.",
+            "see models of historical figures moving and talking."
+          ],
+          "correctOptionIndex": 2
+        },
+        {
+          "id": "Q14",
+          "type": "multiple-choice",
+          "question": "In the castle park, visitors can",
+          "options": [
+            "see an 800-year-old tree.",
+            "go to an art exhibition.",
+            "visit a small zoo."
+          ],
+          "correctOptionIndex": 1
+        },
+        {
+          "id": "Q15",
+          "type": "multiple-choice",
+          "question": "At the end of the visit, the group will have",
+          "options": [
+            "afternoon tea in the conservatory.",
+            "the chance to meet the castle’s owners.",
+            "a photograph together on the Great Staircase."
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "id": "Q16",
+          "type": "multiple-choice",
+          "question": "Starting point for walking the walls",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"
+          ],
+          "correctOptionIndex": 7,
+          "imageUrl": "/questions/listening_questions/bookX/branley-castle-map.png"
+        },
+        {
+          "id": "Q17",
+          "type": "multiple-choice",
+          "question": "Bow and arrow display",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"
+          ],
+          "correctOptionIndex": 3,
+          "imageUrl": "/questions/listening_questions/bookX/branley-castle-map.png"
+        },
+        {
+          "id": "Q18",
+          "type": "multiple-choice",
+          "question": "Hunting birds display",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"
+          ],
+          "correctOptionIndex": 5,
+          "imageUrl": "/questions/listening_questions/bookX/branley-castle-map.png"
+        },
+        {
+          "id": "Q19",
+          "type": "multiple-choice",
+          "question": "Traditional dancing",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"
+          ],
+          "correctOptionIndex": 0,
+          "imageUrl": "/questions/listening_questions/bookX/branley-castle-map.png"
+        },
+        {
+          "id": "Q20",
+          "type": "multiple-choice",
+          "question": "Shop",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"
+          ],
+          "correctOptionIndex": 4,
+          "imageUrl": "/questions/listening_questions/bookX/branley-castle-map.png"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "audioUrl": "/questions/audio/book14 audios/C14T2S3.mp3",
+      "sectionTitle": "Woolly mammoths on St Paul’s Island",
+      "questionType": "multiple-choice-and-matching",
+      "questions": [
+        {
+          "id": "Q21",
+          "type": "multiple-choice",
+          "question": "How will Rosie and Martin introduce their presentation?",
+          "options": [
+            "with a drawing of woolly mammoths in their natural habitat",
+            "with a timeline showing when woolly mammoths lived",
+            "with a video clip about woolly mammoths"
+          ],
+          "correctOptionIndex": 1
+        },
+        {
+          "id": "Q22",
+          "type": "multiple-choice",
+          "question": "What was surprising about the mammoth tooth found by Russell Graham?",
+          "options": [
+            "It was still embedded in the mammoth’s jawbone.",
+            "It was from an unknown species of mammoth.",
+            "It was not as old as mammoth remains from elsewhere."
+          ],
+          "correctOptionIndex": 2
+        },
+        {
+          "id": "Q23",
+          "type": "multiple-choice",
+          "question": "The students will use an animated diagram to demonstrate how the mammoths",
+          "options": [
+            "became isolated on the island.",
+            "spread from the island to other areas.",
+            "coexisted with other animals on the island."
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "id": "Q24",
+          "type": "multiple-choice",
+          "question": "According to Martin, what is unusual about the date of the mammoths’ extinction on the island?",
+          "options": [
+            "how exact it is",
+            "how early it is",
+            "how it was established"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "id": "Q25",
+          "type": "matching",
+          "question": "Sections of presentation: Introduction ______",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"
+          ],
+          "correctOptionIndex": 4,
+          "answerKey": "Sections of presentation",
+          "actionKey": "Actions",
+          "actionOptions": [
+            "A: make it more interactive",
+            "B: reduce visual input",
+            "C: add personal opinions",
+            "D: contact one of the researchers",
+            "E: make detailed notes",
+            "F: find information online",
+            "G: check timing",
+            "H: organise the content more clearly"
+          ]
+        },
+        {
+          "id": "Q26",
+          "type": "matching",
+          "question": "Sections of presentation: Discovery of the mammoth tooth ______",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"
+          ],
+          "correctOptionIndex": 3,
+          "answerKey": "Sections of presentation",
+          "actionKey": "Actions",
+          "actionOptions": [
+            "A: make it more interactive",
+            "B: reduce visual input",
+            "C: add personal opinions",
+            "D: contact one of the researchers",
+            "E: make detailed notes",
+            "F: find information online",
+            "G: check timing",
+            "H: organise the content more clearly"
+          ]
+        },
+        {
+          "id": "Q27",
+          "type": "matching",
+          "question": "Sections of presentation: Initial questions asked by the researchers ______",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"
+          ],
+          "correctOptionIndex": 0,
+          "answerKey": "Sections of presentation",
+          "actionKey": "Actions",
+          "actionOptions": [
+            "A: make it more interactive",
+            "B: reduce visual input",
+            "C: add personal opinions",
+            "D: contact one of the researchers",
+            "E: make detailed notes",
+            "F: find information online",
+            "G: check timing",
+            "H: organise the content more clearly"
+          ]
+        },
+        {
+          "id": "Q28",
+          "type": "matching",
+          "question": "Sections of presentation: Further research carried out on the island ______",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"
+          ],
+          "correctOptionIndex": 7,
+          "answerKey": "Sections of presentation",
+          "actionKey": "Actions",
+          "actionOptions": [
+            "A: make it more interactive",
+            "B: reduce visual input",
+            "C: add personal opinions",
+            "D: contact one of the researchers",
+            "E: make detailed notes",
+            "F: find information online",
+            "G: check timing",
+            "H: organise the content more clearly"
+          ]
+        },
+        {
+          "id": "Q29",
+          "type": "matching",
+          "question": "Sections of presentation: Findings and possible explanations ______",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"
+          ],
+          "correctOptionIndex": 6,
+          "answerKey": "Sections of presentation",
+          "actionKey": "Actions",
+          "actionOptions": [
+            "A: make it more interactive",
+            "B: reduce visual input",
+            "C: add personal opinions",
+            "D: contact one of the researchers",
+            "E: make detailed notes",
+            "F: find information online",
+            "G: check timing",
+            "H: organise the content more clearly"
+          ]
+        },
+        {
+          "id": "Q30",
+          "type": "matching",
+          "question": "Sections of presentation: Relevance to the present day ______",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"
+          ],
+          "correctOptionIndex": 2,
+          "answerKey": "Sections of presentation",
+          "actionKey": "Actions",
+          "actionOptions": [
+            "A: make it more interactive",
+            "B: reduce visual input",
+            "C: add personal opinions",
+            "D: contact one of the researchers",
+            "E: make detailed notes",
+            "F: find information online",
+            "G: check timing",
+            "H: organise the content more clearly"
+          ]
+        }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "audioUrl": "/questions/audio/book14 audios/c14t2s4_JlyhBXnW.m4a",
+      "sectionTitle": "The history of weather forecasting",
+      "questionType": "completion",
+      "instruction": "Complete the notes below. Write ONE WORD ONLY for each answer.",
+      "questions": [
+        {
+          "id": "Q31",
+          "type": "form-completion",
+          "question": "many cultures invented ______ and other ceremonies to make the weather gods friendly",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q32",
+          "type": "form-completion",
+          "question": "people needed to observe and interpret the sky to ensure their ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q33",
+          "type": "form-completion",
+          "question": "around 650 BC, Babylonians started forecasting, using weather phenomena such as ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q34",
+          "type": "form-completion",
+          "question": "by 300 BC, the Chinese had a calendar made up of a number of ______ connected with the weather",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q35",
+          "type": "form-completion",
+          "question": "Aristotle also described haloes and ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q36",
+          "type": "form-completion",
+          "question": "about the significance of the colour of the ______ , passed on accurate information.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q37",
+          "type": "form-completion",
+          "question": "15th century: scientists recognised value of ______ for the first time",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q38",
+          "type": "form-completion",
+          "question": "Galileo invented the ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q39",
+          "type": "form-completion",
+          "question": "18th century: Franklin identified the movement of ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q40",
+          "type": "form-completion",
+          "question": "19th century: data from different locations could be sent to the same place by ______",
+          "answerLength": "short"
+        }
+      ]
+    }
+  ],
+  "answers": {
+    "Q1": "219 442 9785",
+    "Q2": "10th October, October 10, 10 October, Oct 10, 10th Oct",
+    "Q3": "manager",
+    "Q4": "Cawley",
+    "Q5": "knee",
+    "Q6": "3 weeks",
+    "Q7": "tennis",
+    "Q8": "running",
+    "Q9": "shoulder",
+    "Q10": "vitamins",
+    "Q11": "B",
+    "Q12": "C",
+    "Q13": "C",
+    "Q14": "B",
+    "Q15": "A",
+    "Q16": "H",
+    "Q17": "D",
+    "Q18": "F",
+    "Q19": "A",
+    "Q20": "E",
+    "Q21": "B",
+    "Q22": "C",
+    "Q23": "A",
+    "Q24": "A",
+    "Q25": "E",
+    "Q26": "D",
+    "Q27": "A",
+    "Q28": "H",
+    "Q29": "G",
+    "Q30": "C",
+    "Q31": "dances",
+    "Q32": "survival",
+    "Q33": "clouds",
+    "Q34": "festivals",
+    "Q35": "comets",
+    "Q36": "sky",
+    "Q37": "instruments",
+    "Q38": "thermometer",
+    "Q39": "storms",
+    "Q40": "telegraph"
+  }
+}

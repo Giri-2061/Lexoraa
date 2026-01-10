@@ -1,0 +1,286 @@
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { z } from 'zod';
+import { useAuth } from '@/hooks/useAuth';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { toast } from 'sonner';
+import { Switch } from '@/components/ui/switch';
+import { Loader2, BookOpen } from 'lucide-react';
+
+const loginSchema = z.object({
+  email: z.string().trim().email({ message: 'Invalid email address' }),
+  password: z.string().min(6, { message: 'Password must be at least 6 characters' }),
+});
+
+const signupSchema = z.object({
+  fullName: z.string().trim().min(2, { message: 'Name must be at least 2 characters' }),
+  email: z.string().trim().email({ message: 'Invalid email address' }),
+  password: z.string().min(6, { message: 'Password must be at least 6 characters' }),
+  confirmPassword: z.string(),
+}).refine((data) => data.password === data.confirmPassword, {
+  message: "Passwords don't match",
+  path: ["confirmPassword"],
+});
+
+export default function Auth() {
+  const navigate = useNavigate();
+  const { user, loading, signIn, signUp } = useAuth();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Login form state
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+  const [loginErrors, setLoginErrors] = useState<Record<string, string>>({});
+  
+  // Signup form state
+  const [signupName, setSignupName] = useState('');
+  const [signupEmail, setSignupEmail] = useState('');
+  const [signupPassword, setSignupPassword] = useState('');
+  const [signupConfirmPassword, setSignupConfirmPassword] = useState('');
+  const [isTeacher, setIsTeacher] = useState(false);
+  const [signupErrors, setSignupErrors] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    if (user && !loading) {
+      navigate('/');
+    }
+  }, [user, loading, navigate]);
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoginErrors({});
+    
+    const result = loginSchema.safeParse({ email: loginEmail, password: loginPassword });
+    
+    if (!result.success) {
+      const errors: Record<string, string> = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0]) {
+          errors[err.path[0].toString()] = err.message;
+        }
+      });
+      setLoginErrors(errors);
+      return;
+    }
+
+    setIsSubmitting(true);
+    const { error } = await signIn(loginEmail, loginPassword);
+    setIsSubmitting(false);
+
+    if (error) {
+      if (error.message.includes('Invalid login credentials')) {
+        toast.error('Invalid email or password');
+      } else if (error.message.includes('Email not confirmed')) {
+        toast.error('Please confirm your email before logging in');
+      } else {
+        toast.error(error.message);
+      }
+    } else {
+      toast.success('Welcome back!');
+      navigate('/');
+    }
+  };
+
+  const handleSignup = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSignupErrors({});
+    
+    const result = signupSchema.safeParse({
+      fullName: signupName,
+      email: signupEmail,
+      password: signupPassword,
+      confirmPassword: signupConfirmPassword,
+    });
+    
+    if (!result.success) {
+      const errors: Record<string, string> = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0]) {
+          errors[err.path[0].toString()] = err.message;
+        }
+      });
+      setSignupErrors(errors);
+      return;
+    }
+
+    setIsSubmitting(true);
+    const role = isTeacher ? 'consultancy_owner' : 'student';
+    const { error } = await signUp(signupEmail, signupPassword, signupName, role);
+    setIsSubmitting(false);
+
+    if (error) {
+      if (error.message.includes('User already registered')) {
+        toast.error('An account with this email already exists');
+      } else {
+        toast.error(error.message);
+      }
+    } else {
+      toast.success('Account created successfully!');
+      navigate('/');
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-background to-accent/5 px-4">
+      <Card className={`w-full max-w-md shadow-lg border-border/50 ${isTeacher ? 'border-red-500 bg-red-50' : ''}`}>
+        <CardHeader className="text-center space-y-4">
+          <div className="flex justify-center">
+            <div className="p-3 rounded-full bg-primary/10">
+              <BookOpen className="h-8 w-8 text-primary" />
+            </div>
+          </div>
+          <div>
+            <CardTitle className="text-2xl font-bold text-foreground">
+              IELTS Practice Hub
+            </CardTitle>
+            <CardDescription className="text-muted-foreground mt-2">
+              Sign in to access your practice tests and track your progress
+            </CardDescription>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <Tabs defaultValue="login" className="w-full">
+            <TabsList className="grid w-full grid-cols-2 mb-6">
+              <TabsTrigger value="login">Login</TabsTrigger>
+              <TabsTrigger value="signup">Sign Up</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="login">
+              <form onSubmit={handleLogin} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="login-email">Email</Label>
+                  <Input
+                    id="login-email"
+                    type="email"
+                    placeholder="your@email.com"
+                    value={loginEmail}
+                    onChange={(e) => setLoginEmail(e.target.value)}
+                    className={loginErrors.email ? 'border-destructive' : ''}
+                  />
+                  {loginErrors.email && (
+                    <p className="text-sm text-destructive">{loginErrors.email}</p>
+                  )}
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="login-password">Password</Label>
+                  <Input
+                    id="login-password"
+                    type="password"
+                    placeholder="••••••••"
+                    value={loginPassword}
+                    onChange={(e) => setLoginPassword(e.target.value)}
+                    className={loginErrors.password ? 'border-destructive' : ''}
+                  />
+                  {loginErrors.password && (
+                    <p className="text-sm text-destructive">{loginErrors.password}</p>
+                  )}
+                </div>
+                <Button type="submit" className="w-full" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Signing in...
+                    </>
+                  ) : (
+                    'Sign In'
+                  )}
+                </Button>
+              </form>
+            </TabsContent>
+
+            <TabsContent value="signup">
+              <div className="flex items-center justify-start space-x-2 mb-4">
+                <Switch
+                  id="teacher-mode"
+                  checked={isTeacher}
+                  onCheckedChange={setIsTeacher}
+                />
+                <Label htmlFor="teacher-mode">Register as Teacher</Label>
+              </div>
+              <form onSubmit={handleSignup} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="signup-name">Full Name</Label>
+                  <Input
+                    id="signup-name"
+                    type="text"
+                    placeholder="John Doe"
+                    value={signupName}
+                    onChange={(e) => setSignupName(e.target.value)}
+                    className={signupErrors.fullName ? 'border-destructive' : ''}
+                  />
+                  {signupErrors.fullName && (
+                    <p className="text-sm text-destructive">{signupErrors.fullName}</p>
+                  )}
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="signup-email">Email</Label>
+                  <Input
+                    id="signup-email"
+                    type="email"
+                    placeholder="your@email.com"
+                    value={signupEmail}
+                    onChange={(e) => setSignupEmail(e.target.value)}
+                    className={signupErrors.email ? 'border-destructive' : ''}
+                  />
+                  {signupErrors.email && (
+                    <p className="text-sm text-destructive">{signupErrors.email}</p>
+                  )}
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="signup-password">Password</Label>
+                  <Input
+                    id="signup-password"
+                    type="password"
+                    placeholder="••••••••"
+                    value={signupPassword}
+                    onChange={(e) => setSignupPassword(e.target.value)}
+                    className={signupErrors.password ? 'border-destructive' : ''}
+                  />
+                  {signupErrors.password && (
+                    <p className="text-sm text-destructive">{signupErrors.password}</p>
+                  )}
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="signup-confirm">Confirm Password</Label>
+                  <Input
+                    id="signup-confirm"
+                    type="password"
+                    placeholder="••••••••"
+                    value={signupConfirmPassword}
+                    onChange={(e) => setSignupConfirmPassword(e.target.value)}
+                    className={signupErrors.confirmPassword ? 'border-destructive' : ''}
+                  />
+                  {signupErrors.confirmPassword && (
+                    <p className="text-sm text-destructive">{signupErrors.confirmPassword}</p>
+                  )}
+                </div>
+                <Button type="submit" className="w-full" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Creating account...
+                    </>
+                  ) : (
+                    'Create Account'
+                  )}
+                </Button>
+              </form>
+            </TabsContent>
+          </Tabs>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}

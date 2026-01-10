@@ -1,0 +1,23 @@
+{
+  "testId": "book14-test1",
+  "writing": [
+    {
+      "taskId": 1,
+      "type": "table",
+      "instruction": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "prompt": "The table below shows the percentage of adults in urban and rural areas who used the internet between 2011 and 2014.",
+      "imageUrl": null,
+      "minWords": 150,
+      "suggestedTime": "20 minutes"
+    },
+    {
+      "taskId": 2,
+      "type": "opinion-essay",
+      "instruction": "Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+      "prompt": "Some people believe that the best way to improve public health is to increase the number of sports facilities. Others, however, think that this would have little effect and other measures are needed. Discuss both views and give your opinion.",
+      "imageUrl": null,
+      "minWords": 250,
+      "suggestedTime": "40 minutes"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "testId": "book13-test1",
+  "writing": [
+    {
+      "taskId": 1,
+      "type": "map-comparison",
+      "instruction": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "prompt": "The two maps below show road access to a city hospital in 2007 and in 2010.",
+      "imageUrl": "/questions/writing_questions/book13/C13T1W1.jpg",
+      "minWords": 150,
+      "suggestedTime": "20 minutes"
+    },
+    {
+      "taskId": 2,
+      "type": "opinion-essay",
+      "instruction": "Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+      "prompt": "Living in a country where you have to speak a foreign language can cause serious social problems, as well as practical problems. To what extent do you agree or disagree with this statement?",
+      "imageUrl": null,
+      "minWords": 250,
+      "suggestedTime": "40 minutes"
+    }
+  ]
+}

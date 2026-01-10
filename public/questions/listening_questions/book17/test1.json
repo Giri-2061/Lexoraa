@@ -1,0 +1,116 @@
+{
+  "testId": "book17-test1",
+  "title": "Book 17 - Test 1",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "audioUrl": "/audio/book17-test1-sec1.mp3",
+      "questions": [
+        { "id": "Q1", "type": "form-completion", "question": "making sure the beach does not have (1)", "answerLength": "short" },
+        { "id": "Q2", "type": "form-completion", "question": "no (2)", "answerLength": "short" },
+        { "id": "Q3", "type": "form-completion", "question": "next task is taking action to attract (3)", "answerLength": "short" },
+        { "id": "Q4", "type": "form-completion", "question": "identifying types of (4)", "answerLength": "short" },
+        { "id": "Q5", "type": "form-completion", "question": "building a new (5)", "answerLength": "short" },
+        { "id": "Q6", "type": "form-completion", "question": "reach the (6)", "answerLength": "short" },
+        { "id": "Q7", "type": "form-completion", "question": "wear appropriate (7)", "answerLength": "short" },
+        { "id": "Q8", "type": "form-completion", "question": "suitable for (8) to participate in", "answerLength": "short" },
+        { "id": "Q9", "type": "form-completion", "question": "making (9) out of wood", "answerLength": "short" },
+        { "id": "Q10", "type": "form-completion", "question": "cost of session (no camping): (10) £", "answerLength": "short" }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "audioUrl": "/audio/book17-test1-sec2.mp3",
+      "questions": [
+        { "id": "Q11", "type": "multiple-choice", "question": "What is the maximum number of people who can stand on each side of the boat?", "options": ["9","15","18"], "correctOptionIndex": 0 },
+        { "id": "Q12", "type": "multiple-choice", "question": "What color are the tour boats?", "options": ["dark red","jet black","light green"], "correctOptionIndex": 2 },
+        { "id": "Q13", "type": "multiple-choice", "question": "Which lunchbox is suitable for someone who does not eat meat or fish?", "options": ["1","2","3"], "correctOptionIndex": 1 },
+        { "id": "Q14", "type": "multiple-choice", "question": "What should people do with their litter?", "options": ["take it home","hand it to a member of staff","put it in bins provided on the boat"], "correctOptionIndex": 1 },
+
+        { "id": "Q15", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO features of the lighthouse does Lou mention?", "options": ["why it was built","who built it","how long it took to build","who staffed it","what it was built with"] },
+        { "id": "Q16", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO features of the lighthouse does Lou mention?", "options": ["why it was built","who built it","how long it took to build","who staffed it","what it was built with"] },
+
+        { "id": "Q17", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO types of creature might come close to the boat?", "options": ["sea eagles","fur seals","dolphins","whales","penguins"] },
+        { "id": "Q18", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO types of creature might come close to the boat?", "options": ["sea eagles","fur seals","dolphins","whales","penguins"] },
+
+        { "id": "Q19", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO points does Lou make about the caves?", "options": ["Only large tourist boats can visit them","The entrances to them are often blocked","It is too dangerous for individuals to go near them","Someone will explain what is inside them","They cannot be reached on foot"] },
+        { "id": "Q20", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO points does Lou make about the caves?", "options": ["Only large tourist boats can visit them","The entrances to them are often blocked","It is too dangerous for individuals to go near them","Someone will explain what is inside them","They cannot be reached on foot"] }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "audioUrl": "/audio/book17-test1-sec3.mp3",
+      "questions": [
+        { "id": "Q21", "type": "multiple-choice", "question": "What problem did both Diana and Tim have when arranging their work experience?", "options": ["making initial contact with suitable farms","organising transport to and from the farm","finding a placement for the required length of time"], "correctOptionIndex": 0 },
+        { "id": "Q22", "type": "multiple-choice", "question": "Tim was pleased to be able to help", "options": ["a lamb that had a broken leg","a sheep that was having difficulty giving birth","a newly born lamb that was having trouble feeding"], "correctOptionIndex": 1 },
+        { "id": "Q23", "type": "multiple-choice", "question": "Diana says the sheep on her farm", "options": ["were of various different varieties","were mainly reared for their meat","had better quality wool than sheep on the hills"], "correctOptionIndex": 1 },
+        { "id": "Q24", "type": "multiple-choice", "question": "What did the students learn about adding supplements to chicken feed?", "options": ["These should only be given if specially needed","It is worth paying extra for the most effective ones","The amount given at one time should be limited"], "correctOptionIndex": 0 },
+        { "id": "Q25", "type": "multiple-choice", "question": "What happened when Diana was working with dairy cows?", "options": ["She identified some cows incorrectly","She accidentally threw some milk away","She made a mistake when storing milk"], "correctOptionIndex": 2 },
+        { "id": "Q26", "type": "multiple-choice", "question": "What did both farmers mention about vets and farming?", "options": ["Vets are failing to cope with some aspects of animal health","There needs to be a fundamental change in the training of vets","Some jobs could be done by the farmer rather than by a vet"], "correctOptionIndex": 2 },
+
+        { "id": "Q27", "type": "multiple-choice", "question": "Medical terminology — opinion", "options": ["Tim found this easier than expected","Tim thought this was not very clearly organised","Diana may do some further study on this","They both found the reading required for this was difficult","Tim was shocked at something he learned on this module","They were both surprised how little is known about some aspects of this"], "correctOptionIndex": 0 },
+        { "id": "Q28", "type": "multiple-choice", "question": "Diet and nutrition — opinion", "options": ["Tim found this easier than expected","Tim thought this was not very clearly organised","Diana may do some further study on this","They both found the reading required for this was difficult","Tim was shocked at something he learned on this module","They were both surprised how little is known about some aspects of this"], "correctOptionIndex": 4 },
+        { "id": "Q29", "type": "multiple-choice", "question": "Animal disease — opinion", "options": ["Tim found this easier than expected","Tim thought this was not very clearly organised","Diana may do some further study on this","They both found the reading required for this was difficult","Tim was shocked at something he learned on this module","They were both surprised how little is known about some aspects of this"], "correctOptionIndex": 5 },
+        { "id": "Q30", "type": "multiple-choice", "question": "Wildlife medication — opinion", "options": ["Tim found this easier than expected","Tim thought this was not very clearly organised","Diana may do some further study on this","They both found the reading required for this was difficult","Tim was shocked at something he learned on this module","They were both surprised how little is known about some aspects of this"], "correctOptionIndex": 2 }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "audioUrl": "/audio/book17-test1-sec4.mp3",
+      "questions": [
+        { "id": "Q31", "type": "form-completion", "question": "Mazes are a type of (31)", "answerLength": "short" },
+        { "id": "Q32", "type": "form-completion", "question": "(32) is needed to navigate through a maze", "answerLength": "short" },
+        { "id": "Q33", "type": "form-completion", "question": "the word 'maze' is derived from a word meaning a feeling of (33)", "answerLength": "short" },
+        { "id": "Q34", "type": "form-completion", "question": "they have frequently been used in (34) and prayer", "answerLength": "short" },
+        { "id": "Q35", "type": "form-completion", "question": "Ancient carvings on (35) have been found across many cultures", "answerLength": "short" },
+        { "id": "Q36", "type": "form-completion", "question": "Ancient Greeks used the symbol on (36)", "answerLength": "short" },
+        { "id": "Q37", "type": "form-completion", "question": "The largest surviving example of a turf labyrinth once had a big (37) at its centre", "answerLength": "short" },
+        { "id": "Q38", "type": "form-completion", "question": "walking a maze can reduce a person's (38) rate", "answerLength": "short" },
+        { "id": "Q39", "type": "form-completion", "question": "patients who can't walk can use 'finger labyrinths' made from (39)", "answerLength": "short" },
+        { "id": "Q40", "type": "form-completion", "question": "research has shown that Alzheimer's sufferers experience less (40)", "answerLength": "short" }
+      ]
+    }
+  ],
+  "answers": {
+    "Q1": "Litter",
+    "Q2": "Dogs",
+    "Q3": "Insects",
+    "Q4": "Butterflies",
+    "Q5": "Wall",
+    "Q6": "Island",
+    "Q7": "Boots",
+    "Q8": "Beginners",
+    "Q9": "Spoons",
+    "Q10": "35",
+    "Q11": "A",
+    "Q12": "C",
+    "Q13": "B",
+    "Q14": "B",
+    "Q15": "A,D",
+    "Q16": "A,D",
+    "Q17": "B,C",
+    "Q18": "B,C",
+    "Q19": "D,E",
+    "Q20": "D,E",
+    "Q21": "A",
+    "Q22": "B",
+    "Q23": "B",
+    "Q24": "A",
+    "Q25": "C",
+    "Q26": "C",
+    "Q27": "A",
+    "Q28": "E",
+    "Q29": "F",
+    "Q30": "C",
+    "Q31": "Puzzle",
+    "Q32": "Logic",
+    "Q33": "Confusion",
+    "Q34": "Meditation",
+    "Q35": "Stone",
+    "Q36": "Coins",
+    "Q37": "Tree",
+    "Q38": "Breathing",
+    "Q39": "Paper",
+    "Q40": "Anxiety"
+  }
+}

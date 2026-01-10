@@ -1,0 +1,118 @@
+{
+	"testId": "book13-test2",
+	"sections": [
+		{
+			"sectionNumber": 1,
+			"audioUrl": "/questions/audio/book13 audios/IELTS13-Tests1-4CD1Track_05.mp3",
+			"questions": [
+				{ "id": "Q1", "type": "form-completion", "question": "covers cycling and 1___________ all over Australia", "answerLength": "short" },
+				{ "id": "Q2", "type": "form-completion", "question": "Cost of membership includes the club fee and 2______________", "answerLength": "short" },
+				{ "id": "Q3", "type": "form-completion", "question": "The club kit is made by a company 3____________________", "answerLength": "short" },
+				{ "id": "Q4", "type": "form-completion", "question": "Level B: speed about 4____________ kph", "answerLength": "short" },
+				{ "id": "Q5", "type": "form-completion", "question": "Tuesdays at 5.30 am, meet at the 5_______________", "answerLength": "short" },
+				{ "id": "Q6", "type": "form-completion", "question": "Thursdays at 5.30 am, meet at the entrance to the 6_______________", "answerLength": "short" },
+				{ "id": "Q7", "type": "form-completion", "question": "Members often have 7______________ together afterwards", "answerLength": "short" },
+				{ "id": "Q8", "type": "form-completion", "question": "There is not always a 8____________ with the group on these rides", "answerLength": "short" },
+				{ "id": "Q9", "type": "form-completion", "question": "Check and print the 9____________ on the website beforehand", "answerLength": "short" },
+				{ "id": "Q10", "type": "form-completion", "question": "Bikes must have 10_____________________", "answerLength": "short" }
+			]
+		},
+		{
+			"sectionNumber": 2,
+			"audioUrl": "/questions/audio/book13 audios/IELTS13-Tests1-4CD1Track_06.mp3",
+			"questions": [
+				{ "id": "Q11", "type": "multiple-choice", "question": "How much time for volunteering does the company allow per employee?", "options": ["two hours per week","one day per month","8 hours per year"], "correctOptionIndex": 2 },
+				{ "id": "Q12", "type": "multiple-choice", "question": "In feedback almost all employees said that volunteering improved their", "options": ["chances of promotion","job satisfaction","relationships with colleagues"], "correctOptionIndex": 1 },
+				{ "id": "Q13", "type": "multiple-choice", "question": "Last year some staff helped unemployed people with their", "options": ["literacy skills","job applications","communication skills"], "correctOptionIndex": 2 },
+				{ "id": "Q14", "type": "multiple-choice", "question": "This year the company will start a new volunteering project with a local", "options": ["school","park","charity"], "correctOptionIndex": 1 },
+				{ "id": "Q15", "type": "multiple-choice", "question": "Where will the Digital Inclusion Day be held?", "options": ["at the company’s training facility","at a college","in a community centre"], "correctOptionIndex": 1 },
+				{ "id": "Q16", "type": "multiple-choice", "question": "What should staff do if they want to take part in the Digital Inclusion Day?", "options": ["fill in a form","attend a training workshop","get permission from their manager"], "correctOptionIndex": 0 },
+
+				{ "id": "Q17", "type": "multiple-choice", "multipleSelect": true, "question": "What TWO things are mentioned about the participants on the last Digital Inclusion Day? (Choose TWO)", "options": ["They were all over 70.","They never used their computer.","Their phones were mostly old-fashioned.","They only used their phones for making calls.","They initially showed little interest."], "correctOptions": [2,4] },
+				{ "id": "Q18", "type": "multiple-choice", "multipleSelect": true, "question": "What TWO things are mentioned about the participants on the last Digital Inclusion Day? (Choose TWO)", "options": ["They were all over 70.","They never used their computer.","Their phones were mostly old-fashioned.","They only used their phones for making calls.","They initially showed little interest."], "correctOptions": [2,4] },
+
+				{ "id": "Q19", "type": "multiple-choice", "multipleSelect": true, "question": "What TWO activities on the last digital inclusion day did participants describe as usual? (Choose TWO)", "options": ["learning to use tablets","communicating with family","shopping online","playing online games","sending emails"], "correctOptions": [1,3] },
+				{ "id": "Q20", "type": "multiple-choice", "multipleSelect": true, "question": "What TWO activities on the last digital inclusion day did participants describe as usual? (Choose TWO)", "options": ["learning to use tablets","communicating with family","shopping online","playing online games","sending emails"], "correctOptions": [1,3] }
+			]
+		},
+		{
+			"sectionNumber": 3,
+			"audioUrl": "/questions/audio/book13 audios/IELTS13-Tests1-4CD1Track_07.mp3",
+			"questions": [
+				{ "id": "Q21", "type": "multiple-choice", "question": "Russ says that his difficulty in planning the presentation is due to", "options": ["His lack of knowledge about the topic","His uncertainty about what he should try to achieve","The short time that he has for preparation"], "correctOptionIndex": 1 },
+				{ "id": "Q22", "type": "multiple-choice", "question": "Russ and his tutor agree that his approach in the presentation will be", "options": ["To concentrate on how nanotechnology is used in one field.","To follow the chronological development of nanotechnology.","To show the range of applications of nanotechnology."], "correctOptionIndex": 0 },
+				{ "id": "Q23", "type": "multiple-choice", "question": "In connection with slides, the tutor advises Russ to", "options": ["Talk about things that he can find slides to illustrate.","Look for slides to illustrate the points he makes.","Consider omitting slides together."], "correctOptionIndex": 2 },
+				{ "id": "Q24", "type": "multiple-choice", "question": "They both agree that the best way for Russ to start his presentation is", "options": ["To encourage the audience to talk.","To explain what Russ intends to do.","To provide an example."], "correctOptionIndex": 2 },
+				{ "id": "Q25", "type": "multiple-choice", "question": "What does the tutor advise Russ to do next while preparing his presentation?", "options": ["Summarize the main point he wants to make","Read the notes he has already made","List the topics he wants to cover"], "correctOptionIndex": 0 },
+
+				{ "id": "Q26", "type": "multiple-choice", "question": "Comments — choose the most appropriate comment for: structure", "options": ["Lacked a conclusion","Useful in the future","not enough","sometimes distracting","Showed originality","Covered a wide range","Not too technical"], "correctOptionIndex": 0 },
+				{ "id": "Q27", "type": "multiple-choice", "question": "Comments — choose the most appropriate comment for: eye contact", "options": ["Lacked a conclusion","Useful in the future","not enough","sometimes distracting","Showed originality","Covered a wide range","Not too technical"], "correctOptionIndex": 2 },
+				{ "id": "Q28", "type": "multiple-choice", "question": "Comments — choose the most appropriate comment for: Body language", "options": ["Lacked a conclusion","Useful in the future","not enough","sometimes distracting","Showed originality","Covered a wide range","Not too technical"], "correctOptionIndex": 3 },
+				{ "id": "Q29", "type": "multiple-choice", "question": "Comments — choose the most appropriate comment for: choice of words", "options": ["Lacked a conclusion","Useful in the future","not enough","sometimes distracting","Showed originality","Covered a wide range","Not too technical"], "correctOptionIndex": 6 },
+				{ "id": "Q30", "type": "multiple-choice", "question": "Comments — choose the most appropriate comment for: handouts", "options": ["Lacked a conclusion","Useful in the future","not enough","sometimes distracting","Showed originality","Covered a wide range","Not too technical"], "correctOptionIndex": 1 }
+			]
+		},
+		{
+			"sectionNumber": 4,
+			"audioUrl": "/questions/audio/book13 audios/IELTS13-Tests1-4CD1Track_08.mp3",
+			"questions": [
+				{ "id": "Q31", "type": "form-completion", "question": "the time and 31__________ of past events", "answerLength": "short" },
+				{ "id": "Q32", "type": "form-completion", "question": "different to semantic memory — the ability to remember general information about the 32__________", "answerLength": "short" },
+				{ "id": "Q33", "type": "form-completion", "question": "which does not involve recalling 33__________ information", "answerLength": "short" },
+				{ "id": "Q34", "type": "form-completion", "question": "The more 34___________ given to an event, the more successfully it can be encoded", "answerLength": "short" },
+				{ "id": "Q35", "type": "form-completion", "question": "To remember a 35____________, it is useful to have a strategy for encoding such information", "answerLength": "short" },
+				{ "id": "Q36", "type": "form-completion", "question": "Most effective when memories can be added to a 36________ of related information", "answerLength": "short" },
+				{ "id": "Q37", "type": "form-completion", "question": "The 37_________ of retrieval affects the strength of memories", "answerLength": "short" },
+				{ "id": "Q38", "type": "form-completion", "question": "the 38____________ of an object near to the place where you left your car", "answerLength": "short" },
+				{ "id": "Q39", "type": "form-completion", "question": "Games which stimulate the 39__________ have been found to help people with schizophrenia", "answerLength": "short" },
+				{ "id": "Q40", "type": "form-completion", "question": "Children with autism may have difficulty forming episodic memories — possibly because their concept of the 40___________ may be absent", "answerLength": "short" }
+			]
+		}
+	],
+	"answers": {
+		"Q1": "races",
+		"Q2": "insurance",
+		"Q3": "Jerriz",
+		"Q4": ["25","twenty-five"],
+		"Q5": "stadium",
+		"Q6": "park",
+		"Q7": "coffee",
+		"Q8": "leader",
+		"Q9": "route",
+		"Q10": "lights",
+
+		"Q11": "C",
+		"Q12": "B",
+		"Q13": "C",
+		"Q14": "B",
+		"Q15": "B",
+		"Q16": "A",
+
+		"Q17": "C,E",
+		"Q18": "C,E",
+		"Q19": "B,D",
+		"Q20": "B,D",
+
+		"Q21": "B",
+		"Q22": "A",
+		"Q23": "C",
+		"Q24": "C",
+		"Q25": "A",
+		"Q26": "A",
+		"Q27": "C",
+		"Q28": "D",
+		"Q29": "G",
+		"Q30": "B",
+
+		"Q31": "location",
+		"Q32": "world",
+		"Q33": "personal",
+		"Q34": "attention",
+		"Q35": "name",
+		"Q36": "network",
+		"Q37": "frequency",
+		"Q38": ["colour","color"],
+		"Q39": "brain",
+		"Q40": "self"
+	}
+}

@@ -1,0 +1,116 @@
+{
+  "testId": "book16-test3",
+  "title": "Book 16 - Test 3",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "audioUrl": "/questions/audio/book16 audios/Cam16-Test3-Part1.mp3",
+      "questions": [
+        { "id": "Q1", "type": "form-completion", "question": "First of all, children at this level are taken to practise in a (1) _______", "answerLength": "short" },
+        { "id": "Q2", "type": "form-completion", "question": "Instructors wear (2) _______ shirts.", "answerLength": "short" },
+        { "id": "Q3", "type": "form-completion", "question": "A (3) _______ is required and training is given.", "answerLength": "short" },
+        { "id": "Q4", "type": "form-completion", "question": "There are quiet times during the morning for a (4) _______ or a game.", "answerLength": "short" },
+        { "id": "Q5", "type": "form-completion", "question": "Classes are held even if there is (5) _______", "answerLength": "short" },
+        { "id": "Q6", "type": "form-completion", "question": "What to bring: a (6) _______", "answerLength": "short" },
+        { "id": "Q7", "type": "form-completion", "question": "Charlie's (7) _______", "answerLength": "short" },
+        { "id": "Q8", "type": "form-completion", "question": "Before the class, his (8) _______ will be checked.", "answerLength": "short" },
+        { "id": "Q9", "type": "form-completion", "question": "He should then go to the (9) _______ to meet his class instructor.", "answerLength": "short" },
+        { "id": "Q10", "type": "form-completion", "question": "The course costs (10) $ _______ per week.", "answerLength": "short" }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "audioUrl": "/questions/audio/book16 audios/Cam16-Test3-Part2.mp3",
+      "questions": [
+        { "id": "Q11", "type": "multiple-choice", "multipleSelect": true, "question": "According to Megan, what are the TWO main advantages of working in the agriculture and horticulture sectors?", "options": ["the active lifestyle","the above-average salaries","the flexible working opportunities","the opportunities for overseas travel","the chance to be in a natural environment"] },
+        { "id": "Q12", "type": "multiple-choice", "multipleSelect": true, "question": "According to Megan, what are the TWO main advantages of working in the agriculture and horticulture sectors?", "options": ["the active lifestyle","the above-average salaries","the flexible working opportunities","the opportunities for overseas travel","the chance to be in a natural environment"] },
+
+        { "id": "Q13", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO of the following are likely to be disadvantages for people working outdoors?", "options": ["the increasing risk of accidents","being in a very quiet location","difficult weather conditions at times","the cost of housing","the level of physical fitness required"] },
+        { "id": "Q14", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO of the following are likely to be disadvantages for people working outdoors?", "options": ["the increasing risk of accidents","being in a very quiet location","difficult weather conditions at times","the cost of housing","the level of physical fitness required"] }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "audioUrl": "/questions/audio/book16 audios/Cam16-Test3-Part3.mp3",
+      "questions": [
+        { "id": "Q15", "type": "multiple-choice", "question": "Fresh food commercial manager — Information (choose A-H)", "options": ["not a permanent job","involves leading a team","experience not essential","intensive work but also fun","chance to earn more through overtime","chance for rapid promotion","accommodation available","local travel involved"] },
+        { "id": "Q16", "type": "multiple-choice", "question": "Agronomist — Information (choose A-H)", "options": ["not a permanent job","involves leading a team","experience not essential","intensive work but also fun","chance to earn more through overtime","chance for rapid promotion","accommodation available","local travel involved"] },
+        { "id": "Q17", "type": "multiple-choice", "question": "Fresh produce buyer — Information (choose A-H)", "options": ["not a permanent job","involves leading a team","experience not essential","intensive work but also fun","chance to earn more through overtime","chance for rapid promotion","accommodation available","local travel involved"] },
+        { "id": "Q18", "type": "multiple-choice", "question": "Garden centre sales manager — Information (choose A-H)", "options": ["not a permanent job","involves leading a team","experience not essential","intensive work but also fun","chance to earn more through overtime","chance for rapid promotion","accommodation available","local travel involved"] },
+        { "id": "Q19", "type": "multiple-choice", "question": "Tree technician — Information (choose A-H)", "options": ["not a permanent job","involves leading a team","experience not essential","intensive work but also fun","chance to earn more through overtime","chance for rapid promotion","accommodation available","local travel involved"] },
+        { "id": "Q20", "type": "multiple-choice", "question": "Farm worker — Information (choose A-H)", "options": ["not a permanent job","involves leading a team","experience not essential","intensive work but also fun","chance to earn more through overtime","chance for rapid promotion","accommodation available","local travel involved"] }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "audioUrl": "/questions/audio/book16 audios/Cam16-Test3-Part4.mp3",
+      "questions": [
+        { "id": "Q21", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO points does Adam make about his experiment on artificial sweeteners?", "options": ["The results were what he had predicted","The experiment was simple to set up","A large sample of people was tested","The subjects were unaware of what they were drinking","The test was repeated several times for each person"] },
+        { "id": "Q22", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO points does Adam make about his experiment on artificial sweeteners?", "options": ["The results were what he had predicted","The experiment was simple to set up","A large sample of people was tested","The subjects were unaware of what they were drinking","The test was repeated several times for each person"] },
+
+        { "id": "Q23", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO problems did Rosie have when measuring the fat content of nuts?", "options": ["She used the wrong sort of nuts","She used an unsuitable chemical","She did not grind the nuts finely enough","The information on the nut package was incorrect","The weighing scales may have been unsuitable"] },
+        { "id": "Q24", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO problems did Rosie have when measuring the fat content of nuts?", "options": ["She used the wrong sort of nuts","She used an unsuitable chemical","She did not grind the nuts finely enough","The information on the nut package was incorrect","The weighing scales may have been unsuitable"] },
+
+        { "id": "Q25", "type": "multiple-choice", "question": "Adam suggests that restaurants could reduce obesity if their menus", "options": ["offered fewer options","had more low-calorie foods","were organised in a particular way"], "correctOptionIndex": 2 },
+        { "id": "Q26", "type": "multiple-choice", "question": "The students agree that food manufacturers deliberately", "options": ["make calorie counts hard to understand","fail to provide accurate calorie counts","use ineffective methods to reduce calories"], "correctOptionIndex": 0 },
+        { "id": "Q27", "type": "multiple-choice", "question": "What does Rosie say about levels of exercise in England?", "options": ["The amount recommended is much too low","Most people overestimate how much they do","Women now exercise more than they used to"], "correctOptionIndex": 1 },
+        { "id": "Q28", "type": "multiple-choice", "question": "Adam refers to the location and width of stairs in a train station to illustrate", "options": ["practical changes that can influence people's behaviour","methods of helping people who have mobility problems","ways of preventing accidents by controlling crowd movement"], "correctOptionIndex": 0 },
+        { "id": "Q29", "type": "multiple-choice", "question": "What do the students agree about including reference to exercise in their presentation?", "options": ["They should probably leave it out","They need to do more research on it","They should discuss this with their tutor"], "correctOptionIndex": 1 },
+        { "id": "Q30", "type": "multiple-choice", "question": "What are the students going to do next for their presentation?", "options": ["prepare some slides for it","find out how long they have for it","decide on its content and organisation"], "correctOptionIndex": 0 },
+
+        { "id": "Q31", "type": "form-completion", "question": "We imagine someone like a (31) _______ knitting.", "answerLength": "short" },
+        { "id": "Q32", "type": "form-completion", "question": "A (32) _______ ago, knitting was expected to disappear.", "answerLength": "short" },
+        { "id": "Q33", "type": "form-completion", "question": "The number of knitting classes is now increasing. People are buying more (33) _______ for knitting nowadays.", "answerLength": "short" },
+        { "id": "Q34", "type": "form-completion", "question": "gives support in times of (34) _______ difficulty", "answerLength": "short" },
+        { "id": "Q35", "type": "form-completion", "question": "requires only (35) _______ skills and little money to start", "answerLength": "short" },
+        { "id": "Q36", "type": "form-completion", "question": "Findings show early knitted items to be (36) _______ in shape.", "answerLength": "short" },
+        { "id": "Q37", "type": "form-completion", "question": "The first needles were made of natural materials such as wood and (37) _______", "answerLength": "short" },
+        { "id": "Q38", "type": "form-completion", "question": "Early yarns felt (38) _______ to touch.", "answerLength": "short" },
+        { "id": "Q39", "type": "form-completion", "question": "Geographical areas had their own (39) _______ of knitting.", "answerLength": "short" },
+        { "id": "Q40", "type": "form-completion", "question": "Everyday tasks like looking after (40) _______ were done while knitting.", "answerLength": "short" }
+      ]
+    }
+  ],
+  "answers": {
+    "Q1": "Park",
+    "Q2": "Blue",
+    "Q3": "Reference",
+    "Q4": "Story",
+    "Q5": "Rain",
+    "Q6": "Snack",
+    "Q7": "Medication",
+    "Q8": "Helmet",
+    "Q9": "Tent",
+    "Q10": "199",
+    "Q11": "A,C",
+    "Q12": "A,C",
+    "Q13": "B,C",
+    "Q14": "B,C",
+    "Q15": "D",
+    "Q16": "F",
+    "Q17": "A",
+    "Q18": "H",
+    "Q19": "C",
+    "Q20": "G",
+    "Q21": "C,D",
+    "Q22": "C,D",
+    "Q23": "C,E",
+    "Q24": "C,E",
+    "Q25": "C",
+    "Q26": "A",
+    "Q27": "B",
+    "Q28": "A",
+    "Q29": "A",
+    "Q30": "C",
+    "Q31": "Grandmother",
+    "Q32": "Decade",
+    "Q33": "Equipment",
+    "Q34": "Economic",
+    "Q35": "Basic",
+    "Q36": "Round",
+    "Q37": "Bone",
+    "Q38": "Rough",
+    "Q39": "Style",
+    "Q40": "Sheep"
+  }
+}

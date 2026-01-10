@@ -1,0 +1,521 @@
+{
+  "testId": "book14-test1",
+  "title": "Book 14 - Test 1",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "audioUrl": "/questions/audio/book14 audios/C14T1S1.mp3",
+      "sectionTitle": "CRIME REPORT FORM: Theft",
+      "questionType": "completion",
+      "instruction": "Complete the form below. Write ONE WORD AND/OR A NUMBER for each answer.",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "form-completion",
+          "question": "Nationality:",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q2",
+          "type": "form-completion",
+          "question": "Reason for visit: business (to buy antique ______)",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q3",
+          "type": "form-completion",
+          "question": "Current address: ______ Apartments (No 15)",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q4",
+          "type": "form-completion",
+          "question": "a wallet containing approximately ______ £",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q5",
+          "type": "form-completion",
+          "question": "Items stolen: – a ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q6",
+          "type": "form-completion",
+          "question": "Date of theft:",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q7",
+          "type": "form-completion",
+          "question": "Location: outside the ______ at about 4 pm",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q8",
+          "type": "form-completion",
+          "question": "Details of suspect: – some boys asked for the ______ then ran off",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q9",
+          "type": "form-completion",
+          "question": "Details of suspect: – one had a T-shirt with a picture of a tiger – he was about 12, slim build with ______ hair",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q10",
+          "type": "form-completion",
+          "question": "Crime reference number allocated:",
+          "answerLength": "short"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "audioUrl": "/questions/audio/book14 audios/C14T1S2.mp3",
+      "sectionTitle": "Induction talk for new apprentices",
+      "questionType": "multiple-choice",
+      "questions": [
+        {
+          "id": "Q11",
+          "type": "multiple-choice",
+          "multipleSelect": true,
+          "question": "Which TWO pieces of advice for the first week of an apprenticeship does the manager give? (Choose TWO)",
+          "options": [
+            "A: get to know colleagues",
+            "B: learn from any mistakes",
+            "C: ask lots of questions",
+            "D: react positively to feedback",
+            "E: enjoy new challenges"
+          ],
+          "correctOptions": [
+            0,
+            2
+          ]
+        },
+        {
+          "id": "Q12",
+          "type": "multiple-choice",
+          "multipleSelect": true,
+          "question": "Which TWO pieces of advice for the first week of an apprenticeship does the manager give? (Choose TWO)",
+          "options": [
+            "A: get to know colleagues",
+            "B: learn from any mistakes",
+            "C: ask lots of questions",
+            "D: react positively to feedback",
+            "E: enjoy new challenges"
+          ],
+          "correctOptions": [
+            0,
+            2
+          ]
+        },
+        {
+          "id": "Q13",
+          "type": "multiple-choice",
+          "multipleSelect": true,
+          "question": "Which TWO things does the manager say mentors can help with? (Choose TWO)",
+          "options": [
+            "A: confidence-building",
+            "B: making career plans",
+            "C: completing difficult tasks",
+            "D: making a weekly timetable",
+            "E: reviewing progress"
+          ],
+          "correctOptions": [
+            1,
+            4
+          ]
+        },
+        {
+          "id": "Q14",
+          "type": "multiple-choice",
+          "multipleSelect": true,
+          "question": "Which TWO things does the manager say mentors can help with? (Choose TWO)",
+          "options": [
+            "A: confidence-building",
+            "B: making career plans",
+            "C: completing difficult tasks",
+            "D: making a weekly timetable",
+            "E: reviewing progress"
+          ],
+          "correctOptions": [
+            1,
+            4
+          ]
+        },
+        {
+          "id": "Q15",
+          "type": "multiple-choice",
+          "question": "Using the internet",
+          "options": [
+            "A: It is encouraged.",
+            "B: There are some restrictions.",
+            "C: It is against the rules."
+          ],
+          "correctOptionIndex": 1
+        },
+        {
+          "id": "Q16",
+          "type": "multiple-choice",
+          "question": "Flexible working",
+          "options": [
+            "A: It is encouraged.",
+            "B: There are some restrictions.",
+            "C: It is against the rules."
+          ],
+          "correctOptionIndex": 1
+        },
+        {
+          "id": "Q17",
+          "type": "multiple-choice",
+          "question": "Booking holidays",
+          "options": [
+            "A: It is encouraged.",
+            "B: There are some restrictions.",
+            "C: It is against the rules."
+          ],
+          "correctOptionIndex": 2
+        },
+        {
+          "id": "Q18",
+          "type": "multiple-choice",
+          "question": "Working overtime",
+          "options": [
+            "A: It is encouraged.",
+            "B: There are some restrictions.",
+            "C: It is against the rules."
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "id": "Q19",
+          "type": "multiple-choice",
+          "question": "Wearing trainers",
+          "options": [
+            "A: It is encouraged.",
+            "B: There are some restrictions.",
+            "C: It is against the rules."
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "id": "Q20",
+          "type": "multiple-choice",
+          "question": "Bringing food to work",
+          "options": [
+            "A: It is encouraged.",
+            "B: There are some restrictions.",
+            "C: It is against the rules."
+          ],
+          "correctOptionIndex": 2
+        }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "audioUrl": "/questions/audio/book14 audios/C14T1S3.mp3",
+      "sectionTitle": "Cities built by the sea",
+      "questionType": "multiple-choice-and-matching",
+      "questions": [
+        {
+          "id": "Q21",
+          "type": "multiple-choice",
+          "question": "Carla and Rob were surprised to learn that coastal cities",
+          "options": [
+            "contain nearly half the world’s population.",
+            "include most of the world’s largest cities.",
+            "are growing twice as fast as other cities."
+          ],
+          "correctOptionIndex": 1
+        },
+        {
+          "id": "Q22",
+          "type": "multiple-choice",
+          "question": "According to Rob, building coastal cities near to rivers",
+          "options": [
+            "may bring pollution to the cities.",
+            "may reduce the land available for agriculture.",
+            "may mean the countryside is spoiled by industry."
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "id": "Q23",
+          "type": "multiple-choice",
+          "question": "What mistake was made when building water drainage channels in Miami in the 1950s?",
+          "options": [
+            "There were not enough of them.",
+            "They were made of unsuitable materials.",
+            "They did not allow for the effects of climate change."
+          ],
+          "correctOptionIndex": 2
+        },
+        {
+          "id": "Q24",
+          "type": "multiple-choice",
+          "question": "What do Rob and Carla think that the authorities in Miami should do immediately?",
+          "options": [
+            "take measures to restore ecosystems",
+            "pay for a new flood prevention system",
+            "stop disposing of waste materials into the ocean"
+          ],
+          "correctOptionIndex": 1
+        },
+        {
+          "id": "Q25",
+          "type": "multiple-choice",
+          "question": "What do they agree should be the priority for international action?",
+          "options": [
+            "greater coordination of activities",
+            "more sharing of information",
+            "agreement on shared policies"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "id": "Q26",
+          "type": "matching",
+          "question": "Historical background",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "correctOptionIndex": 1,
+          "answerKey": "Parts of the presentation",
+          "actionKey": "Decisions",
+          "actionOptions": [
+            "A: use visuals",
+            "B: keep it short",
+            "C: involve other students",
+            "D: check the information is accurate",
+            "E: provide a handout",
+            "F: focus on one example",
+            "G: do online research"
+          ]
+        },
+        {
+          "id": "Q27",
+          "type": "matching",
+          "question": "Geographical factors",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "correctOptionIndex": 0,
+          "answerKey": "Parts of the presentation",
+          "actionKey": "Decisions",
+          "actionOptions": [
+            "A: use visuals",
+            "B: keep it short",
+            "C: involve other students",
+            "D: check the information is accurate",
+            "E: provide a handout",
+            "F: focus on one example",
+            "G: do online research"
+          ]
+        },
+        {
+          "id": "Q28",
+          "type": "matching",
+          "question": "Past mistakes",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "correctOptionIndex": 5,
+          "answerKey": "Parts of the presentation",
+          "actionKey": "Decisions",
+          "actionOptions": [
+            "A: use visuals",
+            "B: keep it short",
+            "C: involve other students",
+            "D: check the information is accurate",
+            "E: provide a handout",
+            "F: focus on one example",
+            "G: do online research"
+          ]
+        },
+        {
+          "id": "Q29",
+          "type": "matching",
+          "question": "Future risks",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "correctOptionIndex": 6,
+          "answerKey": "Parts of the presentation",
+          "actionKey": "Decisions",
+          "actionOptions": [
+            "A: use visuals",
+            "B: keep it short",
+            "C: involve other students",
+            "D: check the information is accurate",
+            "E: provide a handout",
+            "F: focus on one example",
+            "G: do online research"
+          ]
+        },
+        {
+          "id": "Q30",
+          "type": "matching",
+          "question": "International implications",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "correctOptionIndex": 2,
+          "answerKey": "Parts of the presentation",
+          "actionKey": "Decisions",
+          "actionOptions": [
+            "A: use visuals",
+            "B: keep it short",
+            "C: involve other students",
+            "D: check the information is accurate",
+            "E: provide a handout",
+            "F: focus on one example",
+            "G: do online research"
+          ]
+        }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "audioUrl": "/questions/audio/book14 audios/C14T1S4.mp3",
+      "sectionTitle": "Marine renewable energy (ocean energy)",
+      "questionType": "completion",
+      "instruction": "Complete the notes below. Write ONE WORD ONLY for each answer.",
+      "questions": [
+        {
+          "id": "Q31",
+          "type": "form-completion",
+          "question": "More energy required because of growth in population and ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q32",
+          "type": "form-completion",
+          "question": "Advantage: waves provide a ______ source of renewable energy",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q33",
+          "type": "form-completion",
+          "question": "Problems: • waves can move in any ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q34",
+          "type": "form-completion",
+          "question": "Problems: • movement of sand, etc. on the ______ of the ocean may be affected",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q35",
+          "type": "form-completion",
+          "question": "Tides are more ______ than waves",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q36",
+          "type": "form-completion",
+          "question": "Planned tidal lagoon in Wales: • will be created in a ______ at Swansea",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q37",
+          "type": "form-completion",
+          "question": "Stored water is released through ______ , driving the turbines in the reverse direction",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q38",
+          "type": "form-completion",
+          "question": "Advantages: • no ______ is required to make it work",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q39",
+          "type": "form-completion",
+          "question": "Advantages: • likely to create a number of ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q40",
+          "type": "form-completion",
+          "question": "Problem: • may harm fish and birds, e.g. by affecting ______ and building up silt",
+          "answerLength": "short"
+        }
+      ]
+    }
+  ],
+  "answers": {
+    "Q1": "Canadian",
+    "Q2": "furniture",
+    "Q3": "park",
+    "Q4": "250",
+    "Q5": "phone",
+    "Q6": ["10 September","10th September"],
+    "Q7": "museum",
+    "Q8": "time",
+    "Q9": ["blond","blonde"],
+    "Q10": "87954 82361",
+    "Q11": "A",
+    "Q12": "C",
+    "Q13": "B",
+    "Q14": "E",
+    "Q15": "B",
+    "Q16": "B",
+    "Q17": "C",
+    "Q18": "A",
+    "Q19": "A",
+    "Q20": "C",
+    "Q21": "B",
+    "Q22": "A",
+    "Q23": "C",
+    "Q24": "B",
+    "Q25": "A",
+    "Q26": "B",
+    "Q27": "A",
+    "Q28": "F",
+    "Q29": "G",
+    "Q30": "C",
+    "Q31": "industry",
+    "Q32": "constant",
+    "Q33": "direction",
+    "Q34": "floor",
+    "Q35": "predictable",
+    "Q36": "bay",
+    "Q37": "gates",
+    "Q38": "fuel",
+    "Q39": "jobs",
+    "Q40": "migration"
+  }
+}

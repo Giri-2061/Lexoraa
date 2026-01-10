@@ -1,0 +1,115 @@
+{
+	"testId": "book19-test4",
+	"title": "Book 19 - Test 4",
+	"sections": [
+		{
+			"sectionNumber": 1,
+			"audioUrl": "/questions/audio/book19 audios/cam19-test4-part1.m4a",
+			"questions": [
+				{ "id": "Q1", "type": "form-completion", "question": "Name of supervisor: (1) __________", "answerLength": "short" },
+				{ "id": "Q2", "type": "form-completion", "question": "Where to leave coat and bag: use (2) __________ in staffroom", "answerLength": "short" },
+				{ "id": "Q3", "type": "form-completion", "question": "See Tiffany in HR to give (3) __________ number", "answerLength": "short" },
+				{ "id": "Q4", "type": "form-completion", "question": "See Tiffany in HR to collect (4) __________", "answerLength": "short" },
+				{ "id": "Q5", "type": "form-completion", "question": "Location of HR office: on (5) __________ floor", "answerLength": "short" },
+				{ "id": "Q6", "type": "form-completion", "question": "Supervisor's mobile number: (6) __________", "answerLength": "short" },
+				{ "id": "Q7", "type": "form-completion", "question": "Bakery section notes: use (7) __________ labels", "answerLength": "short" },
+				{ "id": "Q8", "type": "form-completion", "question": "Sushi takeaway: re-stock with (8) __________ boxes if needed", "answerLength": "short" },
+				{ "id": "Q9", "type": "form-completion", "question": "Meat/fish counters: collect (9) __________ for the fish", "answerLength": "short" },
+				{ "id": "Q10", "type": "form-completion", "question": "Meat/fish counters notes: must wear special (10) __________", "answerLength": "short" }
+			]
+		},
+		{
+			"sectionNumber": 2,
+			"audioUrl": "/questions/audio/book19 audios/cam19-test4-part2.m4a",
+			"questions": [
+				{ "id": "Q11", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO problems with some training programmes for new runners does Liz mention? (Choose TWO)", "options": ["There is a risk of serious injury.","They are unsuitable for certain age groups.","They are unsuitable for people with health issues.","It is difficult to stay motivated.","There is a lack of individual support."], "correctOptions": [2,4] },
+				{ "id": "Q12", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO problems with some training programmes for new runners does Liz mention? (Choose TWO)", "options": ["There is a risk of serious injury.","They are unsuitable for certain age groups.","They are unsuitable for people with health issues.","It is difficult to stay motivated.","There is a lack of individual support."], "correctOptions": [2,4] },
+				{ "id": "Q13", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO tips does Liz recommend for new runners? (Choose TWO)", "options": ["doing two runs a week","running in the evening","going on runs with a friend","listening to music during runs","running very slowly"], "correctOptions": [0,3] },
+				{ "id": "Q14", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO tips does Liz recommend for new runners? (Choose TWO)", "options": ["doing two runs a week","running in the evening","going on runs with a friend","listening to music during runs","running very slowly"], "correctOptions": [0,3] },
+				{ "id": "Q15", "type": "multiple-choice", "question": "Reason Ceri delayed joining the club", "options": ["a lack of confidence","a dislike of running","a lack of time"], "correctOptionIndex": 0 },
+				{ "id": "Q16", "type": "multiple-choice", "question": "Reason James delayed joining the club", "options": ["a lack of confidence","a dislike of running","a lack of time"], "correctOptionIndex": 1 },
+				{ "id": "Q17", "type": "multiple-choice", "question": "Reason Leo delayed joining the club", "options": ["a lack of confidence","a dislike of running","a lack of time"], "correctOptionIndex": 2 },
+				{ "id": "Q18", "type": "multiple-choice", "question": "Reason Mark delayed joining the club", "options": ["a lack of confidence","a dislike of running","a lack of time"], "correctOptionIndex": 0 },
+				{ "id": "Q19", "type": "multiple-choice", "question": "What does Liz say about running her first marathon?", "options": ["It had always been her ambition.","Her husband persuaded her to do it.","She nearly gave up before the end."], "correctOptionIndex": 2 },
+				{ "id": "Q20", "type": "multiple-choice", "question": "Liz says new runners should sign up for a race", "options": ["every six months.","within a few weeks of taking up running.","after completing several practice runs."], "correctOptionIndex": 1 }
+			]
+		},
+		{
+			"sectionNumber": 3,
+			"audioUrl": "/questions/audio/book19 audios/cam19-test4-part3.m4a",
+			"questions": [
+				{ "id": "Q21", "type": "multiple-choice", "question": "Kieran thinks the packing advice given by Jane's grandfather is", "options": ["common sense.","hard to follow.","over-protective."], "correctOptionIndex": 0 },
+				{ "id": "Q22", "type": "multiple-choice", "question": "How does Jane feel about the books her grandfather has given her?", "options": ["They are not worth keeping.","They should go to a collector.","They have sentimental value for her."], "correctOptionIndex": 2 },
+				{ "id": "Q23", "type": "multiple-choice", "question": "Jane and Kieran agree that hardback books should be", "options": ["put out on display.","given as gifts to visitors.","more attractively designed."], "correctOptionIndex": 0 },
+				{ "id": "Q24", "type": "multiple-choice", "question": "While talking about taking a book from a shelf, Jane", "options": ["describes the mistakes other people make.","reflects on a significant childhood experience.","explains why some books are easier to remove."], "correctOptionIndex": 1 },
+				{ "id": "Q25", "type": "multiple-choice", "question": "What do Jane and Kieran suggest about new books?", "options": ["Their parents liked buying them as presents.","They would like to buy more of them.","Not everyone can afford them."], "correctOptionIndex": 2 },
+				{ "id": "Q26", "type": "matching", "question": "Where are rare books kept?", "options": ["near the entrance","in the attic","at the back of the shop","on a high shelf","near the stairs","in a specially designed space","within the cafe"], "correctOptionIndex": 3 },
+				{ "id": "Q27", "type": "matching", "question": "Where are children's books kept?", "options": ["near the entrance","in the attic","at the back of the shop","on a high shelf","near the stairs","in a specially designed space","within the cafe"], "correctOptionIndex": 5 },
+				{ "id": "Q28", "type": "matching", "question": "Where are unwanted books kept?", "options": ["near the entrance","in the attic","at the back of the shop","on a high shelf","near the stairs","in a specially designed space","within the cafe"], "correctOptionIndex": 0 },
+				{ "id": "Q29", "type": "matching", "question": "Where are requested books kept?", "options": ["near the entrance","in the attic","at the back of the shop","on a high shelf","near the stairs","in a specially designed space","within the cafe"], "correctOptionIndex": 2 },
+				{ "id": "Q30", "type": "matching", "question": "Where are coursebooks kept?", "options": ["near the entrance","in the attic","at the back of the shop","on a high shelf","near the stairs","in a specially designed space","within the cafe"], "correctOptionIndex": 6 }
+			]
+		},
+		{
+			"sectionNumber": 4,
+			"audioUrl": "/questions/audio/book19 audios/cam19-test4-part4.m4a",
+			"questions": [
+				{ "id": "Q31", "type": "form-completion", "question": "Do not include invasive species because of possible (31) __________ with native species", "answerLength": "short" },
+				{ "id": "Q32", "type": "form-completion", "question": "Provide sustainable sources of (32) __________ for local people", "answerLength": "short" },
+				{ "id": "Q33", "type": "form-completion", "question": "Use seeds with high genetic diversity to increase resistance to (33) __________", "answerLength": "short" },
+				{ "id": "Q34", "type": "form-completion", "question": "Do not select land being used for (34) __________", "answerLength": "short" },
+				{ "id": "Q35", "type": "form-completion", "question": "Base planning decisions on accurate (35) __________", "answerLength": "short" },
+				{ "id": "Q36", "type": "form-completion", "question": "Drones help by keeping (36) __________ on endangered areas", "answerLength": "short" },
+				{ "id": "Q37", "type": "form-completion", "question": "Native fig trees increase the (37) __________ of recovery", "answerLength": "short" },
+				{ "id": "Q38", "type": "form-completion", "question": "(38) __________ were soon attracted to the area", "answerLength": "short" },
+				{ "id": "Q39", "type": "form-completion", "question": "Mangrove loss made it difficult for people to make a living from (39) __________", "answerLength": "short" },
+				{ "id": "Q40", "type": "form-completion", "question": "The project protects against the higher risk of (40) __________", "answerLength": "short" }
+			]
+		}
+	],
+	"answers": {
+		"Q1": "Kaeden",
+		"Q2": ["locker","lockers"],
+		"Q3": "passport",
+		"Q4": "uniform",
+		"Q5": ["third","3rd"],
+		"Q6": "0412665903",
+		"Q7": "yellow",
+		"Q8": "plastic",
+		"Q9": "ice",
+		"Q10": ["glove","gloves"],
+
+		"Q11": "C,E",
+		"Q12": "C,E",
+		"Q13": "A,D",
+		"Q14": "A,D",
+		"Q15": "A",
+		"Q16": "B",
+		"Q17": "C",
+		"Q18": "A",
+		"Q19": "C",
+		"Q20": "B",
+
+		"Q21": "A",
+		"Q22": "C",
+		"Q23": "A",
+		"Q24": "B",
+		"Q25": "C",
+		"Q26": "D",
+		"Q27": "F",
+		"Q28": "A",
+		"Q29": "C",
+		"Q30": "G",
+
+		"Q31": "competition",
+		"Q32": "food",
+		"Q33": "disease",
+		"Q34": "agriculture",
+		"Q35": "maps",
+		"Q36": "cattle",
+		"Q37": "speed",
+		"Q38": "monkeys",
+		"Q39": "fishing",
+		"Q40": "flooding"
+	}
+}

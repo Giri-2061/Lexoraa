@@ -1,0 +1,332 @@
+{
+  "testId": "book18-test3",
+  "title": "Book 18 - Test 3",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "audioUrl": "/questions/audio/book18 audios/cam18-test3-part1.mp3",
+      "sectionTitle": "Wayside Camera Club Membership",
+      "questionType": "completion",
+      "instruction": "Complete the form below. Write ONE WORD AND/OR A NUMBER for each answer (Questions 1-4). Complete the table below. Write NO MORE THAN TWO WORDS for each answer (Questions 5-10).",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "form-completion",
+          "question": "Home address: 52 ______ Street, Peacetown",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q2",
+          "type": "form-completion",
+          "question": "Heard about us: from a ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q3",
+          "type": "form-completion",
+          "question": "Reasons for joining: to enter competitions to ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q4",
+          "type": "form-completion",
+          "question": "Type of membership: ______ membership (£30)",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q5",
+          "type": "form-completion",
+          "question": "Title of competition: '______' - A scene in the home",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q6",
+          "type": "form-completion",
+          "question": "'Beautiful Sunsets' - Scene must show some ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q7",
+          "type": "form-completion",
+          "question": "'Beautiful Sunsets' - The ______ was wrong.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q8",
+          "type": "form-completion",
+          "question": "Title of competition: '______'",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q9",
+          "type": "form-completion",
+          "question": "Scene must show ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q10",
+          "type": "form-completion",
+          "question": "The photograph was too ______ .",
+          "answerLength": "short"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "audioUrl": "/questions/audio/book18 audios/cam18-test3-part2.mp3",
+      "sectionTitle": "Mushroom Picking Advice",
+      "questionType": "multiple-choice",
+      "questions": [
+        {
+          "id": "Q11-12",
+          "type": "multiple-choice",
+          "multipleSelect": true,
+          "question": "Which TWO warnings does Dan give about picking mushrooms? (Choose TWO)",
+          "options": [
+            " Don’t pick more than one variety of mushroom at a time.",
+            " Don’t pick mushrooms near busy roads.",
+            " Don’t eat mushrooms given to you.",
+            " Don’t eat mushrooms while picking them.",
+            " Don’t pick old mushrooms."
+          ],
+          "correctOptions": [1, 2]
+        },
+        {
+          "id": "Q13-14",
+          "type": "multiple-choice",
+          "multipleSelect": true,
+          "question": "Which TWO ideas about wild mushrooms does Dan say are correct? (Choose TWO)",
+          "options": [
+            " Mushrooms should always be peeled before eating.",
+            " Mushrooms eaten by animals may be unsafe.",
+            " Cooking destroys toxins in mushrooms.",
+            " Brightly coloured mushrooms can be edible.",
+            " All poisonous mushrooms have a bad smell."
+          ],
+          "correctOptions": [1, 3]
+        },
+        {
+          "id": "Q15",
+          "type": "multiple-choice",
+          "question": "What advice does Dan give about picking mushrooms in parks?",
+          "options": [
+            " Choose wooded areas.",
+            " Don’t disturb wildlife.",
+            " Get there early."
+          ],
+          "correctOptionIndex": 2
+        },
+        {
+          "id": "Q16",
+          "type": "multiple-choice",
+          "question": "Dan says it is a good idea for beginners to",
+          "options": [
+            " use a mushroom app.",
+            " join a group.",
+            " take a reference book."
+          ],
+          "correctOptionIndex": 1
+        },
+        {
+          "id": "Q17",
+          "type": "multiple-choice",
+          "question": "What does Dan say is important for conservation?",
+          "options": [
+            " selecting only fully grown mushrooms",
+            " picking a limited amount of mushrooms",
+            " avoiding areas where rare mushroom species grow"
+          ],
+          "correctOptionIndex": 1
+        },
+        {
+          "id": "Q18",
+          "type": "multiple-choice",
+          "question": "According to Dan, some varieties of wild mushrooms are in decline because there is",
+          "options": [
+            " a huge demand for them from restaurants.",
+            " a lack of rain in this part of the country.",
+            " a rise in building developments locally."
+          ],
+          "correctOptionIndex": 2
+        },
+        {
+          "id": "Q19",
+          "type": "multiple-choice",
+          "question": "Dan says that when storing mushrooms, people should",
+          "options": [
+            " keep them in the fridge for no more than two days.",
+            " keep them in a brown bag in a dark room.",
+            " leave them for a period after washing them."
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "id": "Q20",
+          "type": "multiple-choice",
+          "question": "What does Dan say about trying new varieties of mushrooms?",
+          "options": [
+            " Experiment with different recipes.",
+            " Expect some to have a strong taste.",
+            " Cook them for a long time."
+          ],
+          "correctOptionIndex": 0
+        }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "audioUrl": "/questions/audio/book18 audios/cam18-test3-part3.mp3",
+      "sectionTitle": "The Luddites and Future of Work",
+      "questionType": "multiple-choice-and-matching",
+      "questions": [
+        {
+          "id": "Q21-22",
+          "type": "multiple-choice",
+          "multipleSelect": true,
+          "question": "Which TWO opinions about the Luddites do the students express? (Choose TWO)",
+          "options": [
+            " Their actions were ineffective.",
+            " They are still influential today.",
+            " They have received unfair criticism.",
+            " They were proved right.",
+            " Their attitude is understandable."
+          ],
+          "correctOptions": [0, 4]
+        },
+        {
+          "id": "Q23-24",
+          "type": "multiple-choice",
+          "multipleSelect": true,
+          "question": "Which TWO predictions about the future of work are the students doubtful about? (Choose TWO)",
+          "options": [
+            " Work will be more rewarding.",
+            " Unemployment will fall.",
+            " People will want to delay retiring.",
+            " Working hours will be shorter.",
+            " People will change jobs more frequently."
+          ],
+          "correctOptions": [1, 3]
+        },
+        {
+          "id": "Q25-30-instruction",
+          "type": "form-completion",
+          "question": "What comment do the students make about each of the following jobs?\n\nChoose SIX answers from the box and write the correct letter, A-G, next to Questions 25-30.\n\nComments\n\nA   These jobs are likely to be at risk.\n\nB   Their role has become more interesting in recent years.\n\nC   The number of people working in this sector has fallen dramatically.\n\nD   This job will require more qualifications.\n\nE   Higher disposable income has led to a huge increase in jobs.\n\nF   There is likely to be a significant rise in demand for this service.\n\nG   Both employment and productivity have risen.\n\nJobs are given below:",
+          "answerLength": "none"
+        },
+        { "id": "Q25", "type": "form-completion", "question": "25   Accountants                …………….", "answerLength": "short" },
+        { "id": "Q26", "type": "form-completion", "question": "26   Hairdressers                …………….", "answerLength": "short" },
+        { "id": "Q27", "type": "form-completion", "question": "27   Administrative staff      …………….", "answerLength": "short" },
+        { "id": "Q28", "type": "form-completion", "question": "28   Agricultural workers   …………….", "answerLength": "short" },
+        { "id": "Q29", "type": "form-completion", "question": "29   Care workers               …………….", "answerLength": "short" },
+        { "id": "Q30", "type": "form-completion", "question": "30   Bank clerks                 …………….", "answerLength": "short" }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "audioUrl": "/questions/audio/book18 audios/cam18-test3-part4.mp3",
+      "sectionTitle": "Space Traffic Management",
+      "questionType": "completion",
+      "instruction": "Complete the notes below. Write ONE WORD ONLY for each answer.",
+      "questions": [
+        {
+          "id": "Q31",
+          "type": "form-completion",
+          "question": "Space Traffic Management: would aim to set up legal and ______ ways of improving safety.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q32",
+          "type": "form-completion",
+          "question": "Satellites are now quite ______ and therefore more widespread",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q33",
+          "type": "form-completion",
+          "question": "There are constellations made up of ______ of satellites",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q34",
+          "type": "form-completion",
+          "question": "Satellites are not required to transmit information to help with their ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q35",
+          "type": "form-completion",
+          "question": "There are few systems for ______ satellites.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q36",
+          "type": "form-completion",
+          "question": "Operators may be unwilling to share details of satellites used for ______ or commercial reasons.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q37",
+          "type": "form-completion",
+          "question": "It may be hard to collect details of the object’s ______ at a given time.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q38",
+          "type": "form-completion",
+          "question": "Scientists can only make a ______ about where the satellite will go.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q39",
+          "type": "form-completion",
+          "question": "The information should be combined in one ______ .",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q40",
+          "type": "form-completion",
+          "question": "A coordinated system must be designed to create ______ in its users.",
+          "answerLength": "short"
+        }
+      ]
+    }
+  ],
+  "answers": {
+    "Q1": "Marrowfield",
+    "Q2": "relative",
+    "Q3": "socialise / socialize",
+    "Q4": "full",
+    "Q5": "Domestic Life",
+    "Q6": "clouds",
+    "Q7": "timing",
+    "Q8": "Animal Magic",
+    "Q9": "(animal) movement",
+    "Q10": "dark",
+    "Q11-12": "B, C",
+    "Q13-14": "B, D",
+    "Q15": "C",
+    "Q16": "B",
+    "Q17": "B",
+    "Q18": "C",
+    "Q19": "A",
+    "Q20": "A",
+    "Q21-22": "A, E",
+    "Q23-24": "B, D",
+    "Q25": "G",
+    "Q26": "E",
+    "Q27": "B",
+    "Q28": "C",
+    "Q29": "F",
+    "Q30": "A",
+    "Q31": "technical",
+    "Q32": "cheap",
+    "Q33": "thousands",
+    "Q34": "identification",
+    "Q35": "tracking",
+    "Q36": "military",
+    "Q37": "location",
+    "Q38": "prediction",
+    "Q39": "database",
+    "Q40": "trust"
+  }
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#4fc3f7"/>
+      <stop offset="1" stop-color="#1976d2"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <circle cx="256" cy="160" r="116" fill="url(#g)" opacity="0.12"/>
+  <g transform="translate(120,88)">
+    <!-- book symbol -->
+    <path d="M64 24c-18 0-40 6-56 14v232c16-8 38-14 56-14 18 0 40 6 56 14V38c-16-8-38-14-56-14z" fill="#fff" opacity="0.95"/>
+    <path d="M72 24c18 0 40 6 56 14v232c-16-8-38-14-56-14-18 0-40 6-56 14V38c16-8 38-14 56-14z" fill="#ffd54f" opacity="0.95" transform="translate(72,0)"/>
+  </g>
+  <text x="50%" y="310" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#0b3d91">THE</text>
+  <text x="50%" y="360" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="800" fill="#1976d2">LEARNING</text>
+  <text x="50%" y="415" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#0b3d91">LOUNGE</text>
+</svg>

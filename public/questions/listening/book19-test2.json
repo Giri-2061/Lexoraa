@@ -1,0 +1,115 @@
+{
+	"testId": "book19-test2",
+	"title": "Book 19 - Test 2",
+	"sections": [
+		{
+			"sectionNumber": 1,
+			"audioUrl": "/questions/audio/book19 audios/cam19-test2-part1.m4a",
+			"questions": [
+				{ "id": "Q1", "type": "form-completion", "question": "Coordinator: Gary (1) __________", "answerLength": "short" },
+				{ "id": "Q2", "type": "form-completion", "question": "Level: (2) __________", "answerLength": "short" },
+				{ "id": "Q3", "type": "form-completion", "question": "Place: the (3) __________", "answerLength": "short" },
+				{ "id": "Q4", "type": "form-completion", "question": "(4) __________ Street first floor, room T347", "answerLength": "short" },
+				{ "id": "Q5", "type": "form-completion", "question": "Time: Thursday morning at (5) __________", "answerLength": "short" },
+				{ "id": "Q6", "type": "form-completion", "question": "Recommended website: The perfect (6) __________", "answerLength": "short" },
+				{ "id": "Q7", "type": "form-completion", "question": "Tuning guitars using an app or by (7) __________", "answerLength": "short" },
+				{ "id": "Q8", "type": "form-completion", "question": "Strumming chords while the teacher is (8) __________", "answerLength": "short" },
+				{ "id": "Q9", "type": "form-completion", "question": "Playing songs often listening to a (9) __________ of a song", "answerLength": "short" },
+				{ "id": "Q10", "type": "form-completion", "question": "Playing single notes, then (10) __________", "answerLength": "short" }
+			]
+		},
+		{
+			"sectionNumber": 2,
+			"audioUrl": "/questions/audio/book19 audios/cam19-test2-part2.m4a",
+			"questions": [
+				{ "id": "Q11", "type": "multiple-choice", "question": "What made David leave London and move to Northsea?", "options": ["He was eager to develop a hobby.","He wanted to work shorter hours.","He found his job in website design unsatisfying."], "correctOptionIndex": 2 },
+				{ "id": "Q12", "type": "multiple-choice", "question": "The Lifeboat Institution in Northsea was built with money provided by", "options": ["a local organisation.","a local resident.","the local council."], "correctOptionIndex": 1 },
+				{ "id": "Q13", "type": "multiple-choice", "question": "In his health assessment, the doctor was concerned that David", "options": ["might be colour blind.","was rather short-sighted.","had undergone eye surgery."], "correctOptionIndex": 0 },
+				{ "id": "Q14", "type": "multiple-choice", "question": "After arriving at the lifeboat station, they aim to launch the boat within", "options": ["five minutes.","six to eight minutes.","eight and a half minutes."], "correctOptionIndex": 1 },
+				{ "id": "Q15", "type": "multiple-choice", "question": "As a 'helmsman', David decides", "options": ["who will be the members of his crew.","what equipment is necessary to take.","if the lifeboat should be launched."], "correctOptionIndex": 2 },
+				{ "id": "Q16", "type": "multiple-choice", "question": "As well as going out on the lifeboat, David", "options": ["gives talks on safety at sea.","helps with fundraising.","recruits new volunteers."], "correctOptionIndex": 0 },
+				{ "id": "Q17", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO things does David say about the lifeboat volunteer training? (Choose TWO)", "options": ["The residential course developed his leadership skills.","The training in use of ropes and knots was quite brief.","The training exercises have built up his mental strength.","The casualty care activities were particularly challenging.","The wave tank activities provided survival practice."], "correctOptions": [2,4] },
+				{ "id": "Q18", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO things does David say about the lifeboat volunteer training? (Choose TWO)", "options": ["The residential course developed his leadership skills.","The training in use of ropes and knots was quite brief.","The training exercises have built up his mental strength.","The casualty care activities were particularly challenging.","The wave tank activities provided survival practice."], "correctOptions": [2,4] },
+				{ "id": "Q19", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO things does David find most motivating about the work? (Choose TWO)", "options": ["working as part of a team","experiences when working in winter","being thanked by those he has helped","the fact that it keeps him fit","the chance to develop new equipment"], "correctOptions": [0,2] },
+				{ "id": "Q20", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO things does David find most motivating about the work? (Choose TWO)", "options": ["working as part of a team","experiences when working in winter","being thanked by those he has helped","the fact that it keeps him fit","the chance to develop new equipment"], "correctOptions": [0,2] }
+			]
+		},
+		{
+			"sectionNumber": 3,
+			"audioUrl": "/questions/audio/book19 audios/cam19-test2-part3.m4a",
+			"questions": [
+				{ "id": "Q21", "type": "multiple-choice", "question": "At first, Don thought the topic of recycling footwear might be too", "options": ["limited in scope.","hard to research.","boring for listeners."], "correctOptionIndex": 0 },
+				{ "id": "Q22", "type": "multiple-choice", "question": "When discussing trainers, Bella and Don disagree about", "options": ["how popular they are among young people.","how suitable they are for school.","how quickly they wear out."], "correctOptionIndex": 1 },
+				{ "id": "Q23", "type": "multiple-choice", "question": "Bella says she sometimes recycles shoes because", "options": ["they no longer fit.","she no longer likes them.","they are no longer in fashion."], "correctOptionIndex": 1 },
+				{ "id": "Q24", "type": "multiple-choice", "question": "What did the article say that confused Don?", "options": ["Public consumption of footwear has risen.","Less footwear is recycled now than in the past.","People dispose of more footwear than they used to."], "correctOptionIndex": 1 },
+				{ "id": "Q25", "type": "multiple-choice", "question": "Reason for rejecting the high-heeled shoes", "options": ["one shoe was missing","the colour of one shoe had faded","one shoe had a hole in it","the shoes were brand new","the shoes were too dirty","the stitching on the shoes was broken"], "correctOptionIndex": 4 },
+				{ "id": "Q26", "type": "multiple-choice", "question": "Reason for rejecting the ankle boots", "options": ["one shoe was missing","the colour of one shoe had faded","one shoe had a hole in it","the shoes were brand new","the shoes were too dirty","the stitching on the shoes was broken"], "correctOptionIndex": 1 },
+				{ "id": "Q27", "type": "multiple-choice", "question": "Reason for rejecting the baby shoes", "options": ["one shoe was missing","the colour of one shoe had faded","one shoe had a hole in it","the shoes were brand new","the shoes were too dirty","the stitching on the shoes was broken"], "correctOptionIndex": 0 },
+				{ "id": "Q28", "type": "multiple-choice", "question": "Reason for rejecting the trainers", "options": ["one shoe was missing","the colour of one shoe had faded","one shoe had a hole in it","the shoes were brand new","the shoes were too dirty","the stitching on the shoes was broken"], "correctOptionIndex": 2 },
+				{ "id": "Q29", "type": "multiple-choice", "question": "Why did the project to make 'new' shoes out of old shoes fail?", "options": ["People believed the 'new' pairs of shoes were unhygienic.","There were not enough good parts to use in the old shoes.","The shoes in the 'new' pairs were not completely alike."], "correctOptionIndex": 2 },
+				{ "id": "Q30", "type": "multiple-choice", "question": "Bella and Don agree that they can present their topic", "options": ["from a new angle.","with relevant images.","in a straightforward way."], "correctOptionIndex": 0 }
+			]
+		},
+		{
+			"sectionNumber": 4,
+			"audioUrl": "/questions/audio/book19 audios/cam19-test2-part4.m4a",
+			"questions": [
+				{ "id": "Q31", "type": "form-completion", "question": "Water 'bears' name due to how they (31) __________", "answerLength": "short" },
+				{ "id": "Q32", "type": "form-completion", "question": "They have a (32) __________ round body and four pairs of legs", "answerLength": "short" },
+				{ "id": "Q33", "type": "form-completion", "question": "Claws or (33) __________ for gripping", "answerLength": "short" },
+				{ "id": "Q34", "type": "form-completion", "question": "Body filled with a liquid that carries both (34) __________ and blood", "answerLength": "short" },
+				{ "id": "Q35", "type": "form-completion", "question": "Mouth shaped like a (35) __________ with teeth called stylets", "answerLength": "short" },
+				{ "id": "Q36", "type": "form-completion", "question": "Can exist in very low or high (36) __________", "answerLength": "short" },
+				{ "id": "Q37", "type": "form-completion", "question": "A type of (37) __________ ensures their DNA is not damaged", "answerLength": "short" },
+				{ "id": "Q38", "type": "form-completion", "question": "Research underway to find how many days they can stay alive in (38) __________", "answerLength": "short" },
+				{ "id": "Q39", "type": "form-completion", "question": "They consume liquids from moss or (39) __________", "answerLength": "short" },
+				{ "id": "Q40", "type": "form-completion", "question": "They are not considered to be (40) __________", "answerLength": "short" }
+			]
+		}
+	],
+	"answers": {
+		"Q1": "Matheison",
+		"Q2": "beginners",
+		"Q3": "college",
+		"Q4": "new",
+		"Q5": ["11","eleven","11am","11 a.m.","11 am"],
+		"Q6": "instrument",
+		"Q7": "ear",
+		"Q8": "clapping",
+		"Q9": "recording",
+		"Q10": "alone",
+
+		"Q11": "A",
+		"Q12": "B",
+		"Q13": "A",
+		"Q14": "B",
+		"Q15": "C",
+		"Q16": "A",
+		"Q17": "C,E",
+		"Q18": "C,E",
+		"Q19": "A,B",
+		"Q20": "A,B",
+
+		"Q21": "A",
+		"Q22": "B",
+		"Q23": "B",
+		"Q24": "B",
+		"Q25": "E",
+		"Q26": "B",
+		"Q27": "A",
+		"Q28": "C",
+		"Q29": "C",
+		"Q30": "A",
+
+		"Q31": "move",
+		"Q32": "short",
+		"Q33": "discs",
+		"Q34": "oxygen",
+		"Q35": "tube",
+		"Q36": "temperatures",
+		"Q37": "protein",
+		"Q38": "space",
+		"Q39": "seaweed",
+		"Q40": "endangered"
+	}
+}

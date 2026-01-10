@@ -1,0 +1,23 @@
+{
+  "testId": "book13-test3",
+  "writing": [
+    {
+      "taskId": 1,
+      "type": "line-graph",
+      "instruction": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "prompt": "The line graph below shows the number of cars produced in three countries from 2003 to 2013.",
+      "imageUrl": null,
+      "minWords": 150,
+      "suggestedTime": "20 minutes"
+    },
+    {
+      "taskId": 2,
+      "type": "advantage-disadvantage",
+      "instruction": "Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+      "prompt": "Some people think that the best way to reduce crime is to give longer prison sentences. Others, however, think there are better ways to reduce crime. Discuss both views and give your opinion.",
+      "imageUrl": null,
+      "minWords": 250,
+      "suggestedTime": "40 minutes"
+    }
+  ]
+}

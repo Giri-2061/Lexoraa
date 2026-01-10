@@ -1,0 +1,523 @@
+
+{
+ "testId": "book14-test3",
+  "title": "Book 14 - Test 3",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "audioUrl": "/questions/audio/book14 audios/C14T3S1.mp3",
+      "sectionTitle": "Flanders Conference Hotel",
+      "questionType": "completion",
+      "instruction": "Complete the notes below. [cite_start]Write ONE WORD AND/ OR A NUMBER for each answer. [cite: 83]",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "form-completion",
+          "question": "Conference facilities: the ______ room for talks",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q2",
+          "type": "form-completion",
+          "question": "Conference facilities: (projector and ______ available)",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q3",
+          "type": "form-completion",
+          "question": "Conference facilities: area for coffee and an ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q4",
+          "type": "form-completion",
+          "question": "Conference facilities: free ______ throughout",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q5",
+          "type": "form-completion",
+          "question": "Conference facilities: a standard buffet lunch costs ______ $ per head",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q6",
+          "type": "form-completion",
+          "question": "Accommodation: Rooms will cost ______ $ including breakfast.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q7",
+          "type": "form-completion",
+          "question": "Other facilities: The hotel also has a spa and rooftop ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q8",
+          "type": "form-completion",
+          "question": "Other facilities: There’s a free shuttle service to the ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q9",
+          "type": "form-completion",
+          "question": "Location: Wilby Street (quite near the ______)",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q10",
+          "type": "form-completion",
+          "question": "Location: near to restaurants and many ______",
+          "answerLength": "short"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "audioUrl": "/questions/audio/book14 audios/C14T3S2.mp3",
+      "sectionTitle": "Volunteering",
+      "questionType": "multiple-choice-and-matching",
+      "questions": [
+        {
+          "id": "Q11-12",
+          "type": "multiple-choice",
+          "multipleSelect": true,
+          "question": "Which TWO activities that volunteers do are mentioned? (Choose TWO) [cite_start][cite: 91, 92]",
+          "options": [
+            "A: decorating",
+            "B: cleaning",
+            "C: delivering meals",
+            "D: shopping",
+            "E: childcare"
+          ],
+          "correctOptions": [
+            0,
+            4
+          ]
+        },
+        {
+          "id": "Q13-14",
+          "type": "multiple-choice",
+          "multipleSelect": true,
+          "question": "Which TWO ways that volunteers can benefit from volunteering are mentioned? (Choose TWO) [cite_start][cite: 93, 94]",
+          "options": [
+            "A: learning how to be part of a team",
+            "B: having a sense of purpose",
+            "C: realising how lucky they are",
+            "D: improved ability at time management",
+            "E: boosting their employment prospects"
+          ],
+          "correctOptions": [
+            1,
+            4
+          ]
+        },
+        {
+          "id": "Q15",
+          "type": "matching",
+          "question": "Habib",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "correctOptionIndex": 5,
+          "answerKey": "Volunteers",
+          "actionKey": "What volunteers have helped people to do",
+          "actionOptions": [
+            "A: overcome physical difficulties",
+            "B: rediscover skills not used for a long time",
+            "C: improve their communication skills",
+            "D: solve problems independently",
+            "E: escape isolation",
+            "F: remember past times",
+            "G: start a new hobby"
+          ]
+        },
+        {
+          "id": "Q16",
+          "type": "matching",
+          "question": "Consuela",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "correctOptionIndex": 0,
+          "answerKey": "Volunteers",
+          "actionKey": "What volunteers have helped people to do",
+          "actionOptions": [
+            "A: overcome physical difficulties",
+            "B: rediscover skills not used for a long time",
+            "C: improve their communication skills",
+            "D: solve problems independently",
+            "E: escape isolation",
+            "F: remember past times",
+            "G: start a new hobby"
+          ]
+        },
+        {
+          "id": "Q17",
+          "type": "matching",
+          "question": "Minh",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "correctOptionIndex": 4,
+          "answerKey": "Volunteers",
+          "actionKey": "What volunteers have helped people to do",
+          "actionOptions": [
+            "A: overcome physical difficulties",
+            "B: rediscover skills not used for a long time",
+            "C: improve their communication skills",
+            "D: solve problems independently",
+            "E: escape isolation",
+            "F: remember past times",
+            "G: start a new hobby"
+          ]
+        },
+        {
+          "id": "Q18",
+          "type": "matching",
+          "question": "Tanya",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "correctOptionIndex": 6,
+          "answerKey": "Volunteers",
+          "actionKey": "What volunteers have helped people to do",
+          "actionOptions": [
+            "A: overcome physical difficulties",
+            "B: rediscover skills not used for a long time",
+            "C: improve their communication skills",
+            "D: solve problems independently",
+            "E: escape isolation",
+            "F: remember past times",
+            "G: start a new hobby"
+          ]
+        },
+        {
+          "id": "Q19",
+          "type": "matching",
+          "question": "Alexei",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "correctOptionIndex": 3,
+          "answerKey": "Volunteers",
+          "actionKey": "What volunteers have helped people to do",
+          "actionOptions": [
+            "A: overcome physical difficulties",
+            "B: rediscover skills not used for a long time",
+            "C: improve their communication skills",
+            "D: solve problems independently",
+            "E: escape isolation",
+            "F: remember past times",
+            "G: start a new hobby"
+          ]
+        },
+        {
+          "id": "Q20",
+          "type": "matching",
+          "question": "Juba",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "correctOptionIndex": 2,
+          "answerKey": "Volunteers",
+          "actionKey": "What volunteers have helped people to do",
+          "actionOptions": [
+            "A: overcome physical difficulties",
+            "B: rediscover skills not used for a long time",
+            "C: improve their communication skills",
+            "D: solve problems independently",
+            "E: escape isolation",
+            "F: remember past times",
+            "G: start a new hobby"
+          ]
+        }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "audioUrl": "/questions/audio/book14 audios/C14T3S3.mp3",
+      "sectionTitle": "Background on school marching band",
+      "questionType": "completion-and-matching",
+      "questions": [
+        {
+          "id": "Q21",
+          "type": "form-completion",
+          "question": "It consists of around ______ students.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q22",
+          "type": "form-completion",
+          "question": "It is due to play in a ______ band competition.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q23",
+          "type": "form-completion",
+          "question": "It has been invited to play in the town’s ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q24",
+          "type": "form-completion",
+          "question": "They have listened to a talk by a ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q25",
+          "type": "form-completion",
+          "question": "Joe will discuss a ______ with the band.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q26",
+          "type": "form-completion",
+          "question": "Joe hopes the band will attend a ______ next month.",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q27",
+          "type": "matching",
+          "question": "flutist",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "correctOptionIndex": 3,
+          "answerKey": "Band members",
+          "actionKey": "Problems",
+          "actionOptions": [
+            "A: makes a lot of mistakes in rehearsals",
+            "B: keeps making unhelpful suggestions",
+            "C: has difficulty with rhythm",
+            "D: misses too many rehearsals",
+            "E: has a health problem",
+            "F: doesn’t mix with other students"
+          ]
+        },
+        {
+          "id": "Q28",
+          "type": "matching",
+          "question": "trumpeter",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "correctOptionIndex": 1,
+          "answerKey": "Band members",
+          "actionKey": "Problems",
+          "actionOptions": [
+            "A: makes a lot of mistakes in rehearsals",
+            "B: keeps making unhelpful suggestions",
+            "C: has difficulty with rhythm",
+            "D: misses too many rehearsals",
+            "E: has a health problem",
+            "F: doesn’t mix with other students"
+          ]
+        },
+        {
+          "id": "Q29",
+          "type": "matching",
+          "question": "trombonist",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "correctOptionIndex": 4,
+          "answerKey": "Band members",
+          "actionKey": "Problems",
+          "actionOptions": [
+            "A: makes a lot of mistakes in rehearsals",
+            "B: keeps making unhelpful suggestions",
+            "C: has difficulty with rhythm",
+            "D: misses too many rehearsals",
+            "E: has a health problem",
+            "F: doesn’t mix with other students"
+          ]
+        },
+        {
+          "id": "Q30",
+          "type": "matching",
+          "question": "percussionist",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "correctOptionIndex": 5,
+          "answerKey": "Band members",
+          "actionKey": "Problems",
+          "actionOptions": [
+            "A: makes a lot of mistakes in rehearsals",
+            "B: keeps making unhelpful suggestions",
+            "C: has difficulty with rhythm",
+            "D: misses too many rehearsals",
+            "E: has a health problem",
+            "F: doesn’t mix with other students"
+          ]
+        }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "audioUrl": "/questions/audio/book14 audios/C14T3S4.mp3",
+      "sectionTitle": "Concerts in university arts festival",
+      "questionType": "completion",
+      "instruction": "Complete the notes below. [cite_start]Write ONE WORD AND/OR A NUMBER for each answer [cite: 108]",
+      "questions": [
+        {
+          "id": "Q31",
+          "type": "form-completion",
+          "question": "Concert 1: Liza Lim studied piano and ______ before turning to composition",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q32",
+          "type": "form-completion",
+          "question": "Concert 1: compositions show a great deal of ______ and are drawn from various cultural sources",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q33",
+          "type": "form-completion",
+          "question": "Concert 1: her music is very expressive and also ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q34",
+          "type": "form-completion",
+          "question": "Concert 1: festival will include her ______ called The Oresteia",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q35",
+          "type": "form-completion",
+          "question": "Concert 1: Lim described the sounds in The Oresteia as ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q36",
+          "type": "form-completion",
+          "question": "Concert 2: The Tower of Remoteness is performed by piano and ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q37",
+          "type": "form-completion",
+          "question": "Concert 2: celebrates Australia’s cultural ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q38",
+          "type": "form-completion",
+          "question": "Concert 3: Carl Vine studied ______ before studying music",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q39",
+          "type": "form-completion",
+          "question": "Concert 3: became well known as composer of music for ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q40",
+          "type": "form-completion",
+          "question": "Concert 3: festival will include his music for the 1996 ______",
+          "answerLength": "short"
+        }
+      ]
+    }
+  ],
+  "answers": {
+    "Q1": "Tesla",
+    "Q2": "microphone",
+    "Q3": "exhibition",
+    "Q4": "wifi",
+    "Q5": "5.45",
+    "Q6": "135",
+    "Q7": "pool",
+    "Q8": "airport",
+    "Q9": "sea",
+    "Q10": "clubs",
+    "Q11-12": "A,E",
+    "Q13-14": "B,E",
+    "Q15": "F",
+    "Q16": "A",
+    "Q17": "E",
+    "Q18": "G",
+    "Q19": "D",
+    "Q20": "C",
+    "Q21": "50",
+    "Q22": "regional",
+    "Q23": "carnival",
+    "Q24": "drummer",
+    "Q25": "film",
+    "Q26": "parade",
+    "Q27": "D",
+    "Q28": "B",
+    "Q29": "E",
+    "Q30": "F",
+    "Q31": "violin",
+    "Q32": "energy",
+    "Q33": "complex",
+    "Q34": "opera",
+    "Q35": "disturbing",
+    "Q36": "clarinet",
+    "Q37": "diversity",
+    "Q38": "physics",
+    "Q39": "dance",
+    "Q40": "Olympics"
+  }
+}

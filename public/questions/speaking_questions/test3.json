@@ -1,0 +1,83 @@
+{
+  "testId": "speaking-test-3",
+  "part1": {
+    "topics": [
+      {
+        "theme": "Technology",
+        "introduction": "Let's talk about technology.",
+        "questions": [
+          "How often do you use your phone?",
+          "What do you mainly use your phone for?",
+          "Do you think we rely too much on technology?",
+          "What was the first electronic device you owned?",
+          "Are there any apps you use every day?"
+        ]
+      },
+      {
+        "theme": "Friends",
+        "introduction": "Now, let's talk about friends.",
+        "questions": [
+          "Do you have many friends?",
+          "How often do you meet your friends?",
+          "Do you prefer spending time with friends or alone?",
+          "How do you usually keep in touch with friends?",
+          "Have you made any new friends recently?"
+        ]
+      },
+      {
+        "theme": "Music",
+        "introduction": "Let's move on to talk about music.",
+        "questions": [
+          "Do you like listening to music?",
+          "What kind of music do you enjoy?",
+          "Do you play any musical instruments?",
+          "Has your taste in music changed over the years?"
+        ]
+      }
+    ]
+  },
+  "part2": {
+    "cueCard": {
+      "topic": "Describe a skill you would like to learn",
+      "instruction": "You should say:",
+      "points": [
+        "what skill it is",
+        "why you want to learn it",
+        "how you would learn it"
+      ],
+      "conclusion": "and explain how this skill would benefit you.",
+      "prepTime": 60,
+      "speakTime": 120
+    },
+    "followUpQuestions": [
+      "Have you taken any steps to start learning this skill?",
+      "Do you think it's difficult to learn new skills as an adult?"
+    ]
+  },
+  "part3": {
+    "theme": "Learning and Skills",
+    "introduction": "Let's discuss some general questions about learning and skills.",
+    "questions": [
+      {
+        "question": "What skills do you think are important for young people to learn today?",
+        "followUp": "How are these different from skills needed in the past?"
+      },
+      {
+        "question": "Is it better to learn skills formally or through experience?",
+        "followUp": "Can you give examples of each approach?"
+      },
+      {
+        "question": "Do you think people should continue learning throughout their lives?",
+        "followUp": "What motivates people to keep learning?"
+      },
+      {
+        "question": "How has the internet changed the way people learn new skills?",
+        "followUp": "Are there any downsides to online learning?"
+      },
+      {
+        "question": "Should schools focus more on practical skills or academic knowledge?",
+        "followUp": "How can we achieve a balance?"
+      }
+    ]
+  }
+}

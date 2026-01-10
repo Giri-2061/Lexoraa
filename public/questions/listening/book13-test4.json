@@ -1,0 +1,115 @@
+{
+	"testId": "book13-test4",
+	"title": "Book 13 - Test 4",
+	"sections": [
+		{
+			"sectionNumber": 1,
+			"audioUrl": "/questions/audio/book13 audios/IELTS13-Tests1-4CD2Track_05.mp3",
+			"questions": [
+				{ "id": "Q1", "type": "form-completion", "question": "At first Alex did his training in the (1) __________ department.", "answerLength": "short" },
+				{ "id": "Q2", "type": "form-completion", "question": "He did not have a qualification from school in (2) __________.", "answerLength": "short" },
+				{ "id": "Q3", "type": "form-completion", "question": "He thinks he should have done the diploma in (3) __________ skills.", "answerLength": "short" },
+				{ "id": "Q4", "type": "form-completion", "question": "The youngest trainee was (4) __________ years old.", "answerLength": "short" },
+				{ "id": "Q5", "type": "form-completion", "question": "Trainees receive the same amount of (5) __________ as permanent staff.", "answerLength": "short" },
+				{ "id": "Q6", "type": "form-completion", "question": "Trainees go to (6) __________ one day per month.", "answerLength": "short" },
+				{ "id": "Q7", "type": "form-completion", "question": "The company is in a convenient (7) __________.", "answerLength": "short" },
+				{ "id": "Q8", "type": "form-completion", "question": "Applicants are advised not to wear (8) __________.", "answerLength": "short" },
+				{ "id": "Q9", "type": "form-completion", "question": "Applicants are advised not to be (9) __________.", "answerLength": "short" },
+				{ "id": "Q10", "type": "form-completion", "question": "Applicants should make sure they (10) __________.", "answerLength": "short" }
+			]
+		},
+		{
+			"sectionNumber": 2,
+			"audioUrl": "/questions/audio/book13 audios/IELTS13-Tests1-4CD2Track_06.mp3",
+			"questions": [
+				{ "id": "Q11", "type": "multiple-choice", "question": "Annie recommends that when cross-country skiing, the visitors should", "options": ["get away from the regular trails.","stop to enjoy views of the scenery.","go at a slow speed at the beginning."], "correctOptionIndex": 0 },
+				{ "id": "Q12", "type": "multiple-choice", "question": "What does Annie tell the group about this afternoon's dog-sled trip?", "options": ["Those who want to can take part in a race.","Anyone has the chance to drive a team of dogs.","One group member will be chosen to lead the trail."], "correctOptionIndex": 1 },
+				{ "id": "Q13", "type": "multiple-choice", "question": "What does Annie say about the team relay event?", "options": ["All participants receive a medal.","The course is 4 km long.","Each team is led by a teacher."], "correctOptionIndex": 0 },
+				{ "id": "Q14", "type": "multiple-choice", "question": "On the snow-shoe trip, the visitors will", "options": ["visit an old gold mine.","learn about unusual flowers.","climb to the top of a mountain."], "correctOptionIndex": 2 },
+				{ "id": "Q15", "type": "multiple-choice", "question": "The cost of accommodation in the mountain hut includes", "options": ["a supply of drinking water.","transport of visitors' luggage.","cooked meals."], "correctOptionIndex": 0 },
+				{ "id": "Q16", "type": "multiple-choice", "question": "If there is a storm while the visitors are in the hut, they should", "options": ["contact the bus driver.","wait until the weather improves.","use the emergency locator beacon."], "correctOptionIndex": 1 },
+				{ "id": "Q17", "type": "matching", "question": "Highland trail", "options": ["it has a good place to stop and rest","it is suitable for all abilities","it involves crossing a river","it demands a lot of skill","it may be closed in bad weather","it has some very narrow sections"], "correctOptionIndex": 1 },
+				{ "id": "Q18", "type": "matching", "question": "Pine trail", "options": ["it has a good place to stop and rest","it is suitable for all abilities","it involves crossing a river","it demands a lot of skill","it may be closed in bad weather","it has some very narrow sections"], "correctOptionIndex": 3 },
+				{ "id": "Q19", "type": "matching", "question": "Stony trail", "options": ["it has a good place to stop and rest","it is suitable for all abilities","it involves crossing a river","it demands a lot of skill","it may be closed in bad weather","it has some very narrow sections"], "correctOptionIndex": 0 },
+				{ "id": "Q20", "type": "matching", "question": "Loser's trail", "options": ["it has a good place to stop and rest","it is suitable for all abilities","it involves crossing a river","it demands a lot of skill","it may be closed in bad weather","it has some very narrow sections"], "correctOptionIndex": 4 }
+			]
+		},
+		{
+			"sectionNumber": 3,
+			"audioUrl": "/questions/audio/book13 audios/IELTS13-Tests1-4CD2Track_07.mp3",
+			"questions": [
+				{ "id": "Q21", "type": "multiple-choice", "question": "What was Jack's attitude to nutritional food labels before this project?", "options": ["He didn't read everything on them.","He didn't think they were important.","He thought they were too complicated."], "correctOptionIndex": 0 },
+				{ "id": "Q22", "type": "multiple-choice", "question": "Alice says that before doing this project she", "options": ["was unaware of what certain foods contained.","was too lazy to read food labels.","was only interested in the number of calories."], "correctOptionIndex": 0 },
+				{ "id": "Q23", "type": "multiple-choice", "question": "When discussing supermarket brands of pizza, Jack agrees with Alice that", "options": ["the list of ingredients is shocking.","he will hesitate before buying pizza again.","the nutritional label is misleading."], "correctOptionIndex": 2 },
+				{ "id": "Q24", "type": "multiple-choice", "question": "Jack prefers the daily value system to other labelling systems because it is", "options": ["more accessible.","more logical.","more comprehensive."], "correctOptionIndex": 2 },
+				{ "id": "Q25", "type": "multiple-choice", "question": "What surprised both students about one flavour of crisps?", "options": ["The percentage of artificial additives given was incorrect.","The products did not contain any meat.","The labels did not list all the ingredients."], "correctOptionIndex": 1 },
+				{ "id": "Q26", "type": "multiple-choice", "question": "What do the students think about research into the impact of nutritional food labelling?", "options": ["It did not produce clear results.","It focused on the wrong people.","It made unrealistic recommendations."], "correctOptionIndex": 0 },
+				{ "id": "Q27", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO things surprised the students about the traffic-light system for nutritional labels? (Choose TWO)", "options": ["its widespread use","the fact that it is voluntary for supermarkets","how little research was done before its introduction","its unpopularity with food manufacturers","the way that certain colours are used"], "correctOptions": [1,2] },
+				{ "id": "Q28", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO things surprised the students about the traffic-light system for nutritional labels? (Choose TWO)", "options": ["its widespread use","the fact that it is voluntary for supermarkets","how little research was done before its introduction","its unpopularity with food manufacturers","the way that certain colours are used"], "correctOptions": [1,2] },
+				{ "id": "Q29", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO things are true about the participants in the study on the traffic-light system? (Choose TWO)", "options": ["They had low literacy levels.","They were regular consumers of packaged food.","They were selected randomly.","They were from all socio-economic groups.","They were interviewed face-to-face."], "correctOptions": [3,4] },
+				{ "id": "Q30", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO things are true about the participants in the study on the traffic-light system? (Choose TWO)", "options": ["They had low literacy levels.","They were regular consumers of packaged food.","They were selected randomly.","They were from all socio-economic groups.","They were interviewed face-to-face."], "correctOptions": [3,4] }
+			]
+		},
+		{
+			"sectionNumber": 4,
+			"audioUrl": "/questions/audio/book13 audios/IELTS13-Tests1-4CD2Track_08.mp3",
+			"questions": [
+				{ "id": "Q31", "type": "form-completion", "question": "1623: In Constantinople, the ruler ordered the (31) __________ of every coffee house.", "answerLength": "short" },
+				{ "id": "Q32", "type": "form-completion", "question": "Coffee shops were compared to (32) __________.", "answerLength": "short" },
+				{ "id": "Q33", "type": "form-completion", "question": "They played an important part in social and (33) __________ changes.", "answerLength": "short" },
+				{ "id": "Q34", "type": "form-completion", "question": "Types of coffee were often named according to the (34) __________ they came from.", "answerLength": "short" },
+				{ "id": "Q35", "type": "form-completion", "question": "In Brazil and the Caribbean, most cultivation depended on (35) __________.", "answerLength": "short" },
+				{ "id": "Q36", "type": "form-completion", "question": "In Java, coffee was used as a form of (36) __________.", "answerLength": "short" },
+				{ "id": "Q37", "type": "form-completion", "question": "Coffee became almost as important as (37) __________.", "answerLength": "short" },
+				{ "id": "Q38", "type": "form-completion", "question": "The move towards the consumption of (38) __________ in Britain did not also take place in the USA.", "answerLength": "short" },
+				{ "id": "Q39", "type": "form-completion", "question": "Prices dropped because of improvements in (39) __________.", "answerLength": "short" },
+				{ "id": "Q40", "type": "form-completion", "question": "Industrial workers found coffee helped them to work at (40) __________.", "answerLength": "short" }
+			]
+		}
+	],
+	"answers": {
+		"Q1": "finance",
+		"Q2": ["maths","math","mathematics"],
+		"Q3": "business",
+		"Q4": ["17","seventeen"],
+		"Q5": ["holidays","vacations"],
+		"Q6": "college",
+		"Q7": "location",
+		"Q8": "jeans",
+		"Q9": "late",
+		"Q10": "smile",
+
+		"Q11": "A",
+		"Q12": "B",
+		"Q13": "A",
+		"Q14": "C",
+		"Q15": "A",
+		"Q16": "B",
+		"Q17": "B",
+		"Q18": "D",
+		"Q19": "A",
+		"Q20": "E",
+
+		"Q21": "A",
+		"Q22": "A",
+		"Q23": "C",
+		"Q24": "C",
+		"Q25": "B",
+		"Q26": "A",
+		"Q27": "B,C",
+		"Q28": "B,C",
+		"Q29": "D,E",
+		"Q30": "D,E",
+
+		"Q31": "destruction",
+		"Q32": ["university","universities"],
+		"Q33": "political",
+		"Q34": ["port","ports"],
+		"Q35": ["slaves","slavery"],
+		"Q36": "taxation",
+		"Q37": "sugar",
+		"Q38": "tea",
+		"Q39": "transportation",
+		"Q40": "night"
+	}
+}

@@ -1,0 +1,112 @@
+{
+  "testId": "book17-test4",
+  "title": "Book 17 - Test 4",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "audioUrl": "/audio/book17-test4-sec1.mp3",
+      "questions": [
+        { "id": "Q1", "type": "form-completion", "question": "Cleaning all surfaces and cleaning the (1) _______ throughout the apartment", "answerLength": "short" },
+        { "id": "Q2", "type": "form-completion", "question": "Every week: Cleaning the (2) _______", "answerLength": "short" },
+        { "id": "Q3", "type": "form-completion", "question": "Ironing clothes – (3) only", "answerLength": "short" },
+        { "id": "Q4", "type": "form-completion", "question": "Every month: Cleaning all the (4) _______ from the inside", "answerLength": "short" },
+        { "id": "Q5", "type": "form-completion", "question": "Washing down the (5) _______", "answerLength": "short" },
+        { "id": "Q6", "type": "form-completion", "question": "They can organise a plumber or an (6) _______ if necessary", "answerLength": "short" },
+        { "id": "Q7", "type": "form-completion", "question": "A special cleaning service is available for customers who are allergic to (7) _______", "answerLength": "short" },
+        { "id": "Q8", "type": "form-completion", "question": "Before being hired, all cleaners have a background check carried out by the (8) _______", "answerLength": "short" },
+        { "id": "Q9", "type": "form-completion", "question": "All cleaners are given (9) _______ for two weeks", "answerLength": "short" },
+        { "id": "Q10", "type": "form-completion", "question": "Customers send a (10) _______ after each visit", "answerLength": "short" }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "audioUrl": "/audio/book17-test4-sec2.mp3",
+      "questions": [
+        { "id": "Q11", "type": "multiple-choice", "question": "Many hotel managers are unaware that their staff often", "options": ["a lack of training.","long hours.","low pay."] },
+        { "id": "Q12", "type": "multiple-choice", "question": "What is the impact of high staff turnover on managers?", "options": ["an increased workload","low morale","an inability to meet targets"] },
+        { "id": "Q13", "type": "multiple-choice", "question": "What mistake should managers always avoid?", "options": ["failing to treat staff equally","reorganising shifts without warning","neglecting to have enough staff during busy periods"] },
+        { "id": "Q14", "type": "multiple-choice", "question": "What unexpected benefit did Dunwich hotel notice after improving staff retention rates?", "options": ["a fall in customer complaints","an increase in loyalty club membership","a rise in spending per customer"] },
+        { "id": "Q15", "type": "multiple-choice", "question": "The Sun Club: way of reducing staff turnover", "options": ["improving relationships and teamwork","offering incentives and financial benefits","providing career opportunities"] },
+        { "id": "Q16", "type": "multiple-choice", "question": "The Portland: way of reducing staff turnover", "options": ["improving relationships and teamwork","offering incentives and financial benefits","providing career opportunities"] },
+        { "id": "Q17", "type": "multiple-choice", "question": "Bluewater Hotels: way of reducing staff turnover", "options": ["improving relationships and teamwork","offering incentives and financial benefits","providing career opportunities"] },
+        { "id": "Q18", "type": "multiple-choice", "question": "Pentlow Hotels: way of reducing staff turnover", "options": ["improving relationships and teamwork","offering incentives and financial benefits","providing career opportunities"] },
+        { "id": "Q19", "type": "multiple-choice", "question": "Green Planet: way of reducing staff turnover", "options": ["improving relationships and teamwork","offering incentives and financial benefits","providing career opportunities"] },
+        { "id": "Q20", "type": "multiple-choice", "question": "The Amesbury: way of reducing staff turnover", "options": ["improving relationships and teamwork","offering incentives and financial benefits","providing career opportunities"] }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "audioUrl": "/audio/book17-test4-sec3.mp3",
+      "questions": [
+        { "id": "Q21", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO points do Thomas and Jeanne make about Thomas’s sporting activities at school? (21)", "options": ["He should have felt more positive about them.","The training was too challenging for him.","He could have worked harder at them.","His parents were disappointed in him.","His fellow students admired him."] },
+        { "id": "Q22", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO points do Thomas and Jeanne make about Thomas’s sporting activities at school? (22)", "options": ["He should have felt more positive about them.","The training was too challenging for him.","He could have worked harder at them.","His parents were disappointed in him.","His fellow students admired him."] },
+        { "id": "Q23", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO feelings did Thomas experience when he was in Kenya? (23)", "options": ["disbelief","relief","stress","gratitude","homesickness"] },
+        { "id": "Q24", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO feelings did Thomas experience when he was in Kenya? (24)", "options": ["disbelief","relief","stress","gratitude","homesickness"] },
+        { "id": "Q25", "type": "multiple-choice", "question": "the table tennis bat: comment", "options": ["It could cause excessive sweating.","The material was being mass produced for another purpose.","People often needed to make their own.","It often had to be replaced.","The material was expensive.","It was unpopular among spectators.","It caused injuries.","No one using it liked it at first."] },
+        { "id": "Q26", "type": "multiple-choice", "question": "the cricket helmet: comment", "options": ["It could cause excessive sweating.","The material was being mass produced for another purpose.","People often needed to make their own.","It often had to be replaced.","The material was expensive.","It was unpopular among spectators.","It caused injuries.","No one using it liked it at first."] },
+        { "id": "Q27", "type": "multiple-choice", "question": "the cycle helmet: comment", "options": ["It could cause excessive sweating.","The material was being mass produced for another purpose.","People often needed to make their own.","It often had to be replaced.","The material was expensive.","It was unpopular among spectators.","It caused injuries.","No one using it liked it at first."] },
+        { "id": "Q28", "type": "multiple-choice", "question": "the golf club: comment", "options": ["It could cause excessive sweating.","The material was being mass produced for another purpose.","People often needed to make their own.","It often had to be replaced.","The material was expensive.","It was unpopular among spectators.","It caused injuries.","No one using it liked it at first."] },
+        { "id": "Q29", "type": "multiple-choice", "question": "the hockey stick: comment", "options": ["It could cause excessive sweating.","The material was being mass produced for another purpose.","People often needed to make their own.","It often had to be replaced.","The material was expensive.","It was unpopular among spectators.","It caused injuries.","No one using it liked it at first."] },
+        { "id": "Q30", "type": "multiple-choice", "question": "the football: comment", "options": ["It could cause excessive sweating.","The material was being mass produced for another purpose.","People often needed to make their own.","It often had to be replaced.","The material was expensive.","It was unpopular among spectators.","It caused injuries.","No one using it liked it at first."] }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "audioUrl": "/audio/book17-test4-sec4.mp3",
+      "questions": [
+        { "id": "Q31", "type": "form-completion", "question": "Color described as (31) _______", "answerLength": "short" },
+        { "id": "Q32", "type": "form-completion", "question": "Very (32) _______ compared to refined sugar", "answerLength": "short" },
+        { "id": "Q33", "type": "form-completion", "question": "Best growing conditions and (33) _______ are in Canada and North America", "answerLength": "short" },
+        { "id": "Q34", "type": "form-completion", "question": "Used hot (34) _______ to heat the sap", "answerLength": "short" },
+        { "id": "Q35", "type": "form-completion", "question": "Tree trunks may not have the correct (35) _______ until they have been growing for 40 years", "answerLength": "short" },
+        { "id": "Q36", "type": "form-completion", "question": "A (36) _______ carries the sap into a bucket", "answerLength": "short" },
+        { "id": "Q37", "type": "form-completion", "question": "Evaporators are heated by means of a (37) _______", "answerLength": "short" },
+        { "id": "Q38", "type": "form-completion", "question": "A lot of (38) _______ is produced during the evaporation process", "answerLength": "short" },
+        { "id": "Q39", "type": "form-completion", "question": "Sugar sand is removed because it makes the syrup look (39) _______ and affects the taste", "answerLength": "short" },
+        { "id": "Q40", "type": "form-completion", "question": "A huge quantity of sap is needed to make a (40) _______ of maple syrup", "answerLength": "short" }
+      ]
+    }
+  ],
+  "answers": {
+    "Q1": "Floors",
+    "Q2": "Fridge",
+    "Q3": "Shirts",
+    "Q4": "Windows",
+    "Q5": "Balcony",
+    "Q6": "Electrician",
+    "Q7": "Dust",
+    "Q8": "Police",
+    "Q9": "Training",
+    "Q10": "Review",
+    "Q11": "A",
+    "Q12": "A",
+    "Q13": "A",
+    "Q14": "C",
+    "Q15": "A",
+    "Q16": "C",
+    "Q17": "B",
+    "Q18": "C",
+    "Q19": "B",
+    "Q20": "A",
+    "Q21": "C,E",
+    "Q22": "C,E",
+    "Q23": "A,D",
+    "Q24": "A,D",
+    "Q25": "B",
+    "Q26": "F",
+    "Q27": "A",
+    "Q28": "D",
+    "Q29": "C",
+    "Q30": "G",
+    "Q31": "Golden",
+    "Q32": "Healthy",
+    "Q33": "Climate",
+    "Q34": "Rocks",
+    "Q35": "Diameter",
+    "Q36": "Tube",
+    "Q37": "Fire",
+    "Q38": "Stream",
+    "Q39": "Cloudy",
+    "Q40": "Litre"
+  }
+}

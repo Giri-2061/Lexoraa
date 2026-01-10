@@ -1,0 +1,23 @@
+{
+  "testId": "book15-test1",
+  "writing": [
+    {
+      "taskId": 1,
+      "type": "bar-chart",
+      "instruction": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "prompt": "The bar chart below shows the number of visitors to three museums in London between 2010 and 2015.",
+      "imageUrl": null,
+      "minWords": 150,
+      "suggestedTime": "20 minutes"
+    },
+    {
+      "taskId": 2,
+      "type": "advantage-disadvantage",
+      "instruction": "Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+      "prompt": "Some people think that the internet has brought people closer together, while others think that people are more isolated. Discuss both views and give your opinion.",
+      "imageUrl": null,
+      "minWords": 250,
+      "suggestedTime": "40 minutes"
+    }
+  ]
+}

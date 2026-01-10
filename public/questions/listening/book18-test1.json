@@ -1,0 +1,381 @@
+
+  {
+ "testId": "book18-test1",
+  "title": "Book 18 - Test 1",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "audioUrl": "/questions/audio/book18 audios/cam18-test1-part1.mp3",
+      "sectionTitle": "Transport Survey",
+      "questionType": "completion",
+      "instruction": "Complete the notes below. Write ONE WORD AND/ OR A NUMBER for each answer.",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "form-completion",
+          "question": "Postcode:",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q2",
+          "type": "form-completion",
+          "question": "Date of bus journey:",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q3",
+          "type": "form-completion",
+          "question": "Reason for trip: shopping and visit to the ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q4",
+          "type": "form-completion",
+          "question": "Travelled by bus because cost of ______ too high",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q5",
+          "type": "form-completion",
+          "question": "Got on bus at ______ Street",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q6",
+          "type": "form-completion",
+          "question": "Complaints about bus service bus today was ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q7",
+          "type": "form-completion",
+          "question": "Frequency of buses in the ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q8",
+          "type": "form-completion",
+          "question": "Goes to the ______ By car",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q9",
+          "type": "form-completion",
+          "question": "Dislikes traveling by bike in the city centre because of the ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q10",
+          "type": "form-completion",
+          "question": "Doesn’t own a bike because of a lack of ______",
+          "answerLength": "short"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "audioUrl": "/questions/audio/book18 audios/cam18-test1-part2.mp3",
+      "sectionTitle": "Becoming a volunteer for ACE",
+      "questionType": "multiple-choice-and-matching",
+      "questions": [
+        {
+          "id": "Q11",
+          "type": "multiple-choice",
+          "question": "Why does the speaker apologise about the seats?",
+          "options": [
+            "A: They are too small.",
+            "B: There are not enough of them.",
+            "C: Some of them are very close together."
+          ],
+          "correctOptionIndex": 2
+        },
+        {
+          "id": "Q12",
+          "type": "multiple-choice",
+          "question": "What does the speaker say about the age of volunteers?",
+          "options": [
+            "A: The age of volunteers is less important than other factors.",
+            "B: Young volunteers are less reliable than older ones.",
+            "C: Most volunteers are about 60 years old."
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "id": "Q13",
+          "type": "multiple-choice",
+          "question": "What does the speaker say about training?",
+          "options": [
+            "A: It is continuous.",
+            "B: It is conducted by a manager.",
+            "C: It takes place online."
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "id": "Q14-15",
+          "type": "multiple-choice",
+          "multipleSelect": true,
+          "question": "Which TWO things does the speaker say volunteers should be prepared to do? (Choose TWO)",
+          "options": [
+            "A: give up a lot of free time",
+            "B: use their own car",
+            "C: attend meetings",
+            "D: make phone calls",
+            "E: produce written work"
+          ],
+          "correctOptions": [
+            1,
+            4
+          ]
+        },
+        {
+          "id": "Q16",
+          "type": "multiple-choice",
+          "question": "How is the speaker going to communicate with potential volunteers?",
+          "options": [
+            "A: by sending emails to all attendees",
+            "B: by giving a talk at the end of the meeting",
+            "C: by putting information on the college website"
+          ],
+          "correctOptionIndex": 1
+        },
+        {
+          "id": "Q17",
+          "type": "matching",
+          "question": "other business owners",
+          "options": [
+            "A",
+            "B",
+            "C"
+          ],
+          "correctOptionIndex": 0,
+          "answerKey": "Sources of advice",
+          "actionKey": "Speaker's opinion",
+          "actionOptions": [
+            "A: very useful",
+            "B: fairly useful",
+            "C: not very useful"
+          ]
+        },
+        {
+          "id": "Q18",
+          "type": "matching",
+          "question": "local college",
+          "options": [
+            "A",
+            "B",
+            "C"
+          ],
+          "correctOptionIndex": 2,
+          "answerKey": "Sources of advice",
+          "actionKey": "Speaker's opinion",
+          "actionOptions": [
+            "A: very useful",
+            "B: fairly useful",
+            "C: not very useful"
+          ]
+        },
+        {
+          "id": "Q19",
+          "type": "matching",
+          "question": "government agency",
+          "options": [
+            "A",
+            "B",
+            "C"
+          ],
+          "correctOptionIndex": 1,
+          "answerKey": "Sources of advice",
+          "actionKey": "Speaker's opinion",
+          "actionOptions": [
+            "A: very useful",
+            "B: fairly useful",
+            "C: not very useful"
+          ]
+        },
+        {
+          "id": "Q20",
+          "type": "matching",
+          "question": "business consultant",
+          "options": [
+            "A",
+            "B",
+            "C"
+          ],
+          "correctOptionIndex": 1,
+          "answerKey": "Sources of advice",
+          "actionKey": "Speaker's opinion",
+          "actionOptions": [
+            "A: very useful",
+            "B: fairly useful",
+            "C: not very useful"
+          ]
+        }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "audioUrl": "/questions/audio/book18 audios/cam18-test1-part3.mp3",
+      "sectionTitle": "Marketing a new business",
+      "questionType": "completion-and-multiple-choice",
+      "questions": [
+        {
+          "id": "Q21",
+          "type": "form-completion",
+          "question": "You must apply for a ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q22",
+          "type": "form-completion",
+          "question": "Think about the cost of ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q23",
+          "type": "form-completion",
+          "question": "Have a separate ______ for the business",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q24",
+          "type": "form-completion",
+          "question": "Get to know your ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q25",
+          "type": "form-completion",
+          "question": "Don't spend too much on ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q26-30",
+          "type": "multiple-choice",
+          "multipleSelect": true,
+          "question": "Which FIVE things does the speaker suggest the audience should focus on when planning their new business? (Choose FIVE)",
+          "options": [
+            "A: applying for a license",
+            "B: thinking about the cost of insurance",
+            "C: having a separate account for the business",
+            "D: getting to know customers",
+            "E: not spending too much on equipment"
+          ],
+          "correctOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "audioUrl": "/questions/audio/book18 audios/cam18-test1-part4.mp3",
+      "sectionTitle": "Elephant translocation",
+      "questionType": "completion",
+      "instruction": "Complete the notes below. Write ONE WORD ONLY for each answer.",
+      "questions": [
+        {
+          "id": "Q31",
+          "type": "form-completion",
+          "question": "Problems caused by elephant overpopulation: damage to ______ in the park",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q32",
+          "type": "form-completion",
+          "question": "The translocation process: a suitable group of elephants from the same ______ was selected",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q33",
+          "type": "form-completion",
+          "question": "vets and park staff made use of ______ to help guide the elephants into an open plain",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q34",
+          "type": "form-completion",
+          "question": "elephants were immobilised with tranquilisers: this process had to be completed quickly to reduce ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q35",
+          "type": "form-completion",
+          "question": "elephants had to be turned on their ______ to avoid damage to their lungs",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q36",
+          "type": "form-completion",
+          "question": "elephants’ ______ had to be monitored constantly",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q37",
+          "type": "form-completion",
+          "question": "data including the size of their tusks and ______ was taken",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q38",
+          "type": "form-completion",
+          "question": "Advantages of translocation at Nkhotakota Wildlife Park: ______ opportunities",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q39",
+          "type": "form-completion",
+          "question": "a reduction in the number of poachers and ______",
+          "answerLength": "short"
+        },
+        {
+          "id": "Q40",
+          "type": "form-completion",
+          "question": "an increase in ______ as a contributor to GDP",
+          "answerLength": "short"
+        }
+      ]
+    }
+  ],
+  "answers": {
+    "Q1": "DW307YZ",
+    "Q2": "24(th) April",
+    "Q3": "Dentist",
+    "Q4": "Parking",
+    "Q5": "Claxby",
+    "Q6": "Late",
+    "Q7": "Evening",
+    "Q8": "Supermarket",
+    "Q9": "Pollution",
+    "Q10": "Storage",
+    "Q11": "C",
+    "Q12": "A",
+    "Q13": "A",
+    "Q14-15": "B,E",
+    "Q16": "B",
+    "Q17": "A",
+    "Q18": "C",
+    "Q19": "B",
+    "Q20": "B",
+    "Q21": "license",
+    "Q22": "insurance",
+    "Q23": "account",
+    "Q24": "customers",
+    "Q25": "equipment",
+    "Q26-30": "A,B,C,D,E",
+    "Q31": "vegetation",
+    "Q32": "family",
+    "Q33": "helicopters",
+    "Q34": "stress",
+    "Q35": "chests",
+    "Q36": "temperature",
+    "Q37": "tail",
+    "Q38": "tourism",
+    "Q39": "fires",
+    "Q40": "revenue"
+  }
+}

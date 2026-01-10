@@ -1,0 +1,114 @@
+{
+	"testId": "book16-test1",
+	"sections": [
+		{
+			"sectionNumber": 1,
+			"audioUrl": "/audio/book16-test1-sec1.mp3",
+			"questions": [
+				{ "id": "Q1", "type": "form-completion", "question": "Create a cover for an ______ without breaking it.", "answerLength": "short" },
+				{ "id": "Q2", "type": "form-completion", "question": "Build the tallest ______ (competition).", "answerLength": "short" },
+				{ "id": "Q3", "type": "form-completion", "question": "Make a ______ powered by a balloon.", "answerLength": "short" },
+				{ "id": "Q4", "type": "form-completion", "question": "Build model cars, trucks and ______ them so they can move.", "answerLength": "short" },
+				{ "id": "Q5", "type": "form-completion", "question": "Build the longest ______ (competition).", "answerLength": "short" },
+				{ "id": "Q6", "type": "form-completion", "question": "Create a short ______.", "answerLength": "short" },
+				{ "id": "Q7", "type": "form-completion", "question": "Build, ______ and program a humanoid robot.", "answerLength": "short" },
+				{ "id": "Q8", "type": "form-completion", "question": "Held on ______ (a day or time).", "answerLength": "short" },
+				{ "id": "Q9", "type": "form-completion", "question": "Location Building 10A, ______", "answerLength": "short" },
+				{ "id": "Q10", "type": "form-completion", "question": "Plenty of ______", "answerLength": "short" }
+			]
+		},
+		{
+			"sectionNumber": 2,
+			"audioUrl": "/audio/book16-test1-sec2.mp3",
+			"questions": [
+				{ "id": "Q11", "type": "multiple-choice", "question": "Stevensons was founded", "options": ["1923","1924","1926"], "correctOptionIndex": 2 },
+				{ "id": "Q12", "type": "multiple-choice", "question": "Originally, Stevensons manufactured goods for", "options": ["the healthcare industry","the automotive industry","the machine tools industry"], "correctOptionIndex": 0 },
+				{ "id": "Q13", "type": "multiple-choice", "question": "What does the speaker say about the company premises?", "options": ["The company has recently moved.","The company has no plans to move.","The company is going to move shortly."], "correctOptionIndex": 1 },
+				{ "id": "Q14", "type": "multiple-choice", "question": "The programme for the work experience group includes", "options": ["time to do research.","meetings with a teacher.","talks by staff."], "correctOptionIndex": 2 },
+
+				{ "id": "Q15", "type": "multiple-choice", "question": "Label the map: coffee room", "options": ["A","B","C","D","E","F","G","H","I","J"], "correctOptionIndex": 7, "imageUrl": "/questions/listening_questions/book16/book16.png" },
+				{ "id": "Q16", "type": "multiple-choice", "question": "Label the map: warehouse", "options": ["A","B","C","D","E","F","G","H","I","J"], "correctOptionIndex": 2, "imageUrl": "/questions/listening_questions/book16/book16.png" },
+				{ "id": "Q17", "type": "multiple-choice", "question": "Label the map: staff canteen", "options": ["A","B","C","D","E","F","G","H","I","J"], "correctOptionIndex": 6, "imageUrl": "/questions/listening_questions/book16/book16.png" },
+				{ "id": "Q18", "type": "multiple-choice", "question": "Label the map: meeting room", "options": ["A","B","C","D","E","F","G","H","I","J"], "correctOptionIndex": 1, "imageUrl": "/questions/listening_questions/book16/book16.png" },
+				{ "id": "Q19", "type": "multiple-choice", "question": "Label the map: human resources", "options": ["A","B","C","D","E","F","G","H","I","J"], "correctOptionIndex": 8, "imageUrl": "/questions/listening_questions/book16/book16.png" },
+				{ "id": "Q20", "type": "multiple-choice", "question": "Label the map: boardroom", "options": ["A","B","C","D","E","F","G","H","I","J"], "correctOptionIndex": 0, "imageUrl": "/questions/listening_questions/book16/book16.png" }
+			]
+		},
+		{
+			"sectionNumber": 3,
+			"audioUrl": "/audio/book16-test1-sec3.mp3",
+			"questions": [
+				{ "id": "Q21", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO parts of the introductory stage to their art projects do Jess and Tom agree were useful? (Choose TWO)", "options": ["the Bird Park visit","the workshop sessions","the Natural History Museum visit","the projects done in previous years","the handouts with research sources"], "correctOptions": [3,4] },
+				{ "id": "Q22", "type": "multiple-choice", "multipleSelect": true, "question": "Which TWO parts of the introductory stage to their art projects do Jess and Tom agree were useful? (Choose TWO)", "options": ["the Bird Park visit","the workshop sessions","the Natural History Museum visit","the projects done in previous years","the handouts with research sources"], "correctOptions": [3,4] },
+
+				{ "id": "Q23", "type": "multiple-choice", "question": "In which TWO ways do both Jess and Tom decide to change their proposals? (Choose TWO)", "options": ["by giving a rationale for their action plans","by being less specific about the outcome","by adding a video diary presentation","by providing a timeline and a mind map","by making their notes more evaluative"], "correctOptions": [1,4] },
+				{ "id": "Q24", "type": "multiple-choice", "question": "In which TWO ways do both Jess and Tom decide to change their proposals? (Choose TWO)", "options": ["by giving a rationale for their action plans","by being less specific about the outcome","by adding a video diary presentation","by providing a timeline and a mind map","by making their notes more evaluative"], "correctOptions": [1,4] },
+
+				{ "id": "Q25", "type": "multiple-choice", "question": "Falcon Landseer — Which personal meaning?", "options": ["a childhood memory","hope for the future","fast movement","a potential threat","the power of colour","the continuity of life","protection of nature","a confused attitude to nature"], "correctOptionIndex": 3 },
+				{ "id": "Q26", "type": "multiple-choice", "question": "Fish hawk Audubon — Which personal meaning?", "options": ["a childhood memory","hope for the future","fast movement","a potential threat","the power of colour","the continuity of life","protection of nature","a confused attitude to nature"], "correctOptionIndex": 2 },
+				{ "id": "Q27", "type": "multiple-choice", "question": "Kingfisher van Gogh — Which personal meaning?", "options": ["a childhood memory","hope for the future","fast movement","a potential threat","the power of colour","the continuity of life","protection of nature","a confused attitude to nature"], "correctOptionIndex": 0 },
+				{ "id": "Q28", "type": "multiple-choice", "question": "Portrait of William Wells — Which personal meaning?", "options": ["a childhood memory","hope for the future","fast movement","a potential threat","the power of colour","the continuity of life","protection of nature","a confused attitude to nature"], "correctOptionIndex": 7 },
+				{ "id": "Q29", "type": "multiple-choice", "question": "Vairumati Gauguin — Which personal meaning?", "options": ["a childhood memory","hope for the future","fast movement","a potential threat","the power of colour","the continuity of life","protection of nature","a confused attitude to nature"], "correctOptionIndex": 5 },
+				{ "id": "Q30", "type": "multiple-choice", "question": "Portrait of Giovanni de Medici — Which personal meaning?", "options": ["a childhood memory","hope for the future","fast movement","a potential threat","the power of colour","the continuity of life","protection of nature","a confused attitude to nature"], "correctOptionIndex": 6 }
+			]
+		},
+		{
+			"sectionNumber": 4,
+			"audioUrl": "/audio/book16-test1-sec4.mp3",
+			"questions": [
+				{ "id": "Q31", "type": "form-completion", "question": "Stoicism is still relevant today because of its ______ appeal.", "answerLength": "short" },
+				{ "id": "Q32", "type": "form-completion", "question": "The Stoics' ideas were surprisingly well known despite not being intended for ______.", "answerLength": "short" },
+				{ "id": "Q33", "type": "form-completion", "question": "Epictetus said that external events cannot be controlled but the ______ people make in response can be controlled.", "answerLength": "short" },
+				{ "id": "Q34", "type": "form-completion", "question": "A Stoic is someone who has a different view on experiences which others would consider as ______.", "answerLength": "short" },
+				{ "id": "Q35", "type": "form-completion", "question": "George Washington organised a ______ about Cato to motivate his men.", "answerLength": "short" },
+				{ "id": "Q36", "type": "form-completion", "question": "Adam Smith's ideas on ______ were influenced by Stoicism.", "answerLength": "short" },
+				{ "id": "Q37", "type": "form-completion", "question": "Cognitive Behaviour Therapy (CBT) is the treatment for ______ based on ideas from Stoicism.", "answerLength": "short" },
+				{ "id": "Q38", "type": "form-completion", "question": "People learn to base their thinking on ______.", "answerLength": "short" },
+				{ "id": "Q39", "type": "form-completion", "question": "In business, people benefit from Stoicism by identifying obstacles as ______.", "answerLength": "short" },
+				{ "id": "Q40", "type": "form-completion", "question": "It requires a lot of ______ but Stoicism can help people lead a good life.", "answerLength": "short" }
+			]
+		}
+	],
+	"answers": {
+		"Q1": "egg",
+		"Q2": "tower",
+		"Q3": "car",
+		"Q4": "animals",
+		"Q5": "bridge",
+		"Q6": "movie",
+		"Q7": "decorate",
+		"Q8": "Wednesdays",
+		"Q9": "Fradstone",
+		"Q10": "parking",
+		"Q11": "C",
+		"Q12": "A",
+		"Q13": "B",
+		"Q14": "C",
+		"Q15": "H",
+		"Q16": "C",
+		"Q17": "G",
+		"Q18": "B",
+		"Q19": "I",
+		"Q20": "A",
+		"Q21": "D,E",
+		"Q22": "D,E",
+		"Q23": "B,E",
+		"Q24": "B,E",
+		"Q25": "D",
+		"Q26": "C",
+		"Q27": "A",
+		"Q28": "H",
+		"Q29": "F",
+		"Q30": "G",
+		"Q31": "practical",
+		"Q32": "publication",
+		"Q33": "choices",
+		"Q34": "negative",
+		"Q35": "play",
+		"Q36": "capitalism",
+		"Q37": "depression",
+		"Q38": "logic",
+		"Q39": "opportunity",
+		"Q40": ["practice","practise"]
+	}
+}
