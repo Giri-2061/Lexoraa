@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Learning Lounge,
 A modern, responsive web platform built for an IELTS consultancy to showcase its branding, services, testimonials, and provide mock IELTS test experiences for students — all in a single, elegant interface.
 
@@ -82,3 +83,7 @@ The site currently uses placeholder data for test questions and instructions.
 Writing test is interactive and supports both text and image submissions.
 
 All components are structured and commented for easy backend linkage later.
+=======
+# loungelearning
+collective project
+>>>>>>> df84e79d04b7e29d6126a61494221a49920183f5
