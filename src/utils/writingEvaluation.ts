@@ -4,6 +4,8 @@ export interface WritingEvaluation {
   taskAchievement: {
     score: number;
     feedback: string;
+    ceilingReached?: boolean;
+    reason?: string;
   };
   coherenceCohesion: {
     score: number;
@@ -18,8 +20,9 @@ export interface WritingEvaluation {
     feedback: string;
   };
   overallBand: number;
-  strengths: string[];
-  improvements: string[];
+  strengths?: string[];
+  improvements?: string[];
+  examinerNotes?: string;
   wordCount?: number;
 }
 
@@ -37,186 +40,42 @@ export async function evaluateWriting(params: EvaluateWritingParams): Promise<{
   error?: string;
 }> {
   try {
-    // Check authentication first with detailed logging
-    let { data: { session }, error: sessionError } = await supabase.auth.getSession();
-    
-    console.log('Session check:', { 
-      hasSession: !!session, 
-      hasAccessToken: !!session?.access_token,
-      sessionError,
-      tokenExpiry: session?.expires_at ? new Date(session.expires_at * 1000) : null,
-      currentTime: new Date(),
-      tokenStart: session?.access_token?.substring(0, 30) + '...',
-      supabaseUrl: import.meta.env.VITE_SUPABASE_URL,
-      supabaseKey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY?.substring(0, 30) + '...'
-    });
-    
-    if (sessionError) {
-      console.error('Session error:', sessionError);
-      return {
-        success: false,
-        error: 'Session error. Please sign in again at /auth'
-      };
-    }
-    
-    if (!session) {
-      return {
-        success: false,
-        error: 'Please sign in to use AI evaluation. Go to /auth to create an account or sign in.'
-      };
-    }
+    // Get user ID if logged in (for saving to database)
+    const { data: { user } } = await supabase.auth.getUser();
+    const userId = user?.id;
 
-    // Test if we can get user info from the current session
-    try {
-      const { data: { user }, error: userError } = await supabase.auth.getUser();
-      console.log('User verification:', {
-        hasUser: !!user,
-        userId: user?.id,
-        userEmail: user?.email,
-        userError: userError?.message
-      });
-      
-      if (userError || !user) {
-        console.error('User verification failed:', userError);
-        return {
-          success: false,
-          error: `Authentication verification failed: ${userError?.message || 'User not found'}. Please sign out and sign in again.`
-        };
-      }
-    } catch (e) {
-      console.error('User verification exception:', e);
-      return {
-        success: false,
-        error: 'Authentication system error. Please sign out and sign in again.'
-      };
-    }
-
-    // Check if token is expired and try to refresh
-    if (session.expires_at && session.expires_at * 1000 < Date.now()) {
-      console.log('Token expired, attempting refresh...');
-      const { data: { session: refreshedSession }, error: refreshError } = await supabase.auth.refreshSession();
-      
-      if (refreshError || !refreshedSession) {
-        console.error('Token refresh failed:', refreshError);
-        return {
-          success: false,
-          error: 'Session expired. Please sign in again at /auth'
-        };
-      }
-      
-      // Use the refreshed session
-      session = refreshedSession;
-    }
-
-    // Validate JWT format before proceeding
-    if (session?.access_token) {
-      const tokenParts = session.access_token.split('.');
-      console.log('JWT validation:', {
-        hasBearerPrefix: session.access_token.startsWith('Bearer '),
-        tokenParts: tokenParts.length,
-        isValidJWT: tokenParts.length === 3,
-        firstPartLength: tokenParts[0]?.length || 0
-      });
-      
-      // If token has Bearer prefix, remove it
-      if (session.access_token.startsWith('Bearer ')) {
-        session = {
-          ...session,
-          access_token: session.access_token.replace('Bearer ', '')
-        };
-        console.log('Removed Bearer prefix from token');
-      }
-    }
-
-    const { data, error } = await supabase.functions.invoke('evaluate-writing', {
-      body: params
+    // Make direct API call with apikey header (no JWT required)
+    const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/evaluate-writing`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+        'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+      },
+      body: JSON.stringify({
+        ...params,
+        userId // Pass userId in body for database storage
+      })
     });
 
-    if (error) {
-      console.error('Evaluation error:', error);
-      
-      // Try to extract more detailed error information
-      let errorMessage = 'Failed to evaluate essay';
-      
-      if (error.message) {
-        errorMessage = error.message;
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Evaluation error:', errorText);
+      try {
+        const errorJson = JSON.parse(errorText);
+        return {
+          success: false,
+          error: errorJson.error || `HTTP ${response.status}: ${errorText}`
+        };
+      } catch {
+        return {
+          success: false,
+          error: `HTTP ${response.status}: ${errorText}`
+        };
       }
-      
-      // For FunctionsHttpError, try to get the response body
-      if (error.context) {
-        try {
-          const errorDetails = error.context;
-          if (errorDetails && typeof errorDetails === 'object') {
-            errorMessage = errorDetails.error || errorDetails.message || errorMessage;
-          }
-        } catch (e) {
-          console.warn('Could not parse error context:', e);
-        }
-      }
-      
-      // If we still don't have a good error message, try direct fetch
-      if (errorMessage === 'Failed to evaluate essay' || errorMessage.includes('non-2xx status code')) {
-        try {
-          if (!session?.access_token) {
-            return {
-              success: false,
-              error: 'Authentication required. Please sign in at /auth'
-            };
-          }
-          
-          console.log('Trying direct fetch with token:', session.access_token.substring(0, 20) + '...');
-          
-          const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/evaluate-writing`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${session.access_token}`,
-              'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-            },
-            body: JSON.stringify(params)
-          });
-          
-          if (!response.ok) {
-            const errorText = await response.text();
-            console.error('Direct fetch error response:', errorText);
-            try {
-              const errorJson = JSON.parse(errorText);
-              const errorMessage = errorJson.error || errorText;
-              
-              // If it's an invalid JWT error, suggest signing out and back in
-              if (errorMessage.includes('Invalid JWT') || errorJson.message === 'Invalid JWT') {
-                // Force sign out and clear all auth data
-                await supabase.auth.signOut();
-                localStorage.clear();
-                sessionStorage.clear();
-                
-                return {
-                  success: false,
-                  error: 'Authentication cleared due to invalid token. Please refresh the page and sign in again at /auth to get a fresh token from the correct project.'
-                };
-              }
-              
-              return {
-                success: false,
-                error: errorMessage
-              };
-            } catch (e) {
-              return {
-                success: false,
-                error: `HTTP ${response.status}: ${errorText}`
-              };
-            }
-          }
-        } catch (fetchError) {
-          console.error('Direct fetch failed:', fetchError);
-        }
-      }
-      
-      return {
-        success: false,
-        error: errorMessage
-      };
     }
+
+    const data = await response.json();
 
     if (!data?.evaluation) {
       return {

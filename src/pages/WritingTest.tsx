@@ -182,7 +182,7 @@ const WritingTest = () => {
 
   const handleEvaluateTask = async (taskNumber: 1 | 2) => {
     const essayText = taskNumber === 1 ? task1Answer : task2Answer;
-    const taskPrompt = test?.tasks?.[taskNumber - 1]?.prompt || 'No prompt available';
+    const taskPrompt = test?.writing?.[taskNumber - 1]?.prompt || 'No prompt available';
     
     if (!essayText || essayText.trim().length < 50) {
       toast({
@@ -294,6 +294,7 @@ const WritingTest = () => {
     try {
       let t1Eval = task1Evaluation;
       let t2Eval = task2Evaluation;
+      let evaluationErrors: string[] = [];
 
       // Evaluate Task 1 if not already evaluated and has text
       if (!t1Eval && task1Answer.trim().length >= 50) {
@@ -314,6 +315,9 @@ const WritingTest = () => {
         if (result1.success && result1.evaluation) {
           t1Eval = result1.evaluation;
           setTask1Evaluation(t1Eval);
+        } else {
+          console.error('Task 1 evaluation failed:', result1.error);
+          evaluationErrors.push(`Task 1: ${result1.error || 'Unknown error'}`);
         }
       }
 
@@ -336,7 +340,22 @@ const WritingTest = () => {
         if (result2.success && result2.evaluation) {
           t2Eval = result2.evaluation;
           setTask2Evaluation(t2Eval);
+        } else {
+          console.error('Task 2 evaluation failed:', result2.error);
+          evaluationErrors.push(`Task 2: ${result2.error || 'Unknown error'}`);
         }
+      }
+
+      // If both evaluations failed, show error and don't show results modal
+      if (evaluationErrors.length === 2 || (!t1Eval && !t2Eval)) {
+        toast({
+          title: "Evaluation Failed",
+          description: evaluationErrors.length > 0 
+            ? evaluationErrors.join('; ') 
+            : "Unable to evaluate your essays. Please check your connection and try again.",
+          variant: "destructive",
+        });
+        return;
       }
 
       // Calculate final band score if both evaluations exist
@@ -350,11 +369,14 @@ const WritingTest = () => {
           description: `Your final IELTS Writing Band Score: ${finalScore}`,
         });
       } else if (t1Eval || t2Eval) {
-        // At least one evaluation exists
+        // At least one evaluation exists - show partial results with warning
         setShowEvaluation(true);
         toast({
           title: "Partial Evaluation",
-          description: "Only one task could be evaluated. Both tasks need text for final score.",
+          description: evaluationErrors.length > 0 
+            ? `One task failed: ${evaluationErrors[0]}`
+            : "Only one task could be evaluated. Both tasks need text for final score.",
+          variant: "destructive",
         });
       }
 
@@ -384,7 +406,7 @@ const WritingTest = () => {
       console.error('Submission error:', error);
       toast({
         title: "Error",
-        description: "An error occurred during evaluation. Please try again.",
+        description: error instanceof Error ? error.message : "An error occurred during evaluation. Please try again.",
         variant: "destructive",
       });
     } finally {

@@ -9,7 +9,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { toast } from 'sonner';
 import { Switch } from '@/components/ui/switch';
-import { Loader2, BookOpen } from 'lucide-react';
+import { Loader2, BookOpen, RefreshCw } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 
 const loginSchema = z.object({
   email: z.string().trim().email({ message: 'Invalid email address' }),
@@ -44,11 +45,35 @@ export default function Auth() {
   const [isTeacher, setIsTeacher] = useState(false);
   const [signupErrors, setSignupErrors] = useState<Record<string, string>>({});
 
+  // Clear all auth data on mount to fix any corrupted tokens
+  useEffect(() => {
+    const clearAuthIfNeeded = async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('reset') === 'true') {
+        await supabase.auth.signOut();
+        localStorage.clear();
+        sessionStorage.clear();
+        toast.success('Authentication cleared! Please sign in again.');
+        // Remove the query param
+        window.history.replaceState({}, '', '/auth');
+      }
+    };
+    clearAuthIfNeeded();
+  }, []);
+
   useEffect(() => {
     if (user && !loading) {
       navigate('/');
     }
   }, [user, loading, navigate]);
+
+  const handleClearAuth = async () => {
+    await supabase.auth.signOut();
+    localStorage.clear();
+    sessionStorage.clear();
+    toast.success('All authentication data cleared! Please sign in again.');
+    window.location.reload();
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -279,6 +304,20 @@ export default function Auth() {
               </form>
             </TabsContent>
           </Tabs>
+          
+          {/* Debug: Clear auth button */}
+          <div className="mt-6 pt-4 border-t border-border">
+            <Button 
+              type="button" 
+              variant="ghost" 
+              size="sm" 
+              onClick={handleClearAuth}
+              className="w-full text-muted-foreground hover:text-foreground"
+            >
+              <RefreshCw className="mr-2 h-4 w-4" />
+              Having login issues? Clear auth data
+            </Button>
+          </div>
         </CardContent>
       </Card>
     </div>

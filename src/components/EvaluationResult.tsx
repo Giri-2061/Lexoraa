@@ -74,44 +74,63 @@ export default function EvaluationResult({ evaluation }: EvaluationResultProps) 
       </div>
 
       {/* Strengths */}
-      <Card className="bg-green-50 border-green-200">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-green-700">
-            <CheckCircle className="w-5 h-5" />
-            Strengths
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ul className="space-y-2">
-            {evaluation.strengths.map((strength, index) => (
-              <li key={index} className="flex items-start gap-2 text-sm">
-                <span className="text-green-600 mt-0.5">✓</span>
-                <span>{strength}</span>
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
+      {evaluation.strengths && evaluation.strengths.length > 0 && (
+        <Card className="bg-green-50 border-green-200">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-green-700">
+              <CheckCircle className="w-5 h-5" />
+              Strengths
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-2">
+              {evaluation.strengths.map((strength, index) => (
+                <li key={index} className="flex items-start gap-2 text-sm">
+                  <span className="text-green-600 mt-0.5">✓</span>
+                  <span>{strength}</span>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Areas for Improvement */}
-      <Card className="bg-orange-50 border-orange-200">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-orange-700">
-            <TrendingUp className="w-5 h-5" />
-            Areas for Improvement
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ul className="space-y-2">
-            {evaluation.improvements.map((improvement, index) => (
-              <li key={index} className="flex items-start gap-2 text-sm">
-                <AlertCircle className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
-                <span>{improvement}</span>
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
+      {evaluation.improvements && evaluation.improvements.length > 0 && (
+        <Card className="bg-orange-50 border-orange-200">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-orange-700">
+              <TrendingUp className="w-5 h-5" />
+              Areas for Improvement
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-2">
+              {evaluation.improvements.map((improvement, index) => (
+                <li key={index} className="flex items-start gap-2 text-sm">
+                  <AlertCircle className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
+                  <span>{improvement}</span>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Examiner Notes (alternative format from API) */}
+      {evaluation.examinerNotes && (
+        <Card className="bg-blue-50 border-blue-200">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-blue-700">
+              <AlertCircle className="w-5 h-5" />
+              Examiner Notes
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm">{evaluation.examinerNotes}</p>
+          </CardContent>
+        </Card>
+      )}
 
       {/* IELTS Band Descriptors Reference */}
       <Card className="bg-muted/50">

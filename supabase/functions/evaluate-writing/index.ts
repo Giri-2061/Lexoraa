@@ -13,18 +13,18 @@ serve(async (req) => {
     const GROQ_API_KEY = Deno.env.get('GROQ_API_KEY')
     if (!GROQ_API_KEY) throw new Error('GROQ_API_KEY not configured')
 
-    const { essayText, taskType, prompt, testId, taskNumber } = await req.json()
+    const { essayText, taskType, prompt, testId, taskNumber, userId } = await req.json()
 
-    // 1. Authentication Layer
-    const authHeader = req.headers.get('Authorization')
-    const supabaseClient = createClient(
+    // Validate required fields
+    if (!essayText || !taskType) {
+      throw new Error('Missing required fields: essayText and taskType are required')
+    }
+
+    // Create admin client for database operations
+    const adminClient = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '',
-      { global: { headers: { Authorization: authHeader || '' } } }
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
     )
-
-    let { data: { user } } = await supabaseClient.auth.getUser(authHeader?.replace('Bearer ', '') || '')
-    if (!user) throw new Error('Unauthorized')
 
     // 2. The "Strict Examiner" System Prompt
     const systemPrompt = `You are a Senior IELTS Examiner. Your marking is strict, objective, and follows the official Band Descriptors. 
@@ -78,26 +78,35 @@ Return ONLY a JSON object. No prose.
     })
 
     const aiData = await aiResponse.json()
+    
+    if (!aiData.choices?.[0]?.message?.content) {
+      console.error('AI Response Error:', aiData)
+      throw new Error('Failed to get AI response: ' + (aiData.error?.message || 'No response content'))
+    }
+    
     const evaluationJson = JSON.parse(aiData.choices[0].message.content.replace(/```json|```/g, "").trim())
 
-    // 4. Save to Database (Ensuring data persistence for production)
-    const { error: dbError } = await supabaseClient
-      .from('writing_evaluations')
-      .insert({
-        user_id: user.id,
-        test_id: testId,
-        task_number: taskNumber,
-        essay_text: essayText,
-        evaluation: evaluationJson
-      })
+    // 4. Save to Database (if userId provided)
+    if (userId) {
+      const { error: dbError } = await adminClient
+        .from('writing_evaluations')
+        .insert({
+          user_id: userId,
+          test_id: testId,
+          task_number: taskNumber,
+          essay_text: essayText,
+          evaluation: evaluationJson
+        })
 
-    if (dbError) console.error('Database Error:', dbError)
+      if (dbError) console.error('Database Error:', dbError)
+    }
 
     return new Response(JSON.stringify({ success: true, evaluation: evaluationJson }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' }
     })
 
   } catch (error) {
+    console.error('Function error:', error)
     return new Response(JSON.stringify({ error: error.message }), {
       status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' }
     })
