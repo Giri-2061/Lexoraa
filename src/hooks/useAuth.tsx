@@ -1,16 +1,21 @@
 import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
-import { User, Session } from '@supabase/supabase-js';
+import { User, Session, AuthError } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 
 type AppRole = 'super_admin' | 'consultancy_owner' | 'student';
+
+interface SignUpResult {
+  error: AuthError | null;
+  data: { user: User | null; session: Session | null } | null;
+}
 
 interface AuthContextType {
   user: User | null;
   session: Session | null;
   loading: boolean;
   role: AppRole | null;
-  signUp: (email: string, password: string, fullName: string, role?: AppRole) => Promise<{ error: Error | null }>;
-  signIn: (email: string, password: string) => Promise<{ error: Error | null }>;
+  signUp: (email: string, password: string, fullName: string, role?: AppRole) => Promise<SignUpResult>;
+  signIn: (email: string, password: string) => Promise<{ error: AuthError | null }>;
   signOut: () => Promise<void>;
 }
 
@@ -71,7 +76,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const signUp = async (email: string, password: string, fullName: string, role: AppRole = 'student') => {
+  const signUp = async (email: string, password: string, fullName: string, role: AppRole = 'student'): Promise<SignUpResult> => {
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
