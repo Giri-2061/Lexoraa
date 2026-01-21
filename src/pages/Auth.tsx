@@ -9,7 +9,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { toast } from 'sonner';
 import { Switch } from '@/components/ui/switch';
-import { Loader2, BookOpen, RefreshCw } from 'lucide-react';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Loader2, BookOpen, RefreshCw, Eye, EyeOff } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 
 const loginSchema = z.object({
@@ -35,15 +36,28 @@ export default function Auth() {
   // Login form state
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [loginErrors, setLoginErrors] = useState<Record<string, string>>({});
   
   // Signup form state
   const [signupName, setSignupName] = useState('');
   const [signupEmail, setSignupEmail] = useState('');
   const [signupPassword, setSignupPassword] = useState('');
+  const [signupShowPassword, setSignupShowPassword] = useState(false);
   const [signupConfirmPassword, setSignupConfirmPassword] = useState('');
+  const [signupShowConfirmPassword, setSignupShowConfirmPassword] = useState(false);
   const [isTeacher, setIsTeacher] = useState(false);
   const [signupErrors, setSignupErrors] = useState<Record<string, string>>({});
+
+  // Load remember me preference on mount
+  useEffect(() => {
+    const rememberMeEmail = localStorage.getItem('rememberMeEmail');
+    if (rememberMeEmail) {
+      setLoginEmail(rememberMeEmail);
+      setRememberMe(true);
+    }
+  }, []);
 
   // Clear all auth data on mount to fix any corrupted tokens
   useEffect(() => {
@@ -107,6 +121,12 @@ export default function Auth() {
         toast.error(error.message);
       }
     } else {
+      // Handle remember me
+      if (rememberMe) {
+        localStorage.setItem('rememberMeEmail', loginEmail);
+      } else {
+        localStorage.removeItem('rememberMeEmail');
+      }
       toast.success('Welcome back!');
       navigate('/');
     }
@@ -207,10 +227,21 @@ export default function Auth() {
                   )}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="login-password">Password</Label>
+                  <div className="flex items-center justify-between">
+                    <Label htmlFor="login-password">Password</Label>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="h-6 px-2 text-muted-foreground hover:text-foreground"
+                    >
+                      {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                    </Button>
+                  </div>
                   <Input
                     id="login-password"
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     placeholder="••••••••"
                     value={loginPassword}
                     onChange={(e) => setLoginPassword(e.target.value)}
@@ -220,6 +251,18 @@ export default function Auth() {
                     <p className="text-sm text-destructive">{loginErrors.password}</p>
                   )}
                 </div>
+
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id="remember-me"
+                    checked={rememberMe}
+                    onCheckedChange={(checked) => setRememberMe(checked as boolean)}
+                  />
+                  <Label htmlFor="remember-me" className="text-sm font-normal cursor-pointer">
+                    Remember this email
+                  </Label>
+                </div>
+
                 <Button type="submit" className="w-full" disabled={isSubmitting}>
                   {isSubmitting ? (
                     <>
@@ -230,6 +273,18 @@ export default function Auth() {
                     'Sign In'
                   )}
                 </Button>
+
+                <div className="text-center">
+                  <Button
+                    type="button"
+                    variant="link"
+                    size="sm"
+                    onClick={() => navigate('/auth/forgot-password')}
+                    className="text-muted-foreground hover:text-primary"
+                  >
+                    Forgot your password?
+                  </Button>
+                </div>
               </form>
             </TabsContent>
 
@@ -272,10 +327,21 @@ export default function Auth() {
                   )}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="signup-password">Password</Label>
+                  <div className="flex items-center justify-between">
+                    <Label htmlFor="signup-password">Password</Label>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setSignupShowPassword(!signupShowPassword)}
+                      className="h-6 px-2 text-muted-foreground hover:text-foreground"
+                    >
+                      {signupShowPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                    </Button>
+                  </div>
                   <Input
                     id="signup-password"
-                    type="password"
+                    type={signupShowPassword ? 'text' : 'password'}
                     placeholder="••••••••"
                     value={signupPassword}
                     onChange={(e) => setSignupPassword(e.target.value)}
@@ -286,10 +352,21 @@ export default function Auth() {
                   )}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="signup-confirm">Confirm Password</Label>
+                  <div className="flex items-center justify-between">
+                    <Label htmlFor="signup-confirm">Confirm Password</Label>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setSignupShowConfirmPassword(!signupShowConfirmPassword)}
+                      className="h-6 px-2 text-muted-foreground hover:text-foreground"
+                    >
+                      {signupShowConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                    </Button>
+                  </div>
                   <Input
                     id="signup-confirm"
-                    type="password"
+                    type={signupShowConfirmPassword ? 'text' : 'password'}
                     placeholder="••••••••"
                     value={signupConfirmPassword}
                     onChange={(e) => setSignupConfirmPassword(e.target.value)}

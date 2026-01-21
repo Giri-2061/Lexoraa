@@ -23,6 +23,8 @@ import WritingCambridge08 from "./pages/WritingCambridge08";
 import Auth from "./pages/Auth";
 import CheckEmail from "./pages/CheckEmail";
 import EmailVerified from "./pages/EmailVerified";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import Dashboard from "./pages/Dashboard";
 import ScoreCalculator from "./pages/ScoreCalculator";
 import Classrooms from "./pages/Classrooms";
@@ -59,6 +61,8 @@ function InnerRoutes() {
         <Route path="/auth" element={<PageTransition><Auth /></PageTransition>} />
         <Route path="/auth/check-email" element={<PageTransition><CheckEmail /></PageTransition>} />
         <Route path="/auth/verified" element={<PageTransition><EmailVerified /></PageTransition>} />
+        <Route path="/auth/forgot-password" element={<PageTransition><ForgotPassword /></PageTransition>} />
+        <Route path="/auth/reset-password" element={<PageTransition><ResetPassword /></PageTransition>} />
         <Route path="/dashboard" element={<PageTransition><Dashboard /></PageTransition>} />
         <Route path="/score-calculator" element={<PageTransition><ScoreCalculator /></PageTransition>} />
         <Route path="/classrooms" element={<PageTransition><Classrooms /></PageTransition>} />
