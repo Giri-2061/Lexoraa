@@ -340,6 +340,54 @@ export type Database = {
         }
         Relationships: []
       }
+      writing_evaluations: {
+        Row: {
+          id: string
+          user_id: string | null
+          test_id: string
+          task_number: number
+          essay_text: string
+          task_achievement_score: number | null
+          coherence_cohesion_score: number | null
+          lexical_resource_score: number | null
+          grammar_score: number | null
+          overall_band_score: number | null
+          feedback: Json | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id?: string | null
+          test_id: string
+          task_number: number
+          essay_text: string
+          task_achievement_score?: number | null
+          coherence_cohesion_score?: number | null
+          lexical_resource_score?: number | null
+          grammar_score?: number | null
+          overall_band_score?: number | null
+          feedback?: Json | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string | null
+          test_id?: string
+          task_number?: number
+          essay_text?: string
+          task_achievement_score?: number | null
+          coherence_cohesion_score?: number | null
+          lexical_resource_score?: number | null
+          grammar_score?: number | null
+          overall_band_score?: number | null
+          feedback?: Json | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

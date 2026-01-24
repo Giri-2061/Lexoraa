@@ -57,6 +57,7 @@ async function imageUrlToBase64(url: string): Promise<string | null> {
 export async function evaluateWriting(params: EvaluateWritingParams): Promise<{
   success: boolean;
   evaluation?: WritingEvaluation;
+  testResultId?: string;
   error?: string;
 }> {
   try {
@@ -116,7 +117,8 @@ export async function evaluateWriting(params: EvaluateWritingParams): Promise<{
 
     return {
       success: true,
-      evaluation: data.evaluation
+      evaluation: data.evaluation,
+      testResultId: data.testResultId
     };
   } catch (err) {
     console.error('Unexpected error:', err);

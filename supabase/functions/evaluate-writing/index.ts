@@ -175,7 +175,9 @@ Return ONLY a JSON object. No prose, no explanation outside JSON.
     }
 
     // 4. Save to Database (if userId provided)
+    let testResultId: string | null = null;
     if (userId) {
+      // First, insert into writing_evaluations for detailed IELTS feedback
       const { error: dbError } = await adminClient
         .from('writing_evaluations')
         .insert({
@@ -186,10 +188,40 @@ Return ONLY a JSON object. No prose, no explanation outside JSON.
           evaluation: evaluationJson
         })
 
-      if (dbError) console.error('Database Error:', dbError)
+      if (dbError) console.error('Writing Evaluations DB Error:', dbError)
+
+      // Also insert into test_results for unified tracking & assignment submissions
+      const overallBand = evaluationJson.overallBand ?? 0;
+      const { data: testResultData, error: testResultError } = await adminClient
+        .from('test_results')
+        .insert({
+          user_id: userId,
+          test_id: testId,
+          test_type: 'writing',
+          correct_count: 0, // Not applicable for writing
+          total_questions: taskNumber === 1 ? 1 : 2, // Task number
+          band_score: overallBand,
+          answers: {
+            taskNumber,
+            essayText,
+            evaluation: evaluationJson
+          }
+        })
+        .select('id')
+        .single()
+
+      if (testResultError) {
+        console.error('Test Results DB Error:', testResultError)
+      } else {
+        testResultId = testResultData?.id ?? null
+      }
     }
 
-    return new Response(JSON.stringify({ success: true, evaluation: evaluationJson }), {
+    return new Response(JSON.stringify({ 
+      success: true, 
+      evaluation: evaluationJson,
+      testResultId 
+    }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' }
     })
 

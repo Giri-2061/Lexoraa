@@ -11,7 +11,6 @@ export default function CheckEmail() {
   const location = useLocation();
   const [isResending, setIsResending] = useState(false);
   
-  // Get email from navigation state
   const email = location.state?.email || 'your email';
 
   const handleResendEmail = async () => {
@@ -45,31 +44,31 @@ export default function CheckEmail() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-background to-accent/5 px-4">
-      <Card className="w-full max-w-md shadow-lg border-border/50">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
+      <Card className="w-full max-w-md shadow-md border border-gray-200 dark:border-gray-800">
         <CardHeader className="text-center space-y-4">
           <div className="flex justify-center">
-            <div className="p-4 rounded-full bg-primary/10 animate-pulse">
-              <Mail className="h-8 w-8 text-primary" />
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1e3a5f]/10 dark:bg-[#1e3a5f]/30">
+              <Mail className="h-7 w-7 text-[#1e3a5f] dark:text-[#5a8ac4]" />
             </div>
           </div>
           <div>
-            <CardTitle className="text-2xl font-bold text-foreground">
+            <CardTitle className="text-2xl font-semibold text-gray-900 dark:text-white">
               Check Your Email
             </CardTitle>
-            <CardDescription className="text-muted-foreground mt-2">
+            <CardDescription className="text-gray-600 dark:text-gray-400 mt-2">
               We've sent a verification link to
             </CardDescription>
-            <p className="font-medium text-foreground mt-1 break-all">
+            <p className="font-medium text-gray-900 dark:text-white mt-1 break-all">
               {email}
             </p>
           </div>
         </CardHeader>
 
-        <CardContent className="space-y-6">
-          <div className="bg-muted/50 rounded-lg p-4 space-y-3">
-            <h3 className="font-medium text-sm text-foreground">What to do next:</h3>
-            <ol className="text-sm text-muted-foreground space-y-2 list-decimal list-inside">
+        <CardContent className="space-y-5">
+          <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 space-y-3">
+            <h3 className="font-medium text-sm text-gray-900 dark:text-white">What to do next:</h3>
+            <ol className="text-sm text-gray-600 dark:text-gray-400 space-y-2 list-decimal list-inside">
               <li>Open your email inbox</li>
               <li>Look for an email from LoungeLearning</li>
               <li>Click the verification link in the email</li>
@@ -107,22 +106,12 @@ export default function CheckEmail() {
             <Button
               variant="ghost"
               onClick={handleBackToSignIn}
-              className="w-full"
+              className="w-full text-gray-600 dark:text-gray-400"
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Sign In
             </Button>
           </div>
-
-          <p className="text-xs text-center text-muted-foreground">
-            Already verified?{' '}
-            <button
-              onClick={handleBackToSignIn}
-              className="text-primary hover:underline font-medium"
-            >
-              Sign in here
-            </button>
-          </p>
         </CardContent>
       </Card>
     </div>
