@@ -1,11 +1,11 @@
 {
-  "testId": "book15-test1",
+  "testId": "book14-test4",
   "writing": [
     {
       "taskId": 1,
-      "type": "chart",
+      "type": "map",
       "instruction": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      "prompt": "The chart below shows the results of a survey about people's coffee and tea buying and drinking habits in five Australian cities.",
+      "prompt": "The plans below show a public park when it first opened in 1920 and the same park today.",
       "imageUrl": null,
       "minWords": 150,
       "suggestedTime": "20 minutes"
@@ -14,7 +14,7 @@
       "taskId": 2,
       "type": "advantages-disadvantages-essay",
       "instruction": "Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
-      "prompt": "In some countries, owning a home rather than renting one is very important for people. Why might this be the case? Do you think this is a positive or negative situation?",
+      "prompt": "Nowadays many people choose to be self-employed, rather than to work for a company or organisation. Why might this be the case? What could be the disadvantages of being self-employed?",
       "imageUrl": null,
       "minWords": 250,
       "suggestedTime": "40 minutes"

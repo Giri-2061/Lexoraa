@@ -1,11 +1,11 @@
 {
-  "testId": "book15-test1",
+  "testId": "book15-test4",
   "writing": [
     {
       "taskId": 1,
       "type": "chart",
       "instruction": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      "prompt": "The chart below shows the results of a survey about people's coffee and tea buying and drinking habits in five Australian cities.",
+      "prompt": "The chart below shows what anthropology graduates from one university did after finishing their undergraduate degree course. The table shows the salaries of the anthropologists in work after five years.",
       "imageUrl": null,
       "minWords": 150,
       "suggestedTime": "20 minutes"
@@ -14,7 +14,7 @@
       "taskId": 2,
       "type": "advantages-disadvantages-essay",
       "instruction": "Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
-      "prompt": "In some countries, owning a home rather than renting one is very important for people. Why might this be the case? Do you think this is a positive or negative situation?",
+      "prompt": "In some cultures, children are often told that they can achieve anything if they try hard enough. What are the advantages and disadvantages of giving children this message?",
       "imageUrl": null,
       "minWords": 250,
       "suggestedTime": "40 minutes"

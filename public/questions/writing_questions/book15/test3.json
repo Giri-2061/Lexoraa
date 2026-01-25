@@ -1,11 +1,11 @@
 {
-  "testId": "book14-test1",
+  "testId": "book15-test3",
   "writing": [
     {
       "taskId": 1,
-      "type": "chart",
+      "type": "process-diagram",
       "instruction": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      "prompt": "The chart below shows the average percentages in typical meals of three types of nutrients, all of which may be unhealthy if eaten too much.",
+      "prompt": "The diagram below shows how instant noodles are manufactured.",
       "imageUrl": null,
       "minWords": 150,
       "suggestedTime": "20 minutes"
@@ -14,7 +14,7 @@
       "taskId": 2,
       "type": "discussion-essay",
       "instruction": "Discuss both views and give your own opinion.",
-      "prompt": "Some people believe that it is best to accept a bad situation, such as an unsatisfactory job or shortage of money. Others argue that it is better to try and improve such situations. Discuss both views and give your own opinion.",
+      "prompt": "Some people say that advertising is extremely successful at persuading us to buy things. Other people think that advertising is so common that we no longer pay attention to it. Discuss both views and give your own opinion.",
       "imageUrl": null,
       "minWords": 250,
       "suggestedTime": "40 minutes"

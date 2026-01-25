@@ -3,9 +3,9 @@
   "writing": [
     {
       "taskId": 1,
-      "type": "process-diagram",
+      "type": "chart",
       "instruction": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      "prompt": "The diagram below shows the process of making coffee.",
+      "prompt": "The chart below shows the value of one country's exports in various categories during 2015 and 2016. The table shows the percentage change in each category of exports in 2016 compared with 2015.",
       "imageUrl": null,
       "minWords": 150,
       "suggestedTime": "20 minutes"
@@ -13,8 +13,8 @@
     {
       "taskId": 2,
       "type": "discussion-essay",
-      "instruction": "Discuss both these views and give your own opinion.",
-      "prompt": "Some people think that the government should provide free education at all levels. Others believe that education should not be free. Discuss both views and give your opinion.",
+      "instruction": "Discuss both views and give your own opinion.",
+      "prompt": "Some people say that the main environmental problem of our time is the loss of particular species of plants and animals. Others say that there are more important environmental problems. Discuss both views and give your own opinion.",
       "imageUrl": null,
       "minWords": 250,
       "suggestedTime": "40 minutes"
