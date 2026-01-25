@@ -28,6 +28,7 @@ const Dashboard = () => {
   const [targetScore, setTargetScore] = useState<number>(7.0);
   const [editingTarget, setEditingTarget] = useState(false);
   const [tempTarget, setTempTarget] = useState("");
+  const [displayName, setDisplayName] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,17 +42,19 @@ const Dashboard = () => {
       
       if (results) setTestResults(results);
 
-      // Fetch profile for target score
+      // Fetch profile for target score and display name
       const { data: profile } = await supabase
         .from('profiles')
-        .select('target_score')
+        .select('target_score, full_name')
         .eq('user_id', user.id)
         .single();
-      
+
       if (profile?.target_score) {
         setTargetScore(Number(profile.target_score));
       }
-      
+      if (profile?.full_name) {
+        setDisplayName(profile.full_name);
+      }
       setLoadingResults(false);
     };
 
@@ -137,7 +140,7 @@ const Dashboard = () => {
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-foreground mb-2">Dashboard</h1>
             <p className="text-muted-foreground">
-              Welcome back, {user.email}! Track your IELTS preparation progress.
+              Welcome back, {displayName ? displayName : user.email}! Track your IELTS preparation progress.
             </p>
           </div>
 
