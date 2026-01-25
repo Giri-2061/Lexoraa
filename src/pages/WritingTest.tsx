@@ -19,6 +19,7 @@ import type { WritingTest as WritingTestData } from "@/types/questions";
 import { AlertCircle, CheckCircle, Upload, Loader2, Sparkles } from "lucide-react";
 import { evaluateWriting, WritingEvaluation } from '@/utils/writingEvaluation';
 import { useAuth } from '@/hooks/useAuth';
+import { supabase } from "@/integrations/supabase/client";
 import EvaluationResult from '@/components/EvaluationResult';
 
 type UploadTask = 1 | 2;
@@ -414,6 +415,34 @@ const WritingTest = () => {
 
       console.log("Writing test submission", payload);
 
+      // Save result to Supabase test_results
+      if (user && user.id) {
+        const finalBand = t1Eval && t2Eval ? calculateFinalBand(t1Eval.overallBand, t2Eval.overallBand) : null;
+        const { error } = await supabase.from('test_results').insert({
+          test_id: test?.testId ?? "writing-sample-1",
+          test_type: 'writing',
+          user_id: user.id,
+          band_score: finalBand,
+          correct_count: null,
+          total_questions: 2,
+          answers: {
+            task1: task1Answer,
+            task2: task2Answer,
+            task1Image: task1ImageData,
+            task2Image: task2ImageData,
+            evaluations: {
+              task1: t1Eval,
+              task2: t2Eval,
+              finalBand: finalBand
+            }
+          },
+          duration_minutes: durationMinutes,
+          created_at: new Date().toISOString(),
+        });
+        if (error) {
+          toast({ title: 'Failed to save result', description: error.message, variant: 'destructive' });
+        }
+      }
       setSubmitted(true);
       setShowResultsModal(true);
 
