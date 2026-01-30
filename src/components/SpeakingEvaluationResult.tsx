@@ -303,29 +303,31 @@ export const SpeakingEvaluationResult: React.FC<SpeakingEvaluationResultProps> =
               <CardDescription>Questions about familiar topics</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="rounded-lg p-4 text-sm whitespace-pre-wrap bg-gray-50 text-gray-900 dark:bg-zinc-900 dark:text-gray-100">
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-sm whitespace-pre-wrap text-gray-900 dark:text-gray-100">
                 {transcripts?.part1 || 'No transcript available'}
               </div>
             </CardContent>
           </Card>
+          
           <Card>
             <CardHeader>
               <CardTitle>Part 2: Long Turn</CardTitle>
               <CardDescription>Individual presentation on a topic</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="rounded-lg p-4 text-sm whitespace-pre-wrap bg-gray-50 text-gray-900 dark:bg-zinc-900 dark:text-gray-100">
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-sm whitespace-pre-wrap text-gray-900 dark:text-gray-100">
                 {transcripts?.part2 || 'No transcript available'}
               </div>
             </CardContent>
           </Card>
+          
           <Card>
             <CardHeader>
               <CardTitle>Part 3: Discussion</CardTitle>
               <CardDescription>Abstract and complex topics</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="rounded-lg p-4 text-sm whitespace-pre-wrap bg-gray-50 text-gray-900 dark:bg-zinc-900 dark:text-gray-100">
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-sm whitespace-pre-wrap text-gray-900 dark:text-gray-100">
                 {transcripts?.part3 || 'No transcript available'}
               </div>
             </CardContent>

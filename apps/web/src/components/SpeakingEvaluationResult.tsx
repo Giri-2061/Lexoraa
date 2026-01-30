@@ -303,7 +303,7 @@ export const SpeakingEvaluationResult: React.FC<SpeakingEvaluationResultProps> =
               <CardDescription>Questions about familiar topics</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="bg-gray-50 rounded-lg p-4 text-sm whitespace-pre-wrap">
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-sm whitespace-pre-wrap text-gray-900 dark:text-gray-100">
                 {transcripts?.part1 || 'No transcript available'}
               </div>
             </CardContent>
@@ -315,7 +315,7 @@ export const SpeakingEvaluationResult: React.FC<SpeakingEvaluationResultProps> =
               <CardDescription>Individual presentation on a topic</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="bg-gray-50 rounded-lg p-4 text-sm whitespace-pre-wrap">
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-sm whitespace-pre-wrap text-gray-900 dark:text-gray-100">
                 {transcripts?.part2 || 'No transcript available'}
               </div>
             </CardContent>
@@ -327,7 +327,7 @@ export const SpeakingEvaluationResult: React.FC<SpeakingEvaluationResultProps> =
               <CardDescription>Abstract and complex topics</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="bg-gray-50 rounded-lg p-4 text-sm whitespace-pre-wrap">
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-sm whitespace-pre-wrap text-gray-900 dark:text-gray-100">
                 {transcripts?.part3 || 'No transcript available'}
               </div>
             </CardContent>

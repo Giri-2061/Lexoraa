@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowLeft, Clock } from "lucide-react";
 import { ReactNode } from "react";
+import { ThemeToggle } from "./ThemeToggle";
 
 type Props = {
   title: string;
@@ -30,14 +31,8 @@ export default function TestHeader({ title, session, recordingIndicator }: Props
             </div>
 
             <div className="flex items-center gap-3 flex-shrink-0">
+              <ThemeToggle />
               {recordingIndicator}
-              {/* Theme toggle for test pages */}
-              <div className="ml-2">
-                {/** Dynamically import ThemeToggle to avoid circular deps if needed */}
-                {require('@/components/ThemeToggle').ThemeToggle ? (
-                  require('@/components/ThemeToggle').ThemeToggle()
-                ) : null}
-              </div>
               {!session.started ? (
                 <Button onClick={() => session.setStarted(true)} className="bg-primary">Begin Test</Button>
               ) : (
