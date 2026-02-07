@@ -340,6 +340,78 @@ export type Database = {
         }
         Relationships: []
       }
+      speaking_evaluations: {
+        Row: {
+          id: string
+          user_id: string | null
+          test_id: string
+          fluency_coherence_score: number | null
+          lexical_resource_score: number | null
+          grammatical_range_score: number | null
+          pronunciation_score: number | null
+          overall_score: number | null
+          transcript_part1: string | null
+          transcript_part2: string | null
+          transcript_part3: string | null
+          fluency_metrics: Json | null
+          grammar_analysis: Json | null
+          vocabulary_analysis: Json | null
+          pronunciation_analysis: Json | null
+          fluency_coherence_data: Json | null
+          lexical_resource_data: Json | null
+          grammatical_range_data: Json | null
+          pronunciation_data: Json | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id?: string | null
+          test_id: string
+          fluency_coherence_score?: number | null
+          lexical_resource_score?: number | null
+          grammatical_range_score?: number | null
+          pronunciation_score?: number | null
+          overall_score?: number | null
+          transcript_part1?: string | null
+          transcript_part2?: string | null
+          transcript_part3?: string | null
+          fluency_metrics?: Json | null
+          grammar_analysis?: Json | null
+          vocabulary_analysis?: Json | null
+          pronunciation_analysis?: Json | null
+          fluency_coherence_data?: Json | null
+          lexical_resource_data?: Json | null
+          grammatical_range_data?: Json | null
+          pronunciation_data?: Json | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string | null
+          test_id?: string
+          fluency_coherence_score?: number | null
+          lexical_resource_score?: number | null
+          grammatical_range_score?: number | null
+          pronunciation_score?: number | null
+          overall_score?: number | null
+          transcript_part1?: string | null
+          transcript_part2?: string | null
+          transcript_part3?: string | null
+          fluency_metrics?: Json | null
+          grammar_analysis?: Json | null
+          vocabulary_analysis?: Json | null
+          pronunciation_analysis?: Json | null
+          fluency_coherence_data?: Json | null
+          lexical_resource_data?: Json | null
+          grammatical_range_data?: Json | null
+          pronunciation_data?: Json | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       writing_evaluations: {
         Row: {
           id: string

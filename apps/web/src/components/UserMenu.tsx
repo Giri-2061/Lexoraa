@@ -32,7 +32,7 @@ export default function UserMenu() {
         variant="outline"
         size="sm"
         onClick={() => navigate('/auth')}
-        className="border-primary/30 hover:bg-primary/10"
+        className="border-primary/30 hover:bg-primary/10 text-primary"
       >
         <User className="h-4 w-4 mr-2" />
         Login

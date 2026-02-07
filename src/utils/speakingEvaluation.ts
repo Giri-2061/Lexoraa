@@ -249,7 +249,47 @@ export async function evaluateSpeaking(
     }
 
     toast.success("Evaluation complete!");
-    return data.evaluation as SpeakingEvaluation;
+    
+    const evaluation = data.evaluation as SpeakingEvaluation;
+
+    // Save detailed evaluation
+    const { error: dbError } = await supabase.from('speaking_evaluations').insert({
+      user_id: session.user.id,
+      test_id: testId,
+      fluency_coherence_score: evaluation.fluencyCoherence.score,
+      lexical_resource_score: evaluation.lexicalResource.score,
+      grammatical_range_score: evaluation.grammaticalRange.score,
+      pronunciation_score: evaluation.pronunciation.score,
+      overall_score: evaluation.estimatedBand,
+      transcript_part1: evaluation.transcripts.part1,
+      transcript_part2: evaluation.transcripts.part2,
+      transcript_part3: evaluation.transcripts.part3,
+      fluency_metrics: evaluation.fluencyMetrics as any,
+      grammar_analysis: evaluation.grammarAnalysis as any,
+      vocabulary_analysis: evaluation.vocabularyAnalysis as any,
+      pronunciation_analysis: evaluation.pronunciationAnalysis as any,
+      fluency_coherence_data: evaluation.fluencyCoherence as any,
+      lexical_resource_data: evaluation.lexicalResource as any,
+      grammatical_range_data: evaluation.grammaticalRange as any,
+      pronunciation_data: evaluation.pronunciation as any
+    });
+
+    if (dbError) console.error('Error saving detailed evaluation:', dbError);
+
+    // Save test result summary for dashboard
+    const { error: resultError } = await supabase.from('test_results').insert({
+      user_id: session.user.id,
+      test_id: testId,
+      test_type: 'speaking',
+      band_score: evaluation.estimatedBand,
+      total_questions: 3,
+      correct_count: 0,
+      answers: evaluation.transcripts as any
+    });
+
+    if (resultError) console.error('Error saving test result:', resultError);
+
+    return evaluation;
 
   } catch (error) {
     console.error('Speaking evaluation error:', error);
