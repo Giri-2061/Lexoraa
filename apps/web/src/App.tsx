@@ -34,6 +34,10 @@ import ClassroomDetail from "./pages/ClassroomDetail";
 import NotFound from "./pages/NotFound";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import AdminFeedback from "./pages/AdminFeedback";
+import SuperAdminDashboard from "./pages/SuperAdminDashboard";
+import TeacherPendingApproval from "./pages/TeacherPendingApproval";
+import FeedbackProvider from "./components/FeedbackProvider";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +65,7 @@ function InnerRoutes() {
   return (
     <>
       <AuthCallback />
+      <FeedbackProvider />
       <AnimatePresence mode="wait" initial={false}>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><MockTests /></PageTransition>} />
@@ -69,6 +74,7 @@ function InnerRoutes() {
         <Route path="/auth/verified" element={<PageTransition><EmailVerified /></PageTransition>} />
         <Route path="/auth/forgot-password" element={<PageTransition><ForgotPassword /></PageTransition>} />
         <Route path="/auth/reset-password" element={<PageTransition><ResetPassword /></PageTransition>} />
+        <Route path="/auth/teacher-pending" element={<PageTransition><TeacherPendingApproval /></PageTransition>} />
         <Route path="/dashboard" element={<PageTransition><Dashboard /></PageTransition>} />
         <Route path="/score-calculator" element={<PageTransition><ScoreCalculator /></PageTransition>} />
         <Route path="/classrooms" element={<PageTransition><Classrooms /></PageTransition>} />
@@ -97,6 +103,8 @@ function InnerRoutes() {
   <Route path="/speaking-test" element={<PageTransition><SpeakingTest /></PageTransition>} />
   <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
   <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />
+  <Route path="/admin/feedback" element={<PageTransition><AdminFeedback /></PageTransition>} />
+  <Route path="/admin" element={<PageTransition><SuperAdminDashboard /></PageTransition>} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>

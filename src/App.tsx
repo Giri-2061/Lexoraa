@@ -34,6 +34,8 @@ import ClassroomDetail from "./pages/ClassroomDetail";
 import NotFound from "./pages/NotFound";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import AdminFeedback from "./pages/AdminFeedback";
+import FeedbackProvider from "./components/FeedbackProvider";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +63,7 @@ function InnerRoutes() {
   return (
     <>
       <AuthCallback />
+      <FeedbackProvider />
       <AnimatePresence mode="wait" initial={false}>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><MockTests /></PageTransition>} />
@@ -97,6 +100,7 @@ function InnerRoutes() {
   <Route path="/speaking-test" element={<PageTransition><SpeakingTest /></PageTransition>} />
   <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
   <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />
+  <Route path="/admin/feedback" element={<PageTransition><AdminFeedback /></PageTransition>} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>

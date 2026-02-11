@@ -81,6 +81,25 @@ export default function UserMenu() {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
+        {role === 'super_admin' && (
+          <DropdownMenuItem
+            onClick={() => navigate('/admin')}
+            className="cursor-pointer"
+          >
+            <Shield className="mr-2 h-4 w-4" />
+            Admin Dashboard
+          </DropdownMenuItem>
+        )}
+        {(role === 'super_admin' || role === 'consultancy_owner') && (
+          <DropdownMenuItem
+            onClick={() => navigate('/dashboard')}
+            className="cursor-pointer"
+          >
+            <GraduationCap className="mr-2 h-4 w-4" />
+            Teacher Dashboard
+          </DropdownMenuItem>
+        )}
+        <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={async () => {
             await signOut();

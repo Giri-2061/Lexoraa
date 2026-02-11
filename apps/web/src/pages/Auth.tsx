@@ -10,7 +10,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { toast } from 'sonner';
 import { Switch } from '@/components/ui/switch';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Loader2, BookOpen, RefreshCw, Eye, EyeOff } from 'lucide-react';
+import { Textarea } from '@/components/ui/textarea';
+import { Loader2, BookOpen, RefreshCw, Eye, EyeOff, GraduationCap } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import LegalLinks from '@/components/LegalLinks';
 
@@ -49,6 +50,8 @@ export default function Auth() {
   const [signupConfirmPassword, setSignupConfirmPassword] = useState('');
   const [signupShowConfirmPassword, setSignupShowConfirmPassword] = useState(false);
   const [isTeacher, setIsTeacher] = useState(false);
+  const [teacherOrg, setTeacherOrg] = useState('');
+  const [teacherReason, setTeacherReason] = useState('');
   const [signupErrors, setSignupErrors] = useState<Record<string, string>>({});
   const [acceptTerms, setAcceptTerms] = useState(false);
 
@@ -117,7 +120,6 @@ export default function Auth() {
         toast.error('Invalid email or password');
       } else if (error.message.includes('Email not confirmed')) {
         toast.error('Please verify your email before logging in. Check your inbox for the verification link.');
-        // Optionally redirect to check email page
         navigate('/auth/check-email', { state: { email: loginEmail } });
       } else {
         toast.error(error.message);
@@ -129,6 +131,24 @@ export default function Auth() {
       } else {
         localStorage.removeItem('rememberMeEmail');
       }
+
+      // Check if the user has a pending teacher request
+      const { data: session } = await supabase.auth.getSession();
+      if (session?.session?.user) {
+        const { data: teacherReq } = await supabase
+          .from('teacher_requests' as any)
+          .select('status')
+          .eq('user_id', session.session.user.id)
+          .order('created_at', { ascending: false })
+          .limit(1);
+
+        if (teacherReq && teacherReq.length > 0 && (teacherReq[0] as any).status === 'pending') {
+          toast.success('Welcome back! Your teacher request is still pending.');
+          navigate('/auth/teacher-pending');
+          return;
+        }
+      }
+
       toast.success('Welcome back!');
       navigate('/');
     }
@@ -162,8 +182,8 @@ export default function Auth() {
     }
 
     setIsSubmitting(true);
-    const role = isTeacher ? 'consultancy_owner' : 'student';
-    const { error, data } = await signUp(signupEmail, signupPassword, signupName, role);
+    // Teachers register as 'student' first; approval grants consultancy_owner
+    const { error, data } = await signUp(signupEmail, signupPassword, signupName, 'student');
     setIsSubmitting(false);
 
     if (error) {
@@ -173,10 +193,24 @@ export default function Auth() {
         toast.error(error.message);
       }
     } else {
+      // If teacher toggle is on, submit a teacher request
+      if (isTeacher && data?.user) {
+        await supabase.from('teacher_requests' as any).insert({
+          user_id: data.user.id,
+          full_name: signupName,
+          email: signupEmail,
+          organization: teacherOrg || null,
+          reason: teacherReason || null,
+        });
+      }
+
       // Check if email confirmation is required
       if (data?.user && !data.user.email_confirmed_at) {
-        // Redirect to check email page
-        navigate('/auth/check-email', { state: { email: signupEmail } });
+        navigate('/auth/check-email', {
+          state: { email: signupEmail, isTeacher },
+        });
+      } else if (isTeacher) {
+        navigate('/auth/teacher-pending');
       } else {
         toast.success('Account created successfully!');
         navigate('/');
@@ -302,8 +336,18 @@ export default function Auth() {
                   checked={isTeacher}
                   onCheckedChange={setIsTeacher}
                 />
-                <Label htmlFor="teacher-mode">Register as Teacher</Label>
+                <Label htmlFor="teacher-mode" className="flex items-center gap-1.5">
+                  <GraduationCap className="h-4 w-4" />
+                  Register as Teacher
+                </Label>
               </div>
+
+              {isTeacher && (
+                <div className="p-3 mb-2 rounded-lg border border-amber-500/30 bg-amber-500/5 text-sm text-amber-700 dark:text-amber-400 space-y-1">
+                  <p className="font-medium">Teacher accounts require admin approval</p>
+                  <p className="text-xs text-muted-foreground">After signing up, your request will be reviewed by our team. You'll be notified once approved.</p>
+                </div>
+              )}
               <form onSubmit={handleSignup} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="signup-name">Full Name</Label>
@@ -319,6 +363,32 @@ export default function Auth() {
                     <p className="text-sm text-destructive">{signupErrors.fullName}</p>
                   )}
                 </div>
+
+                {isTeacher && (
+                  <>
+                    <div className="space-y-2">
+                      <Label htmlFor="signup-org">Organization / Institute (optional)</Label>
+                      <Input
+                        id="signup-org"
+                        type="text"
+                        placeholder="e.g. British Council, ABC Academy"
+                        value={teacherOrg}
+                        onChange={(e) => setTeacherOrg(e.target.value)}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="signup-reason">Why do you want a teacher account? (optional)</Label>
+                      <Textarea
+                        id="signup-reason"
+                        placeholder="Brief description of your teaching background..."
+                        value={teacherReason}
+                        onChange={(e) => setTeacherReason(e.target.value)}
+                        rows={2}
+                      />
+                    </div>
+                  </>
+                )}
+
                 <div className="space-y-2">
                   <Label htmlFor="signup-email">Email</Label>
                   <Input
