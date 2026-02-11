@@ -1,18 +1,23 @@
 {
   "testId": "book16-test1",
-  "sections": [
+  "writing": [
     {
-      "sectionNumber": 1,
-      "task": "Task 1",
-      "prompt": "Sample prompt for Task 1",
-      "wordCount": 150
+      "taskId": 1,
+      "type": "map-comparison",
+      "instruction": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "prompt": "The plans below show a public park when it first opened in 1920 and the same park today.",
+      "imageUrl": null,
+      "minWords": 150,
+      "suggestedTime": "20 minutes"
     },
     {
-      "sectionNumber": 2,
-      "task": "Task 2",
-      "prompt": "Sample prompt for Task 2",
-      "wordCount": 250
+      "taskId": 2,
+      "type": "discussion-essay",
+      "instruction": "Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+      "prompt": "In their advertising, businesses nowadays usually emphasise that their products are new in some way. Why is this? Do you think it is a positive or negative development?",
+      "imageUrl": null,
+      "minWords": 250,
+      "suggestedTime": "40 minutes"
     }
-  ],
-  "answers": {}
+  ]
 }

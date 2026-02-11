@@ -1,18 +1,23 @@
 {
   "testId": "book18-test1",
-  "sections": [
+  "writing": [
     {
-      "sectionNumber": 1,
-      "task": "Task 1",
-      "prompt": "Sample prompt for Task 1",
-      "wordCount": 150
+      "taskId": 1,
+      "type": "map-comparison",
+      "instruction": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "prompt": "The plans show a school and its surrounding area in 2004, and changes that took place to this area in 2024.",
+      "imageUrl": null,
+      "minWords": 150,
+      "suggestedTime": "20 minutes"
     },
     {
-      "sectionNumber": 2,
-      "task": "Task 2",
-      "prompt": "Sample prompt for Task 2",
-      "wordCount": 250
+      "taskId": 2,
+      "type": "two-part-question",
+      "instruction": "Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+      "prompt": "In some countries, more people are becoming interested in finding out about the history of the house or building they live in. What are the reasons for this? How can people research this?",
+      "imageUrl": null,
+      "minWords": 250,
+      "suggestedTime": "40 minutes"
     }
-  ],
-  "answers": {}
+  ]
 }

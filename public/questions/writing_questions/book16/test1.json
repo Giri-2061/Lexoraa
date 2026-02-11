@@ -1,11 +1,11 @@
 {
-  "testId": "book14-test1",
+  "testId": "book16-test1",
   "writing": [
     {
       "taskId": 1,
-      "type": "chart",
+      "type": "map-comparison",
       "instruction": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      "prompt": "The charts below show the changes in ownership of electrical appliances and amount of time spent doing housework in households in one country between 1920 and 2019.",
+      "prompt": "The plans below show a public park when it first opened in 1920 and the same park today.",
       "imageUrl": null,
       "minWords": 150,
       "suggestedTime": "20 minutes"
@@ -13,8 +13,8 @@
     {
       "taskId": 2,
       "type": "discussion-essay",
-      "instruction": "Discuss both views and give your own opinion.",
-      "prompt": "In some countries, more and more people are becoming interested in findinf out about the history of the house or building they live in.",
+      "instruction": "Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+      "prompt": "In their advertising, businesses nowadays usually emphasise that their products are new in some way. Why is this? Do you think it is a positive or negative development?",
       "imageUrl": null,
       "minWords": 250,
       "suggestedTime": "40 minutes"

@@ -1,18 +1,23 @@
 {
   "testId": "book17-test1",
-  "sections": [
+  "writing": [
     {
-      "sectionNumber": 1,
-      "task": "Task 1",
-      "prompt": "Sample prompt for Task 1",
-      "wordCount": 150
+      "taskId": 1,
+      "type": "map-comparison",
+      "instruction": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "prompt": "The plans below show the layout of a university's sports centre now, and how it will look after redevelopment.",
+      "imageUrl": null,
+      "minWords": 150,
+      "suggestedTime": "20 minutes"
     },
     {
-      "sectionNumber": 2,
-      "task": "Task 2",
-      "prompt": "Sample prompt for Task 2",
-      "wordCount": 250
+      "taskId": 2,
+      "type": "discussion-essay",
+      "instruction": "Discuss both views and give your own opinion.",
+      "prompt": "Some people believe that it is best to encourage children to understand the importance of competition. Others feel it is better to help children to be good at co-operation. Discuss both views and give your own opinion.",
+      "imageUrl": null,
+      "minWords": 250,
+      "suggestedTime": "40 minutes"
     }
-  ],
-  "answers": {}
+  ]
 }
