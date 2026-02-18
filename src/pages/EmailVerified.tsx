@@ -15,7 +15,6 @@ export default function EmailVerified() {
 
   useEffect(() => {
     const handleEmailVerification = async () => {
-      // Check for error in URL params (from Supabase redirect)
       const error = searchParams.get('error');
       const errorDescription = searchParams.get('error_description');
       
@@ -25,13 +24,11 @@ export default function EmailVerified() {
         return;
       }
 
-      // Check URL hash for tokens (Supabase puts them in the hash)
       const hashParams = new URLSearchParams(window.location.hash.substring(1));
       const accessToken = hashParams.get('access_token');
       const refreshToken = hashParams.get('refresh_token');
       const type = hashParams.get('type');
 
-      // If we have tokens in the hash, set the session
       if (accessToken && refreshToken) {
         const { error: sessionError } = await supabase.auth.setSession({
           access_token: accessToken,
@@ -44,14 +41,12 @@ export default function EmailVerified() {
           return;
         }
 
-        // Successfully set session from email verification
         if (type === 'signup' || type === 'email') {
           setStatus('success');
           return;
         }
       }
 
-      // Check if there's already a session (user might have clicked link when already logged in)
       const { data: { session }, error: sessionError } = await supabase.auth.getSession();
       
       if (sessionError) {
@@ -61,20 +56,17 @@ export default function EmailVerified() {
       }
 
       if (session?.user) {
-        // Check if email is confirmed
         if (session.user.email_confirmed_at) {
           setStatus('success');
         } else {
           setStatus('already-verified');
         }
       } else {
-        // No session - might be expired link or already verified
         setStatus('error');
         setErrorMessage('Verification link may have expired. Please try logging in or request a new link.');
       }
     };
 
-    // Small delay to show loading state
     const timer = setTimeout(() => {
       handleEmailVerification();
     }, 500);
@@ -91,21 +83,21 @@ export default function EmailVerified() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-background to-accent/5 px-4">
-      <Card className="w-full max-w-md shadow-lg border-border/50">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
+      <Card className="w-full max-w-md shadow-md border border-gray-200 dark:border-gray-800">
         <CardHeader className="text-center space-y-4">
           {status === 'verifying' && (
             <>
               <div className="flex justify-center">
-                <div className="p-4 rounded-full bg-primary/10">
-                  <Loader2 className="h-8 w-8 text-primary animate-spin" />
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1e3a5f]/10 dark:bg-[#1e3a5f]/30">
+                  <Loader2 className="h-7 w-7 text-[#1e3a5f] dark:text-[#5a8ac4] animate-spin" />
                 </div>
               </div>
               <div>
-                <CardTitle className="text-2xl font-bold text-foreground">
+                <CardTitle className="text-2xl font-semibold text-gray-900 dark:text-white">
                   Verifying Your Email
                 </CardTitle>
-                <CardDescription className="text-muted-foreground mt-2">
+                <CardDescription className="text-gray-600 dark:text-gray-400 mt-2">
                   Please wait while we verify your email address...
                 </CardDescription>
               </div>
@@ -115,15 +107,15 @@ export default function EmailVerified() {
           {status === 'success' && (
             <>
               <div className="flex justify-center">
-                <div className="p-4 rounded-full bg-green-100 dark:bg-green-900/30">
-                  <CheckCircle2 className="h-8 w-8 text-green-600 dark:text-green-400" />
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
+                  <CheckCircle2 className="h-7 w-7 text-green-600 dark:text-green-400" />
                 </div>
               </div>
               <div>
-                <CardTitle className="text-2xl font-bold text-foreground">
-                  Email Verified!
+                <CardTitle className="text-2xl font-semibold text-gray-900 dark:text-white">
+                  Email Verified
                 </CardTitle>
-                <CardDescription className="text-muted-foreground mt-2">
+                <CardDescription className="text-gray-600 dark:text-gray-400 mt-2">
                   Your email has been successfully verified. You can now access all features.
                 </CardDescription>
               </div>
@@ -133,15 +125,15 @@ export default function EmailVerified() {
           {status === 'already-verified' && (
             <>
               <div className="flex justify-center">
-                <div className="p-4 rounded-full bg-blue-100 dark:bg-blue-900/30">
-                  <CheckCircle2 className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1e3a5f]/10 dark:bg-[#1e3a5f]/30">
+                  <CheckCircle2 className="h-7 w-7 text-[#1e3a5f] dark:text-[#5a8ac4]" />
                 </div>
               </div>
               <div>
-                <CardTitle className="text-2xl font-bold text-foreground">
+                <CardTitle className="text-2xl font-semibold text-gray-900 dark:text-white">
                   Already Verified
                 </CardTitle>
-                <CardDescription className="text-muted-foreground mt-2">
+                <CardDescription className="text-gray-600 dark:text-gray-400 mt-2">
                   Your email was already verified. You're all set!
                 </CardDescription>
               </div>
@@ -151,15 +143,15 @@ export default function EmailVerified() {
           {status === 'error' && (
             <>
               <div className="flex justify-center">
-                <div className="p-4 rounded-full bg-red-100 dark:bg-red-900/30">
-                  <XCircle className="h-8 w-8 text-red-600 dark:text-red-400" />
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/30">
+                  <XCircle className="h-7 w-7 text-red-600 dark:text-red-400" />
                 </div>
               </div>
               <div>
-                <CardTitle className="text-2xl font-bold text-foreground">
+                <CardTitle className="text-2xl font-semibold text-gray-900 dark:text-white">
                   Verification Failed
                 </CardTitle>
-                <CardDescription className="text-muted-foreground mt-2">
+                <CardDescription className="text-gray-600 dark:text-gray-400 mt-2">
                   {errorMessage}
                 </CardDescription>
               </div>
@@ -169,17 +161,25 @@ export default function EmailVerified() {
 
         <CardContent className="space-y-4">
           {(status === 'success' || status === 'already-verified') && (
-            <Button onClick={handleContinue} className="w-full" size="lg">
+            <Button 
+              onClick={handleContinue} 
+              className="w-full h-11 bg-[#1e3a5f] hover:bg-[#2d4a6f] text-white" 
+              size="lg"
+            >
               Continue to App
             </Button>
           )}
 
           {status === 'error' && (
             <div className="space-y-3">
-              <Button onClick={handleGoToLogin} className="w-full" size="lg">
+              <Button 
+                onClick={handleGoToLogin} 
+                className="w-full h-11 bg-[#1e3a5f] hover:bg-[#2d4a6f] text-white" 
+                size="lg"
+              >
                 Go to Login
               </Button>
-              <p className="text-sm text-center text-muted-foreground">
+              <p className="text-sm text-center text-gray-500 dark:text-gray-400">
                 If you continue to have issues, please contact support.
               </p>
             </div>

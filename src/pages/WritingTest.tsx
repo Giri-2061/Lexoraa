@@ -731,18 +731,14 @@ const WritingTest = () => {
                   </div>
 
                   <label className="block text-sm font-medium text-card-foreground mb-2 mt-4">Or upload a photo of your handwritten Task 1 answer</label>
-                  <div className="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary/50 transition-colors">
-                    <input type="file" accept="image/*" onChange={(event) => handleImageUpload(event, 1)} className="hidden" id="image-upload-1" />
-                    <label htmlFor="image-upload-1" className="cursor-pointer">
-                      <Upload className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
-                      <p className="text-muted-foreground mb-2">{task1ImageData ? "Image uploaded" : "Click to upload image for Task 1"}</p>
-                      <p className="text-sm text-muted-foreground">PNG, JPG up to 10MB</p>
-                    </label>
-                    {task1ImageData && (
-                      <div className="mt-4">
-                        <img src={task1ImageData} alt="Task 1 upload" className="mx-auto max-w-full" />
-                      </div>
-                    )}
+                  <div className="border-2 border-dashed border-border rounded-lg p-6 text-center opacity-60 cursor-not-allowed relative">
+                    <div className="absolute top-2 right-2 bg-yellow-500 text-yellow-950 text-xs font-semibold px-2 py-1 rounded-full">
+                      Coming Soon
+                    </div>
+                    <Upload className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
+                    <p className="text-muted-foreground mb-2">Image upload for Task 1</p>
+                    <p className="text-sm text-muted-foreground">PNG, JPG up to 10MB</p>
+                    <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-2">This feature is coming soon!</p>
                   </div>
                 </div>
 
@@ -779,18 +775,14 @@ const WritingTest = () => {
                   </div>
 
                   <label className="block text-sm font-medium text-card-foreground mb-2 mt-4">Or upload a photo of your handwritten Task 2 answer</label>
-                  <div className="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary/50 transition-colors">
-                    <input type="file" accept="image/*" onChange={(event) => handleImageUpload(event, 2)} className="hidden" id="image-upload-2" />
-                    <label htmlFor="image-upload-2" className="cursor-pointer">
-                      <Upload className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
-                      <p className="text-muted-foreground mb-2">{task2ImageData ? "Image uploaded" : "Click to upload image for Task 2"}</p>
-                      <p className="text-sm text-muted-foreground">PNG, JPG up to 10MB</p>
-                    </label>
-                    {task2ImageData && (
-                      <div className="mt-4">
-                        <img src={task2ImageData} alt="Task 2 upload" className="mx-auto max-w-full" />
-                      </div>
-                    )}
+                  <div className="border-2 border-dashed border-border rounded-lg p-6 text-center opacity-60 cursor-not-allowed relative">
+                    <div className="absolute top-2 right-2 bg-yellow-500 text-yellow-950 text-xs font-semibold px-2 py-1 rounded-full">
+                      Coming Soon
+                    </div>
+                    <Upload className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
+                    <p className="text-muted-foreground mb-2">Image upload for Task 2</p>
+                    <p className="text-sm text-muted-foreground">PNG, JPG up to 10MB</p>
+                    <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-2">This feature is coming soon!</p>
                   </div>
                 </div>
               </Card>

@@ -1,9 +1,3 @@
-// =============================================================================
-// FeedbackModal
-// A clean, non-intrusive modal with star rating + optional text.
-// Inspired by the feedback UX of Notion, Linear, and Duolingo.
-// =============================================================================
-
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, X, MessageSquareHeart, Loader2, CheckCircle2 } from 'lucide-react';
@@ -34,11 +28,7 @@ export default function FeedbackModal({
 
   const handleSubmit = () => {
     if (rating === 0) return;
-    onSubmit({
-      rating,
-      message: message.trim() || null,
-      platform: 'web',
-    });
+    onSubmit({ rating, message: message.trim() || null, platform: 'web' });
   };
 
   const ratingLabels: Record<number, string> = {
@@ -81,7 +71,6 @@ export default function FeedbackModal({
               </button>
 
               <div className="p-6 sm:p-8">
-                {/* ---- Thank-you state ---- */}
                 {submitted ? (
                   <motion.div
                     className="flex flex-col items-center gap-4 py-6 text-center"
@@ -159,7 +148,6 @@ export default function FeedbackModal({
                       </p>
                     </div>
 
-                    {/* Error */}
                     {submitError && (
                       <p className="mb-3 text-sm text-destructive text-center">{submitError}</p>
                     )}

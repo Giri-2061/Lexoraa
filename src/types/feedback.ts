@@ -1,10 +1,5 @@
-// =============================================================================
-// Feedback Types
-// Shared TypeScript interfaces for the feedback system.
-// =============================================================================
-
 export interface FeedbackSubmission {
-  rating: number;          // 1-5
+  rating: number;
   message?: string | null;
   platform?: 'web' | 'mobile';
   appVersion?: string;
@@ -29,5 +24,5 @@ export interface FeedbackEligibility {
 export interface FeedbackStats {
   totalCount: number;
   averageRating: number;
-  ratingDistribution: Record<number, number>; // { 1: count, 2: count, ... }
+  ratingDistribution: Record<number, number>;
 }

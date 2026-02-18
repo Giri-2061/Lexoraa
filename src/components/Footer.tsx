@@ -4,7 +4,8 @@ import LegalLinks from "./LegalLinks";
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    // Use light mode navy color for footer in both light and dark mode
+    <footer className="text-primary-foreground" style={{ backgroundColor: 'hsl(220 60% 25%)' }}>
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-3 gap-8">
           {/* Contact Info */}

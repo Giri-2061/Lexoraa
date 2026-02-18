@@ -48,8 +48,8 @@ export default function ClassroomLayout({ children }: ClassroomLayoutProps) {
           <div className="h-16 flex items-center justify-between px-4 border-b border-border">
             {!collapsed && (
               <Link to="/" className="flex items-center gap-2">
-                <img src="/logo-full.svg" alt="Logo" className="w-8 h-8" />
-                <span className="font-bold text-primary">Learning Lounge</span>
+                <img src="/logo.png" alt="LEXORA" className="h-10 object-contain" />
+                <span className="font-bold text-primary">LEXORA</span>
               </Link>
             )}
             <Button 
