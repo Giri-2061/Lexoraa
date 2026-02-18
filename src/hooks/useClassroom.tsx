@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from './useAuth';
 import type { 
@@ -7,7 +7,8 @@ import type {
   ClassroomMembership, 
   ClassroomPost, 
   Assignment,
-  AssignmentSubmission 
+  AssignmentSubmission,
+  PostComment
 } from '@/types/classroom';
 
 export function useConsultancy() {
@@ -16,7 +17,7 @@ export function useConsultancy() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!user || role !== 'consultancy_owner') {
+    if (!user || (role !== 'consultancy_owner' && role !== 'super_admin')) {
       setLoading(false);
       return;
     }
@@ -125,7 +126,7 @@ export function useClassroomDetail(classroomId: string | undefined) {
   const [assignments, setAssignments] = useState<Assignment[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchAll = async () => {
+  const fetchAll = useCallback(async () => {
     if (!classroomId || !user) {
       setLoading(false);
       return;
@@ -157,15 +158,78 @@ export function useClassroomDetail(classroomId: string | undefined) {
       setMembers(membersWithProfiles as ClassroomMembership[]);
     }
     
-    if (!postsRes.error) setPosts(postsRes.data as ClassroomPost[]);
-    if (!assignmentsRes.error) setAssignments(assignmentsRes.data as Assignment[]);
+    // Fetch comments for posts
+    if (!postsRes.error && postsRes.data) {
+      const postIds = postsRes.data.map(p => p.id);
+      let allComments: any[] = [];
+      if (postIds.length > 0) {
+        const { data: comments } = await supabase
+          .from('post_comments')
+          .select('*')
+          .in('post_id', postIds)
+          .order('created_at', { ascending: true });
+        
+        if (comments) {
+          // Fetch profiles for comment authors
+          const commentUserIds = [...new Set(comments.map(c => c.user_id))];
+          const { data: commentProfiles } = await supabase
+            .from('profiles')
+            .select('user_id, full_name, email')
+            .in('user_id', commentUserIds);
+          
+          allComments = comments.map(c => ({
+            ...c,
+            profile: commentProfiles?.find(p => p.user_id === c.user_id) || null
+          }));
+        }
+      }
+
+      const postsWithComments = postsRes.data.map(post => ({
+        ...post,
+        comments: allComments.filter(c => c.post_id === post.id),
+        comment_count: allComments.filter(c => c.post_id === post.id).length
+      }));
+      setPosts(postsWithComments as ClassroomPost[]);
+    }
+    
+    // Fetch submissions for assignments
+    if (!assignmentsRes.error && assignmentsRes.data) {
+      const assignmentIds = assignmentsRes.data.map(a => a.id);
+      let allSubmissions: any[] = [];
+      if (assignmentIds.length > 0) {
+        const { data: subs } = await supabase
+          .from('assignment_submissions')
+          .select('*, test_result:test_results(band_score, correct_count, total_questions)')
+          .in('assignment_id', assignmentIds);
+        
+        if (subs) {
+          const subUserIds = [...new Set(subs.map(s => s.student_id))];
+          const { data: subProfiles } = await supabase
+            .from('profiles')
+            .select('user_id, full_name, email')
+            .in('user_id', subUserIds);
+          
+          allSubmissions = subs.map(s => ({
+            ...s,
+            profile: subProfiles?.find(p => p.user_id === s.student_id) || null
+          }));
+        }
+      }
+
+      const assignmentsWithSubs = assignmentsRes.data.map(a => ({
+        ...a,
+        submissions: allSubmissions.filter(s => s.assignment_id === a.id),
+        submission_count: allSubmissions.filter(s => s.assignment_id === a.id).length
+      }));
+      setAssignments(assignmentsWithSubs as Assignment[]);
+    }
 
     setLoading(false);
-  };
+  }, [classroomId, user]);
 
   useEffect(() => {
     fetchAll();
-  }, [classroomId, user]);
+  }, [fetchAll]);
 
   const addStudent = async (studentEmail: string) => {
     // First find the student by email
@@ -276,6 +340,76 @@ export function useClassroomDetail(classroomId: string | undefined) {
     return { error };
   };
 
+  // ── Post Comments ──────────────────────────────────────────────────
+  const addComment = async (postId: string, content: string) => {
+    if (!user) return { error: new Error('Not authenticated') };
+    const { error } = await supabase
+      .from('post_comments')
+      .insert({ post_id: postId, user_id: user.id, content });
+    if (!error) fetchAll();
+    return { error };
+  };
+
+  const deleteComment = async (commentId: string) => {
+    const { error } = await supabase
+      .from('post_comments')
+      .delete()
+      .eq('id', commentId);
+    if (!error) fetchAll();
+    return { error };
+  };
+
+  // ── Assignment Submissions ─────────────────────────────────────────
+  const submitAssignment = async (assignmentId: string, testResultId?: string) => {
+    if (!user) return { error: new Error('Not authenticated') };
+    
+    // Upsert: if the student already has a pending row, update it
+    const { data: existing } = await supabase
+      .from('assignment_submissions')
+      .select('id')
+      .eq('assignment_id', assignmentId)
+      .eq('student_id', user.id)
+      .maybeSingle();
+
+    if (existing) {
+      const { error } = await supabase
+        .from('assignment_submissions')
+        .update({
+          status: 'submitted',
+          test_result_id: testResultId || null,
+          submitted_at: new Date().toISOString()
+        })
+        .eq('id', existing.id);
+      if (!error) fetchAll();
+      return { error };
+    }
+
+    const { error } = await supabase
+      .from('assignment_submissions')
+      .insert({
+        assignment_id: assignmentId,
+        student_id: user.id,
+        status: testResultId ? 'submitted' : 'pending',
+        test_result_id: testResultId || null,
+        submitted_at: testResultId ? new Date().toISOString() : null
+      });
+    if (!error) fetchAll();
+    return { error };
+  };
+
+  const gradeSubmission = async (submissionId: string, score: number, comment?: string) => {
+    const { error } = await supabase
+      .from('assignment_submissions')
+      .update({
+        status: 'graded',
+        graded_score: score,
+        teacher_comment: comment || null
+      })
+      .eq('id', submissionId);
+    if (!error) fetchAll();
+    return { error };
+  };
+
   const isTeacher = classroom?.teacher_id === user?.id;
 
   return {
@@ -291,6 +425,10 @@ export function useClassroomDetail(classroomId: string | undefined) {
     deletePost,
     createAssignment,
     deleteAssignment,
+    addComment,
+    deleteComment,
+    submitAssignment,
+    gradeSubmission,
     refetch: fetchAll
   };
 }
