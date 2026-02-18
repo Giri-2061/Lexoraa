@@ -23,6 +23,8 @@ export type Database = {
           student_id: string
           submitted_at: string | null
           test_result_id: string | null
+          graded_score: number | null
+          teacher_comment: string | null
         }
         Insert: {
           assignment_id: string
@@ -32,6 +34,8 @@ export type Database = {
           student_id: string
           submitted_at?: string | null
           test_result_id?: string | null
+          graded_score?: number | null
+          teacher_comment?: string | null
         }
         Update: {
           assignment_id?: string
@@ -41,6 +45,8 @@ export type Database = {
           student_id?: string
           submitted_at?: string | null
           test_result_id?: string | null
+          graded_score?: number | null
+          teacher_comment?: string | null
         }
         Relationships: [
           {
@@ -282,6 +288,117 @@ export type Database = {
           created_at?: string
         }
         Relationships: []
+      }
+      live_sessions: {
+        Row: {
+          id: string
+          classroom_id: string
+          teacher_id: string
+          test_type: string
+          book_id: string
+          test_id: string
+          status: string
+          current_section: number
+          audio_state: Json
+          started_at: string
+          ended_at: string | null
+        }
+        Insert: {
+          id?: string
+          classroom_id: string
+          teacher_id: string
+          test_type: string
+          book_id: string
+          test_id: string
+          status?: string
+          current_section?: number
+          audio_state?: Json
+          started_at?: string
+          ended_at?: string | null
+        }
+        Update: {
+          id?: string
+          classroom_id?: string
+          teacher_id?: string
+          test_type?: string
+          book_id?: string
+          test_id?: string
+          status?: string
+          current_section?: number
+          audio_state?: Json
+          started_at?: string
+          ended_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "live_sessions_classroom_id_fkey"
+            columns: ["classroom_id"]
+            isOneToOne: false
+            referencedRelation: "classrooms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      live_session_participants: {
+        Row: {
+          id: string
+          session_id: string
+          student_id: string
+          joined_at: string
+        }
+        Insert: {
+          id?: string
+          session_id: string
+          student_id: string
+          joined_at?: string
+        }
+        Update: {
+          id?: string
+          session_id?: string
+          student_id?: string
+          joined_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "live_session_participants_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "live_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      post_comments: {
+        Row: {
+          id: string
+          post_id: string
+          user_id: string
+          content: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          post_id: string
+          user_id: string
+          content: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          post_id?: string
+          user_id?: string
+          content?: string
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "post_comments_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "classroom_posts"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       profiles: {
         Row: {
