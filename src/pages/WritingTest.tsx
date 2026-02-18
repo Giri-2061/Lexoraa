@@ -669,37 +669,9 @@ const WritingTest = () => {
                     </div>
                   )}
                 </div>
-              </Card>
 
-              <Card className="p-6 border-border">
-                <div className="flex items-center justify-between mb-3">
-                  <h2 className="text-2xl font-bold text-primary">Task 2</h2>
-                  <span className="text-sm text-muted-foreground">Minimum {test.writing[1].minWords} words • {test.writing[1].suggestedTime}</span>
-                </div>
-                <div className="p-4 bg-secondary/50 rounded-lg">
-                  <p className="text-card-foreground leading-relaxed mb-3">
-                    <strong>Instruction:</strong> {test.writing[1].instruction}
-                  </p>
-                  <p className="text-card-foreground leading-relaxed">
-                    <strong>Task:</strong> {test.writing[1].prompt}
-                  </p>
-                  {test.writing[1].imageUrl ? (
-                    <div className="mt-4 p-4 bg-muted rounded-lg text-center">
-                      <img src={test.writing[1].imageUrl} alt="Task 2 visual" className="mx-auto max-w-full" />
-                    </div>
-                  ) : (
-                    <div className="mt-4 p-8 bg-muted rounded-lg text-center">
-                      <p className="text-muted-foreground italic">[No image provided for this task]</p>
-                    </div>
-                  )}
-                </div>
-              </Card>
-
-              <Card className="p-6 border-border">
-                <h3 className="text-xl font-semibold text-card-foreground mb-4">Your Answers</h3>
-
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-card-foreground mb-2">Task 1 — Type your answer</label>
+                <div className="mt-6 pt-6 border-t border-border">
+                  <label className="block text-sm font-medium text-card-foreground mb-2">Your Answer — Task 1</label>
                   <Textarea
                     value={task1Answer}
                     onChange={(event) => setTask1Answer(event.target.value)}
@@ -741,9 +713,33 @@ const WritingTest = () => {
                     <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-2">This feature is coming soon!</p>
                   </div>
                 </div>
+              </Card>
 
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-card-foreground mb-2">Task 2 — Type your answer</label>
+              <Card className="p-6 border-border">
+                <div className="flex items-center justify-between mb-3">
+                  <h2 className="text-2xl font-bold text-primary">Task 2</h2>
+                  <span className="text-sm text-muted-foreground">Minimum {test.writing[1].minWords} words • {test.writing[1].suggestedTime}</span>
+                </div>
+                <div className="p-4 bg-secondary/50 rounded-lg">
+                  <p className="text-card-foreground leading-relaxed mb-3">
+                    <strong>Instruction:</strong> {test.writing[1].instruction}
+                  </p>
+                  <p className="text-card-foreground leading-relaxed">
+                    <strong>Task:</strong> {test.writing[1].prompt}
+                  </p>
+                  {test.writing[1].imageUrl ? (
+                    <div className="mt-4 p-4 bg-muted rounded-lg text-center">
+                      <img src={test.writing[1].imageUrl} alt="Task 2 visual" className="mx-auto max-w-full" />
+                    </div>
+                  ) : (
+                    <div className="mt-4 p-8 bg-muted rounded-lg text-center">
+                      <p className="text-muted-foreground italic">[No image provided for this task]</p>
+                    </div>
+                  )}
+                </div>
+
+                <div className="mt-6 pt-6 border-t border-border">
+                  <label className="block text-sm font-medium text-card-foreground mb-2">Your Answer — Task 2</label>
                   <Textarea
                     value={task2Answer}
                     onChange={(event) => setTask2Answer(event.target.value)}

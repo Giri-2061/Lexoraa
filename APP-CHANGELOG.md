@@ -1,1334 +1,308 @@
-# LoungeLearning - Complete Technical Documentation
+# Lexora IELTS — App Changelog
 
-## 📋 System Overview
-
-**LoungeLearning** is a comprehensive IELTS preparation platform built with modern web technologies. It provides students with full-featured mock tests for all four IELTS sections (Listening, Reading, Writing, Speaking) with AI-powered evaluation capabilities. The system includes authentication, classroom management, and personalized learning features.
+> A comprehensive record of existing features and planned improvements for the Lexora IELTS Preparation Platform.
 
 ---
 
-## 🏗️ System Architecture
+## ✅ Current Features (v1.0.0)
 
-### Technology Stack
-
-#### Frontend
-- **Framework**: React 18.3.1 with TypeScript
-- **Build Tool**: Vite 5.4.19
-- **Styling**: TailwindCSS 3.4.17 with custom animations
-- **UI Components**: Radix UI primitives (shadcn/ui)
-- **Routing**: React Router DOM 6.30.1
-- **State Management**: React Context API + Custom Hooks
-- **Animations**: Framer Motion 10.12.16
-
-#### Backend & Infrastructure
-- **Database**: PostgreSQL (via Supabase)
-- **Authentication**: Supabase Auth
-- **Serverless Functions**: Supabase Edge Functions (Deno runtime)
-- **Storage**: Supabase Storage (for user uploads)
-- **API Client**: Supabase JS v2.89.0
-
-#### AI Services
-- **Writing/Speaking Evaluation**: Groq API (llama-3.3-70b-versatile)
-- **Speech-to-Text**: Groq Whisper-large-v3
-- **Alternative AI**: Google Gemini (optional, free tier)
+### Authentication & User Management
+- **Email/Password Sign Up & Sign In** — Full registration flow with Zod validation, password visibility toggle, and "Remember Me" persistence
+- **Email Verification** — Post-signup email confirmation with redirect to verified page
+- **Forgot / Reset Password** — Password recovery via email link with dedicated reset form
+- **Role-Based Access Control** — Three roles (`super_admin`, `consultancy_owner`, `student`) with priority-based role resolution
+- **Teacher Registration Flow** — Students can request teacher (consultancy owner) access with organization/reason fields; requests go to admin for approval
+- **User Profiles** — Profile with full name, email, target score, and feedback tracking fields; auto-created on signup
+- **User Menu** — Dropdown showing avatar initials, name, email, role badge, and quick links
+- **Auth Debug Mode** — `?reset=true` URL param clears all auth data for troubleshooting
 
 ---
 
-## 🔐 Authentication System
+### IELTS Mock Test System
 
-### Overview
-The authentication system is built on **Supabase Auth**, providing secure, production-ready user management with email verification, password recovery, and role-based access control.
+#### Test Catalog & Navigation
+- **Mock Tests Hub** — Landing page showing all 4 test types (Listening, Reading, Writing, Speaking) as cards with duration, question count, and completion status
+- **Cambridge Book Browser** — Per-skill pages listing Cambridge Books 13–19, each with Tests 1–4 and lock/unlock state persisted in localStorage
+- **Completion Tracking** — Tests marked as completed via URL params and localStorage
 
-### Authentication Flow
+#### Listening Test
+- **Timed Listening Test** — 30-minute timer with 4 sections, audio playback (play/pause), and section navigation
+- **Multiple Question Types** — Multiple-choice, form-completion, and matching questions rendered per section
+- **Auto-Scoring** — Answers checked against correct answers with IELTS band score calculation
+- **Answer Review** — Show/hide correct answers after submission
+- **Result Persistence** — Test results saved to database (band score, correct count, total questions, duration, answers JSON)
+- **Question Bank** — 28 listening tests across Cambridge Books 13–19 with audio files
 
-#### 1. **Sign Up Process**
-```
-User Registration → Email Verification Required → Account Activation
-```
+#### Reading Test
+- **Timed Reading Test** — 60-minute timer with 3 sections featuring full passage text alongside questions
+- **Multiple Question Types** — Multiple-choice, true/false/not-given, matching headings, and sentence completion
+- **Full Passage Display** — Complete passage text rendered alongside questions with placeholder generation for missing tests
+- **Auto-Scoring & Results** — Same scoring engine as listening with band calculation and result modal
+- **Question Bank** — 28 reading tests across Cambridge Books 13–19
 
-**Technical Implementation:**
-- Location: `src/pages/Auth.tsx` + `src/hooks/useAuth.tsx`
-- Method: `supabase.auth.signUp()`
-- Process:
-  1. User submits: email, password, full name, role (student/teacher)
-  2. System creates auth user in `auth.users` table
-  3. User profile created in `profiles` table (via database trigger)
-  4. Role assigned in `user_roles` table
-  5. Verification email sent via Supabase email service
-  6. Email contains magic link: `{SITE_URL}/auth/verified`
-  7. User clicks link → `detectSessionInUrl` validates token
-  8. Account activated, user redirected to dashboard
+#### Writing Test
+- **Timed Writing Test** — 60-minute timer with 2 tasks (Task 1: 150+ words, Task 2: 250+ words)
+- **Rich Text Input** — Textarea with live word counter per task
+- **Image Upload (Task 1)** — Upload charts/graphs/diagrams as base64 for Task 1 prompts
+- **Draft Auto-Save** — Answers and uploaded images persisted in localStorage, restored on reload
+- **AI Writing Evaluation** — Submits essays to Supabase Edge Function using Groq AI for strict IELTS examiner-calibrated scoring
+- **Detailed Criterion Feedback** — Per-criterion scores and feedback for Task Achievement, Coherence & Cohesion, Lexical Resource, and Grammar; includes strengths, improvements, examiner notes, and word count
+- **Vision Model for Task 1** — AI evaluates Task 1 image-based responses using a vision model
+- **Evaluation History** — Past writing evaluations stored and retrievable per user/test
+- **Question Bank** — Writing prompts for Cambridge Books 13–19
 
-**Database Tables:**
-```sql
-auth.users (Supabase managed)
-├── id (UUID, primary key)
-├── email (unique, indexed)
-├── encrypted_password
-├── email_confirmed_at
-└── raw_user_meta_data (stores full_name)
+#### Speaking Test (Self-Practice)
+- **3-Part Speaking Flow** — Full IELTS speaking simulation: Part 1 (interview), Part 2 (long turn with 1-min prep + 2-min speak), Part 3 (discussion)
+- **Microphone Recording** — Browser MediaRecorder API for recording responses per question/part with permission detection
+- **Timed Phases** — Configurable timers for prep time and speaking time per phase with auto-advance
+- **Part 2 Note-Taking** — Textarea for cue card notes during preparation
+- **AI Speaking Evaluation** — Audio sent to Edge Function using Groq Whisper (whisper-large-v3) for transcription, then LLM for IELTS criteria evaluation
+- **Detailed Speaking Metrics** — Fluency analysis (WPM, filler words, speech rate, hesitation ratio), vocabulary analysis (lexical diversity, advanced vocab, idioms), grammar analysis (sentence complexity), pronunciation clarity scoring
+- **Expandable Result Cards** — Criterion cards with scores, confidence %, strengths, improvements, progress bars, band range, and tabbed transcript view
+- **Question Bank** — 3 speaking test sets with Part 1 topics, Part 2 cue cards, and Part 3 discussion questions
 
-public.profiles
-├── user_id (FK to auth.users)
-├── full_name
-├── email
-├── target_score (default: 7.0)
-└── created_at
+#### Speaking Test — AI Examiner Mode
+- **AI Examiner with TTS** — Enhanced speaking test where an AI examiner reads questions aloud using browser text-to-speech, simulating real examiner interaction with beep sounds
+- **Audio Context Management** — Handles browser autoplay policies, audio context unlocking, and beep sounds between phases
 
-public.user_roles
-├── user_id (FK to auth.users)
-├── role (student | consultancy_owner | super_admin)
-└── created_at
-```
-
-#### 2. **Sign In Process**
-```
-Credentials → Session Token → Auto-Refresh → Persistent Login
-```
-
-**Technical Implementation:**
-- Method: `supabase.auth.signInWithPassword()`
-- Session Storage: `localStorage` (configurable)
-- Token Refresh: Automatic via `autoRefreshToken: true`
-- Session Persistence: Enabled by default
-
-**Configuration** (`src/integrations/supabase/client.ts`):
-```typescript
-export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_KEY, {
-  auth: {
-    storage: localStorage,
-    persistSession: true,
-    autoRefreshToken: true,
-    detectSessionInUrl: true
-  }
-});
-```
-
-#### 3. **Password Recovery**
-```
-Forgot Password → Reset Email → Token Validation → New Password
-```
-
-**Implementation Flow:**
-1. User requests reset at `/forgot-password`
-2. System calls: `supabase.auth.resetPasswordForEmail(email)`
-3. Email sent with recovery link (1-hour expiry)
-4. User clicks link → redirected to `/reset-password?token=...`
-5. Token extracted from URL hash
-6. New password submitted via: `supabase.auth.updateUser({ password })`
-
-#### 4. **Session Management**
-
-**Auth Context Provider** (`src/hooks/useAuth.tsx`):
-```typescript
-- Listens to auth state changes via onAuthStateChange()
-- Automatically updates user/session state
-- Fetches user role from user_roles table
-- Provides: user, session, loading, role, signUp, signIn, signOut
-```
-
-**Auth State Listener:**
-```typescript
-useEffect(() => {
-  const { data: { subscription } } = supabase.auth.onAuthStateChange(
-    (event, session) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      if (session?.user) fetchUserRole(session.user.id);
-    }
-  );
-  return () => subscription.unsubscribe();
-}, []);
-```
-
-### Row Level Security (RLS)
-
-All database tables use PostgreSQL RLS policies:
-
-**Example: Profiles Table**
-```sql
--- Users can view their own profile
-CREATE POLICY "Users can view own profile"
-  ON profiles FOR SELECT
-  USING (auth.uid() = user_id);
-
--- Users can update their own profile
-CREATE POLICY "Users can update own profile"
-  ON profiles FOR UPDATE
-  USING (auth.uid() = user_id);
-```
-
-**Role-Based Access:**
-```sql
--- Teachers can view all student data
-CREATE POLICY "Teachers can view all"
-  ON table_name FOR SELECT
-  USING (
-    EXISTS (
-      SELECT 1 FROM user_roles
-      WHERE user_roles.user_id = auth.uid()
-      AND role IN ('consultancy_owner', 'super_admin')
-    )
-  );
-```
+#### Test Session Management
+- **Countdown Timer** — Configurable duration timer with start/pause and auto-countdown
+- **Exit Confirmation** — Dialog confirming exit; resets state and navigates to mock tests hub
+- **Test Header Bar** — Fixed header during tests showing title, timer, "Begin Test" / "Exit Test" buttons, and theme toggle
 
 ---
 
-## 📊 Database Architecture
-
-### Connection & Access
-
-**Database Client Initialization:**
-```typescript
-// Location: src/integrations/supabase/client.ts
-import { createClient } from '@supabase/supabase-js';
-
-export const supabase = createClient<Database>(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
-);
-```
-
-**Environment Variables:**
-```
-VITE_SUPABASE_URL=https://[project-ref].supabase.co
-VITE_SUPABASE_PUBLISHABLE_KEY=eyJhbGciOi... (anon key)
-```
-
-### Database Schema
-
-#### Core Tables
-
-**1. profiles** - User information
-```sql
-CREATE TABLE profiles (
-  user_id UUID PRIMARY KEY REFERENCES auth.users,
-  full_name TEXT,
-  email TEXT UNIQUE,
-  target_score NUMERIC DEFAULT 7.0,
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);
-```
-
-**2. user_roles** - Role management
-```sql
-CREATE TABLE user_roles (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID REFERENCES auth.users ON DELETE CASCADE,
-  role TEXT CHECK (role IN ('student', 'consultancy_owner', 'super_admin')),
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);
-```
-
-**3. test_results** - Test completion tracking
-```sql
-CREATE TABLE test_results (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID NOT NULL,
-  test_id TEXT NOT NULL,
-  test_type TEXT CHECK (test_type IN ('listening', 'reading', 'writing', 'speaking')),
-  correct_count INTEGER DEFAULT 0,
-  total_questions INTEGER DEFAULT 0,
-  band_score DECIMAL(2,1) DEFAULT 0,
-  duration_minutes INTEGER,
-  answers JSONB,
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);
-```
-
-**4. writing_evaluations** - AI evaluation results
-```sql
-CREATE TABLE writing_evaluations (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID REFERENCES auth.users ON DELETE CASCADE,
-  test_id TEXT NOT NULL,
-  task_number INT CHECK (task_number IN (1, 2)),
-  essay_text TEXT NOT NULL,
-  task_achievement_score DECIMAL(2,1),
-  coherence_cohesion_score DECIMAL(2,1),
-  lexical_resource_score DECIMAL(2,1),
-  grammar_score DECIMAL(2,1),
-  overall_band_score DECIMAL(2,1),
-  feedback JSONB,
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);
-```
-
-**5. Classroom System Tables**
-```sql
--- Consultancies (owned by teachers)
-CREATE TABLE consultancies (
-  id UUID PRIMARY KEY,
-  name TEXT,
-  owner_id UUID REFERENCES auth.users
-);
-
--- Classrooms (belong to consultancies)
-CREATE TABLE classrooms (
-  id UUID PRIMARY KEY,
-  name TEXT,
-  description TEXT,
-  consultancy_id UUID REFERENCES consultancies,
-  teacher_id UUID REFERENCES auth.users
-);
-
--- Student memberships
-CREATE TABLE classroom_memberships (
-  id UUID PRIMARY KEY,
-  classroom_id UUID REFERENCES classrooms,
-  student_id UUID REFERENCES auth.users
-);
-
--- Assignments
-CREATE TABLE assignments (
-  id UUID PRIMARY KEY,
-  classroom_id UUID REFERENCES classrooms,
-  title TEXT,
-  description TEXT,
-  test_type TEXT,
-  due_date TIMESTAMPTZ
-);
-
--- Assignment submissions
-CREATE TABLE assignment_submissions (
-  id UUID PRIMARY KEY,
-  assignment_id UUID REFERENCES assignments,
-  student_id UUID REFERENCES auth.users,
-  submission_data JSONB,
-  submitted_at TIMESTAMPTZ
-);
-```
-
-### Database Access Patterns
-
-**Query Example (React Component):**
-```typescript
-// Fetch user's test history
-const { data, error } = await supabase
-  .from('test_results')
-  .select('*')
-  .eq('user_id', user.id)
-  .order('created_at', { ascending: false })
-  .limit(10);
-```
-
-**Insert with RLS:**
-```typescript
-// Save test result (RLS ensures user_id matches auth.uid())
-const { error } = await supabase
-  .from('test_results')
-  .insert({
-    user_id: user.id,
-    test_id: 'book15-test1',
-    test_type: 'reading',
-    correct_count: 32,
-    total_questions: 40,
-    band_score: 7.5
-  });
-```
+### Score Calculator
+- **Raw-to-Band Converter** — Convert raw listening/reading scores (0–40) to IELTS band scores using official conversion tables
+- **Overall Band Calculator** — Enter individual band scores for all 4 skills to calculate overall IELTS band (rounded to nearest 0.5)
+- **Band Score Descriptions** — Reference table showing all band levels (3–9) with proficiency descriptions
+- **Conversion Table View** — Full raw-to-band score conversion table displayed in a dialog
 
 ---
 
-## 📝 Writing Test System
-
-### Test Flow
-```
-Load Question → User Writes → Submit → AI Evaluation → Display Results
-```
-
-### Technical Implementation
-
-#### Frontend Component
-- **Location**: `src/pages/WritingTest.tsx`
-- **Test Structure**:
-  - Task 1: 20 minutes, 150 words minimum (describe graph/chart)
-  - Task 2: 40 minutes, 250 words minimum (essay)
-  - Total Duration: 60 minutes with countdown timer
-
-**Features:**
-- Real-time word counter
-- Draft auto-save to localStorage
-- Image upload option (handwritten answers)
-- Simultaneous evaluation of both tasks
-
-#### Evaluation Process
-
-**Client-Side (`src/utils/writingEvaluation.ts`):**
-```typescript
-1. Collect essay text and metadata
-2. Convert uploaded images to base64 (if any)
-3. Make HTTP POST to Supabase Edge Function
-4. Display evaluation results
-```
-
-**Server-Side Edge Function** (`supabase/functions/evaluate-writing/index.ts`):
-
-**Step 1: Authentication**
-```typescript
-const authHeader = req.headers.get('Authorization');
-const { data: { user } } = await supabaseClient.auth.getUser();
-if (!user) throw new Error('Unauthorized');
-```
-
-**Step 2: Strict Examiner System Prompt**
-```typescript
-const systemPrompt = `You are a Senior IELTS Examiner...
-
-HARD CRITERIA CEILINGS:
-- Task 1: No overview = Max 5.0
-- Task 2: Partial prompt response = Max 5.0
-- Off-topic essay = Max 4.0
-- No paragraphing = Max 5.0
-- Grammar/lexical errors = penalties apply
-
-Return JSON with scores for:
-- taskAchievement (score, feedback, ceilingReached, reason)
-- coherenceCohesion
-- lexicalResource
-- grammarAccuracy
-- overallBand
-- examinerNotes
-- wordCount
-`;
-```
-
-**Step 3: AI API Call (Groq)**
-```typescript
-const aiResponse = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-  method: 'POST',
-  headers: { 'Authorization': `Bearer ${GROQ_API_KEY}` },
-  body: JSON.stringify({
-    model: 'llama-3.3-70b-versatile',
-    messages: [
-      { role: 'system', content: systemPrompt },
-      { role: 'user', content: essayText }
-    ],
-    temperature: 0.1, // Low temperature for consistent grading
-    max_tokens: 2000
-  })
-});
-```
-
-**Step 4: Database Storage**
-```typescript
-await supabaseClient
-  .from('writing_evaluations')
-  .insert({
-    user_id: user.id,
-    test_id: testId,
-    task_number: taskNumber,
-    essay_text: essayText,
-    evaluation: evaluationJson
-  });
-```
-
-**Response Format:**
-```json
-{
-  "success": true,
-  "evaluation": {
-    "taskAchievement": {
-      "score": 6.5,
-      "feedback": "The response addresses...",
-      "ceilingReached": false
-    },
-    "coherenceCohesion": { "score": 7.0, "feedback": "..." },
-    "lexicalResource": { "score": 6.5, "feedback": "..." },
-    "grammarAccuracy": { "score": 6.0, "feedback": "..." },
-    "overallBand": 6.5,
-    "wordCount": 267,
-    "examinerNotes": "Good structure but..."
-  }
-}
-```
-
-### Band Score Calculation
-```
-Overall Band = (Task Achievement + Coherence + Lexical + Grammar) / 4
-Rounded to nearest 0.5
-```
+### User Dashboard
+- **Progress Overview** — Cards showing tests completed, average band score, practice hours, and target score
+- **Per-Skill Statistics** — Breakdown per skill (Listening, Reading, Writing, Speaking) with count completed and average score
+- **Editable Target Score** — Users can set/edit their target IELTS band score, saved to profile
+- **Test History** — Chronological list of all completed tests with date, type, score, and correct/total counts
 
 ---
 
-## 🎤 Speaking Test System
+### Classroom System (LMS)
 
-### Test Structure
-- **Part 1**: Introduction & Interview (4-5 minutes)
-- **Part 2**: Cue Card (3-4 minutes, 1 min preparation)
-- **Part 3**: Discussion (4-5 minutes)
+#### Consultancy & Classroom Management
+- **Consultancy Creation** — Teachers create a consultancy (organization entity) before creating classrooms
+- **Classroom CRUD** — Teachers create/delete classrooms with name and description
+- **Invite Code System** — Each classroom gets a unique invite code; teachers can copy it, students join by entering it
+- **Student Views** — Students see enrolled classrooms and can join new ones via invite code
 
-### AI Examiner Mode
+#### Classroom Detail
+- **Member Management** — Teachers add students by email, remove students; member list with profiles
+- **Posts / Announcements** — Teachers create posts (resource, announcement, question) with title and content
+- **Post Comments** — All members can comment on posts; comments show author profile
+- **Assignments** — Teachers create assignments linked to specific IELTS tests (book + test + type) with due dates
+- **Assignment Submissions** — Students submit assignments linked to test results; status tracking: pending → submitted → graded
+- **Grading** — Teachers grade submissions with numeric score and written comment
+- **Tabbed Interface** — Classroom detail organized in tabs: Posts, Assignments, Members
 
-#### Frontend Component
-- **Location**: `src/pages/SpeakingTestAIExaminer.tsx`
+#### Live Classroom Sessions
+- **Start Live Class** — Teachers start a live session selecting test type → book → test via a multi-step dialog
+- **Realtime Session Sync** — Uses Supabase Realtime (postgres_changes) to sync session state across participants
+- **Audio Playback Control** — Teacher controls shared audio playback (play/pause/seek); students receive synced audio state with section navigation
+- **Participant Tracking** — Students join/leave sessions with live participant count
+- **Session Lifecycle** — Start → active (with section/audio state updates) → end; status persisted in database
 
-**Features:**
-- Web Speech API for recording
-- Audio playback for each part
-- Real-time recording status
-- Multiple recordings per part
-
-**Recording Implementation:**
-```typescript
-const mediaRecorder = new MediaRecorder(stream, {
-  mimeType: 'audio/webm;codecs=opus'
-});
-
-mediaRecorder.ondataavailable = (e) => {
-  audioChunks.push(e.data);
-};
-
-mediaRecorder.onstop = () => {
-  const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
-  const reader = new FileReader();
-  reader.onloadend = () => {
-    const base64 = reader.result.split(',')[1];
-    // Store for evaluation
-  };
-  reader.readAsDataURL(audioBlob);
-};
-```
-
-#### Backend Evaluation (`supabase/functions/evaluate-speaking/index.ts`)
-
-**Step 1: Authentication**
-```typescript
-const { data: { user } } = await supabaseClient.auth.getUser();
-if (!user) throw new Error('Invalid authentication');
-```
-
-**Step 2: Audio Transcription (Groq Whisper)**
-```typescript
-for (const recording of recordings) {
-  const audioBuffer = Uint8Array.from(
-    atob(recording.audioBase64), 
-    c => c.charCodeAt(0)
-  );
-  
-  const formData = new FormData();
-  formData.append('file', new Blob([audioBuffer]), 'audio.webm');
-  formData.append('model', 'whisper-large-v3');
-  formData.append('language', 'en');
-  
-  const whisperRes = await fetch(
-    'https://api.groq.com/openai/v1/audio/transcriptions',
-    { method: 'POST', body: formData }
-  );
-  
-  const data = await whisperRes.json();
-  transcripts[`part${recording.part}`] = data.text;
-}
-```
-
-**Step 3: IELTS Band Descriptor System**
-```typescript
-const BAND_DESCRIPTORS = `
-FLUENCY & COHERENCE:
-- Band 9: Rare repetition. Fully appropriate cohesion.
-- Band 7: Speaks at length without effort.
-- Band 5: Over-uses connectives. Slow speech.
-
-LEXICAL RESOURCE:
-- Band 9: Full flexibility. Natural idioms.
-- Band 7: Uses idiomatic language.
-- Band 5: Limited vocabulary.
-
-GRAMMATICAL RANGE:
-- Band 9: Consistently accurate.
-- Band 7: Frequently error-free complex sentences.
-- Band 5: Limited complex structures.
-
-PRONUNCIATION:
-- Focus: Clarity, intelligibility, word stress.
-- NO accent penalty for South Asian speakers.
-`;
-```
-
-**Step 4: AI Evaluation (Groq LLM)**
-```typescript
-const evaluationPrompt = `
-Transcripts:
-Part 1: ${transcripts.part1}
-Part 2: ${transcripts.part2}
-Part 3: ${transcripts.part3}
-
-Evaluate strictly using IELTS descriptors.
-Return JSON:
-{
-  "fluencyCohesion": { "score": number, "feedback": string },
-  "lexicalResource": { "score": number, "feedback": string },
-  "grammarRange": { "score": number, "feedback": string },
-  "pronunciation": { "score": number, "feedback": string },
-  "overallBand": number,
-  "strengths": [...],
-  "improvements": [...]
-}
-`;
-
-const aiResponse = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-  method: 'POST',
-  body: JSON.stringify({
-    model: 'llama-3.3-70b-versatile',
-    messages: [
-      { role: 'system', content: BAND_DESCRIPTORS },
-      { role: 'user', content: evaluationPrompt }
-    ],
-    temperature: 0.1
-  })
-});
-```
-
-**Step 5: Result Storage**
-```typescript
-await supabaseClient
-  .from('speaking_evaluations')
-  .insert({
-    user_id: user.id,
-    test_id: testId,
-    transcripts: transcripts,
-    evaluation: evaluationJson,
-    total_duration: totalDuration
-  });
-```
+#### Classroom Notifications
+- **Announcement Notifications** — Unread notifications fetched on login; dialog shows new announcements with "View Classroom" action; notifications marked as read on view/dismiss
 
 ---
 
-## 📖 Reading Test System
-
-### Test Flow
-```
-Load Passage → Display Questions → User Answers → Submit → Score → Band
-```
-
-### Implementation
-
-#### Frontend Component
-- **Location**: `src/pages/ReadingTest.tsx`
-- **Duration**: 60 minutes
-- **Structure**: 3 passages, ~13-14 questions each (40 total)
-
-**Question Types Supported:**
-- Multiple choice (single select)
-- Multiple choice (multi-select)
-- True/False/Not Given
-- Short answer
-- Sentence completion
-- Matching headings
-
-**Answer Handling:**
-```typescript
-const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
-
-// For multiple choice
-const handleAnswerChange = (questionId: string, value: string) => {
-  setAnswers(prev => ({ ...prev, [questionId]: value }));
-};
-
-// For multi-select
-const handleMultiSelect = (questionId: string, option: string) => {
-  setAnswers(prev => {
-    const current = (prev[questionId] as string[]) || [];
-    if (current.includes(option)) {
-      return { ...prev, [questionId]: current.filter(o => o !== option) };
-    }
-    return { ...prev, [questionId]: [...current, option] };
-  });
-};
-```
-
-#### Scoring Algorithm
-
-**Band Calculation** (from official IELTS conversion table):
-```typescript
-const calculateBand = (correctCount: number): number => {
-  if (correctCount >= 39) return 9.0;
-  if (correctCount >= 37) return 8.5;
-  if (correctCount >= 35) return 8.0;
-  if (correctCount >= 32) return 7.5;
-  if (correctCount >= 30) return 7.0;
-  if (correctCount >= 26) return 6.5;
-  if (correctCount >= 23) return 6.0;
-  if (correctCount >= 18) return 5.5;
-  if (correctCount >= 16) return 5.0;
-  if (correctCount >= 13) return 4.5;
-  if (correctCount >= 10) return 4.0;
-  // ... continues down to band 1
-};
-```
-
-**Answer Validation:**
-```typescript
-const checkAnswer = (userAnswer: string | string[], correctAnswer: string): boolean => {
-  if (Array.isArray(userAnswer)) {
-    // Multi-select: all must match
-    const correctOptions = correctAnswer.split(',').map(s => s.trim());
-    return userAnswer.length === correctOptions.length &&
-           userAnswer.every(ans => correctOptions.includes(ans));
-  }
-  
-  // Single answer: case-insensitive comparison
-  return userAnswer.toLowerCase().trim() === 
-         correctAnswer.toLowerCase().trim();
-};
-```
-
-#### Database Storage
-```typescript
-// Save completed test
-await supabase.from('test_results').insert({
-  user_id: user.id,
-  test_id: testId,
-  test_type: 'reading',
-  correct_count: correctCount,
-  total_questions: totalQuestions,
-  band_score: calculateBand(correctCount),
-  duration_minutes: durationMinutes,
-  answers: answers // JSONB storage
-});
-```
+### Premium Membership
+- **Premium Request Form** — Users submit a premium membership request with reason; request history shown with status badges
+- **Premium Status Check** — Real-time hook to check if current user has premium flag
+- **Admin Review** — Super admins view all premium requests and approve/reject; approval sets premium flag on user profile
+- **Premium Badge** — Visual gold crown badge component for premium users
 
 ---
 
-## 🎧 Listening Test System
-
-### Test Flow
-```
-Play Audio → User Answers → Submit → Score → Band
-```
-
-### Implementation
-
-#### Frontend Component
-- **Location**: `src/pages/ListeningTest.tsx`
-- **Duration**: 30 minutes (recording) + 10 minutes (transfer time)
-- **Structure**: 4 sections, 10 questions each (40 total)
-
-**Audio Playback Integration:**
-```typescript
-const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
-
-const playAudio = (audioUrl: string, sectionNumber: number) => {
-  const audio = new Audio(audioUrl);
-  audio.play();
-  setAudioPlaying({ ...audioPlaying, [sectionNumber]: true });
-  
-  audio.onended = () => {
-    setAudioPlaying({ ...audioPlaying, [sectionNumber]: false });
-  };
-  
-  setAudioElement(audio);
-};
-```
-
-**Question Format:**
-```json
-{
-  "testId": "book15-test1",
-  "title": "IELTS Listening Test 1",
-  "sections": [
-    {
-      "sectionNumber": 1,
-      "audioUrl": "/questions/audio/book15-test1-section1.mp3",
-      "questions": [
-        {
-          "id": "1",
-          "type": "form-completion",
-          "question": "Name:",
-          "correctAnswer": "Sarah",
-          "answerLength": "ONE WORD"
-        }
-      ]
-    }
-  ]
-}
-```
-
-#### Scoring System
-- **Same band calculation as Reading** (40 questions → band 1-9)
-- Answers normalized (case-insensitive, trimmed)
-- Spelling variations handled
+### Super Admin Dashboard
+- **Admin Panel** — Comprehensive admin dashboard at `/admin` with tabs: Overview, Teacher Requests, Premium Requests, Feedback
+- **System Analytics** — Total users, teachers, students, tests (by type), classrooms, recent signups (7-day), recent tests (7-day)
+- **Teacher Request Management** — View, approve (grants consultancy_owner role), or reject teacher account requests
+- **Premium Request Management** — View, approve, or reject premium membership requests
+- **Feedback Dashboard** — View all user feedback with stats (total count, average rating, distribution), filtering by rating, sorting, and pagination
+- **Admin Nav Visibility** — Admin Panel link appears in navbar only for super_admin users with shield icon
 
 ---
 
-## 🏫 Classroom Management System
-
-### Architecture
-
-**Hierarchy:**
-```
-Consultancy (Teacher Account)
-  └── Classrooms
-      ├── Students (Members)
-      ├── Posts (Announcements)
-      └── Assignments
-          └── Submissions
-```
-
-### Implementation
-
-#### Custom Hook (`src/hooks/useClassroom.tsx`)
-
-**1. Consultancy Management:**
-```typescript
-export function useConsultancy() {
-  const { user, role } = useAuth();
-  const [consultancy, setConsultancy] = useState<Consultancy | null>(null);
-  
-  const fetchConsultancy = async () => {
-    const { data } = await supabase
-      .from('consultancies')
-      .select('*')
-      .eq('owner_id', user.id)
-      .maybeSingle();
-    
-    setConsultancy(data);
-  };
-  
-  const createConsultancy = async (name: string) => {
-    return await supabase
-      .from('consultancies')
-      .insert({ name, owner_id: user.id });
-  };
-  
-  return { consultancy, createConsultancy };
-}
-```
-
-**2. Classroom Operations:**
-```typescript
-export function useClassrooms() {
-  const fetchClassrooms = async () => {
-    const { data } = await supabase
-      .from('classrooms')
-      .select('*, consultancy:consultancies(*)')
-      .order('created_at', { ascending: false });
-    
-    setClassrooms(data);
-  };
-  
-  const createClassroom = async (name, description, consultancyId) => {
-    await supabase.from('classrooms').insert({
-      name,
-      description,
-      consultancy_id: consultancyId,
-      teacher_id: user.id
-    });
-  };
-  
-  return { classrooms, createClassroom, deleteClassroom };
-}
-```
-
-**3. Student Management:**
-```typescript
-const addStudent = async (studentEmail: string) => {
-  // Find student by email
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('user_id')
-    .eq('email', studentEmail)
-    .single();
-  
-  // Add to classroom
-  await supabase
-    .from('classroom_memberships')
-    .insert({
-      classroom_id: classroomId,
-      student_id: profile.user_id
-    });
-};
-```
-
-**4. Assignment System:**
-```typescript
-const createAssignment = async (assignmentData) => {
-  return await supabase
-    .from('assignments')
-    .insert({
-      classroom_id: classroomId,
-      title: assignmentData.title,
-      description: assignmentData.description,
-      test_type: assignmentData.test_type,
-      due_date: assignmentData.due_date
-    });
-};
-
-const submitAssignment = async (assignmentId, submissionData) => {
-  return await supabase
-    .from('assignment_submissions')
-    .insert({
-      assignment_id: assignmentId,
-      student_id: user.id,
-      submission_data: submissionData,
-      submitted_at: new Date()
-    });
-};
-```
+### Feedback System
+- **Smart Auto-Prompt** — Feedback modal auto-triggered after cumulative usage thresholds (4+ hours, 7-day-old account, or after completing a test); respects 30-day cooldown
+- **Feedback Modal** — Animated modal with 1–5 star rating and optional text message with labeled ratings (Poor → Excellent)
+- **Floating Feedback Button** — Persistent button to manually open feedback modal at any time
+- **Session Time Tracking** — Cumulative usage time tracked via localStorage with periodic persistence (every 30s) and beforeunload handler
+- **Eligibility Checks** — Server-side checks: not already submitted, not prompted/dismissed in last 30 days, sufficient activity
 
 ---
 
-## ⏱️ Test Session Management
-
-### Custom Hook (`src/hooks/useTestSession.tsx`)
-
-**Features:**
-- Countdown timer
-- Auto-submit on time expiry
-- Warning at 5 minutes remaining
-- Confirmation dialog on exit attempt
-
-**Implementation:**
-```typescript
-export function useTestSession(durationMinutes: number, callbacks) {
-  const [started, setStarted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(durationMinutes * 60);
-  const [showWarning, setShowWarning] = useState(false);
-  
-  useEffect(() => {
-    if (!started || timeLeft <= 0) return;
-    
-    const interval = setInterval(() => {
-      setTimeLeft(prev => {
-        const newTime = prev - 1;
-        
-        // Warning at 5 minutes
-        if (newTime === 300) {
-          toast({ title: "5 minutes remaining!" });
-        }
-        
-        // Auto-submit at 0
-        if (newTime === 0) {
-          callbacks.onAutoSubmit?.();
-        }
-        
-        return newTime;
-      });
-    }, 1000);
-    
-    return () => clearInterval(interval);
-  }, [started, timeLeft]);
-  
-  return { started, setStarted, timeLeft, formatTime };
-}
-```
+### UI/UX
+- **Dark / Light Theme** — Toggle between themes with system preference detection, persisted in localStorage
+- **Responsive Design** — Mobile-responsive layout with `use-mobile` hook and hamburger menu for mobile nav
+- **Page Transitions** — Framer Motion `AnimatePresence` page transitions
+- **Toast Notifications** — Dual toast systems: shadcn/ui Toaster + Sonner for different notification styles
+- **shadcn/ui Component Library** — Full component set: Cards, Dialogs, Tabs, Badges, Dropdowns, Selects, Tables, Progress, Avatars, etc.
 
 ---
 
-## 🔧 Configuration & Deployment
-
-### Environment Variables
-```env
-# Supabase
-VITE_SUPABASE_URL=https://[project].supabase.co
-VITE_SUPABASE_PUBLISHABLE_KEY=eyJhbGci...
-
-# AI Services (Server-side only)
-GROQ_API_KEY=gsk_...
-GEMINI_API_KEY=AIza... (optional)
-```
-
-### Build & Deploy
-```bash
-# Development
-npm run dev
-
-# Production build
-npm run build
-
-# Preview production build
-npm run preview
-
-# Deploy to Vercel/Netlify
-npm run build
-# Upload dist/ folder
-```
-
-### Supabase Deployment
-```bash
-# Login to Supabase CLI
-npx supabase login
-
-# Link project
-npx supabase link --project-ref [project-id]
-
-# Push database migrations
-npx supabase db push
-
-# Deploy edge functions
-npx supabase functions deploy evaluate-writing
-npx supabase functions deploy evaluate-speaking
-
-# Set secrets
-npx supabase secrets set GROQ_API_KEY=your_key_here
-```
+### Static / Marketing Pages
+- **About Page** — Company overview with stats (10+ years, 5000+ students, 95% success rate) and global partnerships
+- **Testimonials** — Student success stories section
+- **Contact Page** — Contact form (name, email, phone, message), address/phone/email cards, and team profiles with social links
+- **Hero Section** — Landing page hero with gradient background, CTA button, and animated decorative elements
+- **Expertise Section** — 4-card grid: IELTS Preparation, Mini Library, Community Programs, Co-working Space
+- **Map Section** — Embedded MapLibre/MapTiler interactive map showing office location
+- **Privacy Policy & Terms** — Legal pages with dedicated layout and modal variants
+- **404 Page** — Custom Not Found page for unmatched routes
+- **Footer** — Site-wide footer component
 
 ---
 
-## 📱 Responsive Design
-
-### Breakpoints (TailwindCSS)
-```
-sm:  640px  (tablet)
-md:  768px  (small desktop)
-lg:  1024px (desktop)
-xl:  1280px (large desktop)
-2xl: 1536px (extra large)
-```
-
-### Mobile Optimizations
-- Hamburger navigation menu
-- Touch-friendly buttons (min 44x44px)
-- Responsive typography scaling
-- Optimized test layouts for small screens
-- Modal dialogs adapt to viewport
+### Backend (Supabase Edge Functions)
+- **Writing Evaluation API** — Edge function using Groq AI with strict IELTS examiner prompt; handles image-based Task 1 evaluation via vision model; saves results to database; scores enforced with ceiling rules
+- **Speaking Evaluation API** — Edge function: (1) transcribes audio via Whisper-large-v3, (2) evaluates transcripts via LLM with IELTS band descriptors; accent-agnostic pronunciation scoring; saves results to database
 
 ---
 
-## 🚀 Performance Optimizations
+## 🔮 Planned Improvements & Future Features
 
-### Code Splitting
-```typescript
-// Lazy load routes
-const Dashboard = lazy(() => import('@/pages/Dashboard'));
-const WritingTest = lazy(() => import('@/pages/WritingTest'));
-```
+### High Priority
 
-### Data Loading
-- React Query for server state caching
-- localStorage for draft persistence
-- Debounced autosave (1 second delay)
+#### Enhanced Test Experience
+- **Full-Length Timed Mock Exams** — Combine all 4 skills into a single full-length practice test with section transitions and a unified result summary
+- **Adaptive Difficulty** — Dynamically adjust question difficulty based on user performance history to focus on weak areas
+- **Question Bookmarking** — Allow users to bookmark/flag difficult questions for later review
+- **Detailed Answer Explanations** — Provide explanations for why each answer is correct (especially for Reading and Listening)
+- **Practice by Question Type** — Let users filter and practice specific question types (e.g., only "matching headings" or only "form completion")
+- **Listening Playback Controls** — Add speed controls (0.75x, 1x, 1.25x, 1.5x) for listening practice mode (not timed test mode)
+- **Reading Passage Highlighting** — Allow highlighting and annotating reading passages during tests
 
-### Asset Optimization
-- Vite automatic code splitting
-- Dynamic imports for large components
-- Image lazy loading
-- Audio preloading disabled (loaded on demand)
+#### AI Evaluation Enhancements
+- **Writing Sample Answers** — Show model Band 9 sample answers alongside student submissions for comparison
+- **Comparative Progress Reports** — AI-generated insights comparing performance across attempts ("Your coherence improved from 6.0 → 7.0 over the last 5 essays")
+- **Grammar Error Highlighting** — Inline annotation of grammar and vocabulary errors in writing submissions
+- **Speaking Pronunciation Feedback** — More granular phoneme-level pronunciation feedback with audio examples of correct pronunciation
+- **AI Conversation Practice** — Two-way AI speaking partner for free-form conversation practice beyond structured test format
+- **Writing Rewrite Suggestions** — AI suggests sentence-level rewrites with explanations for improving band score
 
----
-
-## 🐛 Error Handling
-
-### Global Error Boundaries
-```typescript
-<ErrorBoundary fallback={<ErrorPage />}>
-  <App />
-</ErrorBoundary>
-```
-
-### API Error Handling
-```typescript
-try {
-  const { data, error } = await supabase.from('table').select();
-  if (error) throw error;
-} catch (err) {
-  toast({
-    title: "Error",
-    description: err.message,
-    variant: "destructive"
-  });
-}
-```
-
-### Edge Function Error Handling
-```typescript
-try {
-  // Function logic
-} catch (error) {
-  console.error('Function error:', error);
-  return new Response(
-    JSON.stringify({ error: error.message }),
-    { status: 500, headers: corsHeaders }
-  );
-}
-```
+#### Dashboard & Analytics
+- **Score Trend Charts** — Visual graphs showing band score progression over time per skill
+- **Strengths & Weaknesses Analysis** — AI-generated summary of user's strongest and weakest areas across all skills
+- **Study Plan Generator** — Personalized study plan based on target score, current level, and available study time
+- **Weekly Progress Reports** — Automated email or in-app weekly summaries of study activity and score changes
+- **Predicted Band Score** — ML-based prediction of expected band score based on practice performance trends
 
 ---
 
-## 📊 Analytics & Monitoring
+### Medium Priority
 
-### User Progress Tracking
-- Test completion rates stored in `test_results`
-- Band score progression over time
-- Evaluation history queryable via user_id
+#### Classroom & Collaboration
+- **Video/Audio Live Sessions** — WebRTC-based video/audio calls for live classroom sessions (beyond just synced audio playback)
+- **Student Progress Dashboard for Teachers** — Per-student analytics showing score trends, completion rates, and time spent
+- **Bulk Assignment Creation** — Create assignments for multiple tests at once
+- **Classroom Chat** — Real-time text chat within classrooms for Q&A and discussion
+- **Resource Library** — Teachers upload and share study materials (PDFs, links, notes) within classrooms
+- **Peer Review** — Students review each other's writing submissions with guided rubrics
+- **Leaderboard** — Optional gamified leaderboard within classrooms showing top performers
+- **Assignment Templates** — Save and reuse assignment configurations
 
-### Database Queries
-```sql
--- User progress report
-SELECT 
-  test_type,
-  AVG(band_score) as avg_band,
-  COUNT(*) as tests_taken,
-  MAX(created_at) as last_test
-FROM test_results
-WHERE user_id = '[user-id]'
-GROUP BY test_type;
-```
+#### Content & Question Bank
+- **User-Generated Practice Questions** — Allow teachers to create custom questions beyond Cambridge materials
+- **More Speaking Test Sets** — Expand from 3 to 20+ speaking test sets covering more topics
+- **General Training Module** — Add IELTS General Training reading and writing tests (currently Academic only)
+- **Vocabulary Builder** — Integrated vocabulary lists organized by IELTS topic (environment, education, technology, etc.) with flashcard practice
+- **Grammar Lessons** — Structured grammar reference material with exercises targeting common IELTS errors
+- **Reading Speed Trainer** — Timed reading exercises to improve reading speed and comprehension
 
----
-
-## 🔒 Security Features
-
-### Authentication Security
-- Passwords hashed with bcrypt (Supabase default)
-- JWT tokens with automatic refresh
-- Email verification required
-- Password reset with 1-hour token expiry
-
-### Database Security
-- Row Level Security (RLS) on all tables
-- Service role key stored server-side only
-- CORS headers configured on edge functions
-- SQL injection protection (parameterized queries)
-
-### API Security
-- Bearer token authentication
-- Rate limiting via Supabase
-- HTTPS only
-- API keys in environment variables (never client-side)
+#### Mobile & Accessibility
+- **React Native Mobile App** — Native mobile app for iOS and Android (monorepo structure already in place)
+- **Offline Mode** — Cache tests and allow offline practice with sync when back online
+- **PWA Support** — Progressive Web App with install prompt, push notifications, and offline caching
+- **Accessibility (a11y)** — WCAG 2.1 AA compliance: screen reader support, keyboard navigation, high contrast mode
+- **Multi-Language UI** — Interface localization for non-English speakers (e.g., Arabic, Chinese, Spanish, Turkish)
 
 ---
 
-## 📚 Data Flow Summary
+### Lower Priority / Nice-to-Have
 
-### Writing Test Flow
-```
-User writes essay
-  → Submit button clicked
-  → POST /functions/v1/evaluate-writing
-  → Authenticate user (JWT)
-  → Call Groq API (LLM evaluation)
-  → Parse JSON response
-  → Store in writing_evaluations table
-  → Return to client
-  → Display results component
-```
+#### Gamification & Engagement
+- **Achievement Badges** — Earn badges for milestones (first test, 10 tests completed, Band 7+ achieved, etc.)
+- **Daily Streaks** — Track consecutive days of practice with visual streak counter
+- **XP & Levels** — Experience points system for completing tests and activities
+- **Daily Challenge** — One randomly selected question per day with leaderboard
+- **Study Reminders** — Push/email reminders to maintain study consistency
 
-### Reading/Listening Test Flow
-```
-User answers questions
-  → Submit button clicked
-  → Calculate score (client-side)
-  → Convert to band score
-  → POST to test_results table (with RLS)
-  → Display results modal
-```
+#### Social & Community
+- **Public User Profiles** — Optional public profiles showing band scores and achievements
+- **Discussion Forum** — Community forum for IELTS tips, question discussions, and study groups
+- **Study Buddy Matching** — Match users with similar target scores and timelines for mutual practice
+- **Speaking Partner Pairing** — Match two users for live peer-to-peer speaking practice sessions
 
-### Speaking Test Flow
-```
-Record audio (3 parts)
-  → Convert to base64
-  → Submit all recordings
-  → POST /functions/v1/evaluate-speaking
-  → Authenticate user
-  → Transcribe via Whisper API
-  → Evaluate via Groq LLM
-  → Store transcripts + evaluation
-  → Return results
-  → Display detailed feedback
-```
+#### Payment & Monetization
+- **Stripe/PayPal Integration** — Self-service premium subscription with payment processing
+- **Tiered Pricing Plans** — Free, Pro, and Enterprise tiers with feature gating
+- **Referral Program** — Users earn credits or free premium time for referring new users
+- **Gift Subscriptions** — Allow purchasing premium access for others
+
+#### Advanced AI Features
+- **AI Tutor Chatbot** — In-app chatbot for answering IELTS strategy questions, explaining grammar rules, and providing study tips
+- **Automated Essay Similarity Detection** — Flag potential plagiarism in writing submissions
+- **Handwriting Recognition** — Mobile camera capture of handwritten essays with OCR for evaluation
+- **Real-Time Speaking Feedback** — Live feedback while speaking (fluency meter, pace indicator) rather than post-recording evaluation
+- **Custom AI Examiner Personas** — Choose between examiner styles (strict, encouraging, detailed) for different feedback tones
+
+#### Infrastructure & DevOps
+- **CI/CD Pipeline** — Automated testing, linting, and deployment on push to main branch
+- **Error Monitoring** — Sentry or similar integration for real-time error tracking and alerting
+- **Performance Monitoring** — Web Vitals tracking and performance dashboards
+- **Database Backups** — Automated daily database backups with point-in-time recovery
+- **Rate Limiting** — API rate limiting for AI evaluation endpoints to manage costs
+- **Audit Logging** — Track admin actions (approvals, rejections, role changes) for accountability
+- **Email Notifications** — Transactional emails for assignment due dates, evaluation completion, classroom invites
 
 ---
 
-## 🎯 Key Technical Decisions
+## 📊 Content Coverage Summary
 
-### Why Supabase?
-- PostgreSQL with full SQL power
-- Built-in authentication
-- Real-time capabilities (future feature)
-- Serverless functions (Deno)
-- Generous free tier
-
-### Why Groq API?
-- Fast inference (100+ tokens/sec)
-- Free tier available
-- Llama 3.3 70B model quality
-- Whisper-large-v3 for transcription
-
-### Why React + Vite?
-- Fast HMR development
-- Modern build tool
-- TypeScript support
-- Tree-shaking & code splitting
-
-### Why TailwindCSS?
-- Utility-first approach
-- Minimal CSS bundle size
-- Responsive design made easy
-- Consistent design system
+| Skill     | Current Content                              | Goal                                  |
+|-----------|----------------------------------------------|---------------------------------------|
+| Listening | 28 tests (Cambridge Books 13–19 × 4 tests)  | Add Books 1–12, community-contributed |
+| Reading   | 28 tests (Cambridge Books 13–19 × 4 tests)  | Add Books 1–12, General Training      |
+| Writing   | 7 books of prompts (Cambridge 13–19)         | Add more prompts, General Training    |
+| Speaking  | 3 test sets                                  | Expand to 20+ sets, more topic variety|
 
 ---
 
-## 📦 Project Structure
+## 🗄️ Database Schema
 
-```
-loungelearning/
-├── src/
-│   ├── components/        # Reusable UI components
-│   │   ├── ui/           # shadcn/ui primitives
-│   │   ├── Navbar.tsx
-│   │   ├── Footer.tsx
-│   │   └── EvaluationResult.tsx
-│   ├── pages/            # Route components
-│   │   ├── Auth.tsx      # Login/Signup
-│   │   ├── Dashboard.tsx
-│   │   ├── WritingTest.tsx
-│   │   ├── ReadingTest.tsx
-│   │   ├── ListeningTest.tsx
-│   │   └── SpeakingTestAIExaminer.tsx
-│   ├── hooks/            # Custom React hooks
-│   │   ├── useAuth.tsx
-│   │   ├── useClassroom.tsx
-│   │   └── useTestSession.tsx
-│   ├── utils/            # Helper functions
-│   │   ├── writingEvaluation.ts
-│   │   └── loadQuestions.ts
-│   ├── types/            # TypeScript definitions
-│   └── integrations/
-│       └── supabase/     # Supabase client & types
-├── supabase/
-│   ├── functions/        # Edge functions (Deno)
-│   │   ├── evaluate-writing/
-│   │   └── evaluate-speaking/
-│   └── migrations/       # SQL schema changes
-├── public/
-│   ├── questions/        # Test JSON files
-│   │   ├── listening/
-│   │   ├── reading/
-│   │   ├── writing_questions/
-│   │   └── speaking_questions/
-│   └── images/
-└── package.json
-```
+| Table                        | Purpose                                                  |
+|------------------------------|----------------------------------------------------------|
+| `profiles`                   | User profiles (name, email, target score, premium flag)  |
+| `user_roles`                 | Role assignments (super_admin, consultancy_owner, student)|
+| `test_results`               | All test scores, answers, and duration                   |
+| `writing_evaluations`        | AI writing evaluation results per task                   |
+| `consultancies`              | Teacher organizations                                    |
+| `classrooms`                 | Classroom entities with invite codes                     |
+| `classroom_memberships`      | Student–classroom enrollment                             |
+| `classroom_posts`            | Announcements, resources, questions                      |
+| `post_comments`              | Comments on classroom posts                              |
+| `assignments`                | Teacher-created assignments linked to tests              |
+| `assignment_submissions`     | Student submissions with grading                         |
+| `live_sessions`              | Real-time classroom sessions                             |
+| `live_session_participants`  | Students in live sessions                                |
+| `feedback`                   | User feedback ratings and messages                       |
+| `premium_requests`           | Premium membership requests                              |
+| `teacher_requests`           | Teacher account upgrade requests                         |
+| `notifications`              | Classroom announcement notifications                    |
 
 ---
 
-## 🔄 State Management
-
-### Global State (Context API)
-- **AuthContext**: user, session, role, auth functions
-- **ThemeContext**: dark/light mode (future)
-
-### Local State (useState)
-- Test answers
-- Timer state
-- Loading states
-- Form inputs
-
-### Persistent State (localStorage)
-- Draft answers (auto-save)
-- Remember email preference
-- Theme preference
-
-### Server State (React Query - future)
-- User profile
-- Test history
-- Classroom data
-
----
-
-## 🧪 Testing Strategy (Future Implementation)
-
-### Unit Tests
-- Utility functions (band calculation, answer validation)
-- Custom hooks (useAuth, useTestSession)
-
-### Integration Tests
-- Authentication flow
-- Test submission flow
-- Evaluation API calls
-
-### E2E Tests
-- Complete test taking experience
-- User signup to test completion
-
----
-
-## 🌐 Browser Compatibility
-
-**Supported Browsers:**
-- Chrome 90+ ✅
-- Firefox 88+ ✅
-- Safari 14+ ✅
-- Edge 90+ ✅
-
-**Features Requiring Modern Browser:**
-- Web Speech API (recording)
-- localStorage
-- Fetch API
-- ES2020 features
-
----
-
-## 📈 Scalability Considerations
-
-### Database
-- Indexed foreign keys for fast joins
-- JSONB for flexible data storage
-- Connection pooling via Supabase
-
-### Edge Functions
-- Stateless design (horizontal scaling)
-- Cold start optimization
-- Error retry logic
-
-### Frontend
-- Code splitting per route
-- Lazy loading images
-- CDN for static assets
-
----
-
-## 🛠️ Development Workflow
-
-```bash
-# Clone repository
-git clone https://github.com/yourusername/loungelearning.git
-
-# Install dependencies
-npm install
-
-# Set up environment variables
-cp .env.example .env
-# Edit .env with your Supabase credentials
-
-# Start development server
-npm run dev
-
-# Open browser at http://localhost:8080
-```
-
-### Adding a New Test
-```bash
-# 1. Create JSON file
-public/questions/reading/book16-test1.json
-
-# 2. Format: { testId, title, sections: [...] }
-
-# 3. Add route in App.tsx (auto-detected via :testId param)
-
-# 4. Test locally, then commit
-```
-
----
-
-## 📞 Support & Maintenance
-
-### Database Backups
-- Automatic daily backups (Supabase)
-- Point-in-time recovery available
-- Export via pg_dump
-
-### Monitoring
-- Supabase dashboard for database metrics
-- Edge function logs in Supabase console
-- Error tracking via toast notifications (client-side)
-
-### Updates
-- Dependency updates: `npm outdated && npm update`
-- Security patches: `npm audit fix`
-- Database migrations: sequential versioned SQL files
-
----
-
-**Last Updated**: January 2026  
-**System Version**: 1.0.0  
-**Documentation Maintained By**: LoungeLearning Development Team
+*Last updated: February 2026*
