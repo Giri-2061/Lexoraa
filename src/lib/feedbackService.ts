@@ -3,6 +3,7 @@ import type { FeedbackSubmission, FeedbackRecord, FeedbackEligibility, FeedbackS
 
 const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
 const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
+const FOUR_HOURS_MS = 4 * 60 * 60 * 1000;
 
 export async function checkFeedbackEligibility(userId: string): Promise<FeedbackEligibility> {
   try {
@@ -36,6 +37,15 @@ export async function checkFeedbackEligibility(userId: string): Promise<Feedback
       }
     }
 
+    // Check cumulative session time from localStorage (client-side tracked)
+    const cumulativeMs = parseInt(
+      typeof window !== 'undefined'
+        ? localStorage.getItem('lexora_cumulative_session_ms') ?? '0'
+        : '0',
+      10,
+    );
+    const hasEnoughSessionTime = cumulativeMs >= FOUR_HOURS_MS;
+
     const { count: testCount } = await supabase
       .from('test_results')
       .select('id', { count: 'exact', head: true })
@@ -45,7 +55,8 @@ export async function checkFeedbackEligibility(userId: string): Promise<Feedback
     const accountAge = now - new Date(profile.created_at).getTime();
     const isSevenDaysOld = accountAge >= SEVEN_DAYS_MS;
 
-    if (!hasCompletedTest && !isSevenDaysOld) {
+    // Eligible if: 4hr+ cumulative usage OR 7-day-old account OR completed a test
+    if (!hasEnoughSessionTime && !hasCompletedTest && !isSevenDaysOld) {
       return { eligible: false, reason: 'Not enough activity' };
     }
 
