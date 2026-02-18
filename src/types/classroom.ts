@@ -40,6 +40,20 @@ export interface ClassroomPost {
   attachment_url: string | null;
   created_at: string;
   updated_at: string;
+  comments?: PostComment[];
+  comment_count?: number;
+}
+
+export interface PostComment {
+  id: string;
+  post_id: string;
+  user_id: string;
+  content: string;
+  created_at: string;
+  profile?: {
+    full_name: string | null;
+    email: string | null;
+  };
 }
 
 export interface Assignment {
@@ -55,6 +69,8 @@ export interface Assignment {
   due_date: string | null;
   created_at: string;
   updated_at: string;
+  submissions?: AssignmentSubmission[];
+  submission_count?: number;
 }
 
 export interface AssignmentSubmission {
@@ -64,11 +80,17 @@ export interface AssignmentSubmission {
   test_result_id: string | null;
   status: 'pending' | 'submitted' | 'graded';
   submitted_at: string | null;
+  graded_score: number | null;
+  teacher_comment: string | null;
   created_at: string;
   assignment?: Assignment;
   test_result?: {
     band_score: number;
     correct_count: number;
     total_questions: number;
+  };
+  profile?: {
+    full_name: string | null;
+    email: string | null;
   };
 }
