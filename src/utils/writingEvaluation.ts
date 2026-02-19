@@ -163,6 +163,54 @@ export async function getTestEvaluation(userId: string, testId: string, taskNumb
   return data;
 }
 
+// ─── Handwriting OCR Transcription ───────────────────────────────────────────
+
+export async function transcribeHandwriting(imageBase64: string): Promise<{
+  success: boolean;
+  transcribedText?: string;
+  error?: string;
+}> {
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/transcribe-handwriting`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+        },
+        body: JSON.stringify({ imageBase64 }),
+      }
+    );
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Transcription error:', errorText);
+      try {
+        const errorJson = JSON.parse(errorText);
+        return { success: false, error: errorJson.error || `HTTP ${response.status}` };
+      } catch {
+        return { success: false, error: `HTTP ${response.status}: ${errorText}` };
+      }
+    }
+
+    const data = await response.json();
+
+    if (!data?.transcribedText) {
+      return { success: false, error: 'No transcribed text returned' };
+    }
+
+    return { success: true, transcribedText: data.transcribedText };
+  } catch (err) {
+    console.error('Unexpected transcription error:', err);
+    return {
+      success: false,
+      error: err instanceof Error ? err.message : 'An unexpected error occurred',
+    };
+  }
+}
+
 // Helper function to get word count
 export function getWordCount(text: string): number {
   return text.trim().split(/\s+/).filter(word => word.length > 0).length;
