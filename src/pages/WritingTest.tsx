@@ -16,8 +16,8 @@ import { useToast } from "@/hooks/use-toast";
 import { useTestSession } from "@/hooks/useTestSession";
 import { loadQuestions } from "@/utils/loadQuestions";
 import type { WritingTest as WritingTestData } from "@/types/questions";
-import { AlertCircle, CheckCircle, Upload, Loader2, Sparkles } from "lucide-react";
-import { evaluateWriting, WritingEvaluation } from '@/utils/writingEvaluation';
+import { AlertCircle, CheckCircle, Upload, Loader2, Sparkles, ImageIcon, X } from "lucide-react";
+import { evaluateWriting, transcribeHandwriting, WritingEvaluation } from '@/utils/writingEvaluation';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from "@/integrations/supabase/client";
 import EvaluationResult from '@/components/EvaluationResult';
@@ -53,6 +53,8 @@ const WritingTest = () => {
   const [showEvaluation, setShowEvaluation] = useState(false);
   const [finalBandScore, setFinalBandScore] = useState<number | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isTranscribing1, setIsTranscribing1] = useState(false);
+  const [isTranscribing2, setIsTranscribing2] = useState(false);
 
   const clearStoredDrafts = useCallback(() => {
     try {
@@ -184,6 +186,59 @@ const WritingTest = () => {
     };
 
     reader.readAsDataURL(file);
+  };
+
+  const handleTranscribeImage = async (task: UploadTask) => {
+    const imageData = task === 1 ? task1ImageData : task2ImageData;
+    if (!imageData) {
+      toast({
+        title: "No image",
+        description: "Please upload a handwritten image first.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (task === 1) setIsTranscribing1(true);
+    else setIsTranscribing2(true);
+
+    try {
+      const result = await transcribeHandwriting(imageData);
+
+      if (result.success && result.transcribedText) {
+        if (task === 1) {
+          setTask1Answer((prev) => prev ? prev + '\n\n' + result.transcribedText! : result.transcribedText!);
+        } else {
+          setTask2Answer((prev) => prev ? prev + '\n\n' + result.transcribedText! : result.transcribedText!);
+        }
+
+        toast({
+          title: "Transcription complete",
+          description: "Handwritten text has been transcribed. Please review it in the text area above.",
+        });
+      } else {
+        toast({
+          title: "Transcription failed",
+          description: result.error || "Unable to transcribe the image. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error('Transcription error:', error);
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred during transcription.",
+        variant: "destructive",
+      });
+    } finally {
+      if (task === 1) setIsTranscribing1(false);
+      else setIsTranscribing2(false);
+    }
+  };
+
+  const handleRemoveImage = (task: UploadTask) => {
+    if (task === 1) setTask1ImageData(null);
+    else setTask2ImageData(null);
   };
 
   const handleEvaluateTask = async (taskNumber: 1 | 2) => {
@@ -703,15 +758,52 @@ const WritingTest = () => {
                   </div>
 
                   <label className="block text-sm font-medium text-card-foreground mb-2 mt-4">Or upload a photo of your handwritten Task 1 answer</label>
-                  <div className="border-2 border-dashed border-border rounded-lg p-6 text-center opacity-60 cursor-not-allowed relative">
-                    <div className="absolute top-2 right-2 bg-yellow-500 text-yellow-950 text-xs font-semibold px-2 py-1 rounded-full">
-                      Coming Soon
+                  {task1ImageData ? (
+                    <div className="border-2 border-primary/30 rounded-lg p-4 space-y-3">
+                      <div className="relative">
+                        <img src={task1ImageData} alt="Handwritten Task 1" className="max-h-64 mx-auto rounded-md" />
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveImage(1)}
+                          className="absolute top-1 right-1 p-1 bg-destructive text-destructive-foreground rounded-full hover:opacity-80"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      </div>
+                      <Button
+                        type="button"
+                        variant="secondary"
+                        className="w-full gap-2"
+                        onClick={() => handleTranscribeImage(1)}
+                        disabled={isTranscribing1}
+                      >
+                        {isTranscribing1 ? (
+                          <>
+                            <Loader2 className="w-4 h-4 animate-spin" />
+                            Transcribing...
+                          </>
+                        ) : (
+                          <>
+                            <ImageIcon className="w-4 h-4" />
+                            Transcribe to Text
+                          </>
+                        )}
+                      </Button>
+                      <p className="text-xs text-muted-foreground text-center">The transcribed text will appear in the text area above for your review.</p>
                     </div>
-                    <Upload className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
-                    <p className="text-muted-foreground mb-2">Image upload for Task 1</p>
-                    <p className="text-sm text-muted-foreground">PNG, JPG up to 10MB</p>
-                    <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-2">This feature is coming soon!</p>
-                  </div>
+                  ) : (
+                    <label className="border-2 border-dashed border-border rounded-lg p-6 text-center cursor-pointer hover:border-primary/50 hover:bg-primary/5 transition-colors block">
+                      <Upload className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
+                      <p className="text-muted-foreground mb-2">Click to upload your handwritten Task 1 answer</p>
+                      <p className="text-sm text-muted-foreground">PNG, JPG up to 10MB</p>
+                      <input
+                        type="file"
+                        accept="image/png,image/jpeg,image/webp"
+                        className="hidden"
+                        onChange={(e) => handleImageUpload(e, 1)}
+                      />
+                    </label>
+                  )}
                 </div>
               </Card>
 
@@ -771,15 +863,52 @@ const WritingTest = () => {
                   </div>
 
                   <label className="block text-sm font-medium text-card-foreground mb-2 mt-4">Or upload a photo of your handwritten Task 2 answer</label>
-                  <div className="border-2 border-dashed border-border rounded-lg p-6 text-center opacity-60 cursor-not-allowed relative">
-                    <div className="absolute top-2 right-2 bg-yellow-500 text-yellow-950 text-xs font-semibold px-2 py-1 rounded-full">
-                      Coming Soon
+                  {task2ImageData ? (
+                    <div className="border-2 border-primary/30 rounded-lg p-4 space-y-3">
+                      <div className="relative">
+                        <img src={task2ImageData} alt="Handwritten Task 2" className="max-h-64 mx-auto rounded-md" />
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveImage(2)}
+                          className="absolute top-1 right-1 p-1 bg-destructive text-destructive-foreground rounded-full hover:opacity-80"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      </div>
+                      <Button
+                        type="button"
+                        variant="secondary"
+                        className="w-full gap-2"
+                        onClick={() => handleTranscribeImage(2)}
+                        disabled={isTranscribing2}
+                      >
+                        {isTranscribing2 ? (
+                          <>
+                            <Loader2 className="w-4 h-4 animate-spin" />
+                            Transcribing...
+                          </>
+                        ) : (
+                          <>
+                            <ImageIcon className="w-4 h-4" />
+                            Transcribe to Text
+                          </>
+                        )}
+                      </Button>
+                      <p className="text-xs text-muted-foreground text-center">The transcribed text will appear in the text area above for your review.</p>
                     </div>
-                    <Upload className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
-                    <p className="text-muted-foreground mb-2">Image upload for Task 2</p>
-                    <p className="text-sm text-muted-foreground">PNG, JPG up to 10MB</p>
-                    <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-2">This feature is coming soon!</p>
-                  </div>
+                  ) : (
+                    <label className="border-2 border-dashed border-border rounded-lg p-6 text-center cursor-pointer hover:border-primary/50 hover:bg-primary/5 transition-colors block">
+                      <Upload className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
+                      <p className="text-muted-foreground mb-2">Click to upload your handwritten Task 2 answer</p>
+                      <p className="text-sm text-muted-foreground">PNG, JPG up to 10MB</p>
+                      <input
+                        type="file"
+                        accept="image/png,image/jpeg,image/webp"
+                        className="hidden"
+                        onChange={(e) => handleImageUpload(e, 2)}
+                      />
+                    </label>
+                  )}
                 </div>
               </Card>
 
