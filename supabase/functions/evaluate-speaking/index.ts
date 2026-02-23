@@ -237,7 +237,45 @@ serve(async (req) => {
       disclaimer: 'This is an AI-generated estimate. Official scores can only be obtained through certified test centers.'
     };
 
-    return new Response(JSON.stringify({ success: true, evaluation: fullEvaluation }), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+    // 7. SAVE TO DATABASE
+    let testResultId: string | null = null;
+    try {
+      const adminClient = createClient(
+        Deno.env.get('SUPABASE_URL') ?? '',
+        Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+      );
+
+      const { data: testResultData, error: testResultError } = await adminClient
+        .from('test_results')
+        .insert({
+          user_id: user.id,
+          test_id: testId || 'speaking-unknown',
+          test_type: 'speaking',
+          correct_count: 0,
+          total_questions: 3,
+          band_score: finalBand,
+          duration_minutes: Math.round(totalDuration / 60),
+          answers: {
+            evaluation: fullEvaluation,
+            transcripts,
+            cueCardTopic,
+            part3Theme
+          },
+          created_at: new Date().toISOString()
+        })
+        .select('id')
+        .single();
+
+      if (testResultError) {
+        console.error('Test Results DB Error:', testResultError);
+      } else {
+        testResultId = testResultData?.id ?? null;
+      }
+    } catch (dbErr) {
+      console.error('Database save error:', dbErr);
+    }
+
+    return new Response(JSON.stringify({ success: true, evaluation: fullEvaluation, testResultId }), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
 
   } catch (error) {
     console.error('Final Error:', error);
