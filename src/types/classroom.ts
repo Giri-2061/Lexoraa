@@ -1,7 +1,10 @@
+export type ConsultancyTier = 'basic' | 'professional' | 'enterprise';
+
 export interface Consultancy {
   id: string;
   name: string;
   owner_id: string;
+  tier: ConsultancyTier;
   created_at: string;
   updated_at: string;
 }

@@ -480,13 +480,67 @@ export function useStudentClassrooms() {
         student_id: user.id
       });
 
-    if (!error) {
-      fetchMemberships();
+    if (error) {
+      // Handle the student limit trigger error
+      if (error.message?.includes('Student limit reached')) {
+        return { error: new Error('This consultancy has reached its student limit. Please ask the owner to upgrade their plan.') };
+      }
+      return { error };
     }
-    return { error };
+
+    fetchMemberships();
+    return { error: null };
   };
 
-  return { memberships, loading, joinByCode, refetch: fetchMemberships };
+  const enrollStudentByCode = async (classCode: string) => {
+    if (!user) return { error: new Error('Not authenticated') };
+
+    const code = classCode.toLowerCase().trim();
+    if (!code) return { error: new Error('Please enter a class code') };
+
+    // Find the classroom by invite_code
+    const { data: classroom, error: findError } = await supabase
+      .from('classrooms')
+      .select('id, name')
+      .eq('invite_code', code)
+      .single();
+
+    if (findError || !classroom) {
+      return { error: new Error('Invalid class code. Please check and try again.') };
+    }
+
+    // Check if already a member
+    const { data: existing } = await supabase
+      .from('classroom_memberships')
+      .select('id')
+      .eq('classroom_id', classroom.id)
+      .eq('student_id', user.id)
+      .maybeSingle();
+
+    if (existing) {
+      return { error: new Error('You are already enrolled in this classroom.') };
+    }
+
+    // Attempt to insert — the DB trigger will enforce the tier limit
+    const { error } = await supabase
+      .from('classroom_memberships')
+      .insert({
+        classroom_id: classroom.id,
+        student_id: user.id
+      });
+
+    if (error) {
+      if (error.message?.includes('Student limit reached')) {
+        return { error: new Error('This consultancy has reached its student limit. Please ask the owner to upgrade their plan.') };
+      }
+      return { error };
+    }
+
+    fetchMemberships();
+    return { error: null, classroomName: classroom.name };
+  };
+
+  return { memberships, loading, joinByCode, enrollStudentByCode, refetch: fetchMemberships };
 }
 
 export function useAssignmentSubmissions(assignmentId: string | undefined) {
