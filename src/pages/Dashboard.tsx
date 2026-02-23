@@ -9,6 +9,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
+import { useConsultancy } from "@/hooks/useClassroom";
+import ConsultancyStats from "@/components/classroom/ConsultancyStats";
 
 interface TestResult {
   id: string;
@@ -22,7 +24,8 @@ interface TestResult {
 }
 
 const Dashboard = () => {
-  const { user, loading } = useAuth();
+  const { user, loading, role } = useAuth();
+  const { consultancy } = useConsultancy();
   const [testResults, setTestResults] = useState<TestResult[]>([]);
   const [loadingResults, setLoadingResults] = useState(true);
   const [targetScore, setTargetScore] = useState<number>(7.0);
@@ -143,6 +146,15 @@ const Dashboard = () => {
               Welcome back, {displayName ? displayName : user.email}! Track your IELTS preparation progress.
             </p>
           </div>
+
+          {/* Consultancy Stats — for consultancy owners */}
+          {(role === 'consultancy_owner' || role === 'super_admin') && consultancy && (
+            <ConsultancyStats
+              consultancyId={consultancy.id}
+              consultancyName={consultancy.name}
+              tier={consultancy.tier || 'basic'}
+            />
+          )}
 
           {/* Overview Stats */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
