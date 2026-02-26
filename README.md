@@ -44,8 +44,6 @@ npm run dev
 npm run dev:web
 ```
 
-The web app will be available at `http://localhost:5173`
-
 ### Build
 
 ```bash
