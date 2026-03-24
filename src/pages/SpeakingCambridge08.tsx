@@ -39,6 +39,34 @@ const SpeakingCambridge08 = () => {
       parts: "3 parts",
       duration: "11-14 minutes",
       topics: "Personal, Cue Card, Discussion"
+    },
+    {
+      id: 5,
+      title: "Test 5",
+      parts: "3 parts",
+      duration: "11-14 minutes",
+      topics: "Personal, Cue Card, Discussion"
+    },
+    {
+      id: 6,
+      title: "Test 6",
+      parts: "3 parts",
+      duration: "11-14 minutes",
+      topics: "Personal, Cue Card, Discussion"
+    },
+    {
+      id: 7,
+      title: "Test 7",
+      parts: "3 parts",
+      duration: "11-14 minutes",
+      topics: "Personal, Cue Card, Discussion"
+    },
+    {
+      id: 8,
+      title: "Test 8",
+      parts: "3 parts",
+      duration: "11-14 minutes",
+      topics: "Personal, Cue Card, Discussion"
     }
   ];
 

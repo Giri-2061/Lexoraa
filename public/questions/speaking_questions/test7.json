@@ -1,0 +1,84 @@
+{
+  "testId": "speaking-test-7",
+  "part1": {
+    "topics": [
+      {
+        "theme": "Work-Life Balance",
+        "introduction": "Let's talk about work and life balance.",
+        "questions": [
+          "How many hours do you work per week?",
+          "What do you do to relax after work?",
+          "Do you think work-life balance is important?",
+          "Do you work from home or in an office?",
+          "How has work changed in recent years?"
+        ]
+      },
+      {
+        "theme": "Languages and Communication",
+        "introduction": "Now, let's talk about languages and communication.",
+        "questions": [
+          "How many languages can you speak?",
+          "Why did you decide to learn English?",
+          "What is the best way to learn a language?",
+          "Do you think it's important to speak multiple languages?",
+          "Would you like to learn any other languages?"
+        ]
+      },
+      {
+        "theme": "Health and Fitness",
+        "introduction": "Let's move on to talk about health and fitness.",
+        "questions": [
+          "How important is health to you?",
+          "What do you do to stay healthy?",
+          "Do you have a balanced diet?",
+          "How often do you visit a doctor?",
+          "Do you think young people care about their health?"
+        ]
+      }
+    ]
+  },
+  "part2": {
+    "cueCard": {
+      "topic": "Describe a celebration or special event you have attended",
+      "instruction": "You should say:",
+      "points": [
+        "what the event was",
+        "when and where it took place",
+        "who you attended with"
+      ],
+      "conclusion": "and explain why this event was special to you.",
+      "prepTime": 60,
+      "speakTime": 120
+    },
+    "followUpQuestions": [
+      "Do you enjoy attending celebrations?",
+      "What do you think makes celebrations memorable?"
+    ]
+  },
+  "part3": {
+    "theme": "Celebrations and Special Events",
+    "introduction": "Let's discuss some general questions about celebrations and special events.",
+    "questions": [
+      {
+        "question": "What kinds of celebrations are important in your culture?",
+        "followUp": "How are these celebrations different from other cultures?"
+      },
+      {
+        "question": "Why do you think people enjoy celebrating together?",
+        "followUp": "What is the social value of celebrations?"
+      },
+      {
+        "question": "Do you think celebrations are becoming more commercialized?",
+        "followUp": "Is this a positive or negative trend?"
+      },
+      {
+        "question": "How have celebrations changed over the years?",
+        "followUp": "What factors have influenced these changes?"
+      },
+      {
+        "question": "Do you think it's important to celebrate milestones and achievements?",
+        "followUp": "How do celebrations impact personal relationships?"
+      }
+    ]
+  }
+}

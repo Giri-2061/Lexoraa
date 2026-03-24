@@ -1,0 +1,84 @@
+{
+  "testId": "speaking-test-6",
+  "part1": {
+    "topics": [
+      {
+        "theme": "Art and Design",
+        "introduction": "Let's talk about art and design.",
+        "questions": [
+          "Do you like art?",
+          "What kind of art do you prefer?",
+          "Do you have any artwork at home?",
+          "Have you ever visited an art gallery or museum?",
+          "Would you like to learn to paint or draw?"
+        ]
+      },
+      {
+        "theme": "Transportation and Vehicles",
+        "introduction": "Now, let's talk about transportation.",
+        "questions": [
+          "What is your favorite way to travel?",
+          "Do you own a car?",
+          "How do you usually get to work or school?",
+          "Do you think public transport is important?",
+          "What do you think about electric vehicles?"
+        ]
+      },
+      {
+        "theme": "Pets and Animals",
+        "introduction": "Let's move on to talk about pets and animals.",
+        "questions": [
+          "Do you have any pets?",
+          "What kind of animals do you like?",
+          "Do you think it's good to keep pets?",
+          "Have you had any memorable experiences with animals?",
+          "What is your favorite animal?"
+        ]
+      }
+    ]
+  },
+  "part2": {
+    "cueCard": {
+      "topic": "Describe a hobby or interest you have",
+      "instruction": "You should say:",
+      "points": [
+        "what the hobby is",
+        "how long you have had this hobby",
+        "why you enjoy it"
+      ],
+      "conclusion": "and explain how this hobby impacts your life.",
+      "prepTime": 60,
+      "speakTime": 120
+    },
+    "followUpQuestions": [
+      "Do you spend a lot of time on this hobby?",
+      "Do you think hobbies are important for everyone?"
+    ]
+  },
+  "part3": {
+    "theme": "Hobbies and Leisure Activities",
+    "introduction": "Let's discuss some general questions about hobbies and leisure activities.",
+    "questions": [
+      {
+        "question": "Why do you think hobbies are important?",
+        "followUp": "How do hobbies benefit our well-being?"
+      },
+      {
+        "question": "What kinds of hobbies are popular in your country?",
+        "followUp": "How have popular hobbies changed over the years?"
+      },
+      {
+        "question": "Do you think people should try to turn their hobbies into jobs?",
+        "followUp": "What are the advantages and disadvantages?"
+      },
+      {
+        "question": "How has technology changed the hobbies people enjoy?",
+        "followUp": "Are traditional hobbies becoming less popular?"
+      },
+      {
+        "question": "Do you think it's better to have social hobbies or solitary ones?",
+        "followUp": "Can hobbies help build communities?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "testId": "speaking-test-4",
+  "part1": {
+    "topics": [
+      {
+        "theme": "Food and Cooking",
+        "introduction": "Let's talk about food and cooking.",
+        "questions": [
+          "Do you like cooking?",
+          "What kind of food do you like to cook?",
+          "Who usually cooks in your family?",
+          "Is cooking an important skill to have?",
+          "What is your favorite dish?"
+        ]
+      },
+      {
+        "theme": "Shopping",
+        "introduction": "Now, let's talk about shopping.",
+        "questions": [
+          "Do you like shopping?",
+          "What do you usually buy?",
+          "Where do you prefer to shop?",
+          "How often do you go shopping?",
+          "Do you prefer online or in-store shopping?"
+        ]
+      },
+      {
+        "theme": "Sports and Exercise",
+        "introduction": "Let's move on to talk about sports and exercise.",
+        "questions": [
+          "Do you play any sports?",
+          "How often do you exercise?",
+          "What kind of exercise do you prefer?",
+          "Do you think exercise is important?",
+          "Did you do more sports when you were younger?"
+        ]
+      }
+    ]
+  },
+  "part2": {
+    "cueCard": {
+      "topic": "Describe a person you admire",
+      "instruction": "You should say:",
+      "points": [
+        "who this person is",
+        "how you know them",
+        "what they do"
+      ],
+      "conclusion": "and explain why you admire this person.",
+      "prepTime": 60,
+      "speakTime": 120
+    },
+    "followUpQuestions": [
+      "Do you think it's important to have role models?",
+      "Are there any famous people you admire?"
+    ]
+  },
+  "part3": {
+    "theme": "Role Models and Admiration",
+    "introduction": "Let's discuss some general questions about people we admire.",
+    "questions": [
+      {
+        "question": "What qualities do you think a role model should have?",
+        "followUp": "How have role models changed in the modern world?"
+      },
+      {
+        "question": "Do you think famous people make good role models?",
+        "followUp": "Can you give some examples?"
+      },
+      {
+        "question": "How do role models influence people's behavior?",
+        "followUp": "Is this always a positive influence?"
+      },
+      {
+        "question": "Do you think parents are the most important role models?",
+        "followUp": "Who else can be influential in children's lives?"
+      },
+      {
+        "question": "How has the internet changed who people choose as role models?",
+        "followUp": "Are social media influencers good role models?"
+      }
+    ]
+  }
+}
