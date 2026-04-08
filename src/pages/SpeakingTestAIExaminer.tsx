@@ -6,6 +6,13 @@ import TestHeader from "@/components/TestHeader";
 import { useTestSession } from "@/hooks/useTestSession";
 import { Card } from "@/components/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { loadQuestions } from "@/utils/loadQuestions";
 import type { SpeakingTest as SpeakingTestType, SpeakingPart1Topic, SpeakingPart3Question } from "@/types/questions";
 import { useToast } from "@/hooks/use-toast";
@@ -98,6 +105,10 @@ const SpeakingTestAIExaminer = () => {
   const [evaluating, setEvaluating] = useState(false);
   const [evaluation, setEvaluation] = useState<SpeakingEvaluation | null>(null);
   const [evaluationError, setEvaluationError] = useState<string | null>(null);
+  const [latestTestResultId, setLatestTestResultId] = useState<string | null>(null);
+  const [classrooms, setClassrooms] = useState<Array<{ id: string; name: string }>>([]);
+  const [selectedClassroomId, setSelectedClassroomId] = useState('');
+  const [requestingTeacherReview, setRequestingTeacherReview] = useState(false);
 
   // Media cleanup functions (defined before useEffect hooks)
   const cleanupMedia = useCallback(() => {
@@ -158,6 +169,33 @@ const SpeakingTestAIExaminer = () => {
         setMicPermission(result.state as "granted" | "denied" | "prompt");
       });
   }, []);
+
+  useEffect(() => {
+    const fetchClassrooms = async () => {
+      if (!user?.id) return;
+
+      const { data, error } = await supabase
+        .from('classroom_memberships')
+        .select('classroom_id, classroom:classrooms(id, name)')
+        .eq('student_id', user.id);
+
+      if (!error && data) {
+        const mapped = data
+          .map((row: any) => ({
+            id: row.classroom?.id,
+            name: row.classroom?.name,
+          }))
+          .filter((c: any) => c.id && c.name);
+
+        setClassrooms(mapped);
+        if (mapped.length > 0 && !selectedClassroomId) {
+          setSelectedClassroomId(mapped[0].id);
+        }
+      }
+    };
+
+    fetchClassrooms();
+  }, [user?.id]);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -679,6 +717,9 @@ const SpeakingTestAIExaminer = () => {
 
       if (result.success && result.evaluation) {
         setEvaluation(result.evaluation);
+        if (result.testResultId) {
+          setLatestTestResultId(result.testResultId);
+        }
         toast({
           title: "Evaluation Complete",
           description: `Estimated Band: ${result.evaluation.estimatedBand.toFixed(1)}`,
@@ -708,11 +749,107 @@ const SpeakingTestAIExaminer = () => {
     setTimerActive(false);
     setEvaluation(null);
     setEvaluationError(null);
+    setLatestTestResultId(null);
     session.setStarted(false);
     session.setTimeLeft(durationMinutes * 60);
   };
 
+  const handleAskTeacherReview = async () => {
+    if (!user?.id) {
+      toast({
+        title: 'Login required',
+        description: 'Please sign in before requesting teacher review.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    if (!latestTestResultId) {
+      toast({
+        title: 'No test result yet',
+        description: 'Please get the speaking evaluation first, then request teacher review.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    if (!selectedClassroomId) {
+      toast({
+        title: 'No classroom selected',
+        description: 'Select a classroom to send this test for teacher review.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    setRequestingTeacherReview(true);
+
+    const { error } = await supabase
+      .from('test_review_requests')
+      .upsert(
+        {
+          classroom_id: selectedClassroomId,
+          student_id: user.id,
+          test_result_id: latestTestResultId,
+          status: 'pending',
+          teacher_score: null,
+          teacher_comment: null,
+          graded_at: null,
+          requested_at: new Date().toISOString(),
+        },
+        { onConflict: 'classroom_id,student_id,test_result_id' }
+      );
+
+    setRequestingTeacherReview(false);
+
+    if (error) {
+      toast({
+        title: 'Request failed',
+        description: error.message,
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    toast({
+      title: 'Sent to teacher',
+      description: 'Your speaking test was submitted for classroom teacher review.',
+    });
+  };
+
   // Render different phases
+          <Card className="mt-6 p-4">
+            <div className="space-y-3">
+              <div>
+                <p className="font-semibold text-card-foreground">Ask Your Teacher To Review</p>
+                <p className="text-sm text-muted-foreground">Send this speaking result to a classroom teacher for manual grading.</p>
+              </div>
+              {classrooms.length > 0 ? (
+                <>
+                  <Select value={selectedClassroomId} onValueChange={setSelectedClassroomId}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Choose a classroom" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {classrooms.map((c) => (
+                        <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <Button
+                    variant="outline"
+                    className="w-full"
+                    onClick={handleAskTeacherReview}
+                    disabled={!latestTestResultId || requestingTeacherReview}
+                  >
+                    {requestingTeacherReview ? 'Sending...' : 'Ask Your Teacher'}
+                  </Button>
+                </>
+              ) : (
+                <p className="text-sm text-muted-foreground">Join a classroom first to request teacher review.</p>
+              )}
+            </div>
+          </Card>
   const renderIntro = () => (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
