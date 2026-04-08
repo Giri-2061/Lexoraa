@@ -41,6 +41,7 @@ import ClassroomLayout from '@/components/classroom/ClassroomLayout';
 import LiveSessionBanner from '@/components/classroom/LiveSessionBanner';
 import StartClassDialog from '@/components/classroom/StartClassDialog';
 import { supabase } from '@/integrations/supabase/client';
+import { calculateAverageBand } from '@/utils/writingEvaluation';
 import type { PostComment, AssignmentSubmission, TestReviewRequest } from '@/types/classroom';
 
 const BOOKS = Array.from({ length: 7 }, (_, i) => ({ id: `book${13 + i}`, name: `Cambridge Book ${13 + i}` }));
@@ -1049,6 +1050,28 @@ function ReviewSubmissionsTab({
   const [lexicalResource, setLexicalResource] = useState('');
   const [grammarAccuracy, setGrammarAccuracy] = useState('');
 
+  const parseBandInput = (value: string) => {
+    if (!value.trim()) return null;
+    const parsed = Number(value);
+    if (!Number.isFinite(parsed)) return null;
+    return Math.min(9, Math.max(0, parsed));
+  };
+
+  const clampBandInput = (value: string) => {
+    if (!value.trim()) return '';
+    const parsed = Number(value);
+    if (!Number.isFinite(parsed)) return '';
+    return Math.min(9, Math.max(0, parsed)).toString();
+  };
+
+  const writingCriteriaScores = [taskAchievement, coherenceCohesion, lexicalResource, grammarAccuracy]
+    .map(parseBandInput);
+
+  const writingTeacherScore =
+    activeRequest?.test_result?.test_type === 'writing' && writingCriteriaScores.every((score) => score !== null)
+      ? calculateAverageBand(writingCriteriaScores.map((score) => score as number))
+      : null;
+
   const pending = requests.filter((r) => r.status === 'pending');
   const graded = requests.filter((r) => r.status === 'graded');
 
@@ -1113,25 +1136,27 @@ function ReviewSubmissionsTab({
   };
 
   const handleGrade = async () => {
-    if (!activeRequest || !score) return;
+    if (!activeRequest) return;
 
     const isWriting = activeRequest.test_result?.test_type === 'writing';
-    const parseBand = (value: string) => {
-      const parsed = parseFloat(value);
-      return Number.isFinite(parsed) ? parsed : null;
-    };
 
     const criteria = isWriting
       ? {
-          taskAchievement: parseBand(taskAchievement),
-          coherenceCohesion: parseBand(coherenceCohesion),
-          lexicalResource: parseBand(lexicalResource),
-          grammarAccuracy: parseBand(grammarAccuracy),
+          taskAchievement: parseBandInput(taskAchievement),
+          coherenceCohesion: parseBandInput(coherenceCohesion),
+          lexicalResource: parseBandInput(lexicalResource),
+          grammarAccuracy: parseBandInput(grammarAccuracy),
         }
       : undefined;
 
+    const finalScore = isWriting
+      ? writingTeacherScore
+      : parseBandInput(score);
+
+    if (finalScore === null) return;
+
     setSaving(true);
-    const { error } = await onGrade(activeRequest.id, parseFloat(score), comment, criteria);
+    const { error } = await onGrade(activeRequest.id, finalScore, comment, criteria);
     setSaving(false);
 
     if (error) {
@@ -1237,7 +1262,7 @@ function ReviewSubmissionsTab({
                     max="9"
                     step="0.5"
                     value={taskAchievement}
-                    onChange={(e) => setTaskAchievement(e.target.value)}
+                    onChange={(e) => setTaskAchievement(clampBandInput(e.target.value))}
                   />
                 </div>
                 <div>
@@ -1248,7 +1273,7 @@ function ReviewSubmissionsTab({
                     max="9"
                     step="0.5"
                     value={coherenceCohesion}
-                    onChange={(e) => setCoherenceCohesion(e.target.value)}
+                    onChange={(e) => setCoherenceCohesion(clampBandInput(e.target.value))}
                   />
                 </div>
                 <div>
@@ -1259,7 +1284,7 @@ function ReviewSubmissionsTab({
                     max="9"
                     step="0.5"
                     value={lexicalResource}
-                    onChange={(e) => setLexicalResource(e.target.value)}
+                    onChange={(e) => setLexicalResource(clampBandInput(e.target.value))}
                   />
                 </div>
                 <div>
@@ -1270,7 +1295,7 @@ function ReviewSubmissionsTab({
                     max="9"
                     step="0.5"
                     value={grammarAccuracy}
-                    onChange={(e) => setGrammarAccuracy(e.target.value)}
+                    onChange={(e) => setGrammarAccuracy(clampBandInput(e.target.value))}
                   />
                 </div>
               </div>
@@ -1282,15 +1307,20 @@ function ReviewSubmissionsTab({
                 min="0"
                 max="9"
                 step="0.5"
-                value={score}
-                onChange={(e) => setScore(e.target.value)}
+                value={activeRequest?.test_result?.test_type === 'writing' ? (writingTeacherScore ?? '') : score}
+                onChange={(e) => setScore(clampBandInput(e.target.value))}
+                readOnly={activeRequest?.test_result?.test_type === 'writing'}
               />
             </div>
             <div>
               <Label>Comment</Label>
               <Textarea rows={3} value={comment} onChange={(e) => setComment(e.target.value)} />
             </div>
-            <Button onClick={handleGrade} disabled={saving || !score} className="w-full">
+            <Button
+              onClick={handleGrade}
+              disabled={saving || (activeRequest?.test_result?.test_type === 'writing' ? writingTeacherScore === null : !score)}
+              className="w-full"
+            >
               {saving ? 'Saving...' : 'Submit Grade'}
             </Button>
           </div>
