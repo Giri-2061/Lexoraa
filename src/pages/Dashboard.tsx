@@ -1,11 +1,10 @@
 import { useAuth } from "@/hooks/useAuth";
-import { Navigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpen, Headphones, Mic, PenTool, TrendingUp, Clock, Target, Edit2, Check, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useNavigate, Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -13,6 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { toast } from "@/hooks/use-toast";
 import { useConsultancy } from "@/hooks/useClassroom";
 import ConsultancyStats from "@/components/classroom/ConsultancyStats";
+import ProgressSharePanel from "@/components/student-progress/ProgressSharePanel";
 
 interface TestResult {
   id: string;
@@ -72,6 +72,7 @@ const Dashboard = () => {
       const { data: results } = await supabase
         .from('test_results')
         .select('*')
+        .eq('user_id', user.id)
         .order('created_at', { ascending: false });
       
       if (results) setTestResults(results);
@@ -296,6 +297,14 @@ const Dashboard = () => {
                 )}
               </CardContent>
             </Card>
+          </div>
+
+          <div className="mb-8">
+            <ProgressSharePanel
+              userId={user.id}
+              displayName={displayName}
+              testResults={testResults}
+            />
           </div>
 
           {/* Skill Breakdown */}

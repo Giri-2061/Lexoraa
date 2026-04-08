@@ -538,6 +538,36 @@ export type Database = {
           },
         ]
       }
+      student_progress_shares: {
+        Row: {
+          share_id: string
+          user_id: string
+          display_name: string | null
+          snapshot: Json
+          is_public: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          share_id?: string
+          user_id: string
+          display_name?: string | null
+          snapshot?: Json
+          is_public?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          share_id?: string
+          user_id?: string
+          display_name?: string | null
+          snapshot?: Json
+          is_public?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string

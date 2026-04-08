@@ -38,6 +38,7 @@ import AdminFeedback from "./pages/AdminFeedback";
 import SuperAdminDashboard from "./pages/SuperAdminDashboard";
 import TeacherPendingApproval from "./pages/TeacherPendingApproval";
 import FeedbackProvider from "./components/FeedbackProvider";
+import StudentProgressShare from "./pages/StudentProgressShare";
 
 const queryClient = new QueryClient();
 
@@ -79,6 +80,7 @@ function InnerRoutes() {
         <Route path="/score-calculator" element={<PageTransition><ScoreCalculator /></PageTransition>} />
         <Route path="/classrooms" element={<PageTransition><Classrooms /></PageTransition>} />
         <Route path="/classrooms/:classroomId" element={<PageTransition><ClassroomDetail /></PageTransition>} />
+        <Route path="/share/progress/:shareId" element={<PageTransition><StudentProgressShare /></PageTransition>} />
         <Route path="/about" element={<PageTransition><About /></PageTransition>} />
         <Route path="/testimonials" element={<PageTransition><Testimonials /></PageTransition>} />
         <Route path="/mock-tests" element={<PageTransition><MockTests /></PageTransition>} />

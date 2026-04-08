@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Area, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis } from 'recharts';
 import { Copy, Globe, Link2, Share2, Sparkles, TrendingUp } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { ChartContainer, ChartTooltipContent } from '@/components/ui/chart';
 import { supabase } from '@/integrations/supabase/client';
+import type { Json } from '@/integrations/supabase/types';
 import {
   buildStudentProgressDescription,
   buildStudentProgressShareText,
@@ -64,7 +65,7 @@ export default function ProgressSharePanel({ userId, displayName, testResults }:
       generatedAt: new Date().toISOString(),
       summary,
       recentResults: testResults.slice(-12),
-    };
+    } as unknown as Json;
 
     const { data, error } = await supabase
       .from('student_progress_shares')
@@ -149,35 +150,33 @@ export default function ProgressSharePanel({ userId, displayName, testResults }:
           {summary.chartPoints.length > 0 ? (
             <div className="h-56 w-full">
               <ChartContainer config={chartConfig} className="h-full w-full" id="progress-share">
-                <ResponsiveContainer>
-                  <AreaChart data={summary.chartPoints} margin={{ top: 8, right: 8, left: -12, bottom: 0 }}>
-                    <defs>
-                      <linearGradient id="progress-band-gradient" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#22c55e" stopOpacity={0.35} />
-                        <stop offset="95%" stopColor="#22c55e" stopOpacity={0.02} />
-                      </linearGradient>
-                    </defs>
-                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
-                    <XAxis
-                      dataKey="date"
-                      tickLine={false}
-                      axisLine={false}
-                      tickMargin={10}
-                      minTickGap={20}
-                    />
-                    <YAxis domain={[0, 9]} tickLine={false} axisLine={false} width={32} />
-                    <Tooltip content={<ChartTooltipContent hideLabel />} />
-                    <Area
-                      type="monotone"
-                      dataKey="bandScore"
-                      stroke="#22c55e"
-                      fill="url(#progress-band-gradient)"
-                      strokeWidth={3}
-                      dot={{ r: 3 }}
-                      activeDot={{ r: 5 }}
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
+                <AreaChart data={summary.chartPoints} margin={{ top: 8, right: 8, left: -12, bottom: 0 }}>
+                  <defs>
+                    <linearGradient id="progress-band-gradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#22c55e" stopOpacity={0.35} />
+                      <stop offset="95%" stopColor="#22c55e" stopOpacity={0.02} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+                  <XAxis
+                    dataKey="date"
+                    tickLine={false}
+                    axisLine={false}
+                    tickMargin={10}
+                    minTickGap={20}
+                  />
+                  <YAxis domain={[0, 9]} tickLine={false} axisLine={false} width={32} />
+                  <Tooltip content={<ChartTooltipContent hideLabel />} />
+                  <Area
+                    type="monotone"
+                    dataKey="bandScore"
+                    stroke="#22c55e"
+                    fill="url(#progress-band-gradient)"
+                    strokeWidth={3}
+                    dot={{ r: 3 }}
+                    activeDot={{ r: 5 }}
+                  />
+                </AreaChart>
               </ChartContainer>
             </div>
           ) : (
