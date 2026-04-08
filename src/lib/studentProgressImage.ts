@@ -1,7 +1,7 @@
 import type { StudentProgressSnapshot, StudentProgressSummary } from '@/lib/studentProgressShare';
 
 const CARD_WIDTH = 1200;
-const CARD_HEIGHT = 630;
+const CARD_HEIGHT = 900;
 
 export interface StudentProgressImageInput {
   displayName: string | null;
@@ -10,52 +10,46 @@ export interface StudentProgressImageInput {
 
 export function buildStudentProgressCardSvg({ displayName, snapshot }: StudentProgressImageInput): string {
   const summary = snapshot.summary;
-  const title = escapeXml(displayName || 'Student');
-  const subtitle = escapeXml('IELTS progress report');
-  const generatedAt = escapeXml(new Date(snapshot.generatedAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }).toUpperCase());
-  const chartPath = buildChartPath(summary, 615, 150, 50, 12);
-  const fillPath = buildAreaPath(summary, 615, 150, 50, 12);
-  const testsByTypeCards = buildTestsByTypeCards(summary);
-  const performanceInsights = buildPerformanceInsights(summary);
+  const generatedAt = new Date(snapshot.generatedAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }).toUpperCase();
+  const totalTests = summary.totalTests.toString();
+  const chartPath = buildChartPath(summary, 760, 260, 52, 26);
+  const fillPath = buildAreaPath(summary, 760, 260, 52, 26);
+  const testMixCards = buildTestMixCards(summary);
 
   return `
   <svg width="${CARD_WIDTH}" height="${CARD_HEIGHT}" viewBox="0 0 ${CARD_WIDTH} ${CARD_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#f7f7f4" />
-        <stop offset="100%" stop-color="#f2f1eb" />
+        <stop offset="0%" stop-color="#f9fbff" />
+        <stop offset="100%" stop-color="#eef4ff" />
       </linearGradient>
       <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0%" stop-color="#ffffff" />
-        <stop offset="100%" stop-color="#f7f5ff" />
+        <stop offset="100%" stop-color="#f5f9ff" />
       </linearGradient>
       <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#6d28d9" />
-        <stop offset="100%" stop-color="#8b5cf6" />
+        <stop offset="0%" stop-color="#2563eb" />
+        <stop offset="100%" stop-color="#3b82f6" />
       </linearGradient>
       <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#5b21b6" />
-        <stop offset="100%" stop-color="#8b5cf6" />
+        <stop offset="0%" stop-color="#1d4ed8" />
+        <stop offset="100%" stop-color="#60a5fa" />
       </linearGradient>
       <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="rgba(109,40,217,0.32)" />
-        <stop offset="100%" stop-color="rgba(109,40,217,0.02)" />
+        <stop offset="0%" stop-color="rgba(37,99,235,0.28)" />
+        <stop offset="100%" stop-color="rgba(37,99,235,0.02)" />
       </linearGradient>
-      <linearGradient id="chipPink" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#f5c2ff" />
-        <stop offset="100%" stop-color="#f0abfc" />
-      </linearGradient>
-      <linearGradient id="chipGray" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#eceae7" />
-        <stop offset="100%" stop-color="#dfdcd7" />
+      <linearGradient id="chipBlue" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#dbeafe" />
+        <stop offset="100%" stop-color="#bfdbfe" />
       </linearGradient>
       <linearGradient id="graphBg" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#fefbff" />
-        <stop offset="100%" stop-color="#f6f1ff" />
+        <stop offset="0%" stop-color="#ffffff" />
+        <stop offset="100%" stop-color="#f4f8ff" />
       </linearGradient>
       <linearGradient id="bottomPanel" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#6d28d9" />
-        <stop offset="100%" stop-color="#8b5cf6" />
+        <stop offset="0%" stop-color="#1d4ed8" />
+        <stop offset="100%" stop-color="#2563eb" />
       </linearGradient>
       <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
         <feGaussianBlur stdDeviation="40" />
@@ -63,88 +57,83 @@ export function buildStudentProgressCardSvg({ displayName, snapshot }: StudentPr
     </defs>
 
     <rect width="${CARD_WIDTH}" height="${CARD_HEIGHT}" rx="36" fill="url(#bg)" />
-    <rect x="22" y="22" width="1156" height="586" rx="28" fill="url(#panel)" stroke="#d6d3d1" stroke-width="1.5" />
+    <rect x="22" y="22" width="1156" height="856" rx="28" fill="url(#panel)" stroke="#d8e2f2" stroke-width="1.5" />
 
-    <rect x="22" y="22" width="22" height="586" rx="11" fill="url(#accent)" />
-    <rect x="22" y="190" width="22" height="126" rx="11" fill="#9b8cf3" opacity="0.95" />
-    <rect x="22" y="390" width="22" height="176" rx="11" fill="#c4b5fd" opacity="0.95" />
+    <rect x="22" y="22" width="22" height="856" rx="11" fill="url(#accent)" />
+    <rect x="22" y="248" width="22" height="160" rx="11" fill="#93c5fd" opacity="0.9" />
+    <rect x="22" y="514" width="22" height="218" rx="11" fill="#bfdbfe" opacity="0.9" />
 
-    <circle cx="760" cy="42" r="2.8" fill="#f0abfc" />
-    <circle cx="778" cy="42" r="2.8" fill="#f0abfc" />
-    <circle cx="796" cy="42" r="2.8" fill="#f0abfc" />
-    <circle cx="814" cy="42" r="2.8" fill="#f0abfc" />
-    <circle cx="832" cy="42" r="2.8" fill="#f0abfc" />
-    <circle cx="850" cy="42" r="2.8" fill="#f0abfc" />
-    <circle cx="868" cy="42" r="2.8" fill="#f0abfc" />
-    <circle cx="778" cy="60" r="2.8" fill="#f0abfc" />
-    <circle cx="796" cy="60" r="2.8" fill="#f0abfc" />
-    <circle cx="814" cy="60" r="2.8" fill="#f0abfc" />
-    <circle cx="832" cy="60" r="2.8" fill="#f0abfc" />
-    <circle cx="850" cy="60" r="2.8" fill="#f0abfc" />
-    <circle cx="814" cy="78" r="2.8" fill="#f0abfc" />
-    <circle cx="832" cy="78" r="2.8" fill="#f0abfc" />
+    <circle cx="768" cy="40" r="2.8" fill="#bfdbfe" />
+    <circle cx="786" cy="40" r="2.8" fill="#bfdbfe" />
+    <circle cx="804" cy="40" r="2.8" fill="#bfdbfe" />
+    <circle cx="822" cy="40" r="2.8" fill="#bfdbfe" />
+    <circle cx="840" cy="40" r="2.8" fill="#bfdbfe" />
+    <circle cx="786" cy="58" r="2.8" fill="#bfdbfe" />
+    <circle cx="804" cy="58" r="2.8" fill="#bfdbfe" />
+    <circle cx="822" cy="58" r="2.8" fill="#bfdbfe" />
+    <circle cx="804" cy="76" r="2.8" fill="#bfdbfe" />
 
-    <text x="88" y="112" fill="#5b21b6" font-size="54" font-weight="900" letter-spacing="-1">GROWTH</text>
-    <text x="88" y="166" fill="#5b21b6" font-size="54" font-weight="900" letter-spacing="-1">OPPORTUNITIES</text>
+    <text x="88" y="112" fill="#1d4ed8" font-size="62" font-weight="900" letter-spacing="-2">LEXORA</text>
+    <text x="88" y="154" fill="#1e3a8a" font-size="28" font-weight="800" letter-spacing="1.6">PROGRESS REPORT</text>
 
-    <text x="940" y="88" fill="#6d28d9" font-size="22" font-weight="800" text-anchor="end" letter-spacing="1">${generatedAt}</text>
-    <text x="940" y="112" fill="#6d28d9" font-size="22" font-weight="800" text-anchor="end" letter-spacing="1">REPORT</text>
-    <text x="940" y="148" fill="#5c5a66" font-size="17" text-anchor="end">Prepared for ${title}</text>
-    <text x="940" y="172" fill="#5c5a66" font-size="16" text-anchor="end">Lexora progress summary</text>
+    <text x="940" y="86" fill="#2563eb" font-size="18" font-weight="800" text-anchor="end" letter-spacing="1">${generatedAt}</text>
+    <text x="940" y="110" fill="#1d4ed8" font-size="18" font-weight="800" text-anchor="end" letter-spacing="1">REPORT</text>
+    <text x="940" y="148" fill="#475569" font-size="16" text-anchor="end">Prepared for ${escapeXml(displayName || 'Student')}</text>
+    <text x="940" y="170" fill="#64748b" font-size="15" text-anchor="end">Lexora progress summary</text>
 
-    <rect x="392" y="180" width="708" height="34" rx="17" fill="#e9d5ff" opacity="0.65" />
+    <rect x="392" y="180" width="708" height="34" rx="17" fill="#dbeafe" opacity="0.9" />
     <rect x="392" y="180" width="670" height="34" rx="17" fill="url(#accent)" />
 
-    <text x="88" y="240" fill="#2f2f36" font-size="16" font-weight="700">MARKET SENTIMENT</text>
-    <text x="88" y="262" fill="#2f2f36" font-size="16" font-weight="700">&amp; TRENDS</text>
+    <text x="88" y="236" fill="#0f172a" font-size="16" font-weight="700">THIS MONTH</text>
+    <text x="88" y="258" fill="#0f172a" font-size="16" font-weight="700">HIGHLIGHTS</text>
 
-    ${pill(312, 216, 108, 62, chipLabel('+', summary.totalTests.toString()), 'Total tests', 'pink')}
-    ${pill(438, 216, 108, 62, summary.averageBand.toFixed(1), 'Average band', 'gray')}
-    ${pill(564, 216, 108, 62, summary.highestBand.toFixed(1), 'Highest band', 'pink')}
-    ${pill(690, 216, 138, 62, `${summary.currentStreakDays}d`, 'Current streak', 'gray')}
+    ${statPill(312, 214, 120, 66, totalTests, 'Tests')}
+    ${statPill(450, 214, 120, 66, summary.averageBand.toFixed(1), 'Avg band')}
+    ${statPill(588, 214, 120, 66, summary.highestBand.toFixed(1), 'Highest')}
+    ${statPill(726, 214, 120, 66, `${summary.currentStreakDays}d`, 'Streak')}
 
-    <text x="332" y="301" fill="#56536a" font-size="14" font-style="italic" text-anchor="middle">Tests completed</text>
-    <text x="492" y="301" fill="#56536a" font-size="14" font-style="italic" text-anchor="middle">Average band</text>
-    <text x="618" y="301" fill="#56536a" font-size="14" font-style="italic" text-anchor="middle">Highest band</text>
-    <text x="759" y="301" fill="#56536a" font-size="14" font-style="italic" text-anchor="middle">Consistency</text>
+    <text x="88" y="360" fill="#0f172a" font-size="16" font-weight="700">PROGRESS SUMMARY</text>
 
-    <text x="88" y="354" fill="#2f2f36" font-size="16" font-weight="700">PROGRESS SUMMARY</text>
-    <text x="88" y="376" fill="#2f2f36" font-size="16" font-weight="700">&amp; INSIGHTS</text>
+    <rect x="316" y="332" width="260" height="122" rx="22" fill="url(#bottomPanel)" />
+    <rect x="590" y="332" width="260" height="122" rx="22" fill="url(#bottomPanel)" opacity="0.95" />
+    <rect x="864" y="332" width="260" height="122" rx="22" fill="url(#bottomPanel)" opacity="0.9" />
+    <text x="346" y="370" fill="rgba(255,255,255,0.88)" font-size="16" font-weight="700">Strong top-end performance</text>
+    <text x="346" y="438" fill="#fef08a" font-size="28" font-weight="900">Band trend</text>
+    <text x="620" y="370" fill="rgba(255,255,255,0.88)" font-size="16" font-weight="700">Keep pushing the average up</text>
+    <text x="620" y="438" fill="#fef08a" font-size="28" font-weight="900">Consistency</text>
+    <text x="894" y="370" fill="rgba(255,255,255,0.88)" font-size="16" font-weight="700">Current momentum looks stable</text>
+    <text x="894" y="438" fill="#fef08a" font-size="28" font-weight="900">Momentum</text>
 
-    ${insightCard(320, 332, 250, 118, 'Strength', performanceInsights.strength)}
-    ${insightCard(586, 332, 250, 118, 'Focus', performanceInsights.focus)}
-    ${insightCard(852, 332, 250, 118, 'Momentum', performanceInsights.momentum)}
-
-    <text x="88" y="470" fill="#2f2f36" font-size="16" font-weight="700">GROWTH FORECASTING</text>
-    <rect x="330" y="436" width="640" height="150" rx="22" fill="url(#graphBg)" stroke="#e4e1ff" stroke-width="1.2" />
-    <g transform="translate(348 452)">
-      <text x="0" y="0" fill="#716f82" font-size="12" font-weight="700">9</text>
-      <text x="0" y="29" fill="#716f82" font-size="12" font-weight="700">7</text>
-      <text x="0" y="58" fill="#716f82" font-size="12" font-weight="700">5</text>
-      <text x="0" y="87" fill="#716f82" font-size="12" font-weight="700">3</text>
-      <text x="0" y="116" fill="#716f82" font-size="12" font-weight="700">0</text>
+    <text x="88" y="500" fill="#0f172a" font-size="16" font-weight="700">GROWTH FORECASTING</text>
+    <rect x="316" y="482" width="808" height="250" rx="26" fill="url(#graphBg)" stroke="#dbeafe" stroke-width="1.2" />
+    <g transform="translate(344 502)">
+      <text x="0" y="0" fill="#64748b" font-size="12" font-weight="700">9</text>
+      <text x="0" y="50" fill="#64748b" font-size="12" font-weight="700">7</text>
+      <text x="0" y="100" fill="#64748b" font-size="12" font-weight="700">5</text>
+      <text x="0" y="150" fill="#64748b" font-size="12" font-weight="700">3</text>
+      <text x="0" y="200" fill="#64748b" font-size="12" font-weight="700">0</text>
       <g transform="translate(24 0)">
-        <line x1="0" y1="0" x2="570" y2="0" stroke="#ddd6fe" stroke-width="1" />
-        <line x1="0" y1="29" x2="570" y2="29" stroke="#ddd6fe" stroke-width="1" />
-        <line x1="0" y1="58" x2="570" y2="58" stroke="#ddd6fe" stroke-width="1" />
-        <line x1="0" y1="87" x2="570" y2="87" stroke="#ddd6fe" stroke-width="1" />
-        <line x1="0" y1="116" x2="570" y2="116" stroke="#ddd6fe" stroke-width="1" />
+        <line x1="0" y1="0" x2="710" y2="0" stroke="#dbeafe" stroke-width="1" />
+        <line x1="0" y1="50" x2="710" y2="50" stroke="#dbeafe" stroke-width="1" />
+        <line x1="0" y1="100" x2="710" y2="100" stroke="#dbeafe" stroke-width="1" />
+        <line x1="0" y1="150" x2="710" y2="150" stroke="#dbeafe" stroke-width="1" />
+        <line x1="0" y1="200" x2="710" y2="200" stroke="#dbeafe" stroke-width="1" />
       </g>
-      <g transform="translate(24 2)">
+      <g transform="translate(24 4)">
         <path d="${fillPath}" fill="url(#fill)" />
-        <path d="${chartPath}" fill="none" stroke="url(#line)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-        ${buildDots(summary, 615, 150, 50, 12)}
+        <path d="${chartPath}" fill="none" stroke="url(#line)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+        ${buildDots(summary, 760, 260, 52, 26)}
       </g>
-      <g fill="#6f5cc8" font-size="12" font-weight="700" text-anchor="middle">
+      <g fill="#2563eb" font-size="12" font-weight="700" text-anchor="middle">
         ${buildGraphLabels(summary)}
       </g>
     </g>
 
-    <text x="88" y="558" fill="#2f2f36" font-size="16" font-weight="700">TEST TYPE MIX</text>
-    ${testsByTypeCards}
+    <text x="88" y="780" fill="#0f172a" font-size="16" font-weight="700">PERCENTAGE STAT</text>
+    ${testMixCards}
 
-    <rect x="330" y="586" width="640" height="14" rx="7" fill="url(#bottomPanel)" opacity="0.95" />
-    <text x="108" y="604" fill="#6d28d9" font-size="14" font-weight="800" letter-spacing="1.1">POWERED BY LEXORA</text>
+    <rect x="316" y="836" width="808" height="16" rx="8" fill="url(#bottomPanel)" />
+    <text x="88" y="858" fill="#2563eb" font-size="14" font-weight="800" letter-spacing="1.2">POWERED BY LEXORA</text>
   </svg>`;
 }
 
@@ -232,82 +221,35 @@ export async function shareStudentProgressImage(input: StudentProgressImageInput
   }
 }
 
-function metricCard(x: number, y: number, width: number, height: number, label: string, value: string): string {
+function statPill(x: number, y: number, width: number, height: number, value: string, label: string): string {
   return `
     <g transform="translate(${x} ${y})">
-      <rect width="${width}" height="${height}" rx="20" fill="rgba(0,0,0,0.18)" stroke="rgba(255,255,255,0.08)" />
-      <text x="18" y="30" fill="rgba(255,255,255,0.60)" font-size="14" font-weight="600" letter-spacing="1.4">${escapeXml(label.toUpperCase())}</text>
-      <text x="18" y="78" fill="#ffffff" font-size="36" font-weight="800">${escapeXml(value)}</text>
+      <rect width="${width}" height="${height}" rx="16" fill="url(#chipBlue)" />
+      <text x="${width / 2}" y="27" fill="#0f172a" font-size="20" font-weight="900" text-anchor="middle">${escapeXml(value)}</text>
+      <text x="${width / 2}" y="48" fill="#334155" font-size="12" font-weight="700" text-anchor="middle">${escapeXml(label)}</text>
     </g>`;
 }
 
-function pill(x: number, y: number, width: number, height: number, value: string, label: string, tone: 'pink' | 'gray'): string {
-  const fill = tone === 'pink' ? 'url(#chipPink)' : 'url(#chipGray)';
-  return `
-    <g transform="translate(${x} ${y})">
-      <rect width="${width}" height="${height}" rx="16" fill="${fill}" />
-      <text x="${width / 2}" y="27" fill="#2f2f36" font-size="20" font-weight="900" text-anchor="middle">${escapeXml(value)}</text>
-      <text x="${width / 2}" y="48" fill="#4b4a55" font-size="12" font-weight="700" text-anchor="middle">${escapeXml(label)}</text>
-    </g>`;
-}
+function buildTestMixCards(summary: StudentProgressSummary): string {
+  const order = ['listening', 'reading', 'writing', 'speaking'];
+  const startX = 316;
+  const gap = 18;
+  const cardWidth = 170;
 
-function chipLabel(prefix: string, value: string): string {
-  return `${prefix}${value}`;
-}
-
-function insightCard(x: number, y: number, width: number, height: number, title: string, body: string): string {
-  return `
-    <g transform="translate(${x} ${y})">
-      <rect width="${width}" height="${height}" rx="22" fill="url(#bottomPanel)" />
-      <rect x="0" y="0" width="18" height="18" rx="8" fill="#f5c2ff" opacity="0.95" />
-      <text x="18" y="32" fill="rgba(255,255,255,0.82)" font-size="14" font-weight="700">${escapeXml(body)}</text>
-      <line x1="18" y1="58" x2="${width - 18}" y2="58" stroke="rgba(255,255,255,0.35)" />
-      <text x="${width / 2}" y="104" fill="#fff6a8" font-size="26" font-weight="900" text-anchor="middle">${escapeXml(title)}</text>
-    </g>`;
-}
-
-function buildTestsByTypeCards(summary: StudentProgressSummary): string {
-  const entries = Object.entries(summary.testsByType).filter(([, count]) => count > 0).slice(0, 4);
-  const labels = ['Writing', 'Speaking', 'Reading', 'Listening'];
-  const used = entries.length > 0 ? entries : labels.map((label) => [label.toLowerCase(), 0] as [string, number]);
-
-  const startX = 320;
-  const gap = 14;
-  const cardWidth = 150;
-
-  return used
-    .slice(0, 4)
-    .map(([type, count], index) => {
-      const x = startX + index * (cardWidth + gap);
+  return order
+    .map((type, index) => {
+      const count = summary.testsByType[type] || 0;
+      const percentage = summary.totalTests > 0 ? Math.round((count / summary.totalTests) * 100) : 0;
       const label = type.charAt(0).toUpperCase() + type.slice(1);
-      const share = summary.totalTests > 0 ? Math.round((count / summary.totalTests) * 100) : 0;
+      const x = startX + index * (cardWidth + gap);
       return `
-        <g transform="translate(${x} 510)">
-          <rect width="${cardWidth}" height="62" rx="18" fill="rgba(109,40,217,0.92)" />
-          <rect x="12" y="12" width="8" height="8" rx="4" fill="#f5c2ff" />
-          <text x="18" y="38" fill="#fff" font-size="14" font-weight="800">${escapeXml(label.toUpperCase())}</text>
-          <text x="${cardWidth - 16}" y="36" fill="#fff6a8" font-size="18" font-weight="900" text-anchor="end">${share}%</text>
-          <text x="${cardWidth / 2}" y="53" fill="rgba(255,255,255,0.75)" font-size="11" font-style="italic" text-anchor="middle">${count} tests</text>
+        <g transform="translate(${x} 792)">
+          <rect width="${cardWidth}" height="58" rx="18" fill="url(#bottomPanel)" />
+          <circle cx="14" cy="14" r="5" fill="#bfdbfe" />
+          <text x="18" y="35" fill="#ffffff" font-size="14" font-weight="800">${escapeXml(label)}</text>
+          <text x="${cardWidth - 18}" y="35" fill="#fff7b0" font-size="18" font-weight="900" text-anchor="end">${percentage}%</text>
+          <text x="${cardWidth / 2}" y="53" fill="rgba(255,255,255,0.72)" font-size="11" font-style="italic" text-anchor="middle">${count} tests</text>
         </g>`;
-    })
-    .join('');
-}
-
-function buildPerformanceInsights(summary: StudentProgressSummary) {
-  const strength = summary.highestBand >= 7 ? 'Strong top-end performance' : 'Building stronger top-end scores';
-  const focus = summary.averageBand < 6.5 ? 'Raise consistency across papers' : 'Push the average toward 7+';
-  const momentum = summary.bandChange > 0 ? 'Improving over recent attempts' : 'Keep the pace and build streaks';
-  return { strength, focus, momentum };
-}
-
-function buildGraphLabels(summary: StudentProgressSummary): string {
-  const points = summary.chartPoints.slice(-5);
-  if (points.length === 0) return '';
-
-  return points
-    .map((point, index) => {
-      const x = 24 + (index / Math.max(points.length - 1, 1)) * 570;
-      return `<text x="${x.toFixed(1)}" y="138" fill="#7c3aed" font-size="12" font-weight="700" text-anchor="middle">${escapeXml(point.label)}</text>`;
     })
     .join('');
 }
@@ -349,9 +291,21 @@ function buildDots(summary: StudentProgressSummary, width: number, height: numbe
     .map((point, index) => {
       const x = offsetX + (index / Math.max(points.length - 1, 1)) * width;
       const y = offsetY + height - (point.bandScore / 9) * height;
-      return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.5" fill="#86efac" stroke="rgba(255,255,255,0.9)" stroke-width="2" />`;
+      return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.5" fill="#60a5fa" stroke="rgba(255,255,255,0.95)" stroke-width="2" />`;
     })
     .join('\n');
+}
+
+function buildGraphLabels(summary: StudentProgressSummary): string {
+  const points = summary.chartPoints.slice(-5);
+  if (points.length === 0) return '';
+
+  return points
+    .map((point, index) => {
+      const x = 24 + (index / Math.max(points.length - 1, 1)) * 710;
+      return `<text x="${x.toFixed(1)}" y="254" fill="#2563eb" font-size="12" font-weight="700" text-anchor="middle">${escapeXml(point.label)}</text>`;
+    })
+    .join('');
 }
 
 function escapeXml(value: string): string {
