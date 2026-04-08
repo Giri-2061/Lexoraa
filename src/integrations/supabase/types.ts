@@ -260,6 +260,7 @@ export type Database = {
         Row: {
           id: string
           user_id: string
+          name: string
           rating: number
           message: string | null
           user_agent: string | null
@@ -270,6 +271,7 @@ export type Database = {
         Insert: {
           id?: string
           user_id: string
+          name: string
           rating: number
           message?: string | null
           user_agent?: string | null
@@ -280,6 +282,7 @@ export type Database = {
         Update: {
           id?: string
           user_id?: string
+          name?: string
           rating?: number
           message?: string | null
           user_agent?: string | null

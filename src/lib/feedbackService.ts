@@ -75,8 +75,23 @@ export async function submitFeedback(
   }
 
   try {
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('full_name, email')
+      .eq('user_id', userId)
+      .maybeSingle();
+
+    const { data: authData } = await supabase.auth.getUser();
+    const resolvedName =
+      profile?.full_name?.trim() ||
+      authData.user?.user_metadata?.full_name?.trim() ||
+      profile?.email?.trim() ||
+      authData.user?.email?.trim() ||
+      'Anonymous';
+
     const { error: insertErr } = await supabase.from('feedback').insert({
       user_id: userId,
+      name: resolvedName,
       rating: feedback.rating,
       message: feedback.message?.trim() || null,
       user_agent: navigator.userAgent,

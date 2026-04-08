@@ -8,6 +8,7 @@ export interface FeedbackSubmission {
 export interface FeedbackRecord {
   id: string;
   user_id: string;
+  name: string;
   rating: number;
   message: string | null;
   user_agent: string | null;
