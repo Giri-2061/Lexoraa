@@ -73,13 +73,10 @@ export function buildStudentProgressCardSvg({ displayName, snapshot }: StudentPr
     <circle cx="822" cy="58" r="2.8" fill="#bfdbfe" />
     <circle cx="804" cy="76" r="2.8" fill="#bfdbfe" />
 
-    <text x="88" y="112" fill="#1d4ed8" font-size="62" font-weight="900" letter-spacing="-2">LEXORA</text>
-    <text x="88" y="154" fill="#1e3a8a" font-size="28" font-weight="800" letter-spacing="1.6">PROGRESS REPORT</text>
+    <text x="88" y="112" fill="#1d4ed8" font-size="62" font-weight="900" letter-spacing="-2">${escapeXml(displayName || 'Student')}</text>
+    <text x="88" y="154" fill="#1e3a8a" font-size="28" font-weight="800" letter-spacing="1.6">LEXORA</text>
 
-    <text x="940" y="86" fill="#2563eb" font-size="18" font-weight="800" text-anchor="end" letter-spacing="1">${generatedAt}</text>
-    <text x="940" y="110" fill="#1d4ed8" font-size="18" font-weight="800" text-anchor="end" letter-spacing="1">REPORT</text>
-    <text x="940" y="148" fill="#475569" font-size="16" text-anchor="end">Prepared for ${escapeXml(displayName || 'Student')}</text>
-    <text x="940" y="170" fill="#64748b" font-size="15" text-anchor="end">Lexora progress summary</text>
+    <text x="940" y="110" fill="#2563eb" font-size="18" font-weight="800" text-anchor="end" letter-spacing="1">${generatedAt}</text>
 
     <rect x="392" y="180" width="708" height="34" rx="17" fill="#dbeafe" opacity="0.9" />
     <rect x="392" y="180" width="670" height="34" rx="17" fill="url(#accent)" />
@@ -92,17 +89,7 @@ export function buildStudentProgressCardSvg({ displayName, snapshot }: StudentPr
     ${statPill(588, 214, 120, 66, summary.highestBand.toFixed(1), 'Highest')}
     ${statPill(726, 214, 120, 66, `${summary.currentStreakDays}d`, 'Streak')}
 
-    <text x="88" y="360" fill="#0f172a" font-size="16" font-weight="700">PROGRESS SUMMARY</text>
 
-    <rect x="316" y="332" width="260" height="122" rx="22" fill="url(#bottomPanel)" />
-    <rect x="590" y="332" width="260" height="122" rx="22" fill="url(#bottomPanel)" opacity="0.95" />
-    <rect x="864" y="332" width="260" height="122" rx="22" fill="url(#bottomPanel)" opacity="0.9" />
-    <text x="346" y="370" fill="rgba(255,255,255,0.88)" font-size="16" font-weight="700">Strong top-end performance</text>
-    <text x="346" y="438" fill="#fef08a" font-size="28" font-weight="900">Band trend</text>
-    <text x="620" y="370" fill="rgba(255,255,255,0.88)" font-size="16" font-weight="700">Keep pushing the average up</text>
-    <text x="620" y="438" fill="#fef08a" font-size="28" font-weight="900">Consistency</text>
-    <text x="894" y="370" fill="rgba(255,255,255,0.88)" font-size="16" font-weight="700">Current momentum looks stable</text>
-    <text x="894" y="438" fill="#fef08a" font-size="28" font-weight="900">Momentum</text>
 
     <text x="88" y="500" fill="#0f172a" font-size="16" font-weight="700">GROWTH FORECASTING</text>
     <rect x="316" y="482" width="808" height="250" rx="26" fill="url(#graphBg)" stroke="#dbeafe" stroke-width="1.2" />
