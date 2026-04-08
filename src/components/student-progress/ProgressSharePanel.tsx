@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { ChartContainer, ChartTooltipContent } from '@/components/ui/chart';
 import { supabase } from '@/integrations/supabase/client';
 import type { Json } from '@/integrations/supabase/types';
+import { downloadStudentProgressImage, shareStudentProgressImage } from '@/lib/studentProgressImage';
 import {
   buildStudentProgressDescription,
   buildStudentProgressShareText,
@@ -32,6 +33,12 @@ export default function ProgressSharePanel({ userId, displayName, testResults }:
   const summary = useMemo(() => buildStudentProgressSummary(testResults), [testResults]);
   const [shareUrl, setShareUrl] = useState<string | null>(null);
   const [creatingShare, setCreatingShare] = useState(false);
+  const snapshot = useMemo(() => ({
+    displayName,
+    generatedAt: new Date().toISOString(),
+    summary,
+    recentResults: testResults.slice(-12),
+  }), [displayName, summary, testResults]);
 
   useEffect(() => {
     const fetchShareLink = async () => {
@@ -93,6 +100,23 @@ export default function ProgressSharePanel({ userId, displayName, testResults }:
     setShareUrl(nextShareUrl);
     await copyShareLink(nextShareUrl);
     navigate(nextShareUrl.replace(window.location.origin, ''));
+  };
+
+  const handleDownloadImage = async () => {
+    try {
+      await downloadStudentProgressImage({ displayName, snapshot });
+      toast.success('Share card downloaded');
+    } catch (error) {
+      console.error('Failed to download share image', error);
+      toast.error('Failed to generate share image');
+    }
+  };
+
+  const handleShareImage = async () => {
+    const shared = await shareStudentProgressImage({ displayName, snapshot });
+    if (!shared) {
+      toast.error('Your browser cannot share files directly. Download the image instead.');
+    }
   };
 
   const shareText = buildStudentProgressShareText(displayName, summary);
@@ -204,12 +228,24 @@ export default function ProgressSharePanel({ userId, displayName, testResults }:
           </Button>
           <Button
             variant="outline"
-            onClick={() => navigate('/share/progress')}
+            onClick={() => {
+              if (shareUrl) {
+                navigate(shareUrl.replace(window.location.origin, ''));
+              }
+            }}
             className="gap-2"
-            disabled={summary.totalTests === 0}
+            disabled={summary.totalTests === 0 || !shareUrl}
           >
             <Link2 className="h-4 w-4" />
             Open share page
+          </Button>
+          <Button variant="outline" onClick={handleShareImage} className="gap-2" disabled={summary.totalTests === 0}>
+            <Sparkles className="h-4 w-4" />
+            Share image
+          </Button>
+          <Button variant="ghost" onClick={handleDownloadImage} className="gap-2" disabled={summary.totalTests === 0}>
+            <Copy className="h-4 w-4" />
+            Download image
           </Button>
           {shareUrl && (
             <Button variant="ghost" onClick={() => copyShareLink(shareUrl)} className="gap-2">

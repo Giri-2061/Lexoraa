@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { ChartContainer, ChartTooltipContent } from '@/components/ui/chart';
 import { supabase } from '@/integrations/supabase/client';
+import { downloadStudentProgressImage, shareStudentProgressImage } from '@/lib/studentProgressImage';
 import {
   buildStudentProgressDescription,
   buildStudentProgressShareText,
@@ -110,6 +111,34 @@ export default function StudentProgressShare() {
     } as const;
 
     window.open(targets[platform], '_blank', 'noopener,noreferrer');
+  };
+
+  const handleDownloadImage = async () => {
+    if (!share?.snapshot) return;
+
+    try {
+      await downloadStudentProgressImage({
+        displayName: share.display_name || share.snapshot.displayName,
+        snapshot: share.snapshot,
+      });
+      toast.success('Share card downloaded');
+    } catch (error) {
+      console.error('Failed to download share image', error);
+      toast.error('Failed to generate share image');
+    }
+  };
+
+  const handleShareImage = async () => {
+    if (!share?.snapshot) return;
+
+    const shared = await shareStudentProgressImage({
+      displayName: share.display_name || share.snapshot.displayName,
+      snapshot: share.snapshot,
+    });
+
+    if (!shared) {
+      toast.error('Your browser cannot share files directly. Download the image instead.');
+    }
   };
 
   if (loading) {
@@ -257,6 +286,14 @@ export default function StudentProgressShare() {
                   <Button variant="outline" onClick={() => shareToPlatform('system')} className="gap-2 border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white">
                     <Share2 className="h-4 w-4" />
                     Share
+                  </Button>
+                  <Button variant="outline" onClick={handleShareImage} className="gap-2 border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white">
+                    <Sparkles className="h-4 w-4" />
+                    Share image
+                  </Button>
+                  <Button variant="ghost" onClick={handleDownloadImage} className="gap-2 text-white hover:bg-white/10 hover:text-white">
+                    <Copy className="h-4 w-4" />
+                    Download image
                   </Button>
                   <Button variant="outline" onClick={() => shareToPlatform('x')} className="border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white">
                     <X className="h-4 w-4" />
