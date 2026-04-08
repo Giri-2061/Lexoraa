@@ -143,7 +143,7 @@ export function useClassroomDetail(classroomId: string | undefined) {
       supabase.from('assignments').select('*').eq('classroom_id', classroomId).order('created_at', { ascending: false }),
       supabase
         .from('test_review_requests')
-        .select('*, test_result:test_results(id, test_type, test_id, band_score, created_at)')
+        .select('*, test_result:test_results(id, test_type, test_id, band_score, created_at, answers)')
         .eq('classroom_id', classroomId)
         .order('requested_at', { ascending: false })
     ]);

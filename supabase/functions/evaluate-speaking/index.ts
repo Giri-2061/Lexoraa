@@ -270,6 +270,10 @@ serve(async (req) => {
             answers: {
               evaluation: fullEvaluation,
               transcripts,
+              questions: recordings.map((recording: any) => ({
+                part: recording.part,
+                questions: recording.questions || [],
+              })),
               cueCardTopic,
               part3Theme
             },

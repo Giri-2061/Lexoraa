@@ -1044,6 +1044,56 @@ function ReviewSubmissionsTab({
     setComment(request.teacher_comment || '');
   };
 
+  const renderSubmissionDetails = (request: TestReviewRequest) => {
+    const answers: any = request.test_result?.answers || {};
+
+    if (request.test_result?.test_type === 'writing') {
+      return (
+        <div className="mt-3 rounded-lg bg-muted/40 p-3 text-sm space-y-2">
+          <div>
+            <p className="font-medium">Question</p>
+            <p className="text-muted-foreground">Task 1: {answers?.prompts?.task1 || 'Not available'}</p>
+            <p className="text-muted-foreground">Task 2: {answers?.prompts?.task2 || 'Not available'}</p>
+          </div>
+          <div>
+            <p className="font-medium">Student Answer</p>
+            <p className="text-muted-foreground whitespace-pre-wrap">Task 1: {answers?.task1 || 'No answer submitted'}</p>
+            <p className="text-muted-foreground whitespace-pre-wrap mt-2">Task 2: {answers?.task2 || 'No answer submitted'}</p>
+          </div>
+        </div>
+      );
+    }
+
+    if (request.test_result?.test_type === 'speaking') {
+      return (
+        <div className="mt-3 rounded-lg bg-muted/40 p-3 text-sm space-y-2">
+          <div>
+            <p className="font-medium">Question</p>
+            <p className="text-muted-foreground">Cue Card: {answers?.cueCardTopic || 'Not available'}</p>
+            <p className="text-muted-foreground">Part 3 Theme: {answers?.part3Theme || 'Not available'}</p>
+            {Array.isArray(answers?.questions) && answers.questions.length > 0 && (
+              <div className="mt-2 space-y-1 text-muted-foreground">
+                {answers.questions.map((entry: any, index: number) => (
+                  <p key={index}>
+                    Part {entry.part}: {Array.isArray(entry.questions) ? entry.questions.join(' | ') : 'No question data'}
+                  </p>
+                ))}
+              </div>
+            )}
+          </div>
+          <div>
+            <p className="font-medium">Student Answer</p>
+            <p className="text-muted-foreground whitespace-pre-wrap">Part 1: {answers?.transcripts?.part1 || 'No transcript available'}</p>
+            <p className="text-muted-foreground whitespace-pre-wrap mt-2">Part 2: {answers?.transcripts?.part2 || 'No transcript available'}</p>
+            <p className="text-muted-foreground whitespace-pre-wrap mt-2">Part 3: {answers?.transcripts?.part3 || 'No transcript available'}</p>
+          </div>
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   const handleGrade = async () => {
     if (!activeRequest || !score) return;
     setSaving(true);
@@ -1081,6 +1131,7 @@ function ReviewSubmissionsTab({
                   <p className="text-xs text-muted-foreground">
                     {req.test_result?.test_type?.toUpperCase()} • {req.test_result?.test_id} • AI Band {req.test_result?.band_score ?? '-'}
                   </p>
+                  {renderSubmissionDetails(req)}
                 </div>
                 <Button size="sm" variant="outline" onClick={() => openGradeDialog(req)}>
                   <Award className="h-3 w-3 mr-1" />
@@ -1127,6 +1178,7 @@ function ReviewSubmissionsTab({
             <p className="text-sm text-muted-foreground">
               {activeRequest?.profile?.full_name || activeRequest?.profile?.email || 'Student'} — {activeRequest?.test_result?.test_type?.toUpperCase()} {activeRequest?.test_result?.test_id}
             </p>
+            {activeRequest && renderSubmissionDetails(activeRequest)}
             <div>
               <Label>Teacher Score</Label>
               <Input

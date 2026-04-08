@@ -115,6 +115,7 @@ export interface TestReviewRequest {
     test_id: string;
     band_score: number;
     created_at: string;
+    answers?: unknown;
   };
   profile?: {
     full_name: string | null;

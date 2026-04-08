@@ -515,6 +515,10 @@ const WritingTest = () => {
             correct_count: 0,
             total_questions: 2,
             answers: {
+              prompts: {
+                task1: test?.writing?.[0]?.prompt || null,
+                task2: test?.writing?.[1]?.prompt || null,
+              },
               task1: task1Answer,
               task2: task2Answer,
               task1Image: task1ImageData,
