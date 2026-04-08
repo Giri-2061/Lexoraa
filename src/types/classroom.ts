@@ -97,3 +97,27 @@ export interface AssignmentSubmission {
     email: string | null;
   };
 }
+
+export interface TestReviewRequest {
+  id: string;
+  classroom_id: string;
+  student_id: string;
+  test_result_id: string;
+  status: 'pending' | 'graded';
+  teacher_score: number | null;
+  teacher_comment: string | null;
+  requested_at: string;
+  graded_at: string | null;
+  created_at: string;
+  test_result?: {
+    id: string;
+    test_type: string;
+    test_id: string;
+    band_score: number;
+    created_at: string;
+  };
+  profile?: {
+    full_name: string | null;
+    email: string | null;
+  };
+}

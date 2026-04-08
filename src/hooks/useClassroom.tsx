@@ -8,7 +8,8 @@ import type {
   ClassroomPost, 
   Assignment,
   AssignmentSubmission,
-  PostComment
+  PostComment,
+  TestReviewRequest
 } from '@/types/classroom';
 
 export function useConsultancy() {
@@ -124,6 +125,7 @@ export function useClassroomDetail(classroomId: string | undefined) {
   const [members, setMembers] = useState<ClassroomMembership[]>([]);
   const [posts, setPosts] = useState<ClassroomPost[]>([]);
   const [assignments, setAssignments] = useState<Assignment[]>([]);
+  const [testReviewRequests, setTestReviewRequests] = useState<TestReviewRequest[]>([]);
   const [loading, setLoading] = useState(true);
 
   const fetchAll = useCallback(async () => {
@@ -134,11 +136,16 @@ export function useClassroomDetail(classroomId: string | undefined) {
 
     setLoading(true);
 
-    const [classroomRes, membersRes, postsRes, assignmentsRes] = await Promise.all([
+    const [classroomRes, membersRes, postsRes, assignmentsRes, reviewRequestsRes] = await Promise.all([
       supabase.from('classrooms').select('*').eq('id', classroomId).single(),
       supabase.from('classroom_memberships').select('*').eq('classroom_id', classroomId),
       supabase.from('classroom_posts').select('*').eq('classroom_id', classroomId).order('created_at', { ascending: false }),
-      supabase.from('assignments').select('*').eq('classroom_id', classroomId).order('created_at', { ascending: false })
+      supabase.from('assignments').select('*').eq('classroom_id', classroomId).order('created_at', { ascending: false }),
+      supabase
+        .from('test_review_requests')
+        .select('*, test_result:test_results(id, test_type, test_id, band_score, created_at)')
+        .eq('classroom_id', classroomId)
+        .order('requested_at', { ascending: false })
     ]);
 
     if (!classroomRes.error) setClassroom(classroomRes.data);
@@ -222,6 +229,31 @@ export function useClassroomDetail(classroomId: string | undefined) {
         submission_count: allSubmissions.filter(s => s.assignment_id === a.id).length
       }));
       setAssignments(assignmentsWithSubs as Assignment[]);
+    }
+
+    if (!reviewRequestsRes.error && reviewRequestsRes.data) {
+      const studentIds = [...new Set(reviewRequestsRes.data.map(r => r.student_id))];
+      let profileMap = new Map<string, { full_name: string | null; email: string | null }>();
+
+      if (studentIds.length > 0) {
+        const { data: profiles } = await supabase
+          .from('profiles')
+          .select('user_id, full_name, email')
+          .in('user_id', studentIds);
+
+        if (profiles) {
+          profileMap = new Map(
+            profiles.map(p => [p.user_id, { full_name: p.full_name, email: p.email }])
+          );
+        }
+      }
+
+      const enrichedRequests = reviewRequestsRes.data.map(req => ({
+        ...req,
+        profile: profileMap.get(req.student_id) || null
+      }));
+
+      setTestReviewRequests(enrichedRequests as TestReviewRequest[]);
     }
 
     setLoading(false);
@@ -410,6 +442,61 @@ export function useClassroomDetail(classroomId: string | undefined) {
     return { error };
   };
 
+  const submitTestReviewRequest = async (testResultId: string) => {
+    if (!user || !classroomId) return { error: new Error('Not authenticated') };
+
+    const { data: existing } = await supabase
+      .from('test_review_requests')
+      .select('id')
+      .eq('classroom_id', classroomId)
+      .eq('student_id', user.id)
+      .eq('test_result_id', testResultId)
+      .maybeSingle();
+
+    if (existing) {
+      const { error } = await supabase
+        .from('test_review_requests')
+        .update({
+          status: 'pending',
+          teacher_score: null,
+          teacher_comment: null,
+          graded_at: null,
+          requested_at: new Date().toISOString()
+        })
+        .eq('id', existing.id);
+
+      if (!error) fetchAll();
+      return { error };
+    }
+
+    const { error } = await supabase
+      .from('test_review_requests')
+      .insert({
+        classroom_id: classroomId,
+        student_id: user.id,
+        test_result_id: testResultId,
+        status: 'pending'
+      });
+
+    if (!error) fetchAll();
+    return { error };
+  };
+
+  const gradeTestReviewRequest = async (requestId: string, score: number, comment?: string) => {
+    const { error } = await supabase
+      .from('test_review_requests')
+      .update({
+        status: 'graded',
+        teacher_score: score,
+        teacher_comment: comment || null,
+        graded_at: new Date().toISOString()
+      })
+      .eq('id', requestId);
+
+    if (!error) fetchAll();
+    return { error };
+  };
+
   const isTeacher = classroom?.teacher_id === user?.id;
 
   return {
@@ -417,6 +504,7 @@ export function useClassroomDetail(classroomId: string | undefined) {
     members,
     posts,
     assignments,
+    testReviewRequests,
     loading,
     isTeacher,
     addStudent,
@@ -429,6 +517,8 @@ export function useClassroomDetail(classroomId: string | undefined) {
     deleteComment,
     submitAssignment,
     gradeSubmission,
+    submitTestReviewRequest,
+    gradeTestReviewRequest,
     refetch: fetchAll
   };
 }

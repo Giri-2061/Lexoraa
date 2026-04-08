@@ -40,7 +40,8 @@ import { format } from 'date-fns';
 import ClassroomLayout from '@/components/classroom/ClassroomLayout';
 import LiveSessionBanner from '@/components/classroom/LiveSessionBanner';
 import StartClassDialog from '@/components/classroom/StartClassDialog';
-import type { PostComment, AssignmentSubmission } from '@/types/classroom';
+import { supabase } from '@/integrations/supabase/client';
+import type { PostComment, AssignmentSubmission, TestReviewRequest } from '@/types/classroom';
 
 const BOOKS = Array.from({ length: 7 }, (_, i) => ({ id: `book${13 + i}`, name: `Cambridge Book ${13 + i}` }));
 const TESTS = ['test1', 'test2', 'test3', 'test4'];
@@ -54,6 +55,7 @@ export default function ClassroomDetail() {
     members,
     posts,
     assignments,
+    testReviewRequests,
     loading,
     isTeacher,
     addStudent,
@@ -66,6 +68,8 @@ export default function ClassroomDetail() {
     deleteComment,
     submitAssignment,
     gradeSubmission,
+    submitTestReviewRequest,
+    gradeTestReviewRequest,
     refetch
   } = useClassroomDetail(classroomId);
 
@@ -196,7 +200,9 @@ export default function ClassroomDetail() {
 
           <TabsContent value="assignments" className="mt-6">
             <AssignmentsTab 
+              classroomId={classroom.id}
               assignments={assignments}
+              testReviewRequests={testReviewRequests}
               members={members}
               isTeacher={isTeacher}
               userId={user.id}
@@ -204,6 +210,8 @@ export default function ClassroomDetail() {
               onDeleteAssignment={deleteAssignment}
               onSubmitAssignment={submitAssignment}
               onGradeSubmission={gradeSubmission}
+              onSubmitTestReviewRequest={submitTestReviewRequest}
+              onGradeTestReviewRequest={gradeTestReviewRequest}
             />
           </TabsContent>
 

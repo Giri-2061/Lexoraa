@@ -481,6 +481,60 @@ export type Database = {
         }
         Relationships: []
       }
+      test_review_requests: {
+        Row: {
+          id: string
+          classroom_id: string
+          student_id: string
+          test_result_id: string
+          status: string
+          teacher_score: number | null
+          teacher_comment: string | null
+          requested_at: string
+          graded_at: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          classroom_id: string
+          student_id: string
+          test_result_id: string
+          status?: string
+          teacher_score?: number | null
+          teacher_comment?: string | null
+          requested_at?: string
+          graded_at?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          classroom_id?: string
+          student_id?: string
+          test_result_id?: string
+          status?: string
+          teacher_score?: number | null
+          teacher_comment?: string | null
+          requested_at?: string
+          graded_at?: string | null
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "test_review_requests_classroom_id_fkey"
+            columns: ["classroom_id"]
+            isOneToOne: false
+            referencedRelation: "classrooms"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "test_review_requests_test_result_id_fkey"
+            columns: ["test_result_id"]
+            isOneToOne: false
+            referencedRelation: "test_results"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string
