@@ -199,7 +199,7 @@ export function useClassroomDetail(classroomId: string | undefined) {
       if (assignmentIds.length > 0) {
         const { data: subs } = await supabase
           .from('assignment_submissions')
-          .select('*, test_result:test_results(band_score, correct_count, total_questions)')
+          .select('*, test_result:test_results(band_score, correct_count, total_questions, answers)')
           .in('assignment_id', assignmentIds);
         
         if (subs) {
@@ -302,7 +302,7 @@ export function useClassroomDetail(classroomId: string | undefined) {
   const createAssignment = async (
     title: string,
     description: string,
-    testType: 'listening' | 'reading',
+    testType: 'listening' | 'reading' | 'writing' | 'speaking',
     bookId: string,
     testId: string,
     dueDate?: string
@@ -362,6 +362,39 @@ export function useClassroomDetail(classroomId: string | undefined) {
   // ── Assignment Submissions ─────────────────────────────────────────
   const submitAssignment = async (assignmentId: string, testResultId?: string) => {
     if (!user) return { error: new Error('Not authenticated') };
+
+    let resolvedTestResultId = testResultId || null;
+
+    if (!resolvedTestResultId) {
+      const { data: assignment, error: assignmentError } = await supabase
+        .from('assignments')
+        .select('test_type, book_id, test_id')
+        .eq('id', assignmentId)
+        .single();
+
+      if (assignmentError || !assignment) {
+        return { error: assignmentError || new Error('Assignment not found') };
+      }
+
+      const combinedTestId = `${assignment.book_id}-${assignment.test_id}`;
+      const { data: latestResult } = await supabase
+        .from('test_results')
+        .select('id')
+        .eq('user_id', user.id)
+        .eq('test_type', assignment.test_type)
+        .in('test_id', [combinedTestId, assignment.test_id])
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .maybeSingle();
+
+      resolvedTestResultId = latestResult?.id ?? null;
+    }
+
+    if (!resolvedTestResultId) {
+      return {
+        error: new Error('No completed result found for this assignment. Please take the assigned test first.')
+      };
+    }
     
     // Upsert: if the student already has a pending row, update it
     const { data: existing } = await supabase
@@ -376,7 +409,7 @@ export function useClassroomDetail(classroomId: string | undefined) {
         .from('assignment_submissions')
         .update({
           status: 'submitted',
-          test_result_id: testResultId || null,
+          test_result_id: resolvedTestResultId,
           submitted_at: new Date().toISOString()
         })
         .eq('id', existing.id);
@@ -389,9 +422,9 @@ export function useClassroomDetail(classroomId: string | undefined) {
       .insert({
         assignment_id: assignmentId,
         student_id: user.id,
-        status: testResultId ? 'submitted' : 'pending',
-        test_result_id: testResultId || null,
-        submitted_at: testResultId ? new Date().toISOString() : null
+        status: 'submitted',
+        test_result_id: resolvedTestResultId,
+        submitted_at: new Date().toISOString()
       });
     if (!error) fetchAll();
     return { error };
@@ -557,7 +590,7 @@ export function useAssignmentSubmissions(assignmentId: string | undefined) {
     const fetchSubmissions = async () => {
       const { data, error } = await supabase
         .from('assignment_submissions')
-        .select('*, test_result:test_results(band_score, correct_count, total_questions)')
+        .select('*, test_result:test_results(band_score, correct_count, total_questions, answers)')
         .eq('assignment_id', assignmentId);
 
       if (!error && data) {

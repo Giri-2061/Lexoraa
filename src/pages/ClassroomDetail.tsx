@@ -25,6 +25,8 @@ import {
   Calendar,
   BookOpen,
   Headphones,
+  PenTool,
+  Mic,
   MessageSquare,
   Link as LinkIcon,
   Send,
@@ -506,7 +508,7 @@ function AssignmentsTab({
   members: any[];
   isTeacher: boolean;
   userId: string;
-  onCreateAssignment: (title: string, desc: string, type: 'listening' | 'reading', book: string, test: string, due?: string) => Promise<any>;
+  onCreateAssignment: (title: string, desc: string, type: 'listening' | 'reading' | 'writing' | 'speaking', book: string, test: string, due?: string) => Promise<any>;
   onDeleteAssignment: (id: string) => Promise<any>;
   onSubmitAssignment: (assignmentId: string, testResultId?: string) => Promise<any>;
   onGradeSubmission: (submissionId: string, score: number, comment?: string) => Promise<any>;
@@ -515,7 +517,7 @@ function AssignmentsTab({
   const [showDialog, setShowDialog] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [testType, setTestType] = useState<'listening' | 'reading'>('listening');
+  const [testType, setTestType] = useState<'listening' | 'reading' | 'writing' | 'speaking'>('listening');
   const [bookId, setBookId] = useState('book13');
   const [testId, setTestId] = useState('test1');
   const [dueDate, setDueDate] = useState('');
@@ -537,9 +539,14 @@ function AssignmentsTab({
   };
 
   const startTest = (assignment: any) => {
-    const testPath = assignment.test_type === 'listening' 
-      ? `/test/listening/${assignment.book_id}-${assignment.test_id}`
-      : `/test/reading/${assignment.book_id}-${assignment.test_id}`;
+    const fullTestId = `${assignment.book_id}-${assignment.test_id}`;
+    const testPath = assignment.test_type === 'listening'
+      ? `/test/listening/${fullTestId}`
+      : assignment.test_type === 'reading'
+      ? `/test/reading/${fullTestId}`
+      : assignment.test_type === 'writing'
+      ? `/test/writing/${fullTestId}`
+      : `/test/speaking/${fullTestId}`;
     navigate(testPath);
   };
 
@@ -576,6 +583,8 @@ function AssignmentsTab({
                     <SelectContent>
                       <SelectItem value="listening">Listening</SelectItem>
                       <SelectItem value="reading">Reading</SelectItem>
+                      <SelectItem value="writing">Writing</SelectItem>
+                      <SelectItem value="speaking">Speaking</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -717,11 +726,10 @@ function AssignmentCard({
         <CardHeader className="pb-3">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-2 flex-wrap">
-              {assignment.test_type === 'listening' ? (
-                <Headphones className="h-4 w-4 text-primary" />
-              ) : (
-                <BookOpen className="h-4 w-4 text-primary" />
-              )}
+              {assignment.test_type === 'listening' && <Headphones className="h-4 w-4 text-primary" />}
+              {assignment.test_type === 'reading' && <BookOpen className="h-4 w-4 text-primary" />}
+              {assignment.test_type === 'writing' && <PenTool className="h-4 w-4 text-primary" />}
+              {assignment.test_type === 'speaking' && <Mic className="h-4 w-4 text-primary" />}
               <Badge variant="secondary" className="capitalize">{assignment.test_type}</Badge>
               {assignment.due_date && (
                 <Badge variant={isOverdue ? 'destructive' : 'outline'} className="gap-1">
