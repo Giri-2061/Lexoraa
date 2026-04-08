@@ -1028,12 +1028,26 @@ function ReviewSubmissionsTab({
   onGrade,
 }: {
   requests: TestReviewRequest[];
-  onGrade: (requestId: string, score: number, comment?: string) => Promise<any>;
+  onGrade: (
+    requestId: string,
+    score: number,
+    comment?: string,
+    criteria?: {
+      taskAchievement?: number | null;
+      coherenceCohesion?: number | null;
+      lexicalResource?: number | null;
+      grammarAccuracy?: number | null;
+    }
+  ) => Promise<any>;
 }) {
   const [activeRequest, setActiveRequest] = useState<TestReviewRequest | null>(null);
   const [score, setScore] = useState('');
   const [comment, setComment] = useState('');
   const [saving, setSaving] = useState(false);
+  const [taskAchievement, setTaskAchievement] = useState('');
+  const [coherenceCohesion, setCoherenceCohesion] = useState('');
+  const [lexicalResource, setLexicalResource] = useState('');
+  const [grammarAccuracy, setGrammarAccuracy] = useState('');
 
   const pending = requests.filter((r) => r.status === 'pending');
   const graded = requests.filter((r) => r.status === 'graded');
@@ -1042,6 +1056,10 @@ function ReviewSubmissionsTab({
     setActiveRequest(request);
     setScore(request.test_result?.band_score?.toString() || '');
     setComment(request.teacher_comment || '');
+    setTaskAchievement(request.teacher_criteria?.taskAchievement?.toString() || '');
+    setCoherenceCohesion(request.teacher_criteria?.coherenceCohesion?.toString() || '');
+    setLexicalResource(request.teacher_criteria?.lexicalResource?.toString() || '');
+    setGrammarAccuracy(request.teacher_criteria?.grammarAccuracy?.toString() || '');
   };
 
   const renderSubmissionDetails = (request: TestReviewRequest) => {
@@ -1096,8 +1114,24 @@ function ReviewSubmissionsTab({
 
   const handleGrade = async () => {
     if (!activeRequest || !score) return;
+
+    const isWriting = activeRequest.test_result?.test_type === 'writing';
+    const parseBand = (value: string) => {
+      const parsed = parseFloat(value);
+      return Number.isFinite(parsed) ? parsed : null;
+    };
+
+    const criteria = isWriting
+      ? {
+          taskAchievement: parseBand(taskAchievement),
+          coherenceCohesion: parseBand(coherenceCohesion),
+          lexicalResource: parseBand(lexicalResource),
+          grammarAccuracy: parseBand(grammarAccuracy),
+        }
+      : undefined;
+
     setSaving(true);
-    const { error } = await onGrade(activeRequest.id, parseFloat(score), comment);
+    const { error } = await onGrade(activeRequest.id, parseFloat(score), comment, criteria);
     setSaving(false);
 
     if (error) {
@@ -1109,6 +1143,10 @@ function ReviewSubmissionsTab({
     setActiveRequest(null);
     setScore('');
     setComment('');
+    setTaskAchievement('');
+    setCoherenceCohesion('');
+    setLexicalResource('');
+    setGrammarAccuracy('');
   };
 
   return (
@@ -1169,8 +1207,19 @@ function ReviewSubmissionsTab({
         </CardContent>
       </Card>
 
-      <Dialog open={!!activeRequest} onOpenChange={(open) => !open && setActiveRequest(null)}>
-        <DialogContent>
+      <Dialog
+        open={!!activeRequest}
+        onOpenChange={(open) => {
+          if (!open) {
+            setActiveRequest(null);
+            setTaskAchievement('');
+            setCoherenceCohesion('');
+            setLexicalResource('');
+            setGrammarAccuracy('');
+          }
+        }}
+      >
+        <DialogContent className="sm:max-w-lg">
           <DialogHeader>
             <DialogTitle>Grade Submission</DialogTitle>
           </DialogHeader>
@@ -1178,7 +1227,54 @@ function ReviewSubmissionsTab({
             <p className="text-sm text-muted-foreground">
               {activeRequest?.profile?.full_name || activeRequest?.profile?.email || 'Student'} — {activeRequest?.test_result?.test_type?.toUpperCase()} {activeRequest?.test_result?.test_id}
             </p>
-            {activeRequest && renderSubmissionDetails(activeRequest)}
+            {activeRequest?.test_result?.test_type === 'writing' && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 rounded-lg bg-muted/30 p-3">
+                <div>
+                  <Label>Task Achievement</Label>
+                  <Input
+                    type="number"
+                    min="0"
+                    max="9"
+                    step="0.5"
+                    value={taskAchievement}
+                    onChange={(e) => setTaskAchievement(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <Label>Coherence & Cohesion</Label>
+                  <Input
+                    type="number"
+                    min="0"
+                    max="9"
+                    step="0.5"
+                    value={coherenceCohesion}
+                    onChange={(e) => setCoherenceCohesion(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <Label>Lexical Resource</Label>
+                  <Input
+                    type="number"
+                    min="0"
+                    max="9"
+                    step="0.5"
+                    value={lexicalResource}
+                    onChange={(e) => setLexicalResource(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <Label>Grammar Accuracy</Label>
+                  <Input
+                    type="number"
+                    min="0"
+                    max="9"
+                    step="0.5"
+                    value={grammarAccuracy}
+                    onChange={(e) => setGrammarAccuracy(e.target.value)}
+                  />
+                </div>
+              </div>
+            )}
             <div>
               <Label>Teacher Score</Label>
               <Input
