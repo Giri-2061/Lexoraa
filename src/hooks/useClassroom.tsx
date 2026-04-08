@@ -482,13 +482,24 @@ export function useClassroomDetail(classroomId: string | undefined) {
     return { error };
   };
 
-  const gradeTestReviewRequest = async (requestId: string, score: number, comment?: string) => {
+  const gradeTestReviewRequest = async (
+    requestId: string,
+    score: number,
+    comment?: string,
+    criteria?: {
+      taskAchievement?: number | null;
+      coherenceCohesion?: number | null;
+      lexicalResource?: number | null;
+      grammarAccuracy?: number | null;
+    }
+  ) => {
     const { error } = await supabase
       .from('test_review_requests')
       .update({
         status: 'graded',
         teacher_score: score,
         teacher_comment: comment || null,
+        teacher_criteria: criteria || null,
         graded_at: new Date().toISOString()
       })
       .eq('id', requestId);

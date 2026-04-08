@@ -106,6 +106,12 @@ export interface TestReviewRequest {
   status: 'pending' | 'graded';
   teacher_score: number | null;
   teacher_comment: string | null;
+  teacher_criteria?: {
+    taskAchievement?: number | null;
+    coherenceCohesion?: number | null;
+    lexicalResource?: number | null;
+    grammarAccuracy?: number | null;
+  } | null;
   requested_at: string;
   graded_at: string | null;
   created_at: string;
