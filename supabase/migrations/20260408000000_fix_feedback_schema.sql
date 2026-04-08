@@ -4,6 +4,9 @@ ALTER TABLE public.feedback
   ADD COLUMN IF NOT EXISTS platform TEXT;
 
 ALTER TABLE public.feedback
+  ADD COLUMN IF NOT EXISTS user_agent TEXT;
+
+ALTER TABLE public.feedback
   ADD COLUMN IF NOT EXISTS app_version TEXT;
 
 UPDATE public.feedback
