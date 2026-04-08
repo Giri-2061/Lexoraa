@@ -648,7 +648,7 @@ const SpeakingTestAIExaminer = () => {
       const { data: sessionData } = await supabase.auth.getSession();
       const headers: Record<string, string> = {
         'Content-Type': 'application/json',
-        'apikey': import.meta.env.VITE_SUPABASE_ANON_KEY
+        'apikey': import.meta.env.VITE_SUPABASE_ANON_KEY || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
       };
 
       if (sessionData?.session?.access_token) {
