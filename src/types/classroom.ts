@@ -65,7 +65,7 @@ export interface Assignment {
   teacher_id: string;
   title: string;
   description: string | null;
-  test_type: 'listening' | 'reading' | 'writing' | 'speaking';
+  test_type: 'listening' | 'reading';
   book_id: string;
   test_id: string;
   section_ids: string[] | null;
@@ -88,10 +88,9 @@ export interface AssignmentSubmission {
   created_at: string;
   assignment?: Assignment;
   test_result?: {
-    band_score: number | null;
-    correct_count: number | null;
-    total_questions: number | null;
-    answers?: Record<string, unknown> | null;
+    band_score: number;
+    correct_count: number;
+    total_questions: number;
   };
   profile?: {
     full_name: string | null;
