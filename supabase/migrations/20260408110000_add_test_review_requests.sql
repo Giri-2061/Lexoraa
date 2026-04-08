@@ -8,15 +8,11 @@ CREATE TABLE IF NOT EXISTS public.test_review_requests (
   status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'graded')),
   teacher_score NUMERIC,
   teacher_comment TEXT,
-  teacher_rubric JSONB,
   requested_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   graded_at TIMESTAMPTZ,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   UNIQUE (classroom_id, student_id, test_result_id)
 );
-
-ALTER TABLE public.test_review_requests
-  ADD COLUMN IF NOT EXISTS teacher_rubric JSONB;
 
 CREATE INDEX IF NOT EXISTS idx_test_review_requests_classroom_id
   ON public.test_review_requests(classroom_id);

@@ -43,18 +43,6 @@ import StartClassDialog from '@/components/classroom/StartClassDialog';
 import { supabase } from '@/integrations/supabase/client';
 import type { PostComment, AssignmentSubmission, TestReviewRequest } from '@/types/classroom';
 
-type RubricField = {
-  key: 'taskAchievement' | 'coherenceCohesion' | 'lexicalResource' | 'grammarAccuracy';
-  label: string;
-};
-
-const WRITING_RUBRIC_FIELDS: RubricField[] = [
-  { key: 'taskAchievement', label: 'Task Achievement' },
-  { key: 'coherenceCohesion', label: 'Coherence & Cohesion' },
-  { key: 'lexicalResource', label: 'Lexical Resource' },
-  { key: 'grammarAccuracy', label: 'Grammar Accuracy' }
-];
-
 const BOOKS = Array.from({ length: 7 }, (_, i) => ({ id: `book${13 + i}`, name: `Cambridge Book ${13 + i}` }));
 const TESTS = ['test1', 'test2', 'test3', 'test4'];
 
@@ -1045,12 +1033,6 @@ function ReviewSubmissionsTab({
   const [activeRequest, setActiveRequest] = useState<TestReviewRequest | null>(null);
   const [score, setScore] = useState('');
   const [comment, setComment] = useState('');
-  const [rubricScores, setRubricScores] = useState<Record<RubricField['key'], string>>({
-    taskAchievement: '',
-    coherenceCohesion: '',
-    lexicalResource: '',
-    grammarAccuracy: ''
-  });
   const [saving, setSaving] = useState(false);
 
   const pending = requests.filter((r) => r.status === 'pending');
@@ -1060,12 +1042,6 @@ function ReviewSubmissionsTab({
     setActiveRequest(request);
     setScore(request.test_result?.band_score?.toString() || '');
     setComment(request.teacher_comment || '');
-    setRubricScores({
-      taskAchievement: request.teacher_rubric?.task_achievement?.toString() || '',
-      coherenceCohesion: request.teacher_rubric?.coherence_cohesion?.toString() || '',
-      lexicalResource: request.teacher_rubric?.lexical_resource?.toString() || '',
-      grammarAccuracy: request.teacher_rubric?.grammar_accuracy?.toString() || ''
-    });
   };
 
   const renderSubmissionDetails = (request: TestReviewRequest) => {
@@ -1121,13 +1097,7 @@ function ReviewSubmissionsTab({
   const handleGrade = async () => {
     if (!activeRequest || !score) return;
     setSaving(true);
-    const rubric = {
-      taskAchievement: rubricScores.taskAchievement ? parseFloat(rubricScores.taskAchievement) : undefined,
-      coherenceCohesion: rubricScores.coherenceCohesion ? parseFloat(rubricScores.coherenceCohesion) : undefined,
-      lexicalResource: rubricScores.lexicalResource ? parseFloat(rubricScores.lexicalResource) : undefined,
-      grammarAccuracy: rubricScores.grammarAccuracy ? parseFloat(rubricScores.grammarAccuracy) : undefined
-    };
-    const { error } = await onGrade(activeRequest.id, parseFloat(score), comment, rubric);
+    const { error } = await onGrade(activeRequest.id, parseFloat(score), comment);
     setSaving(false);
 
     if (error) {
@@ -1139,12 +1109,6 @@ function ReviewSubmissionsTab({
     setActiveRequest(null);
     setScore('');
     setComment('');
-    setRubricScores({
-      taskAchievement: '',
-      coherenceCohesion: '',
-      lexicalResource: '',
-      grammarAccuracy: ''
-    });
   };
 
   return (
@@ -1206,7 +1170,7 @@ function ReviewSubmissionsTab({
       </Card>
 
       <Dialog open={!!activeRequest} onOpenChange={(open) => !open && setActiveRequest(null)}>
-        <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogContent>
           <DialogHeader>
             <DialogTitle>Grade Submission</DialogTitle>
           </DialogHeader>
@@ -1214,40 +1178,21 @@ function ReviewSubmissionsTab({
             <p className="text-sm text-muted-foreground">
               {activeRequest?.profile?.full_name || activeRequest?.profile?.email || 'Student'} — {activeRequest?.test_result?.test_type?.toUpperCase()} {activeRequest?.test_result?.test_id}
             </p>
-            <div className="rounded-lg border bg-muted/30 p-4 text-sm space-y-4">
-              <div>
-                <p className="font-medium mb-2">Writing Criteria</p>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {WRITING_RUBRIC_FIELDS.map((field) => (
-                    <div key={field.key}>
-                      <Label className="mb-1 block">{field.label}</Label>
-                      <Input
-                        type="number"
-                        min="0"
-                        max="9"
-                        step="0.5"
-                        value={rubricScores[field.key]}
-                        onChange={(e) => setRubricScores((current) => ({ ...current, [field.key]: e.target.value }))}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <Label>Overall Band Score</Label>
-                <Input
-                  type="number"
-                  min="0"
-                  max="9"
-                  step="0.5"
-                  value={score}
-                  onChange={(e) => setScore(e.target.value)}
-                />
-              </div>
-              <div>
-                <Label>Comment</Label>
-                <Textarea rows={3} value={comment} onChange={(e) => setComment(e.target.value)} />
-              </div>
+            {activeRequest && renderSubmissionDetails(activeRequest)}
+            <div>
+              <Label>Teacher Score</Label>
+              <Input
+                type="number"
+                min="0"
+                max="9"
+                step="0.5"
+                value={score}
+                onChange={(e) => setScore(e.target.value)}
+              />
+            </div>
+            <div>
+              <Label>Comment</Label>
+              <Textarea rows={3} value={comment} onChange={(e) => setComment(e.target.value)} />
             </div>
             <Button onClick={handleGrade} disabled={saving || !score} className="w-full">
               {saving ? 'Saving...' : 'Submit Grade'}

@@ -490,7 +490,6 @@ export type Database = {
           status: string
           teacher_score: number | null
           teacher_comment: string | null
-          teacher_rubric: Json | null
           requested_at: string
           graded_at: string | null
           created_at: string
@@ -503,7 +502,6 @@ export type Database = {
           status?: string
           teacher_score?: number | null
           teacher_comment?: string | null
-          teacher_rubric?: Json | null
           requested_at?: string
           graded_at?: string | null
           created_at?: string
@@ -516,7 +514,6 @@ export type Database = {
           status?: string
           teacher_score?: number | null
           teacher_comment?: string | null
-          teacher_rubric?: Json | null
           requested_at?: string
           graded_at?: string | null
           created_at?: string
