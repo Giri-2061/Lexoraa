@@ -5,9 +5,11 @@ import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpen, Headphones, Mic, PenTool, TrendingUp, Clock, Target, Edit2, Check, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useNavigate, Navigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { toast } from "@/hooks/use-toast";
 import { useConsultancy } from "@/hooks/useClassroom";
 import ConsultancyStats from "@/components/classroom/ConsultancyStats";
@@ -23,11 +25,40 @@ interface TestResult {
   created_at: string;
 }
 
+interface TeacherReviewRequest {
+  id: string;
+  status: 'pending' | 'graded';
+  teacher_score: number | null;
+  teacher_comment: string | null;
+  teacher_criteria?: {
+    taskAchievement?: number | null;
+    coherenceCohesion?: number | null;
+    lexicalResource?: number | null;
+    grammarAccuracy?: number | null;
+  } | null;
+  requested_at: string;
+  graded_at: string | null;
+  classroom?: {
+    id: string;
+    name: string;
+  } | null;
+  test_result?: {
+    id: string;
+    test_type: string;
+    test_id: string;
+    band_score: number | null;
+    answers?: unknown;
+  } | null;
+}
+
 const Dashboard = () => {
   const { user, loading, role } = useAuth();
+  const navigate = useNavigate();
   const { consultancy } = useConsultancy();
   const [testResults, setTestResults] = useState<TestResult[]>([]);
+  const [teacherReviews, setTeacherReviews] = useState<TeacherReviewRequest[]>([]);
   const [loadingResults, setLoadingResults] = useState(true);
+  const [loadingTeacherReviews, setLoadingTeacherReviews] = useState(true);
   const [targetScore, setTargetScore] = useState<number>(7.0);
   const [editingTarget, setEditingTarget] = useState(false);
   const [tempTarget, setTempTarget] = useState("");
@@ -45,6 +76,15 @@ const Dashboard = () => {
       
       if (results) setTestResults(results);
 
+      const { data: reviews } = await supabase
+        .from('test_review_requests')
+        .select('id, status, teacher_score, teacher_comment, teacher_criteria, requested_at, graded_at, classroom:classrooms(id, name), test_result:test_results(id, test_type, test_id, band_score, answers)')
+        .eq('student_id', user.id)
+        .order('graded_at', { ascending: false, nullsFirst: false })
+        .order('requested_at', { ascending: false });
+
+      if (reviews) setTeacherReviews(reviews as TeacherReviewRequest[]);
+
       // Fetch profile for target score and display name
       const { data: profile } = await supabase
         .from('profiles')
@@ -59,6 +99,7 @@ const Dashboard = () => {
         setDisplayName(profile.full_name);
       }
       setLoadingResults(false);
+      setLoadingTeacherReviews(false);
     };
 
     if (user) fetchData();
@@ -132,6 +173,24 @@ const Dashboard = () => {
       minute: '2-digit'
     });
   };
+
+  const openReviewWork = (review: TeacherReviewRequest) => {
+    const testId = review.test_result?.test_id;
+    const testType = review.test_result?.test_type;
+
+    if (!testId || !testType) return;
+
+    if (testType === 'writing') {
+      navigate(`/test/writing/${testId}`);
+      return;
+    }
+
+    if (testType === 'speaking') {
+      navigate(`/test/speaking/${testId}`);
+    }
+  };
+
+  const gradedTeacherReviews = teacherReviews.filter((review) => review.status === 'graded');
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -298,6 +357,89 @@ const Dashboard = () => {
                       <div className="text-right">
                         <p className="font-bold text-primary">Band {result.band_score}</p>
                         <p className="text-xs text-muted-foreground">{formatDate(result.created_at)}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Teacher Grading */}
+          <h2 className="text-xl font-semibold text-foreground mb-4 mt-8">Teacher Grading</h2>
+          <Card>
+            <CardContent className="py-4">
+              {loadingTeacherReviews ? (
+                <div className="text-center py-4">
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary mx-auto"></div>
+                </div>
+              ) : gradedTeacherReviews.length === 0 ? (
+                <div className="text-center text-muted-foreground py-4">
+                  <p>No graded teacher reviews yet.</p>
+                  <p className="text-sm mt-1">Submit a speaking or writing test for teacher review to see feedback here.</p>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {gradedTeacherReviews.map((review) => (
+                    <div key={review.id} className="rounded-lg border bg-muted/20 p-4 space-y-3">
+                      <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                        <div>
+                          <div className="flex flex-wrap items-center gap-2">
+                            <p className="font-medium text-foreground capitalize">
+                              {review.test_result?.test_type || 'Test'} Review
+                            </p>
+                            <Badge variant="secondary">{review.classroom?.name || 'Classroom'}</Badge>
+                          </div>
+                          <p className="text-sm text-muted-foreground">
+                            {review.test_result?.test_id || 'Unknown test'} • Graded {review.graded_at ? formatDate(review.graded_at) : 'recently'}
+                          </p>
+                        </div>
+                        <div className="text-left sm:text-right">
+                          <p className="text-sm text-muted-foreground">Teacher score</p>
+                          <p className="text-2xl font-bold text-primary">
+                            {review.teacher_score != null ? review.teacher_score.toFixed(1) : 'N/A'}
+                          </p>
+                        </div>
+                      </div>
+
+                      {review.teacher_comment && (
+                        <div className="rounded-md bg-background p-3 text-sm text-muted-foreground">
+                          <span className="font-medium text-foreground">Teacher comment:</span> {review.teacher_comment}
+                        </div>
+                      )}
+
+                      {review.teacher_criteria && review.test_result?.test_type === 'writing' && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                          <div className="rounded-md bg-background p-3">
+                            <p className="text-muted-foreground">Task Achievement</p>
+                            <p className="font-medium text-foreground">{review.teacher_criteria.taskAchievement ?? 'N/A'}</p>
+                          </div>
+                          <div className="rounded-md bg-background p-3">
+                            <p className="text-muted-foreground">Coherence & Cohesion</p>
+                            <p className="font-medium text-foreground">{review.teacher_criteria.coherenceCohesion ?? 'N/A'}</p>
+                          </div>
+                          <div className="rounded-md bg-background p-3">
+                            <p className="text-muted-foreground">Lexical Resource</p>
+                            <p className="font-medium text-foreground">{review.teacher_criteria.lexicalResource ?? 'N/A'}</p>
+                          </div>
+                          <div className="rounded-md bg-background p-3">
+                            <p className="text-muted-foreground">Grammar Accuracy</p>
+                            <p className="font-medium text-foreground">{review.teacher_criteria.grammarAccuracy ?? 'N/A'}</p>
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="flex flex-wrap gap-2">
+                        <Button size="sm" onClick={() => openReviewWork(review)}>
+                          Work on it
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        >
+                          Check progress
+                        </Button>
                       </div>
                     </div>
                   ))}
