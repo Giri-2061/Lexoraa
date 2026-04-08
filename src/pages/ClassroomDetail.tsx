@@ -179,6 +179,12 @@ export default function ClassroomDetail() {
               Assignments
             </TabsTrigger>
             {isTeacher && (
+              <TabsTrigger value="submissions" className="gap-2">
+                <Award className="h-4 w-4" />
+                Submissions
+              </TabsTrigger>
+            )}
+            {isTeacher && (
               <TabsTrigger value="students" className="gap-2">
                 <Users className="h-4 w-4" />
                 Students ({members.length})
@@ -210,9 +216,17 @@ export default function ClassroomDetail() {
               onSubmitAssignment={submitAssignment}
               onGradeSubmission={gradeSubmission}
               onSubmitTestReviewRequest={submitTestReviewRequest}
-              onGradeTestReviewRequest={gradeTestReviewRequest}
             />
           </TabsContent>
+
+          {isTeacher && (
+            <TabsContent value="submissions" className="mt-6">
+              <ReviewSubmissionsTab
+                requests={testReviewRequests}
+                onGrade={gradeTestReviewRequest}
+              />
+            </TabsContent>
+          )}
 
           {isTeacher && (
             <TabsContent value="students" className="mt-6">
@@ -509,8 +523,7 @@ function AssignmentsTab({
   onDeleteAssignment,
   onSubmitAssignment,
   onGradeSubmission,
-  onSubmitTestReviewRequest,
-  onGradeTestReviewRequest
+  onSubmitTestReviewRequest
 }: { 
   assignments: any[];
   testReviewRequests: TestReviewRequest[];
@@ -522,7 +535,6 @@ function AssignmentsTab({
   onSubmitAssignment: (assignmentId: string, testResultId?: string) => Promise<any>;
   onGradeSubmission: (submissionId: string, score: number, comment?: string) => Promise<any>;
   onSubmitTestReviewRequest: (testResultId: string) => Promise<any>;
-  onGradeTestReviewRequest: (requestId: string, score: number, comment?: string) => Promise<any>;
 }) {
   const navigate = useNavigate();
   const [showDialog, setShowDialog] = useState(false);
@@ -542,10 +554,6 @@ function AssignmentsTab({
   }>>([]);
   const [selectedResultId, setSelectedResultId] = useState('');
   const [submittingReviewRequest, setSubmittingReviewRequest] = useState(false);
-  const [gradingReviewRequest, setGradingReviewRequest] = useState<TestReviewRequest | null>(null);
-  const [reviewGradeScore, setReviewGradeScore] = useState('');
-  const [reviewGradeComment, setReviewGradeComment] = useState('');
-  const [savingReviewGrade, setSavingReviewGrade] = useState(false);
 
   useEffect(() => {
     const fetchStudentResults = async () => {
@@ -594,7 +602,6 @@ function AssignmentsTab({
   };
 
   const myReviewRequests = testReviewRequests.filter(r => r.student_id === userId);
-  const pendingReviewRequests = testReviewRequests.filter(r => r.status === 'pending');
 
   const handleSubmitReviewRequest = async () => {
     if (!selectedResultId) return;
@@ -607,25 +614,6 @@ function AssignmentsTab({
     }
     toast.success('Test submitted for teacher review');
     setSelectedResultId('');
-  };
-
-  const handleGradeReviewRequest = async () => {
-    if (!gradingReviewRequest || !reviewGradeScore) return;
-    setSavingReviewGrade(true);
-    const { error } = await onGradeTestReviewRequest(
-      gradingReviewRequest.id,
-      parseFloat(reviewGradeScore),
-      reviewGradeComment
-    );
-    setSavingReviewGrade(false);
-    if (error) {
-      toast.error('Failed to grade review request');
-      return;
-    }
-    toast.success('Teacher review submitted');
-    setGradingReviewRequest(null);
-    setReviewGradeScore('');
-    setReviewGradeComment('');
   };
 
   return (
@@ -682,43 +670,6 @@ function AssignmentsTab({
                 </div>
               </div>
             )}
-          </CardContent>
-        </Card>
-      )}
-
-      {isTeacher && pendingReviewRequests.length > 0 && (
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-lg">Pending Test Reviews</CardTitle>
-            <CardDescription>
-              Students have requested manual teacher evaluation for these completed tests.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            {pendingReviewRequests.map((req) => (
-              <div key={req.id} className="flex items-center justify-between bg-muted/50 rounded-lg p-3">
-                <div>
-                  <p className="text-sm font-medium">
-                    {req.profile?.full_name || req.profile?.email || 'Student'}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    {req.test_result?.test_type?.toUpperCase()} • {req.test_result?.test_id} • AI Band {req.test_result?.band_score ?? '-'}
-                  </p>
-                </div>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => {
-                    setGradingReviewRequest(req);
-                    setReviewGradeScore(req.test_result?.band_score?.toString() || '');
-                    setReviewGradeComment(req.teacher_comment || '');
-                  }}
-                >
-                  <Award className="h-3 w-3 mr-1" />
-                  Grade Review
-                </Button>
-              </div>
-            ))}
           </CardContent>
         </Card>
       )}
@@ -820,51 +771,6 @@ function AssignmentsTab({
           />
         ))
       )}
-
-      <Dialog open={!!gradingReviewRequest} onOpenChange={(open) => !open && setGradingReviewRequest(null)}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Grade Test Review Request</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-4 pt-4">
-            <p className="text-sm text-muted-foreground">
-              Student: <span className="font-medium text-foreground">{gradingReviewRequest?.profile?.full_name || gradingReviewRequest?.profile?.email || 'Student'}</span>
-            </p>
-            <div className="bg-muted/50 rounded-lg p-3 text-sm">
-              <p>
-                Test: <span className="font-medium">{gradingReviewRequest?.test_result?.test_type?.toUpperCase()} • {gradingReviewRequest?.test_result?.test_id}</span>
-              </p>
-              <p>
-                AI Result: Band <span className="font-medium">{gradingReviewRequest?.test_result?.band_score ?? '-'}</span>
-              </p>
-            </div>
-            <div>
-              <Label>Teacher Score</Label>
-              <Input
-                type="number"
-                min="0"
-                max="9"
-                step="0.5"
-                value={reviewGradeScore}
-                onChange={(e) => setReviewGradeScore(e.target.value)}
-                placeholder="e.g., 7.0"
-              />
-            </div>
-            <div>
-              <Label>Comment (optional)</Label>
-              <Textarea
-                rows={3}
-                value={reviewGradeComment}
-                onChange={(e) => setReviewGradeComment(e.target.value)}
-                placeholder="Feedback for the student"
-              />
-            </div>
-            <Button onClick={handleGradeReviewRequest} disabled={savingReviewGrade || !reviewGradeScore} className="w-full">
-              {savingReviewGrade ? 'Saving...' : 'Submit Teacher Grade'}
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 }
@@ -1114,6 +1020,135 @@ function AssignmentCard({
         </DialogContent>
       </Dialog>
     </>
+  );
+}
+
+function ReviewSubmissionsTab({
+  requests,
+  onGrade,
+}: {
+  requests: TestReviewRequest[];
+  onGrade: (requestId: string, score: number, comment?: string) => Promise<any>;
+}) {
+  const [activeRequest, setActiveRequest] = useState<TestReviewRequest | null>(null);
+  const [score, setScore] = useState('');
+  const [comment, setComment] = useState('');
+  const [saving, setSaving] = useState(false);
+
+  const pending = requests.filter((r) => r.status === 'pending');
+  const graded = requests.filter((r) => r.status === 'graded');
+
+  const openGradeDialog = (request: TestReviewRequest) => {
+    setActiveRequest(request);
+    setScore(request.test_result?.band_score?.toString() || '');
+    setComment(request.teacher_comment || '');
+  };
+
+  const handleGrade = async () => {
+    if (!activeRequest || !score) return;
+    setSaving(true);
+    const { error } = await onGrade(activeRequest.id, parseFloat(score), comment);
+    setSaving(false);
+
+    if (error) {
+      toast.error('Failed to submit teacher review');
+      return;
+    }
+
+    toast.success('Teacher review submitted');
+    setActiveRequest(null);
+    setScore('');
+    setComment('');
+  };
+
+  return (
+    <div className="space-y-6">
+      <Card>
+        <CardHeader>
+          <CardTitle>Pending Review Requests</CardTitle>
+          <CardDescription>
+            Students requested manual teacher grading for these completed tests.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-2">
+          {pending.length === 0 ? (
+            <p className="text-sm text-muted-foreground">No pending review requests.</p>
+          ) : (
+            pending.map((req) => (
+              <div key={req.id} className="flex items-center justify-between rounded-lg border p-3">
+                <div>
+                  <p className="text-sm font-medium">{req.profile?.full_name || req.profile?.email || 'Student'}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {req.test_result?.test_type?.toUpperCase()} • {req.test_result?.test_id} • AI Band {req.test_result?.band_score ?? '-'}
+                  </p>
+                </div>
+                <Button size="sm" variant="outline" onClick={() => openGradeDialog(req)}>
+                  <Award className="h-3 w-3 mr-1" />
+                  Grade
+                </Button>
+              </div>
+            ))
+          )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Graded Requests</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2">
+          {graded.length === 0 ? (
+            <p className="text-sm text-muted-foreground">No graded requests yet.</p>
+          ) : (
+            graded.map((req) => (
+              <div key={req.id} className="rounded-lg border p-3">
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-medium">{req.profile?.full_name || req.profile?.email || 'Student'}</p>
+                  <Badge className="bg-green-500/10 text-green-600">Score: {req.teacher_score ?? '-'}</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground mt-1">
+                  {req.test_result?.test_type?.toUpperCase()} • {req.test_result?.test_id} • AI Band {req.test_result?.band_score ?? '-'}
+                </p>
+                {req.teacher_comment && (
+                  <p className="text-sm mt-2">{req.teacher_comment}</p>
+                )}
+              </div>
+            ))
+          )}
+        </CardContent>
+      </Card>
+
+      <Dialog open={!!activeRequest} onOpenChange={(open) => !open && setActiveRequest(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Grade Submission</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4 pt-2">
+            <p className="text-sm text-muted-foreground">
+              {activeRequest?.profile?.full_name || activeRequest?.profile?.email || 'Student'} — {activeRequest?.test_result?.test_type?.toUpperCase()} {activeRequest?.test_result?.test_id}
+            </p>
+            <div>
+              <Label>Teacher Score</Label>
+              <Input
+                type="number"
+                min="0"
+                max="9"
+                step="0.5"
+                value={score}
+                onChange={(e) => setScore(e.target.value)}
+              />
+            </div>
+            <div>
+              <Label>Comment</Label>
+              <Textarea rows={3} value={comment} onChange={(e) => setComment(e.target.value)} />
+            </div>
+            <Button onClick={handleGrade} disabled={saving || !score} className="w-full">
+              {saving ? 'Saving...' : 'Submit Grade'}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </div>
   );
 }
 

@@ -55,6 +55,10 @@ const WritingTest = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isTranscribing1, setIsTranscribing1] = useState(false);
   const [isTranscribing2, setIsTranscribing2] = useState(false);
+  const [latestTestResultId, setLatestTestResultId] = useState<string | null>(null);
+  const [classrooms, setClassrooms] = useState<Array<{ id: string; name: string }>>([]);
+  const [selectedClassroomId, setSelectedClassroomId] = useState('');
+  const [isRequestingTeacherReview, setIsRequestingTeacherReview] = useState(false);
 
   const clearStoredDrafts = useCallback(() => {
     try {
@@ -79,6 +83,7 @@ const WritingTest = () => {
     setTask2Evaluation(null);
     setShowEvaluation(false);
     setFinalBandScore(null);
+    setLatestTestResultId(null);
   }, []);
 
   const session = useTestSession(durationMinutes, {
@@ -159,6 +164,33 @@ const WritingTest = () => {
       console.warn("Failed to persist task2 image", error);
     }
   }, [task2ImageData]);
+
+  useEffect(() => {
+    const fetchClassrooms = async () => {
+      if (!user?.id) return;
+
+      const { data, error } = await supabase
+        .from('classroom_memberships')
+        .select('classroom_id, classroom:classrooms(id, name)')
+        .eq('student_id', user.id);
+
+      if (!error && data) {
+        const mapped = data
+          .map((row: any) => ({
+            id: row.classroom?.id,
+            name: row.classroom?.name,
+          }))
+          .filter((c: any) => c.id && c.name);
+
+        setClassrooms(mapped);
+        if (mapped.length > 0 && !selectedClassroomId) {
+          setSelectedClassroomId(mapped[0].id);
+        }
+      }
+    };
+
+    fetchClassrooms();
+  }, [user?.id]);
 
   const task1WordCount = useMemo(() => countWords(task1Answer), [task1Answer]);
   const task2WordCount = useMemo(() => countWords(task2Answer), [task2Answer]);
@@ -473,29 +505,35 @@ const WritingTest = () => {
       // Save result to Supabase test_results
       if (user && user.id) {
         const finalBand = t1Eval && t2Eval ? calculateFinalBand(t1Eval.overallBand, t2Eval.overallBand) : null;
-        const { error } = await supabase.from('test_results').insert({
-          test_id: test?.testId ?? "writing-sample-1",
-          test_type: 'writing',
-          user_id: user.id,
-          band_score: finalBand,
-          correct_count: 0,
-          total_questions: 2,
-          answers: {
-            task1: task1Answer,
-            task2: task2Answer,
-            task1Image: task1ImageData,
-            task2Image: task2ImageData,
-            evaluations: {
-              task1: t1Eval,
-              task2: t2Eval,
-              finalBand: finalBand
-            }
-          },
-          duration_minutes: durationMinutes,
-          created_at: new Date().toISOString(),
-        });
+        const { data, error } = await supabase
+          .from('test_results')
+          .insert({
+            test_id: test?.testId ?? "writing-sample-1",
+            test_type: 'writing',
+            user_id: user.id,
+            band_score: finalBand,
+            correct_count: 0,
+            total_questions: 2,
+            answers: {
+              task1: task1Answer,
+              task2: task2Answer,
+              task1Image: task1ImageData,
+              task2Image: task2ImageData,
+              evaluations: {
+                task1: t1Eval,
+                task2: t2Eval,
+                finalBand: finalBand
+              }
+            },
+            duration_minutes: durationMinutes,
+            created_at: new Date().toISOString(),
+          })
+          .select('id')
+          .single();
         if (error) {
           toast({ title: 'Failed to save result', description: error.message, variant: 'destructive' });
+        } else {
+          setLatestTestResultId(data.id);
         }
       }
       setSubmitted(true);
@@ -526,6 +564,69 @@ const WritingTest = () => {
     session.setStarted(false);
     session.setTimeLeft(durationMinutes * 60);
     navigate("/mock-tests");
+  };
+
+  const handleAskTeacherReview = async () => {
+    if (!user?.id) {
+      toast({
+        title: 'Login required',
+        description: 'Please sign in before requesting teacher review.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    if (!latestTestResultId) {
+      toast({
+        title: 'No test result yet',
+        description: 'Submit this writing test first, then request teacher review.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    if (!selectedClassroomId) {
+      toast({
+        title: 'No classroom selected',
+        description: 'Select a classroom to send this test for teacher review.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    setIsRequestingTeacherReview(true);
+
+    const { error } = await supabase
+      .from('test_review_requests')
+      .upsert(
+        {
+          classroom_id: selectedClassroomId,
+          student_id: user.id,
+          test_result_id: latestTestResultId,
+          status: 'pending',
+          teacher_score: null,
+          teacher_comment: null,
+          graded_at: null,
+          requested_at: new Date().toISOString(),
+        },
+        { onConflict: 'classroom_id,student_id,test_result_id' }
+      );
+
+    setIsRequestingTeacherReview(false);
+
+    if (error) {
+      toast({
+        title: 'Request failed',
+        description: error.message,
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    toast({
+      title: 'Sent to teacher',
+      description: 'Your writing test was submitted for classroom teacher review.',
+    });
   };
 
   return (
@@ -677,6 +778,33 @@ const WritingTest = () => {
                           <Button onClick={handleExitToMockTests}>
                             Back to Mock Tests
                           </Button>
+                        </div>
+
+                        <div className="rounded-lg border border-border bg-muted/30 p-3 space-y-2">
+                          <p className="text-sm font-medium text-card-foreground">Ask Your Teacher To Review</p>
+                          {classrooms.length > 0 ? (
+                            <>
+                              <select
+                                value={selectedClassroomId}
+                                onChange={(e) => setSelectedClassroomId(e.target.value)}
+                                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                              >
+                                {classrooms.map((c) => (
+                                  <option key={c.id} value={c.id}>{c.name}</option>
+                                ))}
+                              </select>
+                              <Button
+                                variant="outline"
+                                className="w-full"
+                                onClick={handleAskTeacherReview}
+                                disabled={!latestTestResultId || isRequestingTeacherReview}
+                              >
+                                {isRequestingTeacherReview ? 'Sending...' : 'Ask Your Teacher'}
+                              </Button>
+                            </>
+                          ) : (
+                            <p className="text-sm text-muted-foreground">Join a classroom first to request teacher review.</p>
+                          )}
                         </div>
 
                         <Button variant="outline" size="sm" onClick={() => setShowResultsModal(false)} className="w-full">
