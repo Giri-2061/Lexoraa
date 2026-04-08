@@ -41,30 +41,33 @@ serve(async (req) => {
     const GROQ_API_KEY = Deno.env.get('GROQ_API_KEY')
     if (!GROQ_API_KEY) throw new Error('GROQ_API_KEY not configured')
 
-    const { recordings, testId, cueCardTopic, part3Theme } = await req.json()
+    const { recordings, testId, cueCardTopic, part3Theme, userId } = await req.json()
     if (!recordings || !Array.isArray(recordings) || recordings.length === 0) {
       throw new Error('No recordings provided')
     }
 
     // 1. AUTHENTICATION & CLIENT SETUP
     const authHeader = req.headers.get('Authorization')
-    if (!authHeader) {
-      return new Response(JSON.stringify({ error: 'Authorization header missing.' }), { status: 401, headers: corsHeaders })
-    }
 
     const supabaseClient = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '',
-      { 
-        global: { headers: { Authorization: authHeader } },
+      {
         auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
       }
     )
 
-    const { data: { user }, error: userError } = await supabaseClient.auth.getUser(
-      authHeader?.replace('Bearer ', '') || ''
-    )
-    if (userError || !user) throw new Error('Invalid authentication.')
+    let resolvedUserId: string | null = null
+    if (authHeader?.startsWith('Bearer ')) {
+      const token = authHeader.replace('Bearer ', '')
+      const { data: { user }, error: userError } = await supabaseClient.auth.getUser(token)
+      if (!userError && user) {
+        resolvedUserId = user.id
+      }
+    }
+    if (!resolvedUserId && userId) {
+      resolvedUserId = userId
+    }
 
     // 2. TRANSCRIPTION LOOP (Whisper-large-v3)
     const transcripts = { part1: '', part2: '', part3: '' };
@@ -74,7 +77,14 @@ serve(async (req) => {
     for (const recording of recordings) {
       totalDuration += recording.duration || 0;
       try {
-        const audioBuffer = Uint8Array.from(atob(recording.audioBase64), c => c.charCodeAt(0));
+        const encodedAudio = recording.audioBase64 ?? recording.data ?? recording.audio ?? '';
+        if (!encodedAudio) {
+          transcriptionWarnings.push(`Part ${recording.part}: Missing audio payload.`);
+          continue;
+        }
+
+        const base64Audio = encodedAudio.includes(',') ? encodedAudio.split(',').pop() ?? '' : encodedAudio;
+        const audioBuffer = Uint8Array.from(atob(base64Audio), c => c.charCodeAt(0));
         const formData = new FormData();
         formData.append('file', new Blob([audioBuffer], { type: 'audio/webm' }), 'audio.webm');
         formData.append('model', 'whisper-large-v3');
@@ -89,9 +99,10 @@ serve(async (req) => {
 
         if (whisperRes.ok) {
           const data = await whisperRes.json();
-          if (recording.part === 1) transcripts.part1 = data.text || '';
-          else if (recording.part === 2) transcripts.part2 = data.text || '';
-          else if (recording.part === 3) transcripts.part3 = data.text || '';
+          const partNumber = Number(recording.partNumber ?? recording.part);
+          if (partNumber === 1) transcripts.part1 = data.text || '';
+          else if (partNumber === 2) transcripts.part2 = data.text || '';
+          else if (partNumber === 3) transcripts.part3 = data.text || '';
         } else {
           transcriptionWarnings.push(`Part ${recording.part}: Transcription issue.`);
         }
@@ -240,36 +251,38 @@ serve(async (req) => {
     // 7. SAVE TO DATABASE
     let testResultId: string | null = null;
     try {
-      const adminClient = createClient(
-        Deno.env.get('SUPABASE_URL') ?? '',
-        Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
-      );
+      if (resolvedUserId) {
+        const adminClient = createClient(
+          Deno.env.get('SUPABASE_URL') ?? '',
+          Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+        );
 
-      const { data: testResultData, error: testResultError } = await adminClient
-        .from('test_results')
-        .insert({
-          user_id: user.id,
-          test_id: testId || 'speaking-unknown',
-          test_type: 'speaking',
-          correct_count: 0,
-          total_questions: 3,
-          band_score: finalBand,
-          duration_minutes: Math.round(totalDuration / 60),
-          answers: {
-            evaluation: fullEvaluation,
-            transcripts,
-            cueCardTopic,
-            part3Theme
-          },
-          created_at: new Date().toISOString()
-        })
-        .select('id')
-        .single();
+        const { data: testResultData, error: testResultError } = await adminClient
+          .from('test_results')
+          .insert({
+            user_id: resolvedUserId,
+            test_id: testId || 'speaking-unknown',
+            test_type: 'speaking',
+            correct_count: 0,
+            total_questions: 3,
+            band_score: finalBand,
+            duration_minutes: Math.round(totalDuration / 60),
+            answers: {
+              evaluation: fullEvaluation,
+              transcripts,
+              cueCardTopic,
+              part3Theme
+            },
+            created_at: new Date().toISOString()
+          })
+          .select('id')
+          .single();
 
-      if (testResultError) {
-        console.error('Test Results DB Error:', testResultError);
-      } else {
-        testResultId = testResultData?.id ?? null;
+        if (testResultError) {
+          console.error('Test Results DB Error:', testResultError);
+        } else {
+          testResultId = testResultData?.id ?? null;
+        }
       }
     } catch (dbErr) {
       console.error('Database save error:', dbErr);

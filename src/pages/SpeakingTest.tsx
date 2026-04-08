@@ -503,18 +503,24 @@ const SpeakingTest = () => {
 
       // Call the Edge Function
       const { data: sessionData } = await supabase.auth.getSession();
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+        'apikey': import.meta.env.VITE_SUPABASE_ANON_KEY
+      };
+
+      if (sessionData?.session?.access_token) {
+        headers.Authorization = `Bearer ${sessionData.session.access_token}`;
+      }
+
       const response = await fetch(
         `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/evaluate-speaking`,
         {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${sessionData?.session?.access_token}`,
-            'apikey': import.meta.env.VITE_SUPABASE_ANON_KEY
-          },
+          headers,
           body: JSON.stringify({
             recordings: validRecordings,
             testId: testId || '1',
+            userId: user?.id,
             cueCardTopic: test?.part2?.cueCard?.topic || 'General topic',
             part3Theme: test?.part3?.theme || 'General discussion'
           })
