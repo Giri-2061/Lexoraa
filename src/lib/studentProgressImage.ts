@@ -21,6 +21,11 @@ export function buildStudentProgressCardSvg({ displayName, snapshot }: StudentPr
   const chartPath = buildChartPath(summary, chartBoxWidth - chartPaddingX * 2, chartBoxHeight - chartPaddingY * 2, chartBoxX + chartPaddingX, chartBoxY + chartPaddingY);
   const fillPath = buildAreaPath(summary, chartBoxWidth - chartPaddingX * 2, chartBoxHeight - chartPaddingY * 2, chartBoxX + chartPaddingX, chartBoxY + chartPaddingY);
   const chartDots = buildDots(summary, chartBoxWidth - chartPaddingX * 2, chartBoxHeight - chartPaddingY * 2, chartBoxX + chartPaddingX, chartBoxY + chartPaddingY);
+  const barWidth = 850;
+  const listeningPct = getTypePercentage(summary, 'listening');
+  const readingPct = getTypePercentage(summary, 'reading');
+  const writingPct = getTypePercentage(summary, 'writing');
+  const speakingPct = getTypePercentage(summary, 'speaking');
 
   return `
 <svg width="${CARD_WIDTH}" height="${CARD_HEIGHT}" viewBox="0 0 ${CARD_WIDTH} ${CARD_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -83,15 +88,25 @@ export function buildStudentProgressCardSvg({ displayName, snapshot }: StudentPr
     <g transform="translate(60, 650)">
       <text x="0" y="0" fill="#64748b" font-family="sans-serif" font-size="18" font-weight="800" letter-spacing="1.5">SKILL BREAKDOWN</text>
       
-      <text x="0" y="45" fill="#1e3a8a" font-family="sans-serif" font-size="18" font-weight="600">Reading</text>
+      <text x="0" y="45" fill="#1e3a8a" font-family="sans-serif" font-size="18" font-weight="600">Listening</text>
       <rect x="110" y="32" width="850" height="12" rx="6" fill="#e2e8f0" />
-      <rect x="110" y="32" width="${850 * 0.78}" height="12" rx="6" fill="#1e3a8a" />
-      <text x="1000" y="45" fill="#1e3a8a" font-family="sans-serif" font-size="18" font-weight="800">78%</text>
+      <rect x="110" y="32" width="${(barWidth * listeningPct) / 100}" height="12" rx="6" fill="#1e3a8a" />
+      <text x="1000" y="45" fill="#1e3a8a" font-family="sans-serif" font-size="18" font-weight="800">${listeningPct}%</text>
 
-      <text x="0" y="95" fill="#1e3a8a" font-family="sans-serif" font-size="18" font-weight="600">Writing</text>
+      <text x="0" y="95" fill="#1e3a8a" font-family="sans-serif" font-size="18" font-weight="600">Reading</text>
       <rect x="110" y="82" width="850" height="12" rx="6" fill="#e2e8f0" />
-      <rect x="110" y="82" width="${850 * 0.82}" height="12" rx="6" fill="#1e3a8a" />
-      <text x="1000" y="95" fill="#1e3a8a" font-family="sans-serif" font-size="18" font-weight="800">82%</text>
+      <rect x="110" y="82" width="${(barWidth * readingPct) / 100}" height="12" rx="6" fill="#1e3a8a" />
+      <text x="1000" y="95" fill="#1e3a8a" font-family="sans-serif" font-size="18" font-weight="800">${readingPct}%</text>
+
+      <text x="0" y="145" fill="#1e3a8a" font-family="sans-serif" font-size="18" font-weight="600">Writing</text>
+      <rect x="110" y="132" width="850" height="12" rx="6" fill="#e2e8f0" />
+      <rect x="110" y="132" width="${(barWidth * writingPct) / 100}" height="12" rx="6" fill="#1e3a8a" />
+      <text x="1000" y="145" fill="#1e3a8a" font-family="sans-serif" font-size="18" font-weight="800">${writingPct}%</text>
+
+      <text x="0" y="195" fill="#1e3a8a" font-family="sans-serif" font-size="18" font-weight="600">Speaking</text>
+      <rect x="110" y="182" width="850" height="12" rx="6" fill="#e2e8f0" />
+      <rect x="110" y="182" width="${(barWidth * speakingPct) / 100}" height="12" rx="6" fill="#1e3a8a" />
+      <text x="1000" y="195" fill="#1e3a8a" font-family="sans-serif" font-size="18" font-weight="800">${speakingPct}%</text>
     </g>
   </svg>`;
 };
@@ -259,6 +274,12 @@ function buildDots(summary: StudentProgressSummary, width: number, height: numbe
 
 function clampBandScore(value: number): number {
   return Math.max(0, Math.min(9, value));
+}
+
+function getTypePercentage(summary: StudentProgressSummary, type: string): number {
+  const count = summary.testsByType[type] || 0;
+  if (summary.totalTests <= 0) return 0;
+  return Math.round((count / summary.totalTests) * 100);
 }
 
 function buildGraphLabels(summary: StudentProgressSummary): string {
