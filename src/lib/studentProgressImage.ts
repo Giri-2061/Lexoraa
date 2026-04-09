@@ -12,9 +12,15 @@ export function buildStudentProgressCardSvg({ displayName, snapshot }: StudentPr
   const summary = snapshot.summary;
   const generatedAt = new Date(snapshot.generatedAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }).toUpperCase();
   const totalTests = summary.totalTests.toString();
-  const chartPath = buildChartPath(summary, 760, 260, 52, 26);
-  const fillPath = buildAreaPath(summary, 760, 260, 52, 26);
-  const testMixCards = buildTestMixCards(summary);
+  const chartBoxX = 60;
+  const chartBoxY = 380;
+  const chartBoxWidth = 1080;
+  const chartBoxHeight = 220;
+  const chartPaddingX = 28;
+  const chartPaddingY = 20;
+  const chartPath = buildChartPath(summary, chartBoxWidth - chartPaddingX * 2, chartBoxHeight - chartPaddingY * 2, chartBoxX + chartPaddingX, chartBoxY + chartPaddingY);
+  const fillPath = buildAreaPath(summary, chartBoxWidth - chartPaddingX * 2, chartBoxHeight - chartPaddingY * 2, chartBoxX + chartPaddingX, chartBoxY + chartPaddingY);
+  const chartDots = buildDots(summary, chartBoxWidth - chartPaddingX * 2, chartBoxHeight - chartPaddingY * 2, chartBoxX + chartPaddingX, chartBoxY + chartPaddingY);
 
   return `
 <svg width="${CARD_WIDTH}" height="${CARD_HEIGHT}" viewBox="0 0 ${CARD_WIDTH} ${CARD_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,6 +37,9 @@ export function buildStudentProgressCardSvg({ displayName, snapshot }: StudentPr
         <stop offset="0%" stop-color="rgba(37,99,235,0.2)" />
         <stop offset="100%" stop-color="rgba(37,99,235,0.0)" />
       </linearGradient>
+      <clipPath id="graphClip">
+        <rect x="${chartBoxX}" y="${chartBoxY}" width="${chartBoxWidth}" height="${chartBoxHeight}" rx="16" />
+      </clipPath>
     </defs>
 
     <rect width="${CARD_WIDTH}" height="${CARD_HEIGHT}" rx="24" fill="white" />
@@ -64,9 +73,12 @@ export function buildStudentProgressCardSvg({ displayName, snapshot }: StudentPr
     </g>
 
     <text x="60" y="360" fill="#64748b" font-family="sans-serif" font-size="18" font-weight="800" letter-spacing="1.5">GROWTH FORECASTING</text>
-    <rect x="60" y="380" width="1080" height="220" rx="16" fill="#f1f5f9" opacity="0.5" />
-    <path d="${fillPath}" fill="url(#fill)" />
-    <path d="${chartPath}" fill="none" stroke="#3b82f6" stroke-width="4" stroke-linecap="round" />
+    <rect x="${chartBoxX}" y="${chartBoxY}" width="${chartBoxWidth}" height="${chartBoxHeight}" rx="16" fill="#f1f5f9" opacity="0.5" />
+    <g clip-path="url(#graphClip)">
+      <path d="${fillPath}" fill="url(#fill)" />
+      <path d="${chartPath}" fill="none" stroke="#3b82f6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+      ${chartDots}
+    </g>
 
     <g transform="translate(60, 650)">
       <text x="0" y="0" fill="#64748b" font-family="sans-serif" font-size="18" font-weight="800" letter-spacing="1.5">SKILL BREAKDOWN</text>
@@ -206,14 +218,16 @@ function buildChartPath(summary: StudentProgressSummary, width: number, height: 
 
   if (points.length === 1) {
     const x = offsetX;
-    const y = offsetY + height - (points[0].bandScore / 9) * height;
+    const band = clampBandScore(points[0].bandScore);
+    const y = offsetY + height - (band / 9) * height;
     return `M ${x} ${y} L ${x + 1} ${y}`;
   }
 
   return points
     .map((point, index) => {
       const x = offsetX + (index / (points.length - 1)) * width;
-      const y = offsetY + height - (point.bandScore / 9) * height;
+      const band = clampBandScore(point.bandScore);
+      const y = offsetY + height - (band / 9) * height;
       return `${index === 0 ? 'M' : 'L'} ${x.toFixed(1)} ${y.toFixed(1)}`;
     })
     .join(' ');
@@ -236,10 +250,15 @@ function buildDots(summary: StudentProgressSummary, width: number, height: numbe
   return points
     .map((point, index) => {
       const x = offsetX + (index / Math.max(points.length - 1, 1)) * width;
-      const y = offsetY + height - (point.bandScore / 9) * height;
+      const band = clampBandScore(point.bandScore);
+      const y = offsetY + height - (band / 9) * height;
       return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.5" fill="#60a5fa" stroke="rgba(255,255,255,0.95)" stroke-width="2" />`;
     })
     .join('\n');
+}
+
+function clampBandScore(value: number): number {
+  return Math.max(0, Math.min(9, value));
 }
 
 function buildGraphLabels(summary: StudentProgressSummary): string {
