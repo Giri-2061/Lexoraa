@@ -17,113 +17,72 @@ export function buildStudentProgressCardSvg({ displayName, snapshot }: StudentPr
   const testMixCards = buildTestMixCards(summary);
 
   return `
-  <svg width="${CARD_WIDTH}" height="${CARD_HEIGHT}" viewBox="0 0 ${CARD_WIDTH} ${CARD_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="${CARD_WIDTH}" height="${CARD_HEIGHT}" viewBox="0 0 ${CARD_WIDTH} ${CARD_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0%" stop-color="#f9fbff" />
         <stop offset="100%" stop-color="#eef4ff" />
       </linearGradient>
-      <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#ffffff" />
-        <stop offset="100%" stop-color="#f5f9ff" />
-      </linearGradient>
-      <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#2563eb" />
+      <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#1e3a8a" />
         <stop offset="100%" stop-color="#3b82f6" />
       </linearGradient>
-      <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#1d4ed8" />
-        <stop offset="100%" stop-color="#60a5fa" />
-      </linearGradient>
       <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="rgba(37,99,235,0.28)" />
-        <stop offset="100%" stop-color="rgba(37,99,235,0.02)" />
+        <stop offset="0%" stop-color="rgba(37,99,235,0.2)" />
+        <stop offset="100%" stop-color="rgba(37,99,235,0.0)" />
       </linearGradient>
-      <linearGradient id="chipBlue" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#dbeafe" />
-        <stop offset="100%" stop-color="#bfdbfe" />
-      </linearGradient>
-      <linearGradient id="graphBg" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#ffffff" />
-        <stop offset="100%" stop-color="#f4f8ff" />
-      </linearGradient>
-      <linearGradient id="bottomPanel" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#1d4ed8" />
-        <stop offset="100%" stop-color="#2563eb" />
-      </linearGradient>
-      <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
-        <feGaussianBlur stdDeviation="40" />
-      </filter>
     </defs>
 
-    <rect width="${CARD_WIDTH}" height="${CARD_HEIGHT}" rx="36" fill="url(#bg)" />
-    <rect x="22" y="22" width="1156" height="856" rx="28" fill="url(#panel)" stroke="#d8e2f2" stroke-width="1.5" />
+    <rect width="${CARD_WIDTH}" height="${CARD_HEIGHT}" rx="24" fill="white" />
+    
+    <text x="60" y="100" fill="#1e3a8a" font-family="sans-serif" font-size="72" font-weight="900">${displayName || 'Student'}</text>
+    <text x="60" y="140" fill="#1e3a8a" font-family="sans-serif" font-size="24" font-weight="800" letter-spacing="4">LEXORA</text>
+    
+    <text x="1140" y="80" fill="#64748b" font-family="sans-serif" font-size="22" font-weight="800" text-anchor="end">${generatedAt}</text>
+    <text x="1140" y="110" fill="#94a3b8" font-family="sans-serif" font-size="18" font-weight="500" text-anchor="end">Monthly Report</text>
 
-    <rect x="22" y="22" width="22" height="856" rx="11" fill="url(#accent)" />
-    <rect x="22" y="248" width="22" height="160" rx="11" fill="#93c5fd" opacity="0.9" />
-    <rect x="22" y="514" width="22" height="218" rx="11" fill="#bfdbfe" opacity="0.9" />
+    <line x1="60" y1="180" x2="1140" y2="180" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round" />
+    <line x1="60" y1="180" x2="800" y2="180" stroke="#1e3a8a" stroke-width="4" stroke-linecap="round" />
 
-    <circle cx="768" cy="40" r="2.8" fill="#bfdbfe" />
-    <circle cx="786" cy="40" r="2.8" fill="#bfdbfe" />
-    <circle cx="804" cy="40" r="2.8" fill="#bfdbfe" />
-    <circle cx="822" cy="40" r="2.8" fill="#bfdbfe" />
-    <circle cx="840" cy="40" r="2.8" fill="#bfdbfe" />
-    <circle cx="786" cy="58" r="2.8" fill="#bfdbfe" />
-    <circle cx="804" cy="58" r="2.8" fill="#bfdbfe" />
-    <circle cx="822" cy="58" r="2.8" fill="#bfdbfe" />
-    <circle cx="804" cy="76" r="2.8" fill="#bfdbfe" />
+    <g transform="translate(60, 210)">
+      ${/* Stat Box Helper Logic would go here. Example for 'Tests': */ ''}
+      <rect x="0" y="0" width="250" height="110" rx="20" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" />
+      <text x="125" y="55" fill="#1e3a8a" font-family="sans-serif" font-size="36" font-weight="800" text-anchor="middle">${totalTests}</text>
+      <text x="125" y="85" fill="#64748b" font-family="sans-serif" font-size="14" font-weight="700" text-anchor="middle" letter-spacing="1">TESTS</text>
 
-    <text x="88" y="112" fill="#1d4ed8" font-size="62" font-weight="900" letter-spacing="-2">${escapeXml(displayName || 'Student')}</text>
-    <text x="88" y="154" fill="#1e3a8a" font-size="28" font-weight="800" letter-spacing="1.6">LEXORA</text>
+      <rect x="270" y="0" width="250" height="110" rx="20" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" />
+      <text x="395" y="55" fill="#1e3a8a" font-family="sans-serif" font-size="36" font-weight="800" text-anchor="middle">${summary.averageBand.toFixed(1)}</text>
+      <text x="395" y="85" fill="#64748b" font-family="sans-serif" font-size="14" font-weight="700" text-anchor="middle" letter-spacing="1">AVG BAND</text>
 
-    <text x="940" y="110" fill="#2563eb" font-size="18" font-weight="800" text-anchor="end" letter-spacing="1">${generatedAt}</text>
+      <rect x="540" y="0" width="250" height="110" rx="20" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" />
+      <text x="665" y="55" fill="#1e3a8a" font-family="sans-serif" font-size="36" font-weight="800" text-anchor="middle">${summary.highestBand.toFixed(1)}</text>
+      <text x="665" y="85" fill="#64748b" font-family="sans-serif" font-size="14" font-weight="700" text-anchor="middle" letter-spacing="1">HIGHEST</text>
 
-    <rect x="392" y="180" width="708" height="34" rx="17" fill="#dbeafe" opacity="0.9" />
-    <rect x="392" y="180" width="670" height="34" rx="17" fill="url(#accent)" />
-
-    <text x="88" y="236" fill="#0f172a" font-size="16" font-weight="700">THIS MONTH</text>
-    <text x="88" y="258" fill="#0f172a" font-size="16" font-weight="700">HIGHLIGHTS</text>
-
-    ${statPill(312, 214, 120, 66, totalTests, 'Tests')}
-    ${statPill(450, 214, 120, 66, summary.averageBand.toFixed(1), 'Avg band')}
-    ${statPill(588, 214, 120, 66, summary.highestBand.toFixed(1), 'Highest')}
-    ${statPill(726, 214, 120, 66, `${summary.currentStreakDays}d`, 'Streak')}
-
-
-
-    <text x="88" y="500" fill="#0f172a" font-size="16" font-weight="700">GROWTH FORECASTING</text>
-    <rect x="316" y="482" width="808" height="250" rx="26" fill="url(#graphBg)" stroke="#dbeafe" stroke-width="1.2" />
-    <g transform="translate(344 502)">
-      <text x="0" y="0" fill="#64748b" font-size="12" font-weight="700">9</text>
-      <text x="0" y="50" fill="#64748b" font-size="12" font-weight="700">7</text>
-      <text x="0" y="100" fill="#64748b" font-size="12" font-weight="700">5</text>
-      <text x="0" y="150" fill="#64748b" font-size="12" font-weight="700">3</text>
-      <text x="0" y="200" fill="#64748b" font-size="12" font-weight="700">0</text>
-      <g transform="translate(24 0)">
-        <line x1="0" y1="0" x2="710" y2="0" stroke="#dbeafe" stroke-width="1" />
-        <line x1="0" y1="50" x2="710" y2="50" stroke="#dbeafe" stroke-width="1" />
-        <line x1="0" y1="100" x2="710" y2="100" stroke="#dbeafe" stroke-width="1" />
-        <line x1="0" y1="150" x2="710" y2="150" stroke="#dbeafe" stroke-width="1" />
-        <line x1="0" y1="200" x2="710" y2="200" stroke="#dbeafe" stroke-width="1" />
-      </g>
-      <g transform="translate(24 4)">
-        <path d="${fillPath}" fill="url(#fill)" />
-        <path d="${chartPath}" fill="none" stroke="url(#line)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
-        ${buildDots(summary, 760, 260, 52, 26)}
-      </g>
-      <g fill="#2563eb" font-size="12" font-weight="700" text-anchor="middle">
-        ${buildGraphLabels(summary)}
-      </g>
+      <rect x="810" y="0" width="250" height="110" rx="20" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" />
+      <text x="935" y="55" fill="#1e3a8a" font-family="sans-serif" font-size="36" font-weight="800" text-anchor="middle">${summary.currentStreakDays}d</text>
+      <text x="935" y="85" fill="#64748b" font-family="sans-serif" font-size="14" font-weight="700" text-anchor="middle" letter-spacing="1">STREAK</text>
     </g>
 
-    <text x="88" y="780" fill="#0f172a" font-size="16" font-weight="700">PERCENTAGE STAT</text>
-    ${testMixCards}
+    <text x="60" y="360" fill="#64748b" font-family="sans-serif" font-size="18" font-weight="800" letter-spacing="1.5">GROWTH FORECASTING</text>
+    <rect x="60" y="380" width="1080" height="220" rx="16" fill="#f1f5f9" opacity="0.5" />
+    <path d="${fillPath}" fill="url(#fill)" />
+    <path d="${chartPath}" fill="none" stroke="#3b82f6" stroke-width="4" stroke-linecap="round" />
 
-    <rect x="316" y="836" width="808" height="16" rx="8" fill="url(#bottomPanel)" />
-    <text x="88" y="858" fill="#2563eb" font-size="14" font-weight="800" letter-spacing="1.2">POWERED BY LEXORA</text>
+    <g transform="translate(60, 650)">
+      <text x="0" y="0" fill="#64748b" font-family="sans-serif" font-size="18" font-weight="800" letter-spacing="1.5">SKILL BREAKDOWN</text>
+      
+      <text x="0" y="45" fill="#1e3a8a" font-family="sans-serif" font-size="18" font-weight="600">Reading</text>
+      <rect x="110" y="32" width="850" height="12" rx="6" fill="#e2e8f0" />
+      <rect x="110" y="32" width="${850 * 0.78}" height="12" rx="6" fill="#1e3a8a" />
+      <text x="1000" y="45" fill="#1e3a8a" font-family="sans-serif" font-size="18" font-weight="800">78%</text>
+
+      <text x="0" y="95" fill="#1e3a8a" font-family="sans-serif" font-size="18" font-weight="600">Writing</text>
+      <rect x="110" y="82" width="850" height="12" rx="6" fill="#e2e8f0" />
+      <rect x="110" y="82" width="${850 * 0.82}" height="12" rx="6" fill="#1e3a8a" />
+      <text x="1000" y="95" fill="#1e3a8a" font-family="sans-serif" font-size="18" font-weight="800">82%</text>
+    </g>
   </svg>`;
-}
-
+};
 export async function downloadStudentProgressImage(input: StudentProgressImageInput): Promise<void> {
   const svg = buildStudentProgressCardSvg(input);
   const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
