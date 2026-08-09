@@ -1,0 +1,28 @@
+{
+  "cli": {
+    "version": ">= 7.8.0"
+  },
+  "build": {
+    "production": {
+      "workflow": "managed",
+      "distribution": "store",
+      "android": {
+        "buildType": "app-bundle"
+      }
+    },
+    "development": {
+      "workflow": "managed",
+      "developmentClient": true,
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "preview": {
+      "workflow": "managed",
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      }
+    }
+  }
+}

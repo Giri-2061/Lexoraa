@@ -4,7 +4,7 @@ export default function TermsPage() {
   return (
     <LegalLayout title="Terms of Service">
       <p className="text-sm text-gray-600 mb-6">
-        Last updated: January 26, 2026
+        Last updated: April 10, 2026
       </p>
 
       <section className="mb-8">
@@ -109,6 +109,12 @@ export default function TermsPage() {
         </p>
         <p>
           Upon termination, your right to use our service will cease immediately.
+        </p>
+        <p>
+          You may also terminate your account at any time using the <strong>Delete my account</strong> option in your account menu.
+        </p>
+        <p>
+          Account deletion permanently removes your account data from active systems, subject to limited retention where required by law, security, fraud prevention, or backup lifecycle constraints.
         </p>
       </section>
 

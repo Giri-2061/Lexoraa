@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Lexora Mobile",
+    "slug": "lexora-mobile",
+    "platforms": ["android"],
+    "version": "1.0.0",
+    "sdkVersion": "48.0.0",
+    "orientation": "portrait",
+    "scheme": "lexora",
+    "android": {
+      "package": "com.lexora.mobile",
+      "versionCode": 1,
+      "permissions": [
+        "INTERNET",
+        "RECORD_AUDIO",
+        "CAMERA",
+        "READ_MEDIA_IMAGES",
+        "READ_MEDIA_AUDIO"
+      ],
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "example.com"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
+    },
+    "extra": {
+      "webAppUrl": "https://example.com"
+    }
+  }
+}

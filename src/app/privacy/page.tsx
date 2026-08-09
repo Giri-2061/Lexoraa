@@ -4,7 +4,7 @@ export default function PrivacyPage() {
   return (
     <LegalLayout title="Privacy Policy">
       <p className="text-sm text-gray-600 mb-6">
-        Last updated: January 26, 2026
+        Last updated: April 10, 2026
       </p>
 
       <section className="mb-8">
@@ -82,7 +82,20 @@ export default function PrivacyPage() {
       <section className="mb-8">
         <h2 className="text-2xl font-semibold text-gray-900 mb-4">Data Retention</h2>
         <p>
-          Audio recordings from Speaking tests are stored in Supabase Storage. You can request deletion of your audio recordings at any time by contacting us. Other personal information is retained as long as your account is active or as needed to provide our services.
+          We retain personal information only for as long as needed to provide the service, comply with legal obligations, resolve disputes, and enforce agreements.
+        </p>
+        <p>
+          If you delete your account, we permanently remove your profile data, test history, scores, classroom activity linked to your account, and related identifiers from our active systems. Some technical backups may persist for a limited period before automatic deletion.
+        </p>
+      </section>
+
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold text-gray-900 mb-4">Self-Service Account Deletion</h2>
+        <p>
+          You can delete your account at any time from the account menu by selecting <strong>Delete my account</strong> and confirming the action.
+        </p>
+        <p>
+          This deletion is permanent and cannot be undone. Once completed, your name and associated account data are removed from Lexora records tied to your account.
         </p>
       </section>
 
@@ -92,7 +105,7 @@ export default function PrivacyPage() {
         <ul className="list-disc list-inside mt-4 space-y-2">
           <li><strong>Access:</strong> Request a copy of the personal information we hold about you</li>
           <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information</li>
-          <li><strong>Deletion/Right to be Forgotten:</strong> Request permanent deletion of your account and all associated personal data, including audio recordings and test history</li>
+          <li><strong>Deletion/Right to be Forgotten:</strong> Permanently delete your account and associated personal information through the in-product deletion flow or by contacting us</li>
           <li><strong>Portability:</strong> Request transfer of your data in a structured format</li>
           <li><strong>Objection:</strong> Object to processing of your personal information</li>
         </ul>

@@ -1,6 +1,10 @@
 {
   "name": "lexora",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "version": "1.0.0",
   "type": "module",
   "description": "Lexora IELTS Preparation Platform",
@@ -11,6 +15,10 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit"
+    ,"mobile:install":"npm --workspace=lexora-mobile install",
+    "mobile:start":"npm --workspace=lexora-mobile run start",
+    "mobile:android":"npm --workspace=lexora-mobile run android",
+    "mobile:build:production":"cd apps/mobile && eas build -p android --profile production"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
