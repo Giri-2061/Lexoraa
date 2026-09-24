@@ -14,7 +14,7 @@ const About = () => {
             
             <div className="prose prose-lg max-w-none mb-12">
               <p className="text-lg text-muted-foreground text-center mb-8">
-                We are a premier IELTS preparation and study abroad consultancy dedicated to transforming dreams into reality.
+                We are a premium IELTS preparation and study abroad consultancy dedicated to transforming dreams into reality.
               </p>
             </div>
 
